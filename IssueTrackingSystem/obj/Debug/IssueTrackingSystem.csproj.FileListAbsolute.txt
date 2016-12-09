@@ -1,0 +1,12 @@
+\\psf\Home\Documents\Visual Studio 2013\Projects\IssueTrackingSystem\IssueTrackingSystem\bin\Debug\IssueTrackingSystem.exe.config
+\\psf\Home\Documents\Visual Studio 2013\Projects\IssueTrackingSystem\IssueTrackingSystem\bin\Debug\IssueTrackingSystem.exe
+\\psf\Home\Documents\Visual Studio 2013\Projects\IssueTrackingSystem\IssueTrackingSystem\bin\Debug\IssueTrackingSystem.pdb
+\\psf\Home\Documents\Visual Studio 2013\Projects\IssueTrackingSystem\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.csprojResolveAssemblyReference.cache
+\\psf\Home\Documents\Visual Studio 2013\Projects\IssueTrackingSystem\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.Properties.Resources.resources
+\\psf\Home\Documents\Visual Studio 2013\Projects\IssueTrackingSystem\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.csproj.GenerateResource.Cache
+\\psf\Home\Documents\Visual Studio 2013\Projects\IssueTrackingSystem\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.exe
+\\psf\Home\Documents\Visual Studio 2013\Projects\IssueTrackingSystem\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.pdb
+\\psf\Home\Documents\Visual Studio 2013\Projects\IssueTrackingSystem\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.ULS.View.LoginView.resources
+\\psf\Home\Documents\Visual Studio 2013\Projects\IssueTrackingSystem\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.ULS.View.RegisterView.resources
+\\psf\Home\Documents\Visual Studio 2013\Projects\IssueTrackingSystem\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.View.BaseView.resources
+\\psf\Home\Documents\Visual Studio 2013\Projects\IssueTrackingSystem\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.ULS.View.UserInfoView.resources
