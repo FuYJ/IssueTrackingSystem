@@ -44,6 +44,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ITS\View\IssueInfoView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ITS\View\IssueInfoView.Designer.cs">
+      <DependentUpon>IssueInfoView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ITS\View\IssueListView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ITS\View\IssueListView.Designer.cs">
+      <DependentUpon>IssueListView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\UserModel.cs" />
     <Compile Include="ULS\Controller\UserController.cs" />
     <Compile Include="BaseView.cs">
@@ -51,6 +63,12 @@
     </Compile>
     <Compile Include="BaseView.Designer.cs">
       <DependentUpon>BaseView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ULS\View\ProjectListView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ULS\View\ProjectListView.Designer.cs">
+      <DependentUpon>ProjectListView.cs</DependentUpon>
     </Compile>
     <Compile Include="ULS\View\RegisterView.cs">
       <SubType>Form</SubType>
@@ -66,6 +84,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ULS\View\SecurityView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ULS\View\SecurityView.Designer.cs">
+      <DependentUpon>SecurityView.cs</DependentUpon>
+    </Compile>
     <Compile Include="ULS\View\UserInfoView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +98,12 @@
     </Compile>
     <EmbeddedResource Include="BaseView.resx">
       <DependentUpon>BaseView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ITS\View\IssueInfoView.resx">
+      <DependentUpon>IssueInfoView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ITS\View\IssueListView.resx">
+      <DependentUpon>IssueListView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ULS\View\LoginView.resx">
       <DependentUpon>LoginView.cs</DependentUpon>
@@ -87,8 +117,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ULS\View\ProjectListView.resx">
+      <DependentUpon>ProjectListView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ULS\View\RegisterView.resx">
       <DependentUpon>RegisterView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ULS\View\SecurityView.resx">
+      <DependentUpon>SecurityView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ULS\View\UserInfoView.resx">
       <DependentUpon>UserInfoView.cs</DependentUpon>
@@ -107,7 +143,33 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ITS\" />
+    <Folder Include="ITS\Controller\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\alarm.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\calender.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\createIssue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\createUser.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\issue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\project.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\sign-out.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\user.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
