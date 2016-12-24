@@ -57,6 +57,30 @@
       <DependentUpon>IssueListView.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\UserModel.cs" />
+    <Compile Include="PMS\View\CreateUpdateProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PMS\View\CreateUpdateProject.Designer.cs">
+      <DependentUpon>CreateUpdateProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMS\View\Member.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PMS\View\Member.Designer.cs">
+      <DependentUpon>Member.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMS\View\ProjectMainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PMS\View\ProjectMainMenu.Designer.cs">
+      <DependentUpon>ProjectMainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMS\View\Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PMS\View\Test.Designer.cs">
+      <DependentUpon>Test.cs</DependentUpon>
+    </Compile>
     <Compile Include="ULS\Controller\UserController.cs" />
     <Compile Include="BaseView.cs">
       <SubType>Form</SubType>
@@ -105,6 +129,15 @@
     <EmbeddedResource Include="ITS\View\IssueListView.resx">
       <DependentUpon>IssueListView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PMS\View\CreateUpdateProject.resx">
+      <DependentUpon>CreateUpdateProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMS\View\Member.resx">
+      <DependentUpon>Member.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMS\View\ProjectMainMenu.resx">
+      <DependentUpon>ProjectMainMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ULS\View\LoginView.resx">
       <DependentUpon>LoginView.cs</DependentUpon>
     </EmbeddedResource>
@@ -144,6 +177,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ITS\Controller\" />
+    <Folder Include="PMS\Controller\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="src\alarm.png">

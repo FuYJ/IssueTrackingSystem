@@ -10,3 +10,30 @@
 \\psf\Home\Documents\Visual Studio 2013\Projects\IssueTrackingSystem\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.ULS.View.RegisterView.resources
 \\psf\Home\Documents\Visual Studio 2013\Projects\IssueTrackingSystem\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.View.BaseView.resources
 \\psf\Home\Documents\Visual Studio 2013\Projects\IssueTrackingSystem\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.ULS.View.UserInfoView.resources
+D:\SE\Project\IssueTrackingSystem\bin\Debug\IssueTrackingSystem.exe.config
+D:\SE\Project\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.exe
+D:\SE\Project\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.pdb
+D:\SE\Project\IssueTrackingSystem\bin\Debug\src\alarm.png
+D:\SE\Project\IssueTrackingSystem\bin\Debug\src\calender.png
+D:\SE\Project\IssueTrackingSystem\bin\Debug\src\createIssue.png
+D:\SE\Project\IssueTrackingSystem\bin\Debug\src\createUser.png
+D:\SE\Project\IssueTrackingSystem\bin\Debug\src\issue.png
+D:\SE\Project\IssueTrackingSystem\bin\Debug\src\project.png
+D:\SE\Project\IssueTrackingSystem\bin\Debug\src\sign-out.png
+D:\SE\Project\IssueTrackingSystem\bin\Debug\src\user.png
+D:\SE\Project\IssueTrackingSystem\bin\Debug\IssueTrackingSystem.exe
+D:\SE\Project\IssueTrackingSystem\bin\Debug\IssueTrackingSystem.pdb
+D:\SE\Project\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.csprojResolveAssemblyReference.cache
+D:\SE\Project\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.View.BaseView.resources
+D:\SE\Project\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.ITS.View.IssueInfoView.resources
+D:\SE\Project\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.ITS.View.IssueListView.resources
+D:\SE\Project\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.PMS.View.CreateUpdateProject.resources
+D:\SE\Project\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.PMS.View.ProjectMainMenu.resources
+D:\SE\Project\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.ULS.View.LoginView.resources
+D:\SE\Project\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.Properties.Resources.resources
+D:\SE\Project\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.ULS.View.ProjectListView.resources
+D:\SE\Project\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.ULS.View.RegisterView.resources
+D:\SE\Project\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.ULS.View.SecurityView.resources
+D:\SE\Project\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.ULS.View.UserInfoView.resources
+D:\SE\Project\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.csproj.GenerateResource.Cache
+D:\SE\Project\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.PMS.View.Member.resources
