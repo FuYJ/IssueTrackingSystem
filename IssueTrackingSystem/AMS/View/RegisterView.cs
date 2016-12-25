@@ -17,11 +17,15 @@ namespace IssueTrackingSystem.AMS.View
     {
         private UserModel userModel;
         private UserController userController;
+        private ErrorProvider errorProvider;
 
         public RegisterView(){
             userModel = new UserModel();
             userController = new UserController(userModel);
             InitializeComponent();
+
+            errorProvider = new ErrorProvider();
+            errorProvider.BlinkStyle = ErrorBlinkStyle.NeverBlink;
         }
 
         private void registerButtonClicked(object sender, EventArgs e)
@@ -33,7 +37,7 @@ namespace IssueTrackingSystem.AMS.View
             user = userController.createUser(user);
             if (user.UserId != 0)
             {
-                LoginView1 loginView = (LoginView1)this.Owner;
+                LoginView loginView = (LoginView)this.Owner;
                 loginView.ToolStripStatusLabel.Text = "註冊成功";
                 loginView.Show();
                 this.Close();
@@ -47,6 +51,18 @@ namespace IssueTrackingSystem.AMS.View
         {
             this.Owner.Show();
             this.Close();
+        }
+
+        private void confirmPasswordTextBoxTextChanged(object sender, EventArgs e)
+        {
+            if (!confirmPasswordTextBox.Text.Equals(passwordTextBox.Text))
+            {
+                errorProvider.SetError(confirmPasswordTextBox, "密碼不一致");
+            }
+            else
+            {
+                errorProvider.SetError(confirmPasswordTextBox, String.Empty);
+            }
         }
     }
 }

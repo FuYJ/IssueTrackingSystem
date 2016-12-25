@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.mainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.registerGroupBox = new System.Windows.Forms.GroupBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.registerGroupBox = new System.Windows.Forms.GroupBox();
             this.registerTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.cancelButton = new System.Windows.Forms.Button();
             this.emailAddressLabel = new System.Windows.Forms.Label();
@@ -44,8 +44,8 @@
             this.emailAddressTextBox = new System.Windows.Forms.TextBox();
             this.registerButton = new System.Windows.Forms.Button();
             this.mainTableLayoutPanel.SuspendLayout();
-            this.registerGroupBox.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.registerGroupBox.SuspendLayout();
             this.registerTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,18 +65,6 @@
             this.mainTableLayoutPanel.Size = new System.Drawing.Size(584, 361);
             this.mainTableLayoutPanel.TabIndex = 0;
             // 
-            // registerGroupBox
-            // 
-            this.registerGroupBox.Controls.Add(this.registerTableLayoutPanel);
-            this.registerGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.registerGroupBox.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.registerGroupBox.Location = new System.Drawing.Point(3, 3);
-            this.registerGroupBox.Name = "registerGroupBox";
-            this.registerGroupBox.Size = new System.Drawing.Size(578, 335);
-            this.registerGroupBox.TabIndex = 0;
-            this.registerGroupBox.TabStop = false;
-            this.registerGroupBox.Text = "註冊";
-            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -90,7 +78,19 @@
             // toolStripStatusLabel
             // 
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(0, 17);
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(0, 15);
+            // 
+            // registerGroupBox
+            // 
+            this.registerGroupBox.Controls.Add(this.registerTableLayoutPanel);
+            this.registerGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.registerGroupBox.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.registerGroupBox.Location = new System.Drawing.Point(3, 3);
+            this.registerGroupBox.Name = "registerGroupBox";
+            this.registerGroupBox.Size = new System.Drawing.Size(578, 335);
+            this.registerGroupBox.TabIndex = 0;
+            this.registerGroupBox.TabStop = false;
+            this.registerGroupBox.Text = "註冊";
             // 
             // registerTableLayoutPanel
             // 
@@ -110,6 +110,7 @@
             this.registerTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.registerTableLayoutPanel.Location = new System.Drawing.Point(3, 23);
             this.registerTableLayoutPanel.Name = "registerTableLayoutPanel";
+            this.registerTableLayoutPanel.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
             this.registerTableLayoutPanel.RowCount = 6;
             this.registerTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.registerTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
@@ -124,9 +125,9 @@
             // 
             this.registerTableLayoutPanel.SetColumnSpan(this.cancelButton, 2);
             this.cancelButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cancelButton.Location = new System.Drawing.Point(3, 258);
+            this.cancelButton.Location = new System.Drawing.Point(23, 258);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(566, 48);
+            this.cancelButton.Size = new System.Drawing.Size(526, 48);
             this.cancelButton.TabIndex = 9;
             this.cancelButton.Text = "取消";
             this.cancelButton.UseVisualStyleBackColor = true;
@@ -136,10 +137,10 @@
             // 
             this.emailAddressLabel.AutoSize = true;
             this.emailAddressLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.emailAddressLabel.Location = new System.Drawing.Point(3, 153);
+            this.emailAddressLabel.Location = new System.Drawing.Point(23, 153);
             this.emailAddressLabel.Name = "emailAddressLabel";
             this.emailAddressLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
-            this.emailAddressLabel.Size = new System.Drawing.Size(165, 24);
+            this.emailAddressLabel.Size = new System.Drawing.Size(153, 24);
             this.emailAddressLabel.TabIndex = 6;
             this.emailAddressLabel.Text = "e-mail";
             this.emailAddressLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -148,10 +149,10 @@
             // 
             this.passwordLabel.AutoSize = true;
             this.passwordLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.passwordLabel.Location = new System.Drawing.Point(3, 51);
+            this.passwordLabel.Location = new System.Drawing.Point(23, 51);
             this.passwordLabel.Name = "passwordLabel";
             this.passwordLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
-            this.passwordLabel.Size = new System.Drawing.Size(165, 24);
+            this.passwordLabel.Size = new System.Drawing.Size(153, 24);
             this.passwordLabel.TabIndex = 2;
             this.passwordLabel.Text = "密碼";
             this.passwordLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -160,10 +161,10 @@
             // 
             this.usernameLabel.AutoSize = true;
             this.usernameLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.usernameLabel.Location = new System.Drawing.Point(3, 0);
+            this.usernameLabel.Location = new System.Drawing.Point(23, 0);
             this.usernameLabel.Name = "usernameLabel";
             this.usernameLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
-            this.usernameLabel.Size = new System.Drawing.Size(165, 24);
+            this.usernameLabel.Size = new System.Drawing.Size(153, 24);
             this.usernameLabel.TabIndex = 0;
             this.usernameLabel.Text = "使用者名稱";
             this.usernameLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -171,19 +172,19 @@
             // usernameTextBox
             // 
             this.usernameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.usernameTextBox.Location = new System.Drawing.Point(174, 3);
+            this.usernameTextBox.Location = new System.Drawing.Point(182, 3);
             this.usernameTextBox.Name = "usernameTextBox";
-            this.usernameTextBox.Size = new System.Drawing.Size(395, 27);
+            this.usernameTextBox.Size = new System.Drawing.Size(367, 27);
             this.usernameTextBox.TabIndex = 1;
             // 
             // confirmPasswordLabel
             // 
             this.confirmPasswordLabel.AutoSize = true;
             this.confirmPasswordLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.confirmPasswordLabel.Location = new System.Drawing.Point(3, 102);
+            this.confirmPasswordLabel.Location = new System.Drawing.Point(23, 102);
             this.confirmPasswordLabel.Name = "confirmPasswordLabel";
             this.confirmPasswordLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
-            this.confirmPasswordLabel.Size = new System.Drawing.Size(165, 24);
+            this.confirmPasswordLabel.Size = new System.Drawing.Size(153, 24);
             this.confirmPasswordLabel.TabIndex = 3;
             this.confirmPasswordLabel.Text = "密碼再確認";
             this.confirmPasswordLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -191,36 +192,37 @@
             // passwordTextBox
             // 
             this.passwordTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.passwordTextBox.Location = new System.Drawing.Point(174, 54);
+            this.passwordTextBox.Location = new System.Drawing.Point(182, 54);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '‧';
-            this.passwordTextBox.Size = new System.Drawing.Size(395, 27);
+            this.passwordTextBox.Size = new System.Drawing.Size(367, 27);
             this.passwordTextBox.TabIndex = 4;
             // 
             // confirmPasswordTextBox
             // 
             this.confirmPasswordTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.confirmPasswordTextBox.Location = new System.Drawing.Point(174, 105);
+            this.confirmPasswordTextBox.Location = new System.Drawing.Point(182, 105);
             this.confirmPasswordTextBox.Name = "confirmPasswordTextBox";
             this.confirmPasswordTextBox.PasswordChar = '‧';
-            this.confirmPasswordTextBox.Size = new System.Drawing.Size(395, 27);
+            this.confirmPasswordTextBox.Size = new System.Drawing.Size(367, 27);
             this.confirmPasswordTextBox.TabIndex = 5;
+            this.confirmPasswordTextBox.TextChanged += new System.EventHandler(this.confirmPasswordTextBoxTextChanged);
             // 
             // emailAddressTextBox
             // 
             this.emailAddressTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.emailAddressTextBox.Location = new System.Drawing.Point(174, 156);
+            this.emailAddressTextBox.Location = new System.Drawing.Point(182, 156);
             this.emailAddressTextBox.Name = "emailAddressTextBox";
-            this.emailAddressTextBox.Size = new System.Drawing.Size(395, 27);
+            this.emailAddressTextBox.Size = new System.Drawing.Size(367, 27);
             this.emailAddressTextBox.TabIndex = 7;
             // 
             // registerButton
             // 
             this.registerTableLayoutPanel.SetColumnSpan(this.registerButton, 2);
             this.registerButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.registerButton.Location = new System.Drawing.Point(3, 207);
+            this.registerButton.Location = new System.Drawing.Point(23, 207);
             this.registerButton.Name = "registerButton";
-            this.registerButton.Size = new System.Drawing.Size(566, 45);
+            this.registerButton.Size = new System.Drawing.Size(526, 45);
             this.registerButton.TabIndex = 8;
             this.registerButton.Text = "註冊";
             this.registerButton.UseVisualStyleBackColor = true;
@@ -237,9 +239,9 @@
             this.Text = "註冊";
             this.mainTableLayoutPanel.ResumeLayout(false);
             this.mainTableLayoutPanel.PerformLayout();
-            this.registerGroupBox.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.registerGroupBox.ResumeLayout(false);
             this.registerTableLayoutPanel.ResumeLayout(false);
             this.registerTableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
