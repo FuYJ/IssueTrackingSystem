@@ -30,7 +30,6 @@
         {
             this.mainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.issuesDataGridView = new System.Windows.Forms.DataGridView();
-            this.createIssueButton = new System.Windows.Forms.Button();
             this.issueId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.issueName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priority = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,15 +39,19 @@
             this.reportDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finishDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.issueState = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createIssueButton = new System.Windows.Forms.Button();
+            this.viewStatisticReportButton = new System.Windows.Forms.Button();
             this.mainTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.issuesDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // mainTableLayoutPanel
             // 
-            this.mainTableLayoutPanel.ColumnCount = 2;
-            this.mainTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 85F));
+            this.mainTableLayoutPanel.ColumnCount = 3;
+            this.mainTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.mainTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.mainTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.mainTableLayoutPanel.Controls.Add(this.viewStatisticReportButton, 2, 0);
             this.mainTableLayoutPanel.Controls.Add(this.issuesDataGridView, 0, 1);
             this.mainTableLayoutPanel.Controls.Add(this.createIssueButton, 1, 0);
             this.mainTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -58,6 +61,7 @@
             this.mainTableLayoutPanel.RowCount = 2;
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
+            this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.mainTableLayoutPanel.Size = new System.Drawing.Size(784, 512);
             this.mainTableLayoutPanel.TabIndex = 2;
             // 
@@ -75,7 +79,7 @@
             this.reportDate,
             this.finishDate,
             this.issueState});
-            this.mainTableLayoutPanel.SetColumnSpan(this.issuesDataGridView, 2);
+            this.mainTableLayoutPanel.SetColumnSpan(this.issuesDataGridView, 3);
             this.issuesDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.issuesDataGridView.Location = new System.Drawing.Point(13, 62);
             this.issuesDataGridView.Name = "issuesDataGridView";
@@ -83,16 +87,6 @@
             this.issuesDataGridView.RowTemplate.Height = 24;
             this.issuesDataGridView.Size = new System.Drawing.Size(758, 437);
             this.issuesDataGridView.TabIndex = 0;
-            // 
-            // createIssueButton
-            // 
-            this.createIssueButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.createIssueButton.Location = new System.Drawing.Point(662, 13);
-            this.createIssueButton.Name = "createIssueButton";
-            this.createIssueButton.Size = new System.Drawing.Size(109, 43);
-            this.createIssueButton.TabIndex = 1;
-            this.createIssueButton.Text = "新增議題";
-            this.createIssueButton.UseVisualStyleBackColor = true;
             // 
             // issueId
             // 
@@ -148,6 +142,26 @@
             this.issueState.HeaderText = "狀態";
             this.issueState.Name = "issueState";
             // 
+            // createIssueButton
+            // 
+            this.createIssueButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.createIssueButton.Location = new System.Drawing.Point(547, 13);
+            this.createIssueButton.Name = "createIssueButton";
+            this.createIssueButton.Size = new System.Drawing.Size(108, 43);
+            this.createIssueButton.TabIndex = 1;
+            this.createIssueButton.Text = "新增議題";
+            this.createIssueButton.UseVisualStyleBackColor = true;
+            // 
+            // viewStatisticReportButton
+            // 
+            this.viewStatisticReportButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewStatisticReportButton.Location = new System.Drawing.Point(661, 13);
+            this.viewStatisticReportButton.Name = "viewStatisticReportButton";
+            this.viewStatisticReportButton.Size = new System.Drawing.Size(110, 43);
+            this.viewStatisticReportButton.TabIndex = 2;
+            this.viewStatisticReportButton.Text = "查看報表";
+            this.viewStatisticReportButton.UseVisualStyleBackColor = true;
+            // 
             // IssueListView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -177,6 +191,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn finishDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn issueState;
         private System.Windows.Forms.Button createIssueButton;
+        private System.Windows.Forms.Button viewStatisticReportButton;
 
     }
 }

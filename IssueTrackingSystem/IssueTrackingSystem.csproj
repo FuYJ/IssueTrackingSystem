@@ -32,6 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,6 +48,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AMS\Controller\ProjectListController.cs" />
+    <Compile Include="AMS\Controller\SecurityController.cs" />
+    <Compile Include="AMS\View\SecurityView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AMS\View\SecurityView.Designer.cs">
+      <DependentUpon>SecurityView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ITS\Controller\IssueController.cs" />
+    <Compile Include="ITS\Controller\ReportController.cs" />
+    <Compile Include="ITS\View\CreateIssueView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ITS\View\CreateIssueView.Designer.cs">
+      <DependentUpon>CreateIssueView.cs</DependentUpon>
+    </Compile>
     <Compile Include="ITS\View\IssueInfoView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -56,48 +76,70 @@
     <Compile Include="ITS\View\IssueListView.Designer.cs">
       <DependentUpon>IssueListView.cs</DependentUpon>
     </Compile>
+    <Compile Include="ITS\View\ReportView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ITS\View\ReportView.Designer.cs">
+      <DependentUpon>ReportView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ApiModel\UserApiModel.cs" />
+    <Compile Include="Model\DataModel\Issue.cs" />
+    <Compile Include="Model\DataModel\Project.cs" />
+    <Compile Include="Model\DataModel\ProjectMember.cs" />
+    <Compile Include="Model\DataModel\Server.cs" />
+    <Compile Include="Model\DataModel\User.cs" />
+    <Compile Include="Model\IssueModel.cs" />
+    <Compile Include="Model\ProjectMemberModel.cs" />
+    <Compile Include="Model\ProjectModel.cs" />
+    <Compile Include="Model\SecurityModel.cs" />
     <Compile Include="Model\UserModel.cs" />
-    <Compile Include="ULS\Controller\UserController.cs" />
+    <Compile Include="AMS\Controller\UserController.cs" />
     <Compile Include="BaseView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="BaseView.Designer.cs">
       <DependentUpon>BaseView.cs</DependentUpon>
     </Compile>
-    <Compile Include="ULS\View\ProjectListView.cs">
+    <Compile Include="AMS\View\ProjectListView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ULS\View\ProjectListView.Designer.cs">
+    <Compile Include="AMS\View\ProjectListView.Designer.cs">
       <DependentUpon>ProjectListView.cs</DependentUpon>
     </Compile>
-    <Compile Include="ULS\View\RegisterView.cs">
+    <Compile Include="AMS\View\RegisterView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ULS\View\RegisterView.Designer.cs">
+    <Compile Include="AMS\View\RegisterView.Designer.cs">
       <DependentUpon>RegisterView.cs</DependentUpon>
     </Compile>
-    <Compile Include="ULS\View\LoginView.cs">
+    <Compile Include="AMS\View\LoginView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ULS\View\LoginView.Designer.cs">
+    <Compile Include="AMS\View\LoginView.Designer.cs">
       <DependentUpon>LoginView.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ULS\View\SecurityView.cs">
+    <Compile Include="AMS\View\AccountListView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ULS\View\SecurityView.Designer.cs">
-      <DependentUpon>SecurityView.cs</DependentUpon>
+    <Compile Include="AMS\View\AccountListView.Designer.cs">
+      <DependentUpon>AccountListView.cs</DependentUpon>
     </Compile>
-    <Compile Include="ULS\View\UserInfoView.cs">
+    <Compile Include="AMS\View\UserInfoView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ULS\View\UserInfoView.Designer.cs">
+    <Compile Include="AMS\View\UserInfoView.Designer.cs">
       <DependentUpon>UserInfoView.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AMS\View\SecurityView.resx">
+      <DependentUpon>SecurityView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaseView.resx">
       <DependentUpon>BaseView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ITS\View\CreateIssueView.resx">
+      <DependentUpon>CreateIssueView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ITS\View\IssueInfoView.resx">
       <DependentUpon>IssueInfoView.cs</DependentUpon>
@@ -105,8 +147,11 @@
     <EmbeddedResource Include="ITS\View\IssueListView.resx">
       <DependentUpon>IssueListView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ULS\View\LoginView.resx">
+    <EmbeddedResource Include="AMS\View\LoginView.resx">
       <DependentUpon>LoginView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ITS\View\ReportView.resx">
+      <DependentUpon>ReportView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -117,18 +162,19 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ULS\View\ProjectListView.resx">
+    <EmbeddedResource Include="AMS\View\ProjectListView.resx">
       <DependentUpon>ProjectListView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ULS\View\RegisterView.resx">
+    <EmbeddedResource Include="AMS\View\RegisterView.resx">
       <DependentUpon>RegisterView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ULS\View\SecurityView.resx">
-      <DependentUpon>SecurityView.cs</DependentUpon>
+    <EmbeddedResource Include="AMS\View\AccountListView.resx">
+      <DependentUpon>AccountListView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ULS\View\UserInfoView.resx">
+    <EmbeddedResource Include="AMS\View\UserInfoView.resx">
       <DependentUpon>UserInfoView.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -142,9 +188,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ITS\Controller\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="src\alarm.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
