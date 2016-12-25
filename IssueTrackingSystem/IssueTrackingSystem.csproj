@@ -93,7 +93,35 @@
     <Compile Include="Model\ProjectModel.cs" />
     <Compile Include="Model\SecurityModel.cs" />
     <Compile Include="Model\UserModel.cs" />
+<<<<<<< HEAD
     <Compile Include="AMS\Controller\UserController.cs" />
+=======
+    <Compile Include="PMS\View\CreateUpdateProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PMS\View\CreateUpdateProject.Designer.cs">
+      <DependentUpon>CreateUpdateProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMS\View\Member.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PMS\View\Member.Designer.cs">
+      <DependentUpon>Member.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMS\View\ProjectMainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PMS\View\ProjectMainMenu.Designer.cs">
+      <DependentUpon>ProjectMainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMS\View\Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PMS\View\Test.Designer.cs">
+      <DependentUpon>Test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ULS\Controller\UserController.cs" />
+>>>>>>> 21752c98f18864ee25fd7b0e31fab48197bb29b6
     <Compile Include="BaseView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,7 +175,20 @@
     <EmbeddedResource Include="ITS\View\IssueListView.resx">
       <DependentUpon>IssueListView.cs</DependentUpon>
     </EmbeddedResource>
+<<<<<<< HEAD
     <EmbeddedResource Include="AMS\View\LoginView.resx">
+=======
+    <EmbeddedResource Include="PMS\View\CreateUpdateProject.resx">
+      <DependentUpon>CreateUpdateProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMS\View\Member.resx">
+      <DependentUpon>Member.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMS\View\ProjectMainMenu.resx">
+      <DependentUpon>ProjectMainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ULS\View\LoginView.resx">
+>>>>>>> 21752c98f18864ee25fd7b0e31fab48197bb29b6
       <DependentUpon>LoginView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ITS\View\ReportView.resx">
@@ -188,7 +229,14 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+<<<<<<< HEAD
   <ItemGroup />
+=======
+  <ItemGroup>
+    <Folder Include="ITS\Controller\" />
+    <Folder Include="PMS\Controller\" />
+  </ItemGroup>
+>>>>>>> 21752c98f18864ee25fd7b0e31fab48197bb29b6
   <ItemGroup>
     <Content Include="src\alarm.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
