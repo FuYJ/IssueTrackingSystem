@@ -33,7 +33,7 @@ namespace IssueTrackingSystem.AMS.View
             user = userController.createUser(user);
             if (user.UserId != 0)
             {
-                LoginView loginView = (LoginView)this.Owner;
+                LoginView1 loginView = (LoginView1)this.Owner;
                 loginView.ToolStripStatusLabel.Text = "註冊成功";
                 loginView.Show();
                 this.Close();

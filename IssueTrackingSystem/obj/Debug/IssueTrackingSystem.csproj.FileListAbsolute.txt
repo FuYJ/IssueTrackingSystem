@@ -7,7 +7,6 @@
 \\psf\Home\Documents\Visual Studio 2013\Projects\IssueTrackingSystem\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.exe
 \\psf\Home\Documents\Visual Studio 2013\Projects\IssueTrackingSystem\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.pdb
 \\psf\Home\Documents\Visual Studio 2013\Projects\IssueTrackingSystem\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.View.BaseView.resources
-<<<<<<< HEAD
 \\psf\Home\Documents\Visual Studio 2013\Projects\IssueTrackingSystem\IssueTrackingSystem\bin\Debug\src\alarm.png
 \\psf\Home\Documents\Visual Studio 2013\Projects\IssueTrackingSystem\IssueTrackingSystem\bin\Debug\src\calender.png
 \\psf\Home\Documents\Visual Studio 2013\Projects\IssueTrackingSystem\IssueTrackingSystem\bin\Debug\src\createIssue.png
@@ -28,8 +27,6 @@
 \\psf\Home\Documents\Visual Studio 2013\Projects\IssueTrackingSystem\IssueTrackingSystem\bin\Debug\Newtonsoft.Json.dll
 \\psf\Home\Documents\Visual Studio 2013\Projects\IssueTrackingSystem\IssueTrackingSystem\bin\Debug\Newtonsoft.Json.xml
 \\psf\Home\Documents\Visual Studio 2013\Projects\IssueTrackingSystem\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.ITS.View.CreateIssueView.resources
-=======
-\\psf\Home\Documents\Visual Studio 2013\Projects\IssueTrackingSystem\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.ULS.View.UserInfoView.resources
 D:\SE\Project\IssueTrackingSystem\bin\Debug\IssueTrackingSystem.exe.config
 D:\SE\Project\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.exe
 D:\SE\Project\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.pdb
@@ -57,4 +54,6 @@ D:\SE\Project\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.ULS.View.Securit
 D:\SE\Project\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.ULS.View.UserInfoView.resources
 D:\SE\Project\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.csproj.GenerateResource.Cache
 D:\SE\Project\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.PMS.View.Member.resources
->>>>>>> 21752c98f18864ee25fd7b0e31fab48197bb29b6
+\\psf\Home\Documents\Visual Studio 2013\Projects\IssueTrackingSystem\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.PMS.View.CreateUpdateProject.resources
+\\psf\Home\Documents\Visual Studio 2013\Projects\IssueTrackingSystem\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.PMS.View.Member.resources
+\\psf\Home\Documents\Visual Studio 2013\Projects\IssueTrackingSystem\IssueTrackingSystem\obj\Debug\IssueTrackingSystem.PMS.View.ProjectMainMenu.resources

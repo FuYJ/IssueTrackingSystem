@@ -26,7 +26,8 @@ namespace IssueTrackingSystem.AMS.View
         }
 
 
-        public ToolStripStatusLabel ToolStripStatusLabel {
+        public ToolStripStatusLabel ToolStripStatusLabel
+        {
             set { toolStripStatusLabel = value; }
             get { return toolStripStatusLabel; }
         }
@@ -58,7 +59,8 @@ namespace IssueTrackingSystem.AMS.View
                 }
                 this.Hide();
             }
-            else {
+            else
+            {
                 toolStripStatusLabel.Text = "認證錯誤";
             }
         }

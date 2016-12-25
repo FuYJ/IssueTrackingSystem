@@ -3,14 +3,14 @@
     partial class LoginView
     {
         /// <summary>
-        /// 設計工具所需的變數。
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// 清除任何使用中的資源。
+        /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">如果應該處置 Managed 資源則為 true，否則為 false。</param>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,11 +20,11 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form 設計工具產生的程式碼
+        #region Windows Form Designer generated code
 
         /// <summary>
-        /// 此為設計工具支援所需的方法 - 請勿使用程式碼編輯器
-        /// 修改這個方法的內容。
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
@@ -63,7 +63,7 @@
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.mainTableLayoutPanel.Size = new System.Drawing.Size(584, 361);
-            this.mainTableLayoutPanel.TabIndex = 0;
+            this.mainTableLayoutPanel.TabIndex = 2;
             // 
             // loginGroupBox
             // 
@@ -193,7 +193,6 @@
             this.ClientSize = new System.Drawing.Size(584, 361);
             this.Controls.Add(this.mainTableLayoutPanel);
             this.Name = "LoginView";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "登入";
             this.mainTableLayoutPanel.ResumeLayout(false);
             this.mainTableLayoutPanel.PerformLayout();
@@ -211,14 +210,13 @@
         private System.Windows.Forms.TableLayoutPanel mainTableLayoutPanel;
         private System.Windows.Forms.GroupBox loginGroupBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button registerButton;
         private System.Windows.Forms.TextBox usernameTextBox;
         private System.Windows.Forms.TextBox passwordTextBox;
         private System.Windows.Forms.Button loginButton;
         private System.Windows.Forms.Label usernameLabel;
         private System.Windows.Forms.Label passwordLabel;
-        private System.Windows.Forms.Button registerButton;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
     }
 }
-
