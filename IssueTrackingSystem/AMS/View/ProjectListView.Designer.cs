@@ -31,24 +31,25 @@
             this.mainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.projectTabControl = new System.Windows.Forms.TabControl();
             this.joinedProjectsTabPage = new System.Windows.Forms.TabPage();
-            this.invitedProjectsTabPage = new System.Windows.Forms.TabPage();
             this.joinedProjectsDataGridView = new System.Windows.Forms.DataGridView();
+            this.joinedProjectId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.joinedProjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.joinedProjectDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.joinedProjectManager = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.viewJoinedProjectButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.invitedProjectsTabPage = new System.Windows.Forms.TabPage();
             this.invitedProjectsDataGridView = new System.Windows.Forms.DataGridView();
             this.invitedProjectId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.invitedProjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.invitedProjectDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.invitedProjectManager = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.acceptInvitedProjectButton = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.joinedProjectId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.joinedProjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.joinedProjectDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.joinedProjectManager = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.viewJoinedProjectButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.denyInvitedProjectButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.mainTableLayoutPanel.SuspendLayout();
             this.projectTabControl.SuspendLayout();
             this.joinedProjectsTabPage.SuspendLayout();
-            this.invitedProjectsTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.joinedProjectsDataGridView)).BeginInit();
+            this.invitedProjectsTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.invitedProjectsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,19 +91,9 @@
             this.joinedProjectsTabPage.Text = "已加入的專案";
             this.joinedProjectsTabPage.UseVisualStyleBackColor = true;
             // 
-            // invitedProjectsTabPage
-            // 
-            this.invitedProjectsTabPage.Controls.Add(this.invitedProjectsDataGridView);
-            this.invitedProjectsTabPage.Location = new System.Drawing.Point(4, 22);
-            this.invitedProjectsTabPage.Name = "invitedProjectsTabPage";
-            this.invitedProjectsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.invitedProjectsTabPage.Size = new System.Drawing.Size(750, 460);
-            this.invitedProjectsTabPage.TabIndex = 1;
-            this.invitedProjectsTabPage.Text = "受邀請的專案";
-            this.invitedProjectsTabPage.UseVisualStyleBackColor = true;
-            // 
             // joinedProjectsDataGridView
             // 
+            this.joinedProjectsDataGridView.AllowUserToAddRows = false;
             this.joinedProjectsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.joinedProjectsDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.joinedProjectsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -120,8 +111,53 @@
             this.joinedProjectsDataGridView.Size = new System.Drawing.Size(744, 454);
             this.joinedProjectsDataGridView.TabIndex = 0;
             // 
+            // joinedProjectId
+            // 
+            this.joinedProjectId.FillWeight = 24.83928F;
+            this.joinedProjectId.HeaderText = "ID";
+            this.joinedProjectId.Name = "joinedProjectId";
+            // 
+            // joinedProjectName
+            // 
+            this.joinedProjectName.FillWeight = 116.1236F;
+            this.joinedProjectName.HeaderText = "專案名稱";
+            this.joinedProjectName.Name = "joinedProjectName";
+            // 
+            // joinedProjectDescription
+            // 
+            this.joinedProjectDescription.FillWeight = 239.4765F;
+            this.joinedProjectDescription.HeaderText = "簡介";
+            this.joinedProjectDescription.Name = "joinedProjectDescription";
+            // 
+            // joinedProjectManager
+            // 
+            this.joinedProjectManager.FillWeight = 63.45178F;
+            this.joinedProjectManager.HeaderText = "專案管理員";
+            this.joinedProjectManager.Name = "joinedProjectManager";
+            // 
+            // viewJoinedProjectButton
+            // 
+            this.viewJoinedProjectButton.DataPropertyName = "檢視專案";
+            this.viewJoinedProjectButton.FillWeight = 56.10882F;
+            this.viewJoinedProjectButton.HeaderText = "檢視專案";
+            this.viewJoinedProjectButton.Name = "viewJoinedProjectButton";
+            this.viewJoinedProjectButton.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.viewJoinedProjectButton.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // invitedProjectsTabPage
+            // 
+            this.invitedProjectsTabPage.Controls.Add(this.invitedProjectsDataGridView);
+            this.invitedProjectsTabPage.Location = new System.Drawing.Point(4, 22);
+            this.invitedProjectsTabPage.Name = "invitedProjectsTabPage";
+            this.invitedProjectsTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.invitedProjectsTabPage.Size = new System.Drawing.Size(750, 460);
+            this.invitedProjectsTabPage.TabIndex = 1;
+            this.invitedProjectsTabPage.Text = "受邀請的專案";
+            this.invitedProjectsTabPage.UseVisualStyleBackColor = true;
+            // 
             // invitedProjectsDataGridView
             // 
+            this.invitedProjectsDataGridView.AllowUserToAddRows = false;
             this.invitedProjectsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.invitedProjectsDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.invitedProjectsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -130,7 +166,8 @@
             this.invitedProjectName,
             this.invitedProjectDescription,
             this.invitedProjectManager,
-            this.acceptInvitedProjectButton});
+            this.acceptInvitedProjectButton,
+            this.denyInvitedProjectButton});
             this.invitedProjectsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.invitedProjectsDataGridView.Location = new System.Drawing.Point(3, 3);
             this.invitedProjectsDataGridView.Name = "invitedProjectsDataGridView";
@@ -166,44 +203,19 @@
             // 
             // acceptInvitedProjectButton
             // 
-            this.acceptInvitedProjectButton.FillWeight = 56.10882F;
+            this.acceptInvitedProjectButton.FillWeight = 50F;
             this.acceptInvitedProjectButton.HeaderText = "接受邀請";
             this.acceptInvitedProjectButton.Name = "acceptInvitedProjectButton";
             this.acceptInvitedProjectButton.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.acceptInvitedProjectButton.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // joinedProjectId
+            // denyInvitedProjectButton
             // 
-            this.joinedProjectId.FillWeight = 24.83928F;
-            this.joinedProjectId.HeaderText = "ID";
-            this.joinedProjectId.Name = "joinedProjectId";
-            // 
-            // joinedProjectName
-            // 
-            this.joinedProjectName.FillWeight = 116.1236F;
-            this.joinedProjectName.HeaderText = "專案名稱";
-            this.joinedProjectName.Name = "joinedProjectName";
-            // 
-            // joinedProjectDescription
-            // 
-            this.joinedProjectDescription.FillWeight = 239.4765F;
-            this.joinedProjectDescription.HeaderText = "簡介";
-            this.joinedProjectDescription.Name = "joinedProjectDescription";
-            // 
-            // joinedProjectManager
-            // 
-            this.joinedProjectManager.FillWeight = 63.45178F;
-            this.joinedProjectManager.HeaderText = "專案管理員";
-            this.joinedProjectManager.Name = "joinedProjectManager";
-            // 
-            // viewJoinedProjectButton
-            // 
-            this.viewJoinedProjectButton.DataPropertyName = "檢視專案";
-            this.viewJoinedProjectButton.FillWeight = 56.10882F;
-            this.viewJoinedProjectButton.HeaderText = "檢視專案";
-            this.viewJoinedProjectButton.Name = "viewJoinedProjectButton";
-            this.viewJoinedProjectButton.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.viewJoinedProjectButton.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.denyInvitedProjectButton.FillWeight = 50F;
+            this.denyInvitedProjectButton.HeaderText = "拒絕邀請";
+            this.denyInvitedProjectButton.Name = "denyInvitedProjectButton";
+            this.denyInvitedProjectButton.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.denyInvitedProjectButton.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // ProjectListView
             // 
@@ -211,13 +223,15 @@
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.mainTableLayoutPanel);
             this.Name = "ProjectListView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "專案列表  - Issue Tracking System";
+            this.Load += new System.EventHandler(this.ProjectListViewLoad);
             this.Controls.SetChildIndex(this.mainTableLayoutPanel, 0);
             this.mainTableLayoutPanel.ResumeLayout(false);
             this.projectTabControl.ResumeLayout(false);
             this.joinedProjectsTabPage.ResumeLayout(false);
-            this.invitedProjectsTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.joinedProjectsDataGridView)).EndInit();
+            this.invitedProjectsTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.invitedProjectsDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -229,18 +243,19 @@
         private System.Windows.Forms.TableLayoutPanel mainTableLayoutPanel;
         private System.Windows.Forms.TabControl projectTabControl;
         private System.Windows.Forms.TabPage joinedProjectsTabPage;
-        private System.Windows.Forms.TabPage invitedProjectsTabPage;
         private System.Windows.Forms.DataGridView joinedProjectsDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn joinedProjectId;
         private System.Windows.Forms.DataGridViewTextBoxColumn joinedProjectName;
         private System.Windows.Forms.DataGridViewTextBoxColumn joinedProjectDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn joinedProjectManager;
         private System.Windows.Forms.DataGridViewButtonColumn viewJoinedProjectButton;
+        private System.Windows.Forms.TabPage invitedProjectsTabPage;
         private System.Windows.Forms.DataGridView invitedProjectsDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn invitedProjectId;
         private System.Windows.Forms.DataGridViewTextBoxColumn invitedProjectName;
         private System.Windows.Forms.DataGridViewTextBoxColumn invitedProjectDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn invitedProjectManager;
         private System.Windows.Forms.DataGridViewButtonColumn acceptInvitedProjectButton;
+        private System.Windows.Forms.DataGridViewButtonColumn denyInvitedProjectButton;
     }
 }

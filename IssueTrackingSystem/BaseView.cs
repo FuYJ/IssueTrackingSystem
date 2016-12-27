@@ -1,4 +1,7 @@
-﻿using System;
+﻿using IssueTrackingSystem.AMS.View;
+using IssueTrackingSystem.Model;
+using IssueTrackingSystem.Model.DataModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +18,12 @@ namespace IssueTrackingSystem.View
         public BaseView()
         {
             InitializeComponent();
+        }
+
+        private void userListToolStripButtonClicked(object sender, EventArgs e)
+        {
+            UserListView accountListView = new UserListView();
+            accountListView.Show();
         }
     }
 }

@@ -140,6 +140,7 @@
             this.viewInvitedProjectsButton.TabIndex = 12;
             this.viewInvitedProjectsButton.Text = "查看被邀請的專案";
             this.viewInvitedProjectsButton.UseVisualStyleBackColor = true;
+            this.viewInvitedProjectsButton.Click += new System.EventHandler(this.viewInvitedProjectsButtonClicked);
             // 
             // viewJoinedProjectsButton
             // 
@@ -150,6 +151,7 @@
             this.viewJoinedProjectsButton.TabIndex = 11;
             this.viewJoinedProjectsButton.Text = "查看已加入的專案";
             this.viewJoinedProjectsButton.UseVisualStyleBackColor = true;
+            this.viewJoinedProjectsButton.Click += new System.EventHandler(this.viewJoinedProjectsButtonClicked);
             // 
             // trackingIssueNumberLabel
             // 
@@ -290,6 +292,7 @@
             this.viewIssuesButton.TabIndex = 10;
             this.viewIssuesButton.Text = "查看議題列表";
             this.viewIssuesButton.UseVisualStyleBackColor = true;
+            this.viewIssuesButton.Click += new System.EventHandler(this.viewIssuesButtonClicked);
             // 
             // editInfoTableLayoutPanel
             // 
@@ -463,12 +466,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.ClientSize = new System.Drawing.Size(784, 561);
-            this.Controls.Add(this.editInfoTableLayoutPanel);
             this.Controls.Add(this.viewInfoTableLayoutPanel);
+            this.Controls.Add(this.editInfoTableLayoutPanel);
             this.Name = "UserInfoView";
             this.Text = "使用者資料 - Issue Tracking System";
-            this.Controls.SetChildIndex(this.viewInfoTableLayoutPanel, 0);
+            this.Load += new System.EventHandler(this.UserInfoViewLoad);
             this.Controls.SetChildIndex(this.editInfoTableLayoutPanel, 0);
+            this.Controls.SetChildIndex(this.viewInfoTableLayoutPanel, 0);
             this.viewInfoTableLayoutPanel.ResumeLayout(false);
             this.userInfoTableLayoutPanel.ResumeLayout(false);
             this.userInfoTableLayoutPanel.PerformLayout();

@@ -13,7 +13,6 @@ namespace IssueTrackingSystem.Model.ApiModel
         private String userId;
         private String emailAddress;
         private String userRole;
-        private List<UserApiModel> list;
 
         public String State
         {
@@ -43,12 +42,6 @@ namespace IssueTrackingSystem.Model.ApiModel
         {
             get { return userRole; }
             set { userRole = value; }
-        }
-
-        internal List<UserApiModel> List
-        {
-            get { return list; }
-            set { list = value; }
         }
     }
 }

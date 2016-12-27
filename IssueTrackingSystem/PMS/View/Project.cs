@@ -1,20 +1,19 @@
-﻿using System;
+﻿using IssueTrackingSystem.Model.DataModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IssueTrackingSystem.Model.DataModel
+namespace IssueTrackingSystem.PMS.View
 {
-    public class Project
+    class Project
     {
         private int projectId;
         private String projectName;
         private String description;
-        private String manager;
-        private DateTime timeStamp;
-        private List<int> members;
-        private List<int> issues;
+        private List<User> members;
+        private List<Issue> issues;
 
         public int ProjectId
         {
@@ -34,25 +33,13 @@ namespace IssueTrackingSystem.Model.DataModel
             set { description = value; }
         }
 
-        public String Manager
-        {
-            get { return manager; }
-            set { manager = value; }
-        }
-
-        public DateTime TimeStamp
-        {
-            get { return timeStamp; }
-            set { timeStamp = value; }
-        }
-
-        public List<int> Members
+        internal List<User> Members
         {
             get { return members; }
             set { members = value; }
         }
 
-        public List<int> Issues
+        internal List<Issue> Issues
         {
             get { return issues; }
             set { issues = value; }

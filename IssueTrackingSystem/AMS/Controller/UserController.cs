@@ -36,5 +36,13 @@ namespace IssueTrackingSystem.AMS.Controller
 
             return user;
         }
+
+        public User getUser(int userId) {
+            User user = new User();
+
+            user = userModel.getUserInfo(userId);
+
+            return user;
+        }
     }
 }

@@ -19,14 +19,16 @@ namespace IssueTrackingSystem.AMS.Controller
         public List<User> listAccounts() {
             List<User> userList = new List<User>();
 
-            //api
+            userList = userModel.getUserList();
 
             return userList;
         }
 
-        public void changeAuthority(User user)
+        public User changeAuthority(User user)
         {
-            //api
+            user = userModel.updateUserInfo(user);
+
+            return user;
         }
 
         public void deleteUser(int userId)

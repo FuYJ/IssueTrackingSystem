@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.mainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.viewStatisticReportButton = new System.Windows.Forms.Button();
             this.issuesDataGridView = new System.Windows.Forms.DataGridView();
             this.issueId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.issueName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,7 +41,6 @@
             this.finishDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.issueState = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createIssueButton = new System.Windows.Forms.Button();
-            this.viewStatisticReportButton = new System.Windows.Forms.Button();
             this.mainTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.issuesDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -64,6 +64,16 @@
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.mainTableLayoutPanel.Size = new System.Drawing.Size(784, 512);
             this.mainTableLayoutPanel.TabIndex = 2;
+            // 
+            // viewStatisticReportButton
+            // 
+            this.viewStatisticReportButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewStatisticReportButton.Location = new System.Drawing.Point(661, 13);
+            this.viewStatisticReportButton.Name = "viewStatisticReportButton";
+            this.viewStatisticReportButton.Size = new System.Drawing.Size(110, 43);
+            this.viewStatisticReportButton.TabIndex = 2;
+            this.viewStatisticReportButton.Text = "查看報表";
+            this.viewStatisticReportButton.UseVisualStyleBackColor = true;
             // 
             // issuesDataGridView
             // 
@@ -151,16 +161,7 @@
             this.createIssueButton.TabIndex = 1;
             this.createIssueButton.Text = "新增議題";
             this.createIssueButton.UseVisualStyleBackColor = true;
-            // 
-            // viewStatisticReportButton
-            // 
-            this.viewStatisticReportButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.viewStatisticReportButton.Location = new System.Drawing.Point(661, 13);
-            this.viewStatisticReportButton.Name = "viewStatisticReportButton";
-            this.viewStatisticReportButton.Size = new System.Drawing.Size(110, 43);
-            this.viewStatisticReportButton.TabIndex = 2;
-            this.viewStatisticReportButton.Text = "查看報表";
-            this.viewStatisticReportButton.UseVisualStyleBackColor = true;
+            this.createIssueButton.Click += new System.EventHandler(this.createIssueButtonClicked);
             // 
             // IssueListView
             // 
@@ -169,6 +170,7 @@
             this.Controls.Add(this.mainTableLayoutPanel);
             this.Name = "IssueListView";
             this.Text = "議題列表 - Issue Tracking System";
+            this.Load += new System.EventHandler(this.IssueListViewLoad);
             this.Controls.SetChildIndex(this.mainTableLayoutPanel, 0);
             this.mainTableLayoutPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.issuesDataGridView)).EndInit();

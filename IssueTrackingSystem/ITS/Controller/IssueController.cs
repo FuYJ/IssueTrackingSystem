@@ -45,8 +45,7 @@ namespace IssueTrackingSystem.ITS.Controller
 
         public Issue createIssue(Issue issue)
         {
-
-            //api
+            issue = issueModel.createIssue(issue);
 
             return issue;
         }

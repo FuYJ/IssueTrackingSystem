@@ -13,8 +13,9 @@ namespace IssueTrackingSystem.Model.DataModel
         private String password;
         private int authority;
         private String emailAddress;
-        private List<int> projects;
-        private List<int> issues;
+        private List<Project> joinedProjects;
+        private List<Project> invitedProjects;
+        private List<Issue> issues;
 
         public enum AuthorityEnum
         {
@@ -52,13 +53,19 @@ namespace IssueTrackingSystem.Model.DataModel
             set { emailAddress = value; }
         }
 
-        public List<int> Projects
+        public List<Project> JoinedProjects
         {
-            get { return projects; }
-            set { projects = value; }
+            get { return joinedProjects; }
+            set { joinedProjects = value; }
         }
 
-        public List<int> Issues
+        public List<Project> InvitedProjects
+        {
+            get { return invitedProjects; }
+            set { invitedProjects = value; }
+        }
+
+        public List<Issue> Issues
         {
             get { return issues; }
             set { issues = value; }

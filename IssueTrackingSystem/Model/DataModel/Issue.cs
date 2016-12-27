@@ -9,6 +9,7 @@ namespace IssueTrackingSystem.Model.DataModel
     class Issue
     {
         private int issueId;
+        private int projectId;
         private String issueName;
         private String description;
         private String state;
@@ -24,6 +25,12 @@ namespace IssueTrackingSystem.Model.DataModel
         {
             get { return issueId; }
             set { issueId = value; }
+        }
+
+        public int ProjectId
+        {
+            get { return projectId; }
+            set { projectId = value; }
         }
 
         public String IssueName

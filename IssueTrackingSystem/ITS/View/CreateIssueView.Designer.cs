@@ -29,16 +29,8 @@
         private void InitializeComponent()
         {
             this.IssueTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.issueFinishDateLabel = new System.Windows.Forms.Label();
-            this.issueFinishDateTitleLabel = new System.Windows.Forms.Label();
-            this.issueAssigneeLabel = new System.Windows.Forms.Label();
-            this.issueAssigneeTitleLabel = new System.Windows.Forms.Label();
-            this.issueReportDateLabel = new System.Windows.Forms.Label();
-            this.issueReportDateTitleLabel = new System.Windows.Forms.Label();
-            this.issueReporterLabel = new System.Windows.Forms.Label();
-            this.issueReporterTitleLabel = new System.Windows.Forms.Label();
-            this.issueSeverityLabel = new System.Windows.Forms.Label();
-            this.issuePriorityLabel = new System.Windows.Forms.Label();
+            this.issueSeverityComboBox = new System.Windows.Forms.ComboBox();
+            this.projectTitleLabel = new System.Windows.Forms.Label();
             this.issueSeverityTitleLabel = new System.Windows.Forms.Label();
             this.issuePriorityTitleLabel = new System.Windows.Forms.Label();
             this.issueStateLabel = new System.Windows.Forms.Label();
@@ -46,168 +38,77 @@
             this.issueStateTitleLabel = new System.Windows.Forms.Label();
             this.issueDescriptionGroupBox = new System.Windows.Forms.GroupBox();
             this.issueDescriptionRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.issuePriorityComboBox = new System.Windows.Forms.ComboBox();
+            this.projectComboBox = new System.Windows.Forms.ComboBox();
+            this.issueNameTextBox = new System.Windows.Forms.TextBox();
             this.submitButton = new System.Windows.Forms.Button();
-            this.cancelButton = new System.Windows.Forms.Button();
             this.IssueTableLayoutPanel.SuspendLayout();
             this.issueDescriptionGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // IssueTableLayoutPanel
             // 
+            this.IssueTableLayoutPanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.InsetDouble;
             this.IssueTableLayoutPanel.ColumnCount = 4;
             this.IssueTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.IssueTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.IssueTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.IssueTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.IssueTableLayoutPanel.Controls.Add(this.cancelButton, 2, 8);
-            this.IssueTableLayoutPanel.Controls.Add(this.issueFinishDateLabel, 3, 3);
-            this.IssueTableLayoutPanel.Controls.Add(this.issueFinishDateTitleLabel, 2, 3);
-            this.IssueTableLayoutPanel.Controls.Add(this.issueAssigneeLabel, 1, 3);
-            this.IssueTableLayoutPanel.Controls.Add(this.issueAssigneeTitleLabel, 0, 3);
-            this.IssueTableLayoutPanel.Controls.Add(this.issueReportDateLabel, 3, 2);
-            this.IssueTableLayoutPanel.Controls.Add(this.issueReportDateTitleLabel, 2, 2);
-            this.IssueTableLayoutPanel.Controls.Add(this.issueReporterLabel, 1, 2);
-            this.IssueTableLayoutPanel.Controls.Add(this.issueReporterTitleLabel, 0, 2);
-            this.IssueTableLayoutPanel.Controls.Add(this.issueSeverityLabel, 3, 1);
-            this.IssueTableLayoutPanel.Controls.Add(this.issuePriorityLabel, 1, 1);
+            this.IssueTableLayoutPanel.Controls.Add(this.issueSeverityComboBox, 3, 1);
+            this.IssueTableLayoutPanel.Controls.Add(this.projectTitleLabel, 0, 2);
             this.IssueTableLayoutPanel.Controls.Add(this.issueSeverityTitleLabel, 2, 1);
             this.IssueTableLayoutPanel.Controls.Add(this.issuePriorityTitleLabel, 0, 1);
             this.IssueTableLayoutPanel.Controls.Add(this.issueStateLabel, 3, 0);
             this.IssueTableLayoutPanel.Controls.Add(this.issueNameLabel, 0, 0);
             this.IssueTableLayoutPanel.Controls.Add(this.issueStateTitleLabel, 2, 0);
-            this.IssueTableLayoutPanel.Controls.Add(this.issueDescriptionGroupBox, 0, 4);
-            this.IssueTableLayoutPanel.Controls.Add(this.submitButton, 3, 8);
+            this.IssueTableLayoutPanel.Controls.Add(this.issueDescriptionGroupBox, 0, 3);
+            this.IssueTableLayoutPanel.Controls.Add(this.issuePriorityComboBox, 1, 1);
+            this.IssueTableLayoutPanel.Controls.Add(this.projectComboBox, 1, 2);
+            this.IssueTableLayoutPanel.Controls.Add(this.issueNameTextBox, 1, 0);
+            this.IssueTableLayoutPanel.Controls.Add(this.submitButton, 3, 7);
             this.IssueTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.IssueTableLayoutPanel.Location = new System.Drawing.Point(0, 49);
             this.IssueTableLayoutPanel.Name = "IssueTableLayoutPanel";
-            this.IssueTableLayoutPanel.RowCount = 9;
-            this.IssueTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.IssueTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.IssueTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.IssueTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.IssueTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.IssueTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.IssueTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.IssueTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.IssueTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.IssueTableLayoutPanel.Padding = new System.Windows.Forms.Padding(20);
+            this.IssueTableLayoutPanel.RowCount = 8;
+            this.IssueTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.IssueTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.IssueTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.IssueTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.IssueTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.IssueTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.IssueTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.IssueTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.IssueTableLayoutPanel.Size = new System.Drawing.Size(784, 512);
             this.IssueTableLayoutPanel.TabIndex = 2;
             // 
-            // issueFinishDateLabel
+            // issueSeverityComboBox
             // 
-            this.issueFinishDateLabel.AutoSize = true;
-            this.issueFinishDateLabel.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.issueFinishDateLabel.Location = new System.Drawing.Point(591, 168);
-            this.issueFinishDateLabel.Name = "issueFinishDateLabel";
-            this.issueFinishDateLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
-            this.issueFinishDateLabel.Size = new System.Drawing.Size(82, 24);
-            this.issueFinishDateLabel.TabIndex = 14;
-            this.issueFinishDateLabel.Text = "[完成日期]";
+            this.issueSeverityComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.issueSeverityComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.issueSeverityComboBox.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.issueSeverityComboBox.FormattingEnabled = true;
+            this.issueSeverityComboBox.Location = new System.Drawing.Point(581, 84);
+            this.issueSeverityComboBox.Name = "issueSeverityComboBox";
+            this.issueSeverityComboBox.Size = new System.Drawing.Size(177, 24);
+            this.issueSeverityComboBox.TabIndex = 21;
             // 
-            // issueFinishDateTitleLabel
+            // projectTitleLabel
             // 
-            this.issueFinishDateTitleLabel.AutoSize = true;
-            this.issueFinishDateTitleLabel.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.issueFinishDateTitleLabel.Location = new System.Drawing.Point(395, 168);
-            this.issueFinishDateTitleLabel.Name = "issueFinishDateTitleLabel";
-            this.issueFinishDateTitleLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
-            this.issueFinishDateTitleLabel.Size = new System.Drawing.Size(72, 24);
-            this.issueFinishDateTitleLabel.TabIndex = 13;
-            this.issueFinishDateTitleLabel.Text = "完成日期";
-            // 
-            // issueAssigneeLabel
-            // 
-            this.issueAssigneeLabel.AutoSize = true;
-            this.issueAssigneeLabel.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.issueAssigneeLabel.Location = new System.Drawing.Point(199, 168);
-            this.issueAssigneeLabel.Name = "issueAssigneeLabel";
-            this.issueAssigneeLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
-            this.issueAssigneeLabel.Size = new System.Drawing.Size(66, 24);
-            this.issueAssigneeLabel.TabIndex = 12;
-            this.issueAssigneeLabel.Text = "[負責人]";
-            // 
-            // issueAssigneeTitleLabel
-            // 
-            this.issueAssigneeTitleLabel.AutoSize = true;
-            this.issueAssigneeTitleLabel.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.issueAssigneeTitleLabel.Location = new System.Drawing.Point(3, 168);
-            this.issueAssigneeTitleLabel.Name = "issueAssigneeTitleLabel";
-            this.issueAssigneeTitleLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
-            this.issueAssigneeTitleLabel.Size = new System.Drawing.Size(56, 24);
-            this.issueAssigneeTitleLabel.TabIndex = 11;
-            this.issueAssigneeTitleLabel.Text = "負責人";
-            // 
-            // issueReportDateLabel
-            // 
-            this.issueReportDateLabel.AutoSize = true;
-            this.issueReportDateLabel.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.issueReportDateLabel.Location = new System.Drawing.Point(591, 112);
-            this.issueReportDateLabel.Name = "issueReportDateLabel";
-            this.issueReportDateLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
-            this.issueReportDateLabel.Size = new System.Drawing.Size(82, 24);
-            this.issueReportDateLabel.TabIndex = 10;
-            this.issueReportDateLabel.Text = "[提出日期]";
-            // 
-            // issueReportDateTitleLabel
-            // 
-            this.issueReportDateTitleLabel.AutoSize = true;
-            this.issueReportDateTitleLabel.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.issueReportDateTitleLabel.Location = new System.Drawing.Point(395, 112);
-            this.issueReportDateTitleLabel.Name = "issueReportDateTitleLabel";
-            this.issueReportDateTitleLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
-            this.issueReportDateTitleLabel.Size = new System.Drawing.Size(72, 24);
-            this.issueReportDateTitleLabel.TabIndex = 9;
-            this.issueReportDateTitleLabel.Text = "提出日期";
-            // 
-            // issueReporterLabel
-            // 
-            this.issueReporterLabel.AutoSize = true;
-            this.issueReporterLabel.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.issueReporterLabel.Location = new System.Drawing.Point(199, 112);
-            this.issueReporterLabel.Name = "issueReporterLabel";
-            this.issueReporterLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
-            this.issueReporterLabel.Size = new System.Drawing.Size(66, 24);
-            this.issueReporterLabel.TabIndex = 8;
-            this.issueReporterLabel.Text = "[提出者]";
-            // 
-            // issueReporterTitleLabel
-            // 
-            this.issueReporterTitleLabel.AutoSize = true;
-            this.issueReporterTitleLabel.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.issueReporterTitleLabel.Location = new System.Drawing.Point(3, 112);
-            this.issueReporterTitleLabel.Name = "issueReporterTitleLabel";
-            this.issueReporterTitleLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
-            this.issueReporterTitleLabel.Size = new System.Drawing.Size(56, 24);
-            this.issueReporterTitleLabel.TabIndex = 7;
-            this.issueReporterTitleLabel.Text = "提出者";
-            // 
-            // issueSeverityLabel
-            // 
-            this.issueSeverityLabel.AutoSize = true;
-            this.issueSeverityLabel.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.issueSeverityLabel.Location = new System.Drawing.Point(591, 56);
-            this.issueSeverityLabel.Name = "issueSeverityLabel";
-            this.issueSeverityLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
-            this.issueSeverityLabel.Size = new System.Drawing.Size(66, 24);
-            this.issueSeverityLabel.TabIndex = 6;
-            this.issueSeverityLabel.Text = "[嚴重度]";
-            // 
-            // issuePriorityLabel
-            // 
-            this.issuePriorityLabel.AutoSize = true;
-            this.issuePriorityLabel.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.issuePriorityLabel.Location = new System.Drawing.Point(199, 56);
-            this.issuePriorityLabel.Name = "issuePriorityLabel";
-            this.issuePriorityLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
-            this.issuePriorityLabel.Size = new System.Drawing.Size(66, 24);
-            this.issuePriorityLabel.TabIndex = 5;
-            this.issuePriorityLabel.Text = "[優先度]";
+            this.projectTitleLabel.AutoSize = true;
+            this.projectTitleLabel.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.projectTitleLabel.Location = new System.Drawing.Point(26, 139);
+            this.projectTitleLabel.Name = "projectTitleLabel";
+            this.projectTitleLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
+            this.projectTitleLabel.Size = new System.Drawing.Size(72, 24);
+            this.projectTitleLabel.TabIndex = 19;
+            this.projectTitleLabel.Text = "所屬專案";
             // 
             // issueSeverityTitleLabel
             // 
             this.issueSeverityTitleLabel.AutoSize = true;
             this.issueSeverityTitleLabel.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.issueSeverityTitleLabel.Location = new System.Drawing.Point(395, 56);
+            this.issueSeverityTitleLabel.Location = new System.Drawing.Point(396, 81);
             this.issueSeverityTitleLabel.Name = "issueSeverityTitleLabel";
             this.issueSeverityTitleLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
             this.issueSeverityTitleLabel.Size = new System.Drawing.Size(56, 24);
@@ -218,7 +119,7 @@
             // 
             this.issuePriorityTitleLabel.AutoSize = true;
             this.issuePriorityTitleLabel.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.issuePriorityTitleLabel.Location = new System.Drawing.Point(3, 56);
+            this.issuePriorityTitleLabel.Location = new System.Drawing.Point(26, 81);
             this.issuePriorityTitleLabel.Name = "issuePriorityTitleLabel";
             this.issuePriorityTitleLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
             this.issuePriorityTitleLabel.Size = new System.Drawing.Size(56, 24);
@@ -229,7 +130,7 @@
             // 
             this.issueStateLabel.AutoSize = true;
             this.issueStateLabel.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.issueStateLabel.Location = new System.Drawing.Point(591, 0);
+            this.issueStateLabel.Location = new System.Drawing.Point(581, 23);
             this.issueStateLabel.Name = "issueStateLabel";
             this.issueStateLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
             this.issueStateLabel.Size = new System.Drawing.Size(50, 24);
@@ -240,18 +141,18 @@
             // 
             this.issueNameLabel.AutoSize = true;
             this.issueNameLabel.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.issueNameLabel.Location = new System.Drawing.Point(3, 0);
+            this.issueNameLabel.Location = new System.Drawing.Point(26, 23);
             this.issueNameLabel.Name = "issueNameLabel";
             this.issueNameLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
-            this.issueNameLabel.Size = new System.Drawing.Size(82, 24);
+            this.issueNameLabel.Size = new System.Drawing.Size(72, 24);
             this.issueNameLabel.TabIndex = 0;
-            this.issueNameLabel.Text = "[議題名稱]";
+            this.issueNameLabel.Text = "議題名稱";
             // 
             // issueStateTitleLabel
             // 
             this.issueStateTitleLabel.AutoSize = true;
             this.issueStateTitleLabel.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.issueStateTitleLabel.Location = new System.Drawing.Point(395, 0);
+            this.issueStateTitleLabel.Location = new System.Drawing.Point(396, 23);
             this.issueStateTitleLabel.Name = "issueStateTitleLabel";
             this.issueStateTitleLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
             this.issueStateTitleLabel.Size = new System.Drawing.Size(40, 24);
@@ -263,10 +164,11 @@
             this.IssueTableLayoutPanel.SetColumnSpan(this.issueDescriptionGroupBox, 4);
             this.issueDescriptionGroupBox.Controls.Add(this.issueDescriptionRichTextBox);
             this.issueDescriptionGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.issueDescriptionGroupBox.Location = new System.Drawing.Point(3, 227);
+            this.issueDescriptionGroupBox.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.issueDescriptionGroupBox.Location = new System.Drawing.Point(26, 200);
             this.issueDescriptionGroupBox.Name = "issueDescriptionGroupBox";
             this.IssueTableLayoutPanel.SetRowSpan(this.issueDescriptionGroupBox, 4);
-            this.issueDescriptionGroupBox.Size = new System.Drawing.Size(778, 218);
+            this.issueDescriptionGroupBox.Size = new System.Drawing.Size(732, 223);
             this.issueDescriptionGroupBox.TabIndex = 15;
             this.issueDescriptionGroupBox.TabStop = false;
             this.issueDescriptionGroupBox.Text = "敘述";
@@ -275,32 +177,55 @@
             // 
             this.issueDescriptionRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.issueDescriptionRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.issueDescriptionRichTextBox.Location = new System.Drawing.Point(3, 18);
+            this.issueDescriptionRichTextBox.Location = new System.Drawing.Point(3, 23);
             this.issueDescriptionRichTextBox.Name = "issueDescriptionRichTextBox";
-            this.issueDescriptionRichTextBox.ReadOnly = true;
-            this.issueDescriptionRichTextBox.Size = new System.Drawing.Size(772, 197);
+            this.issueDescriptionRichTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.issueDescriptionRichTextBox.Size = new System.Drawing.Size(726, 197);
             this.issueDescriptionRichTextBox.TabIndex = 0;
             this.issueDescriptionRichTextBox.Text = "[敘述]";
+            // 
+            // issuePriorityComboBox
+            // 
+            this.issuePriorityComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.issuePriorityComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.issuePriorityComboBox.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.issuePriorityComboBox.FormattingEnabled = true;
+            this.issuePriorityComboBox.Location = new System.Drawing.Point(211, 84);
+            this.issuePriorityComboBox.Name = "issuePriorityComboBox";
+            this.issuePriorityComboBox.Size = new System.Drawing.Size(176, 24);
+            this.issuePriorityComboBox.TabIndex = 18;
+            // 
+            // projectComboBox
+            // 
+            this.projectComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.projectComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.projectComboBox.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.projectComboBox.FormattingEnabled = true;
+            this.projectComboBox.Location = new System.Drawing.Point(211, 142);
+            this.projectComboBox.Name = "projectComboBox";
+            this.projectComboBox.Size = new System.Drawing.Size(176, 24);
+            this.projectComboBox.TabIndex = 20;
+            // 
+            // issueNameTextBox
+            // 
+            this.issueNameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.issueNameTextBox.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.issueNameTextBox.Location = new System.Drawing.Point(211, 26);
+            this.issueNameTextBox.Name = "issueNameTextBox";
+            this.issueNameTextBox.Size = new System.Drawing.Size(176, 27);
+            this.issueNameTextBox.TabIndex = 22;
             // 
             // submitButton
             // 
             this.submitButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.submitButton.Location = new System.Drawing.Point(591, 451);
+            this.submitButton.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.submitButton.Location = new System.Drawing.Point(581, 432);
             this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(190, 58);
-            this.submitButton.TabIndex = 16;
-            this.submitButton.Text = "發布";
+            this.submitButton.Size = new System.Drawing.Size(177, 54);
+            this.submitButton.TabIndex = 23;
+            this.submitButton.Text = "確認發布";
             this.submitButton.UseVisualStyleBackColor = true;
-            // 
-            // cancelButton
-            // 
-            this.cancelButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cancelButton.Location = new System.Drawing.Point(395, 451);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(190, 58);
-            this.cancelButton.TabIndex = 17;
-            this.cancelButton.Text = "取消";
-            this.cancelButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButtonClicked);
             // 
             // CreateIssueView
             // 
@@ -308,6 +233,7 @@
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.IssueTableLayoutPanel);
             this.Name = "CreateIssueView";
+            this.Text = "新增議題 - Issue Tracking System";
             this.Controls.SetChildIndex(this.IssueTableLayoutPanel, 0);
             this.IssueTableLayoutPanel.ResumeLayout(false);
             this.IssueTableLayoutPanel.PerformLayout();
@@ -320,24 +246,18 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel IssueTableLayoutPanel;
-        private System.Windows.Forms.Label issueFinishDateLabel;
-        private System.Windows.Forms.Label issueFinishDateTitleLabel;
-        private System.Windows.Forms.Label issueAssigneeLabel;
-        private System.Windows.Forms.Label issueAssigneeTitleLabel;
-        private System.Windows.Forms.Label issueReportDateLabel;
-        private System.Windows.Forms.Label issueReportDateTitleLabel;
-        private System.Windows.Forms.Label issueReporterLabel;
-        private System.Windows.Forms.Label issueReporterTitleLabel;
-        private System.Windows.Forms.Label issueSeverityLabel;
-        private System.Windows.Forms.Label issuePriorityLabel;
         private System.Windows.Forms.Label issueSeverityTitleLabel;
         private System.Windows.Forms.Label issuePriorityTitleLabel;
-        private System.Windows.Forms.Label issueStateLabel;
         private System.Windows.Forms.Label issueNameLabel;
         private System.Windows.Forms.Label issueStateTitleLabel;
         private System.Windows.Forms.GroupBox issueDescriptionGroupBox;
         private System.Windows.Forms.RichTextBox issueDescriptionRichTextBox;
-        private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Label projectTitleLabel;
+        private System.Windows.Forms.Label issueStateLabel;
+        private System.Windows.Forms.ComboBox issuePriorityComboBox;
+        private System.Windows.Forms.ComboBox projectComboBox;
+        private System.Windows.Forms.ComboBox issueSeverityComboBox;
+        private System.Windows.Forms.TextBox issueNameTextBox;
         private System.Windows.Forms.Button submitButton;
     }
 }
