@@ -14,6 +14,8 @@ namespace IssueTrackingSystem.ITS.View
     public partial class CreateIssueView : IssueTrackingSystem.View.BaseView
     {
         private IssueModel issueModel;
+        private UserModel userModel;
+        private ProjectModel projectModel;
         private IssueController issueController;
 
 
@@ -21,13 +23,15 @@ namespace IssueTrackingSystem.ITS.View
         {
             InitializeComponent();
             issueModel = new IssueModel();
-            issueController = new IssueController(issueModel);
+            userModel = new UserModel();
+            projectModel = new ProjectModel();
+            issueController = new IssueController(userModel, issueModel, projectModel);
         }
 
         private void submitButtonClicked(object sender, EventArgs e)
         {
             Issue issue = new Issue();
-            issue.ProjectId = 1;
+            issue.ProjectId = 4;
             issue.IssueName = issueNameTextBox.Text;
             issue.Priority = int.Parse(issuePriorityComboBox.Text);
             issue.Serverity = issueSeverityComboBox.Text;

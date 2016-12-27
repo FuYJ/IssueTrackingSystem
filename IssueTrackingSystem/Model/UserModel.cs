@@ -196,7 +196,7 @@ namespace IssueTrackingSystem.Model
             {
                 var userData = reader.ReadToEnd();
                 dynamic userApiModel = JsonConvert.DeserializeObject<dynamic>(userData);
-                int state = int.Parse((string)userApiModel.state);
+                int state = (int)userApiModel.state;
 
                 if (state == 0)
                 {

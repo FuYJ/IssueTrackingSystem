@@ -21,6 +21,13 @@ namespace IssueTrackingSystem.Model.DataModel
         private int personInChargeId;
         private DateTime finishDate;
 
+        public enum SearchType { 
+            ByIssueName,
+            ByProjectName,
+            ByReporterName,
+            ByPersonInChargeName
+        }
+
         public int IssueId
         {
             get { return issueId; }

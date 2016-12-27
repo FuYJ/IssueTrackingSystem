@@ -93,6 +93,12 @@
     <Compile Include="ITS\View\ReportView.Designer.cs">
       <DependentUpon>ReportView.cs</DependentUpon>
     </Compile>
+    <Compile Include="ITS\View\issueHistoryBlock.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ITS\View\issueHistoryBlock.Designer.cs">
+      <DependentUpon>issueHistoryBlock.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\ApiModel\UserApiModel.cs" />
     <Compile Include="Model\DataModel\Issue.cs" />
     <Compile Include="Model\DataModel\Project.cs" />
@@ -117,7 +123,6 @@
     <Compile Include="PMS\View\Member.Designer.cs">
       <DependentUpon>Member.cs</DependentUpon>
     </Compile>
-    <Compile Include="PMS\View\Project.cs" />
     <Compile Include="PMS\View\ProjectMainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +178,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ITS\View\CreateIssueView.resx">
       <DependentUpon>CreateIssueView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ITS\View\issueHistoryBlock.resx">
+      <DependentUpon>issueHistoryBlock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ITS\View\IssueInfoView.resx">
       <DependentUpon>IssueInfoView.cs</DependentUpon>
