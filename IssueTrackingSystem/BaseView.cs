@@ -1,4 +1,5 @@
 ﻿using IssueTrackingSystem.AMS.View;
+using IssueTrackingSystem.PMS.View;
 using IssueTrackingSystem.Model;
 using IssueTrackingSystem.Model.DataModel;
 using System;
@@ -24,6 +25,12 @@ namespace IssueTrackingSystem.View
         {
             UserListView accountListView = new UserListView();
             accountListView.Show();
+        }
+
+        private void createProjectButtonClicked(object sender, EventArgs e)
+        {
+            CreateUpdateProject createProject = new CreateUpdateProject("Create");
+            createProject.Show();
         }
     }
 }

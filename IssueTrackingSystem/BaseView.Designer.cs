@@ -38,6 +38,7 @@
             this.projectListToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.userListToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.createProjectButton = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -72,7 +73,8 @@
             this.issueListToolStripButton,
             this.projectListToolStripButton,
             this.toolStripSeparator1,
-            this.userListToolStripButton});
+            this.userListToolStripButton,
+            this.createProjectButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(784, 25);
@@ -117,6 +119,15 @@
             this.userListToolStripButton.Text = "使用者列表";
             this.userListToolStripButton.Click += new System.EventHandler(this.userListToolStripButtonClicked);
             // 
+            // createProjectButton
+            // 
+            this.createProjectButton.Image = ((System.Drawing.Image)(resources.GetObject("createProjectButton.Image")));
+            this.createProjectButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.createProjectButton.Name = "createProjectButton";
+            this.createProjectButton.Size = new System.Drawing.Size(75, 22);
+            this.createProjectButton.Text = "新增專案";
+            this.createProjectButton.Click += new System.EventHandler(this.createProjectButtonClicked);
+            // 
             // BaseView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -147,5 +158,6 @@
         private System.Windows.Forms.ToolStripButton projectListToolStripButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton userListToolStripButton;
+        private System.Windows.Forms.ToolStripButton createProjectButton;
     }
 }
