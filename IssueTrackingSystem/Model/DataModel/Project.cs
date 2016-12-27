@@ -15,6 +15,8 @@ namespace IssueTrackingSystem.Model.DataModel
         private DateTime timeStamp;
         private List<int> members;
         private List<int> issues;
+        public static String CREATE = "Create";
+        public static String UPDATE = "Update";
 
         public int ProjectId
         {

@@ -99,8 +99,6 @@
     <Compile Include="ITS\View\ReportView.Designer.cs">
       <DependentUpon>ReportView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\ApiModel\ProjectDB.cs" />
-    <Compile Include="Model\ApiModel\ProjectApiModel.cs" />
     <Compile Include="Model\ApiModel\UserApiModel.cs" />
     <Compile Include="Model\DataModel\Issue.cs" />
     <Compile Include="Model\DataModel\Project.cs" />
@@ -113,6 +111,7 @@
     <Compile Include="Model\SecurityModel.cs" />
     <Compile Include="Model\UserModel.cs" />
     <Compile Include="AMS\Controller\UserController.cs" />
+    <Compile Include="PMS\Controller\CreateUpdateProjectController.cs" />
     <Compile Include="PMS\View\CreateUpdateProject.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -228,9 +227,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="PMS\Controller\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="src\alarm.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
