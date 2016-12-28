@@ -36,7 +36,6 @@ namespace IssueTrackingSystem.ITS.View
             user = SecurityModel.getInstance().AuthenticatedUser;
             initialKeyword = user.UserName;
             initialSearchType = (int)Issue.SearchType.ByPersonInChargeName;
-
         }
 
         private void IssueListViewLoad(object sender, EventArgs e)

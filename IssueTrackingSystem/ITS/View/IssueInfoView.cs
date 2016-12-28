@@ -64,6 +64,7 @@ namespace IssueTrackingSystem.ITS.View
                 submitButton.Text = "提交議題";
 
                 Issue issue = new Issue();
+                issue.IssueId = issueDetails[0].IssueId;
                 issue.IssueName = issueNameLabel.Text;
                 issue.Description = issueDescriptionRichTextBox.Text;
                 issue.State = issueStateComboBox.SelectedText;

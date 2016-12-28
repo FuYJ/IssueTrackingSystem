@@ -115,7 +115,7 @@ namespace IssueTrackingSystem.ITS.Controller
 
         private void getIssueList()
         {
-
+            issueList.Clear();
             if (user.Authority == (int)User.AuthorityEnum.GeneralUser)
             {
                 foreach (Project project in user.JoinedProjects)

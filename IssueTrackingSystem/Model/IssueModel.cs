@@ -210,7 +210,7 @@ namespace IssueTrackingSystem.Model
             {
                 var issueData = reader.ReadToEnd();
                 dynamic issueApiModel = JsonConvert.DeserializeObject<dynamic>(issueData);
-                issue.IssueId = formatStateToIssueId((String)issueApiModel.issue.state, (String)issueApiModel.issue.issueId);
+                issue.IssueId = formatStateToIssueId((String)issueApiModel.state, (String)issueApiModel.issueId);
             }
 
             return issue.IssueId;
