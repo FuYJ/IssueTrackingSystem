@@ -16,6 +16,11 @@ namespace IssueTrackingSystem.Model.DataModel
         private List<int> members;
         private List<int> issues;
 
+        public override string ToString()
+        {
+            return this.projectName;
+        }
+
         public int ProjectId
         {
             get { return projectId; }

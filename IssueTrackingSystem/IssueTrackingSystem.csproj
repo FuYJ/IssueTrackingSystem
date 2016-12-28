@@ -67,6 +67,12 @@
     <Compile Include="AMS\View\SecurityView.Designer.cs">
       <DependentUpon>SecurityView.cs</DependentUpon>
     </Compile>
+    <Compile Include="AMS\View\UserListView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AMS\View\UserListView.Designer.cs">
+      <DependentUpon>UserListView.cs</DependentUpon>
+    </Compile>
     <Compile Include="ITS\Controller\IssueController.cs" />
     <Compile Include="ITS\Controller\ReportController.cs" />
     <Compile Include="ITS\View\CreateIssueView.cs">
@@ -155,12 +161,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AMS\View\UserListView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AMS\View\UserListView.Designer.cs">
-      <DependentUpon>UserListView.cs</DependentUpon>
-    </Compile>
     <Compile Include="AMS\View\UserInfoView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AMS\View\SecurityView.resx">
       <DependentUpon>SecurityView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AMS\View\UserListView.resx">
+      <DependentUpon>UserListView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BaseView.resx">
       <DependentUpon>BaseView.cs</DependentUpon>
@@ -214,9 +217,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AMS\View\RegisterView.resx">
       <DependentUpon>RegisterView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AMS\View\UserListView.resx">
-      <DependentUpon>UserListView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AMS\View\UserInfoView.resx">
       <DependentUpon>UserInfoView.cs</DependentUpon>

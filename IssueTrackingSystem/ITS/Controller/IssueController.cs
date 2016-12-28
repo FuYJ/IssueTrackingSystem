@@ -24,22 +24,7 @@ namespace IssueTrackingSystem.ITS.Controller
             user = SecurityModel.getInstance().AuthenticatedUser;
             issueList = new List<Issue>();
 
-            if (user.Authority == (int)User.AuthorityEnum.GeneralUser)
-            {
-                foreach (Project project in user.JoinedProjects)
-                {
-                    List<Issue> newIssueList = new List<Issue>();
-                    newIssueList = issueModel.getIssueListByProjectId(project.ProjectId);
-                    foreach (Issue issue in newIssueList)
-                    {
-                        if(issue.FinishDate == DateTime.MaxValue)
-                            issueList.Add(issue);
-                    }
-                }
-            }
-            else {
-                issueList = listAllIssues();
-            }
+            getIssueList();
         }
 
         public List<Issue> listAllIssues() {
@@ -52,6 +37,8 @@ namespace IssueTrackingSystem.ITS.Controller
         {
             List<Issue> searchedIssueList = new List<Issue>();
 
+            getIssueList();
+
             switch (searchType) {
                 case (int)Issue.SearchType.ByIssueName:
                     foreach (Issue issue in issueList)
@@ -63,6 +50,14 @@ namespace IssueTrackingSystem.ITS.Controller
                     }
                     break;
                 case (int)Issue.SearchType.ByProjectName:
+                    foreach (Issue issue in issueList)
+                    {
+                        //Project project = projectModel.getProjectInfo(issue.ProjectId);
+                        if (issue.IssueName.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) != -1)
+                        {
+                            searchedIssueList.Add(issue);
+                        }
+                    }
                     break;
                 case (int)Issue.SearchType.ByReporterName:
                     foreach (Issue issue in issueList) { 
@@ -87,13 +82,21 @@ namespace IssueTrackingSystem.ITS.Controller
             return searchedIssueList;
         }
 
-        public Issue getIssuedetails(int issueId)
+        public List<Issue> getIssuedetails(int issueId)
         {
+            List<Issue> historyIssueList = new List<Issue>();
             Issue issue = new Issue();
 
-            //api
+            issue = issueModel.getIssueInfo(issueId);
+            historyIssueList.Add(issue);
+            getIssueList();
+            foreach (Issue historyIssue in issueList) {
+                if (historyIssue.IssueGroupId == issue.IssueGroupId) {
+                    historyIssueList.Add(historyIssue);
+                }
+            }
 
-            return issue;
+            return historyIssueList;
         }
 
         public Issue createIssue(Issue issue)
@@ -109,6 +112,28 @@ namespace IssueTrackingSystem.ITS.Controller
             //api
 
             return issue;
+        }
+
+        private void getIssueList()
+        {
+
+            if (user.Authority == (int)User.AuthorityEnum.GeneralUser)
+            {
+                foreach (Project project in user.JoinedProjects)
+                {
+                    List<Issue> newIssueList = new List<Issue>();
+                    newIssueList = issueModel.getIssueListByProjectId(project.ProjectId);
+                    foreach (Issue issue in newIssueList)
+                    {
+                        if (issue.FinishDate == DateTime.MaxValue)
+                            issueList.Add(issue);
+                    }
+                }
+            }
+            else
+            {
+                issueList = listAllIssues();
+            }
         }
     }
 }

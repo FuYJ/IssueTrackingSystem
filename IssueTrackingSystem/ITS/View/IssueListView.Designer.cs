@@ -38,7 +38,7 @@
             this.reporter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.personInCharge = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.reportDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.finishDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.project = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.issueState = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createIssueButton = new System.Windows.Forms.Button();
             this.selectSearchTypeComboBox = new System.Windows.Forms.ComboBox();
@@ -85,6 +85,7 @@
             // 
             // issuesDataGridView
             // 
+            this.issuesDataGridView.AllowUserToAddRows = false;
             this.issuesDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.issuesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.issuesDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -95,7 +96,7 @@
             this.reporter,
             this.personInCharge,
             this.reportDate,
-            this.finishDate,
+            this.project,
             this.issueState});
             this.mainTableLayoutPanel.SetColumnSpan(this.issuesDataGridView, 6);
             this.issuesDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -149,11 +150,11 @@
             this.reportDate.HeaderText = "提出時間";
             this.reportDate.Name = "reportDate";
             // 
-            // finishDate
+            // project
             // 
-            this.finishDate.FillWeight = 92.484F;
-            this.finishDate.HeaderText = "完成時間";
-            this.finishDate.Name = "finishDate";
+            this.project.FillWeight = 92.484F;
+            this.project.HeaderText = "所屬專案";
+            this.project.Name = "project";
             // 
             // issueState
             // 
@@ -225,6 +226,11 @@
 
         private System.Windows.Forms.TableLayoutPanel mainTableLayoutPanel;
         private System.Windows.Forms.DataGridView issuesDataGridView;
+        private System.Windows.Forms.Button createIssueButton;
+        private System.Windows.Forms.Button viewStatisticReportButton;
+        private System.Windows.Forms.ComboBox selectSearchTypeComboBox;
+        private System.Windows.Forms.TextBox keywordTextBox;
+        private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn issueId;
         private System.Windows.Forms.DataGridViewTextBoxColumn issueName;
         private System.Windows.Forms.DataGridViewTextBoxColumn priority;
@@ -232,13 +238,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn reporter;
         private System.Windows.Forms.DataGridViewTextBoxColumn personInCharge;
         private System.Windows.Forms.DataGridViewTextBoxColumn reportDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn finishDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn project;
         private System.Windows.Forms.DataGridViewTextBoxColumn issueState;
-        private System.Windows.Forms.Button createIssueButton;
-        private System.Windows.Forms.Button viewStatisticReportButton;
-        private System.Windows.Forms.ComboBox selectSearchTypeComboBox;
-        private System.Windows.Forms.TextBox keywordTextBox;
-        private System.Windows.Forms.Button searchButton;
 
     }
 }

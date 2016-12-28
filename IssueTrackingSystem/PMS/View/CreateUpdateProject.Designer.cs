@@ -79,6 +79,7 @@
             this._createUpdate.Size = new System.Drawing.Size(119, 32);
             this._createUpdate.TabIndex = 6;
             this._createUpdate.UseVisualStyleBackColor = true;
+            this._createUpdate.Click += new System.EventHandler(this.ClickCreateUpdate);
             // 
             // CreateUpdateProject
             // 

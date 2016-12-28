@@ -14,7 +14,7 @@ namespace IssueTrackingSystem.Model.DataModel
         private String description;
         private String state;
         private String serverity;
-        private int priority;
+        private String priority;
         private int issueGroupId;
         private int reporterId;
         private DateTime reportDate;
@@ -64,7 +64,7 @@ namespace IssueTrackingSystem.Model.DataModel
             set { serverity = value; }
         }
 
-        public int Priority
+        public String Priority
         {
             get { return priority; }
             set { priority = value; }

@@ -15,6 +15,19 @@ namespace IssueTrackingSystem
         [STAThread]
         static void Main()
         {
+            System.Net.ServicePointManager.ServerCertificateValidationCallback =
+                    new System.Net.Security.RemoteCertificateValidationCallback(delegate(object MySender,
+                                System.Security.Cryptography.X509Certificates.X509Certificate MyCertificate,
+                                System.Security.Cryptography.X509Certificates.X509Chain MyChain,
+                                System.Net.Security.SslPolicyErrors MyErrors)
+                    {
+                        if (MySender is System.Net.WebRequest)
+                        {
+                            //忽略憑証檢查，一律回傳true
+                            return true;
+                        }
+                        return false;
+                    });
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginView());

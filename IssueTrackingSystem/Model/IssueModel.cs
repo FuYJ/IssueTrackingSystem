@@ -20,8 +20,8 @@ namespace IssueTrackingSystem.Model
             req.ContentType = "application/json";
             String contentData = "{\"title\":\"" + issue.IssueName + "\"," +
                                   "\"description\":\"" + issue.Description + "\"," +
-                                  "\"state\":\"" + user.EmailAddress + "\"," +
-                                  "\"severity\":\"" + issue.Serverity + "\"," +
+                                  "\"state\":\"" + issue.State + "\"," +
+                                  "\"serverity\":\"" + issue.Serverity + "\"," +
                                   "\"priority\":\"" + issue.Priority + "\"," +
                                   "\"personInChargeId\":\"" + issue.PersonInChargeId + "\"}";
             using (var writer = new StreamWriter(req.GetRequestStream()))
@@ -49,7 +49,7 @@ namespace IssueTrackingSystem.Model
             Issue issue = new Issue();
             User user = SecurityModel.getInstance().AuthenticatedUser;
             
-            var req = WebRequest.Create(Server.ApiUrl + "/issues/" + user.UserId + "/" + issue.IssueId);
+            var req = WebRequest.Create(Server.ApiUrl + "/issues/" + user.UserId + "/" + issueId);
             req.Method = "GET";
             
             var resp = (HttpWebResponse)req.GetResponse();
@@ -67,6 +67,7 @@ namespace IssueTrackingSystem.Model
                 issue.ReportDate = DateTime.FromFileTime((long)issueApiModel.issue.reportTime);
                 issue.PersonInChargeId = issueApiModel.issue.personInChargeId;
                 issue.FinishDate = (issueApiModel.issue.finishTime == String.Empty) ? DateTime.MaxValue : DateTime.FromFileTime((long)issueApiModel.issue.finishTime);
+                issue.ProjectId = issueApiModel.issue.projectId;
             }
 
             return issue;
@@ -84,20 +85,22 @@ namespace IssueTrackingSystem.Model
             {
                 var issueData = reader.ReadToEnd();
                 dynamic issueApiModel = JsonConvert.DeserializeObject<dynamic>(issueData);
-                foreach (dynamic o in issueApiModel)
+                if ((int)issueApiModel.state == 0)
                 {
-                    if ((int)o.issue.state == 0)
+                    foreach (dynamic o in issueApiModel.list)
                     {
                         Issue issue = new Issue();
-                        issue.IssueId = o.issue.issueId;
-                        issue.IssueName = o.issue.title;
-                        issue.Description = o.issue.description;
-                        issue.Serverity = o.issue.serverity;
-                        issue.Priority = o.issue.priority;
-                        issue.ReporterId = o.issue.reporterId;
-                        issue.ReportDate = DateTime.FromFileTime((long)o.issue.reportTime);
-                        issue.PersonInChargeId = o.issue.personInChargeId;
-                        issue.FinishDate = (o.issue.finishTime == String.Empty) ? DateTime.MaxValue : DateTime.FromFileTime((long)o.issue.finishTime);
+                        issue.IssueId = o.issueId;
+                        issue.State = o.state;
+                        issue.IssueName = o.title;
+                        issue.Description = o.description;
+                        issue.Serverity = o.serverity;
+                        issue.Priority = o.priority;
+                        issue.ReporterId = o.reporterId;
+                        issue.ReportDate = DateTime.FromFileTime((long)o.reportTime);
+                        issue.PersonInChargeId = o.personInChargeId;
+                        issue.FinishDate = (o.finishTime == null) ? DateTime.MaxValue : DateTime.FromFileTime((long)o.finishTime);
+                        issue.ProjectId = o.projectId;
                         issueList.Add(issue);
                     }
                 }
@@ -106,10 +109,41 @@ namespace IssueTrackingSystem.Model
             return issueList;
         }
 
-        public List<Issue> getIssueListByProjectId(int projectId) {
+        public List<Issue> getIssueListByProjectId(int projectId)
+        {
             List<Issue> issueList = new List<Issue>();
+            User user = SecurityModel.getInstance().AuthenticatedUser;
 
-            //api
+            var req = WebRequest.Create(Server.ApiUrl + "/issues/list/" + user.UserId + "/" + projectId);
+
+            req.Method = "GET";
+            req.ContentType = "application/json";
+
+            var resp = (HttpWebResponse)req.GetResponse();
+            using (var reader = new StreamReader(resp.GetResponseStream()))
+            {
+                var issueData = reader.ReadToEnd();
+                dynamic issueApiModel = JsonConvert.DeserializeObject<dynamic>(issueData);
+                if ((int)issueApiModel.state == 0)
+                {
+                    foreach (dynamic o in issueApiModel.list)
+                    {
+                        Issue issue = new Issue();
+                        issue.IssueId = o.issueId;
+                        issue.State = o.state;
+                        issue.IssueName = o.title;
+                        issue.Description = o.description;
+                        issue.Serverity = o.serverity;
+                        issue.Priority = o.priority;
+                        issue.ReporterId = o.reporterId;
+                        issue.ReportDate = DateTime.FromFileTime((long)o.reportTime);
+                        issue.PersonInChargeId = o.personInChargeId;
+                        issue.FinishDate = (o.finishTime == null) ? DateTime.MaxValue : DateTime.FromFileTime((long)o.finishTime);
+                        issue.ProjectId = o.projectId;
+                        issueList.Add(issue);
+                    }
+                }
+            }
 
             return issueList;
         }
@@ -128,20 +162,22 @@ namespace IssueTrackingSystem.Model
             {
                 var issueData = reader.ReadToEnd();
                 dynamic issueApiModel = JsonConvert.DeserializeObject<dynamic>(issueData);
-                foreach (dynamic o in issueApiModel)
+                if ((int)issueApiModel.state == 0)
                 {
-                    if ((int)o.issue.state == 0)
+                    foreach (dynamic o in issueApiModel.list)
                     {
                         Issue issue = new Issue();
-                        issue.IssueId = o.issue.issueId;
-                        issue.IssueName = o.issue.title;
-                        issue.Description = o.issue.description;
-                        issue.Serverity = o.issue.serverity;
-                        issue.Priority = o.issue.priority;
-                        issue.ReporterId = o.issue.reporterId;
-                        issue.ReportDate = DateTime.FromFileTime((long)o.issue.reportTime);
-                        issue.PersonInChargeId = o.issue.personInChargeId;
-                        issue.FinishDate = (o.issue.finishTime == String.Empty) ? DateTime.MaxValue : DateTime.FromFileTime((long)o.issue.finishTime);
+                        issue.IssueId = o.issueId;
+                        issue.State = o.state;
+                        issue.IssueName = o.title;
+                        issue.Description = o.description;
+                        issue.Serverity = o.serverity;
+                        issue.Priority = o.priority;
+                        issue.ReporterId = o.reporterId;
+                        issue.ReportDate = DateTime.FromFileTime((long)o.reportTime);
+                        issue.PersonInChargeId = o.personInChargeId;
+                        issue.FinishDate = (o.finishTime == null) ? DateTime.MaxValue : DateTime.FromFileTime((long)o.finishTime);
+                        issue.ProjectId = o.projectId;
                         issueList.Add(issue);
                     }
                 }
@@ -150,10 +186,44 @@ namespace IssueTrackingSystem.Model
             return issueList;
         }
 
-        public void updateIssue(Issue issue) { 
-            
-            //api
+        public Issue updateIssue(Issue issue)
+        {
+            User user = SecurityModel.getInstance().AuthenticatedUser;
 
+            var req = WebRequest.Create(Server.ApiUrl + "/issues/put/" + user.UserId + "/" + issue.IssueId);
+            req.Method = "POST";
+            req.ContentType = "application/json";
+            String contentData = "{\"title\":\"" + issue.IssueName + "\"," +
+                                  "\"description\":\"" + issue.Description + "\"," +
+                                  "\"state\":\"" + issue.State + "\"," +
+                                  "\"issueGroupId\":\"" + issue.IssueGroupId + "\"," +
+                                  "\"serverity\":\"" + issue.Serverity + "\"," +
+                                  "\"priority\":\"" + issue.Priority + "\"," +
+                                  "\"personInChargeId\":\"" + issue.PersonInChargeId + "\"}";
+            using (var writer = new StreamWriter(req.GetRequestStream()))
+            {
+                writer.Write(contentData);
+            }
+
+            var resp = (HttpWebResponse)req.GetResponse();
+            using (var reader = new StreamReader(resp.GetResponseStream()))
+            {
+                var issueData = reader.ReadToEnd();
+                dynamic issueApiModel = JsonConvert.DeserializeObject<dynamic>(issueData);
+                issue.IssueId = formatStateToIssueId((String)issueApiModel.state, (String)issueApiModel.issue.issueId);
+                issue.IssueName = issueApiModel.issue.title;
+                issue.IssueGroupId = issueApiModel.issue.issueGroupId;
+                issue.Description = issueApiModel.issue.description;
+                issue.Priority = issueApiModel.issue.priority;
+                issue.Serverity = issueApiModel.issue.serverity;
+                issue.ReporterId = issueApiModel.issue.reporterId;
+                issue.ReportDate = DateTime.FromFileTime((long)issueApiModel.issue.reportTime);
+                issue.PersonInChargeId = issueApiModel.issue.personInChargeId;
+                issue.FinishDate = (issueApiModel.issue.finishTime == String.Empty) ? DateTime.MaxValue : DateTime.FromFileTime((long)issueApiModel.issue.finishTime);
+                issue.ProjectId = issueApiModel.issue.projectId;
+            }
+
+            return issue;
         }
 
         private int formatStateToIssueId(String state, String issueId)

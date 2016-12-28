@@ -17,6 +17,8 @@ namespace IssueTrackingSystem.ITS.View
         private UserModel userModel;
         private ProjectModel projectModel;
         private IssueController issueController;
+        private User user;
+        private List<Project> projectList;
 
 
         public CreateIssueView()
@@ -26,17 +28,42 @@ namespace IssueTrackingSystem.ITS.View
             userModel = new UserModel();
             projectModel = new ProjectModel();
             issueController = new IssueController(userModel, issueModel, projectModel);
+            user = SecurityModel.getInstance().AuthenticatedUser;
+            projectList = user.JoinedProjects;
+            foreach (Project project in projectList)
+            {
+                projectComboBox.Items.Add(project);
+            }
+            projectComboBox.SelectedIndex = 0;
+            issuePriorityComboBox.SelectedIndex = 0;
+            issueSeverityComboBox.SelectedIndex = 0;
+        }
+
+        public CreateIssueView(int projectId)
+        {
+            InitializeComponent();
+            issueModel = new IssueModel();
+            userModel = new UserModel();
+            projectModel = new ProjectModel();
+            issueController = new IssueController(userModel, issueModel, projectModel);
+            projectList = user.JoinedProjects;
+            Project nowProject = projectList.Find(x => x.ProjectId == projectId);
+            projectComboBox.Items.Add(nowProject);
+            projectComboBox.SelectedIndex = 0;
+            projectComboBox.Enabled = false;
+            issuePriorityComboBox.SelectedIndex = 0;
+            issueSeverityComboBox.SelectedIndex = 0;
         }
 
         private void submitButtonClicked(object sender, EventArgs e)
         {
             Issue issue = new Issue();
-            issue.ProjectId = 4;
+            issue.ProjectId = ((Project)projectComboBox.SelectedItem).ProjectId;
             issue.IssueName = issueNameTextBox.Text;
-            issue.Priority = int.Parse(issuePriorityComboBox.Text);
-            issue.Serverity = issueSeverityComboBox.Text;
+            issue.Priority = (String)issuePriorityComboBox.SelectedItem;
+            issue.Serverity = (String)issueSeverityComboBox.SelectedItem;
             issue.Description = issueDescriptionRichTextBox.Text;
-            issue.PersonInChargeId = 1;
+            //issue.PersonInChargeId = ((Project)projectComboBox.SelectedItem).;
             issue.State = "待審核";
             issue = issueController.createIssue(issue);
 

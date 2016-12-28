@@ -42,13 +42,13 @@ namespace IssueTrackingSystem.ITS.View
         private void IssueListViewLoad(object sender, EventArgs e)
         {
             keywordTextBox.Text = initialKeyword;
-            selectSearchTypeComboBox.TabIndex = initialSearchType;
+            selectSearchTypeComboBox.SelectedIndex = initialSearchType;
             issueList = issueController.listIssues(keywordTextBox.Text, selectSearchTypeComboBox.SelectedIndex);
             issuesDataGridView.Rows.Clear();
             foreach(Issue issue in issueList){
                 User reporter = userController.getUser(issue.ReporterId);
                 User personInCharge = userController.getUser(issue.PersonInChargeId);
-                issuesDataGridView.Rows.Add(new Object[] { issue.IssueId, issue.IssueName, issue.Priority, issue.Serverity, reporter.UserName, personInCharge.UserName, issue.ReportDate, issue.FinishDate, issue.State });
+                issuesDataGridView.Rows.Add(new Object[] { issue.IssueId, issue.IssueName, issue.Priority, issue.Serverity, reporter.UserName, personInCharge.UserName, issue.ReportDate.Date, user.JoinedProjects.Find(x => x.ProjectId == issue.ProjectId).ProjectName, issue.State });
             }
         }
 
@@ -73,8 +73,11 @@ namespace IssueTrackingSystem.ITS.View
 
         private void issuesDataGridViewCellContentDoubleClicked(object sender, DataGridViewCellEventArgs e)
         {
-            IssueInfoView issueInfoView = new IssueInfoView();
-            issueInfoView.Show(this);
+            if (e.RowIndex > 0 && e.RowIndex < issuesDataGridView.RowCount)
+            {
+                IssueInfoView issueInfoView = new IssueInfoView((int)issuesDataGridView.Rows[e.RowIndex].Cells[0].Value);
+                issueInfoView.Show(this);
+            }
         }
     }
 }
