@@ -19,7 +19,7 @@ namespace IssueTrackingSystem.PMS.Controller
             }
             else if (Project.UPDATE.Equals(movement))
             {
-                return 0;
+                state = UpdateProject(project);
             }
             return state;
         }
@@ -34,8 +34,9 @@ namespace IssueTrackingSystem.PMS.Controller
 
         public int UpdateProject(Project project)
         {
-            int state = 0;
-
+            User user = SecurityModel.getInstance().AuthenticatedUser;
+            ProjectModel projectModel = new ProjectModel();
+            int state = projectModel.updateProjectInfo(user.UserId, project);
             return state;
         }
     }

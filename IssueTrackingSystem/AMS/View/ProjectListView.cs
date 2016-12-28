@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using IssueTrackingSystem.PMS.Controller;
 
 namespace IssueTrackingSystem.AMS.View
 {
@@ -14,18 +15,21 @@ namespace IssueTrackingSystem.AMS.View
     {
         private List<Project> joinedProjectList;
         private List<Project> invitedProjectList;
+        private ProjectModel projectModel;
+        private ProjectInfoController projectController = new ProjectInfoController();
 
         public ProjectListView()
         {
             InitializeComponent();
-            joinedProjectList = SecurityModel.getInstance().AuthenticatedUser.JoinedProjects;
+            joinedProjectList = projectController.getProjectListByUserId(SecurityModel.getInstance().AuthenticatedUser.UserId);
             invitedProjectList = SecurityModel.getInstance().AuthenticatedUser.JoinedProjects;
         }
 
         public ProjectListView(int tabIndex)
         {
             InitializeComponent();
-            joinedProjectList = SecurityModel.getInstance().AuthenticatedUser.JoinedProjects;
+            int userId = SecurityModel.getInstance().AuthenticatedUser.UserId;
+            joinedProjectList = projectController.getProjectListByUserId(userId);
             invitedProjectList = SecurityModel.getInstance().AuthenticatedUser.JoinedProjects;
             projectTabControl.SelectTab(tabIndex);
         }

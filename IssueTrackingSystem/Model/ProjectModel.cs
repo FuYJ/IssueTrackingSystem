@@ -32,7 +32,7 @@ namespace IssueTrackingSystem.Model
             {
                 var projectData = reader.ReadToEnd();
                 dynamic projectApiModel = JsonConvert.DeserializeObject<dynamic>(projectData);
-                state = projectApiModel.State;
+                state = projectApiModel.state;
             }
             return state;
         }
@@ -51,10 +51,10 @@ namespace IssueTrackingSystem.Model
                 if(projectApiModel.state == 0)
                 {
                     project = new Project();
-                    project.ProjectId = Int32.Parse(projectApiModel.ProjectId);
-                    project.ProjectName = projectApiModel.ProjectName;
-                    project.Description = projectApiModel.Description;
-                    project.Manager = projectApiModel.Manager;
+                    project.ProjectId = projectApiModel.projectId;
+                    project.ProjectName = projectApiModel.projectName;
+                    project.Description = projectApiModel.description;
+                    project.Manager = projectApiModel.manager;
                     project.TimeStamp = DateTime.FromFileTime(long.Parse((string)projectApiModel.timeStamp));
                 }
                 else
@@ -67,7 +67,7 @@ namespace IssueTrackingSystem.Model
 
         public List<Project> getProjectListByUserId(int userId)
         {
-            List<Project> projectList = null;
+            List<Project> projectList = new List<Project>();
             var req = WebRequest.Create(Server.ApiUrl + "/projects/list/" + userId);
             req.Method = "GET";
 
@@ -81,17 +81,13 @@ namespace IssueTrackingSystem.Model
                     foreach (dynamic o in projectApiModel.list)
                     {
                         Project project = new Project();
-                        project.ProjectId = Int32.Parse(projectApiModel.ProjectId);
-                        project.ProjectName = projectApiModel.ProjectName;
-                        project.Description = projectApiModel.Description;
-                        project.Manager = projectApiModel.Manager;
-                        project.TimeStamp = DateTime.FromFileTime(long.Parse((string)projectApiModel.timeStamp));
+                        project.ProjectId = o.projectId;
+                        project.ProjectName = o.projectName;
+                        project.Description = o.description;
+                        project.Manager = o.manager;
+                        project.TimeStamp = DateTime.FromFileTime(long.Parse((string)o.timeStamp));
                         projectList.Add(project);
                     }
-                }
-                else
-                {
-                    projectList = null;
                 }
             }
             return projectList;
@@ -99,7 +95,7 @@ namespace IssueTrackingSystem.Model
 
         public List<Project> getInvitedProjectListByUserId(int userId)
         {
-            List<Project> projectList = null;
+            List<Project> projectList = new List<Project>();
             var req = WebRequest.Create(Server.ApiUrl + "/projects/" + userId);
             req.Method = "GET";
 
@@ -113,17 +109,13 @@ namespace IssueTrackingSystem.Model
                     foreach (dynamic o in projectApiModel.list)
                     {
                         Project project = new Project();
-                        project.ProjectId = Int32.Parse(projectApiModel.ProjectId);
-                        project.ProjectName = projectApiModel.ProjectName;
-                        project.Description = projectApiModel.Description;
-                        project.Manager = projectApiModel.Manager;
+                        project.ProjectId = o.projectId;
+                        project.ProjectName = o.projectName;
+                        project.Description = o.description;
+                        project.Manager = o.manager;
                         project.TimeStamp = DateTime.FromFileTime(long.Parse((string)projectApiModel.timeStamp));
                         projectList.Add(project);
                     }
-                }
-                else
-                {
-                    projectList = null;
                 }
             }
             return projectList;
@@ -145,17 +137,13 @@ namespace IssueTrackingSystem.Model
                     foreach (dynamic o in projectApiModel.list)
                     {
                         Project project = new Project();
-                        project.ProjectId = Int32.Parse(projectApiModel.ProjectId);
-                        project.ProjectName = projectApiModel.ProjectName;
-                        project.Description = projectApiModel.Description;
-                        project.Manager = projectApiModel.Manager;
+                        project.ProjectId = o.projectId;
+                        project.ProjectName = o.projectName;
+                        project.Description = o.description;
+                        project.Manager = o.manager;
                         project.TimeStamp = DateTime.FromFileTime(long.Parse((string)projectApiModel.timeStamp));
                         projectList.Add(project);
                     }
-                }
-                else
-                {
-                    projectList = null;
                 }
             }
             return projectList;
@@ -179,7 +167,7 @@ namespace IssueTrackingSystem.Model
             {
                 var projectData = reader.ReadToEnd();
                 dynamic projectApiModel = JsonConvert.DeserializeObject<dynamic>(projectData);
-                state = projectApiModel.State;
+                state = projectApiModel.state;
             }
             return state;
         }
