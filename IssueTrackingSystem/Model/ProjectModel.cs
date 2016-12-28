@@ -32,7 +32,7 @@ namespace IssueTrackingSystem.Model
             {
                 var projectData = reader.ReadToEnd();
                 dynamic projectApiModel = JsonConvert.DeserializeObject<dynamic>(projectData);
-                state = projectApiModel.State;
+                state = projectApiModel.state;
             }
             return state;
         }

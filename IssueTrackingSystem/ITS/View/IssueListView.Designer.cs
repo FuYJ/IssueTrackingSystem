@@ -106,7 +106,7 @@
             this.issuesDataGridView.RowTemplate.Height = 24;
             this.issuesDataGridView.Size = new System.Drawing.Size(758, 437);
             this.issuesDataGridView.TabIndex = 0;
-            this.issuesDataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.issuesDataGridViewCellContentDoubleClicked);
+            this.issuesDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.issuesDataGridViewCellDoubleClicked);
             // 
             // issueId
             // 

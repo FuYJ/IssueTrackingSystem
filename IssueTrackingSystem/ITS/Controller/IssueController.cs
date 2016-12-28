@@ -106,12 +106,11 @@ namespace IssueTrackingSystem.ITS.Controller
             return issue;
         }
 
-        public Issue updateIssue(Issue issue)
+        public int updateIssue(Issue issue)
         {
+            issue.IssueId = issueModel.updateIssue(issue);
 
-            //api
-
-            return issue;
+            return issue.IssueId;
         }
 
         private void getIssueList()

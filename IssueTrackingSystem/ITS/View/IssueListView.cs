@@ -44,6 +44,7 @@ namespace IssueTrackingSystem.ITS.View
             keywordTextBox.Text = initialKeyword;
             selectSearchTypeComboBox.SelectedIndex = initialSearchType;
             issueList = issueController.listIssues(keywordTextBox.Text, selectSearchTypeComboBox.SelectedIndex);
+
             issuesDataGridView.Rows.Clear();
             foreach(Issue issue in issueList){
                 User reporter = userController.getUser(issue.ReporterId);
@@ -71,7 +72,7 @@ namespace IssueTrackingSystem.ITS.View
             }
         }
 
-        private void issuesDataGridViewCellContentDoubleClicked(object sender, DataGridViewCellEventArgs e)
+        private void issuesDataGridViewCellDoubleClicked(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex > 0 && e.RowIndex < issuesDataGridView.RowCount)
             {

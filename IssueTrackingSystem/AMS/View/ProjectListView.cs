@@ -19,14 +19,14 @@ namespace IssueTrackingSystem.AMS.View
         {
             InitializeComponent();
             joinedProjectList = SecurityModel.getInstance().AuthenticatedUser.JoinedProjects;
-            invitedProjectList = SecurityModel.getInstance().AuthenticatedUser.JoinedProjects;
+            invitedProjectList = SecurityModel.getInstance().AuthenticatedUser.InvitedProjects;
         }
 
         public ProjectListView(int tabIndex)
         {
             InitializeComponent();
             joinedProjectList = SecurityModel.getInstance().AuthenticatedUser.JoinedProjects;
-            invitedProjectList = SecurityModel.getInstance().AuthenticatedUser.JoinedProjects;
+            invitedProjectList = SecurityModel.getInstance().AuthenticatedUser.InvitedProjects;
             projectTabControl.SelectTab(tabIndex);
         }
 

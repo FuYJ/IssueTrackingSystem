@@ -70,10 +70,13 @@ namespace IssueTrackingSystem.ITS.View
                 issue.Priority = issuePriorityComboBox.SelectedText;
                 issue.Serverity = issueSeverityComboBox.SelectedText;
                 issue.PersonInChargeId = 1;
-                issue = issueController.updateIssue(issue);
+                issue.IssueId = issueController.updateIssue(issue);
 
-                issueDetails = issueController.getIssuedetails(issue.IssueId);
-                updateIssueInfoView();
+                if (issue.IssueId != 0)
+                {
+                    issueDetails = issueController.getIssuedetails(issue.IssueId);
+                    updateIssueInfoView();
+                }
             }
         }
 

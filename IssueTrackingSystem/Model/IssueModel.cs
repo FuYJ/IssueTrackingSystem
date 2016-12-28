@@ -66,7 +66,7 @@ namespace IssueTrackingSystem.Model
                 issue.ReporterId = issueApiModel.issue.reporterId;
                 issue.ReportDate = DateTime.FromFileTime((long)issueApiModel.issue.reportTime);
                 issue.PersonInChargeId = issueApiModel.issue.personInChargeId;
-                issue.FinishDate = (issueApiModel.issue.finishTime == String.Empty) ? DateTime.MaxValue : DateTime.FromFileTime((long)issueApiModel.issue.finishTime);
+                issue.FinishDate = (issueApiModel.issue.finishTime == null) ? DateTime.MaxValue : DateTime.FromFileTime((long)issueApiModel.issue.finishTime);
                 issue.ProjectId = issueApiModel.issue.projectId;
             }
 
@@ -186,7 +186,7 @@ namespace IssueTrackingSystem.Model
             return issueList;
         }
 
-        public Issue updateIssue(Issue issue)
+        public int updateIssue(Issue issue)
         {
             User user = SecurityModel.getInstance().AuthenticatedUser;
 
@@ -210,20 +210,10 @@ namespace IssueTrackingSystem.Model
             {
                 var issueData = reader.ReadToEnd();
                 dynamic issueApiModel = JsonConvert.DeserializeObject<dynamic>(issueData);
-                issue.IssueId = formatStateToIssueId((String)issueApiModel.state, (String)issueApiModel.issue.issueId);
-                issue.IssueName = issueApiModel.issue.title;
-                issue.IssueGroupId = issueApiModel.issue.issueGroupId;
-                issue.Description = issueApiModel.issue.description;
-                issue.Priority = issueApiModel.issue.priority;
-                issue.Serverity = issueApiModel.issue.serverity;
-                issue.ReporterId = issueApiModel.issue.reporterId;
-                issue.ReportDate = DateTime.FromFileTime((long)issueApiModel.issue.reportTime);
-                issue.PersonInChargeId = issueApiModel.issue.personInChargeId;
-                issue.FinishDate = (issueApiModel.issue.finishTime == String.Empty) ? DateTime.MaxValue : DateTime.FromFileTime((long)issueApiModel.issue.finishTime);
-                issue.ProjectId = issueApiModel.issue.projectId;
+                issue.IssueId = formatStateToIssueId((String)issueApiModel.issue.state, (String)issueApiModel.issue.issueId);
             }
 
-            return issue;
+            return issue.IssueId;
         }
 
         private int formatStateToIssueId(String state, String issueId)
