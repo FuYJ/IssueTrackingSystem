@@ -14,9 +14,9 @@ namespace IssueTrackingSystem.Model
 {
     class ProjectModel
     {
-        public int createProject(int userId, Project project)
+        public ProjectApiModel createProject(int userId, Project project)
         {
-            int state;
+            ProjectApiModel model = new ProjectApiModel();
             var req = WebRequest.Create(Server.ApiUrl + "/projects/" + userId);
             req.Method = "POST";
             req.ContentType = "application/json";
@@ -32,9 +32,14 @@ namespace IssueTrackingSystem.Model
             {
                 var projectData = reader.ReadToEnd();
                 dynamic projectApiModel = JsonConvert.DeserializeObject<dynamic>(projectData);
-                state = projectApiModel.state;
+                model.State = projectApiModel.state;
+                model.ProjectContext.ProjectId = projectApiModel.project.projectId;
+                model.ProjectContext.ProjectName = projectApiModel.project.projectName;
+                model.ProjectContext.Description = projectApiModel.project.description;
+                model.ProjectContext.Manager = projectApiModel.project.manager;
+                model.ProjectContext.TimeStamp = DateTime.FromFileTime(long.Parse((string)projectApiModel.project.timeStamp));
             }
-            return state;
+            return model;
         }
 
         public Project getProjectInfo(int userId, int projectId)
@@ -149,9 +154,9 @@ namespace IssueTrackingSystem.Model
             return projectList;
         }
 
-        public int updateProjectInfo(int userId, Project project)
+        public ProjectApiModel updateProjectInfo(int userId, Project project)
         {
-            int state = 0;
+            ProjectApiModel model = new ProjectApiModel();
             var req = WebRequest.Create(Server.ApiUrl + "/projects/" + userId + "/" + project.ProjectId);
             req.Method = "PUT";
             req.ContentType = "application/json";
@@ -167,9 +172,14 @@ namespace IssueTrackingSystem.Model
             {
                 var projectData = reader.ReadToEnd();
                 dynamic projectApiModel = JsonConvert.DeserializeObject<dynamic>(projectData);
-                state = projectApiModel.state;
+                model.State = projectApiModel.state;
+                model.ProjectContext.ProjectId = projectApiModel.project.projectId;
+                model.ProjectContext.ProjectName = projectApiModel.project.projectName;
+                model.ProjectContext.Description = projectApiModel.project.description;
+                model.ProjectContext.Manager = projectApiModel.project.manager;
+                model.ProjectContext.TimeStamp = DateTime.FromFileTime(long.Parse((string)projectApiModel.project.timeStamp));
             }
-            return state;
+            return model;
         }
 
         public void deleteProject()

@@ -33,6 +33,7 @@
             this._destriptionText = new System.Windows.Forms.TextBox();
             this._descriptionInput = new System.Windows.Forms.TextBox();
             this._createUpdate = new System.Windows.Forms.Button();
+            this._errorMessage = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // _projectNameText
@@ -43,6 +44,7 @@
             this._projectNameText.ReadOnly = true;
             this._projectNameText.Size = new System.Drawing.Size(100, 15);
             this._projectNameText.TabIndex = 2;
+            this._projectNameText.TabStop = false;
             this._projectNameText.Text = "ProjectName:";
             this._projectNameText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -61,6 +63,7 @@
             this._destriptionText.ReadOnly = true;
             this._destriptionText.Size = new System.Drawing.Size(100, 15);
             this._destriptionText.TabIndex = 4;
+            this._destriptionText.TabStop = false;
             this._destriptionText.Text = "Destription:";
             this._destriptionText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -81,11 +84,23 @@
             this._createUpdate.UseVisualStyleBackColor = true;
             this._createUpdate.Click += new System.EventHandler(this.ClickCreateUpdate);
             // 
+            // _errorMessage
+            // 
+            this._errorMessage.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this._errorMessage.Font = new System.Drawing.Font("PMingLiU", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this._errorMessage.Location = new System.Drawing.Point(296, 512);
+            this._errorMessage.Name = "_errorMessage";
+            this._errorMessage.ReadOnly = true;
+            this._errorMessage.Size = new System.Drawing.Size(175, 32);
+            this._errorMessage.TabIndex = 7;
+            this._errorMessage.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // CreateUpdateProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this._errorMessage);
             this.Controls.Add(this._createUpdate);
             this.Controls.Add(this._descriptionInput);
             this.Controls.Add(this._destriptionText);
@@ -98,6 +113,7 @@
             this.Controls.SetChildIndex(this._destriptionText, 0);
             this.Controls.SetChildIndex(this._descriptionInput, 0);
             this.Controls.SetChildIndex(this._createUpdate, 0);
+            this.Controls.SetChildIndex(this._errorMessage, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -110,5 +126,6 @@
         private System.Windows.Forms.TextBox _destriptionText;
         private System.Windows.Forms.TextBox _descriptionInput;
         private System.Windows.Forms.Button _createUpdate;
+        private System.Windows.Forms.TextBox _errorMessage;
     }
 }

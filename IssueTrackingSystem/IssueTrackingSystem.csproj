@@ -105,6 +105,7 @@
     <Compile Include="ITS\View\issueHistoryBlock.Designer.cs">
       <DependentUpon>issueHistoryBlock.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\ApiModel\ProjectApiModel.cs" />
     <Compile Include="Model\ApiModel\UserApiModel.cs" />
     <Compile Include="Model\DataModel\Issue.cs" />
     <Compile Include="Model\DataModel\Project.cs" />

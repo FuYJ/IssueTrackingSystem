@@ -25,28 +25,26 @@ namespace IssueTrackingSystem.PMS.View
 
         private void ClickCreateUpdate(object sender, EventArgs e)
         {
-            int state;
+            ProjectApiModel model = new ProjectApiModel();
             Project project = new Project();
             project.ProjectName = _projectNameInput.Text;
             project.Description = _descriptionInput.Text;
-            state = controller.CreateUpdateProject(_createUpdate.Text, project);
-            HandleErrorMessage(state);
+            model = controller.CreateUpdateProject(_createUpdate.Text, project);
+            HandleErrorMessage(model);
         }
 
-/*        private void CreateProject()
+        private void HandleErrorMessage(ProjectApiModel model)
         {
-            User user = SecurityModel.getInstance().AuthenticatedUser;
-            ProjectModel projectModel = new ProjectModel();
-            Project project = new Project();
-            ProjectMainMenu main = new ProjectMainMenu();
-            project.ProjectName = _projectNameInput.Text;
-            project.Description = _descriptionInput.Text;
-            int state  = projectModel.createProject(user.UserId, project);
-        }*/
-
-        private void HandleErrorMessage(int state)
-        {
-
+            if(model.State == 0)
+            {
+                ProjectMainMenu main = new ProjectMainMenu(model.ProjectContext);
+                main.Show();
+                this.Close();
+            }
+            else
+            {
+                _errorMessage.Text = "建立失敗";
+            }
         }
     }
 }

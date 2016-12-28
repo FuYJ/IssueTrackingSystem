@@ -38,19 +38,57 @@ namespace IssueTrackingSystem.Model
             return state;
         }
 
-        public List<ProjectMember> getMemberByProjectId(ProjectMember member)
+        public List<ProjectMember> getMemberByProjectId(ProjectMember member, String joined)
         {
-            List<ProjectMember> memberList = null;
-/*            var req = WebRequest.Create(Server.ApiUrl + "/members/list/" + member.UserId + "/" + member.ProjectId);
+            List<ProjectMember> memberList = new List<ProjectMember>();
+            var req = WebRequest.Create(Server.ApiUrl + "/members/list/" + member.UserId + "/" + member.ProjectId);
             req.Method = "GET";
             var resp = (HttpWebResponse)req.GetResponse();
             using (var reader = new StreamReader(resp.GetResponseStream()))
             {
                 var membertData = reader.ReadToEnd();
                 dynamic memberApiModel = JsonConvert.DeserializeObject<dynamic>(membertData);
-                state = memberApiModel.State;
-            }*/
+                int state = memberApiModel.State;
+                if(state == 0)
+                {
+                    foreach (dynamic o in memberApiModel.list)
+                    {
+                        ProjectMember projectMember = new ProjectMember();
+                        projectMember.UserId = o.userId;
+                        projectMember.Role = o.role;
+                        if (joined.Equals(o.isJoined))
+                        {
+                            memberList.Add(projectMember);
+                        }
+                    }
+                }
+            }
             return memberList;
+        }
+
+        public int updateInfo(ProjectMember member, String joined)
+        {
+            int state = 0;
+            var req = WebRequest.Create(Server.ApiUrl + "/members/put/" + member.UserId + "/" + member.ProjectId);
+            req.Method = "POST";
+            req.ContentType = "application/json";
+            String contentData = "{\"userId\":\"" + member.UserId + "\"," +
+                                  "\"role\":\"" + member.Role + "\"," +
+                                  "\"isJoined\":\"" + joined + "\"}";
+            using (var writer = new StreamWriter(req.GetRequestStream()))
+            {
+                writer.Write(contentData);
+            }
+
+            var resp = (HttpWebResponse)req.GetResponse();
+            using (var reader = new StreamReader(resp.GetResponseStream()))
+            {
+                var membertData = reader.ReadToEnd();
+                dynamic memberApiModel = JsonConvert.DeserializeObject<dynamic>(membertData);
+                state = memberApiModel.State;
+            }
+
+            return state;
         }
     }
 }
