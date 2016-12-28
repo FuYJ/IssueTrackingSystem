@@ -29,7 +29,7 @@ namespace IssueTrackingSystem.View
 
         private void createProjectButtonClicked(object sender, EventArgs e)
         {
-            CreateUpdateProject createProject = new CreateUpdateProject("Create");
+            CreateUpdateProject createProject = new CreateUpdateProject(Project.CREATE);
             createProject.Show();
         }
     }

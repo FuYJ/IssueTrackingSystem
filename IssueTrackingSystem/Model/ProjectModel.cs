@@ -14,8 +14,9 @@ namespace IssueTrackingSystem.Model
 {
     class ProjectModel
     {
-        public void createProject(int userId, Project project)
+        public int createProject(int userId, Project project)
         {
+            int state;
             var req = WebRequest.Create(Server.ApiUrl + "/projects/" + userId);
             req.Method = "POST";
             req.ContentType = "application/json";
@@ -31,57 +32,161 @@ namespace IssueTrackingSystem.Model
             {
                 var projectData = reader.ReadToEnd();
                 dynamic projectApiModel = JsonConvert.DeserializeObject<dynamic>(projectData);
-                if (projectApiModel.state == 0)
+                state = projectApiModel.State;
+            }
+            return state;
+        }
+
+        public Project getProjectInfo(int userId, int projectId)
+        {
+            Project project = null;
+            var req = WebRequest.Create(Server.ApiUrl + "/projects/" + userId + "/" + projectId);
+            req.Method = "GET";
+
+            var resp = (HttpWebResponse)req.GetResponse();
+            using (var reader = new StreamReader(resp.GetResponseStream()))
+            {
+                var projectData = reader.ReadToEnd();
+                dynamic projectApiModel = JsonConvert.DeserializeObject<dynamic>(projectData);
+                if(projectApiModel.state == 0)
                 {
-/*                    foreach (dynamic o in projectApiModel.list)
-                    {
-                        User user = new User();
-                        user.Authority = formatUserRoleToAuthority(o.userRole);
-                        user.UserId = o.userId;
-                        user.UserName = o.name;
-                        user.EmailAddress = o.emailAddress;
-                        user.JoinedProjects = getJoinedProjectsByUser(user.UserId);
-                        user.InvitedProjects = getInvitedProjectsByUser(user.UserId);
-                        user.Issues = new List<Issue>();
-                        userList.Add(user);
-                    }*/
+                    project = new Project();
+                    project.ProjectId = Int32.Parse(projectApiModel.ProjectId);
+                    project.ProjectName = projectApiModel.ProjectName;
+                    project.Description = projectApiModel.Description;
+                    project.Manager = projectApiModel.Manager;
+                    project.TimeStamp = DateTime.FromFileTime(long.Parse((string)projectApiModel.timeStamp));
                 }
-                else {
-                    
+                else
+                {
+                    project = null;
                 }
             }
+            return project;
         }
 
-        public void getProjectInfo()
+        public List<Project> getProjectListByUserId(int userId)
         {
+            List<Project> projectList = null;
+            var req = WebRequest.Create(Server.ApiUrl + "/projects/list/" + userId);
+            req.Method = "GET";
 
+            var resp = (HttpWebResponse)req.GetResponse();
+            using (var reader = new StreamReader(resp.GetResponseStream()))
+            {
+                var projectData = reader.ReadToEnd();
+                dynamic projectApiModel = JsonConvert.DeserializeObject<dynamic>(projectData);
+                if (projectApiModel.state == 0)
+                {
+                    foreach (dynamic o in projectApiModel.list)
+                    {
+                        Project project = new Project();
+                        project.ProjectId = Int32.Parse(projectApiModel.ProjectId);
+                        project.ProjectName = projectApiModel.ProjectName;
+                        project.Description = projectApiModel.Description;
+                        project.Manager = projectApiModel.Manager;
+                        project.TimeStamp = DateTime.FromFileTime(long.Parse((string)projectApiModel.timeStamp));
+                        projectList.Add(project);
+                    }
+                }
+                else
+                {
+                    projectList = null;
+                }
+            }
+            return projectList;
         }
 
-        public void getProjectListByUserId()
+        public List<Project> getInvitedProjectListByUserId(int userId)
         {
+            List<Project> projectList = null;
+            var req = WebRequest.Create(Server.ApiUrl + "/projects/" + userId);
+            req.Method = "GET";
 
+            var resp = (HttpWebResponse)req.GetResponse();
+            using (var reader = new StreamReader(resp.GetResponseStream()))
+            {
+                var projectData = reader.ReadToEnd();
+                dynamic projectApiModel = JsonConvert.DeserializeObject<dynamic>(projectData);
+                if (projectApiModel.state == 0)
+                {
+                    foreach (dynamic o in projectApiModel.list)
+                    {
+                        Project project = new Project();
+                        project.ProjectId = Int32.Parse(projectApiModel.ProjectId);
+                        project.ProjectName = projectApiModel.ProjectName;
+                        project.Description = projectApiModel.Description;
+                        project.Manager = projectApiModel.Manager;
+                        project.TimeStamp = DateTime.FromFileTime(long.Parse((string)projectApiModel.timeStamp));
+                        projectList.Add(project);
+                    }
+                }
+                else
+                {
+                    projectList = null;
+                }
+            }
+            return projectList;
         }
 
-        public void getInvitedProjectListByUserId()
+        public List<Project> getAllProjectList(int userId)
         {
+            List<Project> projectList = null;
+            var req = WebRequest.Create(Server.ApiUrl + "/all-projects/" + userId);
+            req.Method = "GET";
 
+            var resp = (HttpWebResponse)req.GetResponse();
+            using (var reader = new StreamReader(resp.GetResponseStream()))
+            {
+                var projectData = reader.ReadToEnd();
+                dynamic projectApiModel = JsonConvert.DeserializeObject<dynamic>(projectData);
+                if (projectApiModel.state == 0)
+                {
+                    foreach (dynamic o in projectApiModel.list)
+                    {
+                        Project project = new Project();
+                        project.ProjectId = Int32.Parse(projectApiModel.ProjectId);
+                        project.ProjectName = projectApiModel.ProjectName;
+                        project.Description = projectApiModel.Description;
+                        project.Manager = projectApiModel.Manager;
+                        project.TimeStamp = DateTime.FromFileTime(long.Parse((string)projectApiModel.timeStamp));
+                        projectList.Add(project);
+                    }
+                }
+                else
+                {
+                    projectList = null;
+                }
+            }
+            return projectList;
+        }
+
+        public int updateProjectInfo(int userId, Project project)
+        {
+            int state = 0;
+            var req = WebRequest.Create(Server.ApiUrl + "/projects/" + userId + "/" + project.ProjectId);
+            req.Method = "PUT";
+            req.ContentType = "application/json";
+            String contentData = "{\"projectName\":\"" + project.ProjectName + "\"," +
+                                  "\"description\":\"" + project.Description + "\"}";
+            using (var writer = new StreamWriter(req.GetRequestStream()))
+            {
+                writer.Write(contentData);
+            }
+
+            var resp = (HttpWebResponse)req.GetResponse();
+            using (var reader = new StreamReader(resp.GetResponseStream()))
+            {
+                var projectData = reader.ReadToEnd();
+                dynamic projectApiModel = JsonConvert.DeserializeObject<dynamic>(projectData);
+                state = projectApiModel.State;
+            }
+            return state;
         }
 
         public void deleteProject()
         {
 
-        }
-
-        private int formatStateToProject(String state, String userId)
-        {
-            if (int.Parse(state) == 0)
-            {
-                return int.Parse(userId);
-            }
-            else
-            {
-                return 0;
-            }
         }
     }
 }

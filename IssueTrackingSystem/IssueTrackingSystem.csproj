@@ -117,6 +117,7 @@
     <Compile Include="Model\SecurityModel.cs" />
     <Compile Include="Model\UserModel.cs" />
     <Compile Include="AMS\Controller\UserController.cs" />
+    <Compile Include="PMS\Controller\CreateUpdateProjectController.cs" />
     <Compile Include="PMS\View\CreateUpdateProject.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,9 +236,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="PMS\Controller\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="src\alarm.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
