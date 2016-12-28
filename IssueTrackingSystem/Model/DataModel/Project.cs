@@ -18,6 +18,11 @@ namespace IssueTrackingSystem.Model.DataModel
         public static String CREATE = "Create";
         public static String UPDATE = "Update";
 
+        public override string ToString()
+        {
+            return this.projectName;
+        }
+
         public int ProjectId
         {
             get { return projectId; }

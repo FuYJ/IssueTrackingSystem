@@ -88,6 +88,10 @@
             this.issueSeverityComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.issueSeverityComboBox.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.issueSeverityComboBox.FormattingEnabled = true;
+            this.issueSeverityComboBox.Items.AddRange(new object[] {
+            "Optional",
+            "Important",
+            "Emergent"});
             this.issueSeverityComboBox.Location = new System.Drawing.Point(581, 84);
             this.issueSeverityComboBox.Name = "issueSeverityComboBox";
             this.issueSeverityComboBox.Size = new System.Drawing.Size(177, 24);
@@ -133,9 +137,9 @@
             this.issueStateLabel.Location = new System.Drawing.Point(581, 23);
             this.issueStateLabel.Name = "issueStateLabel";
             this.issueStateLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
-            this.issueStateLabel.Size = new System.Drawing.Size(50, 24);
+            this.issueStateLabel.Size = new System.Drawing.Size(56, 24);
             this.issueStateLabel.TabIndex = 2;
-            this.issueStateLabel.Text = "[狀態]";
+            this.issueStateLabel.Text = "待審核";
             // 
             // issueNameLabel
             // 
@@ -190,6 +194,10 @@
             this.issuePriorityComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.issuePriorityComboBox.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.issuePriorityComboBox.FormattingEnabled = true;
+            this.issuePriorityComboBox.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
             this.issuePriorityComboBox.Location = new System.Drawing.Point(211, 84);
             this.issuePriorityComboBox.Name = "issuePriorityComboBox";
             this.issuePriorityComboBox.Size = new System.Drawing.Size(176, 24);

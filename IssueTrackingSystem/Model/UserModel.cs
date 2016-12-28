@@ -85,7 +85,7 @@ namespace IssueTrackingSystem.Model
                 user.Authority = formatUserRoleToAuthority(userApiModel.UserRole);
                 user.JoinedProjects = getJoinedProjectsByUser(user.UserId);
                 user.InvitedProjects = getInvitedProjectsByUser(user.UserId);
-                user.Issues = new List<Issue>();
+                user.Issues = getIssuesByUser(user.UserId);
             }
             SecurityModel.getInstance().AuthenticatedUser = user;
             return user;
@@ -196,7 +196,7 @@ namespace IssueTrackingSystem.Model
             {
                 var userData = reader.ReadToEnd();
                 dynamic userApiModel = JsonConvert.DeserializeObject<dynamic>(userData);
-                int state = int.Parse((string)userApiModel.state);
+                int state = (int)userApiModel.state;
 
                 if (state == 0)
                 {
@@ -243,6 +243,40 @@ namespace IssueTrackingSystem.Model
                 }
             }
             return projectList;
+        }
+
+        private List<Issue> getIssuesByUser(int userId)
+        {
+            List<Issue> issueList = new List<Issue>();
+            var req = WebRequest.Create(Server.ApiUrl + "/issues/list/" + userId);
+            req.Method = "GET";
+
+            var resp = (HttpWebResponse)req.GetResponse();
+            using (var reader = new StreamReader(resp.GetResponseStream()))
+            {
+                var issueData = reader.ReadToEnd();
+                dynamic issueApiModel = JsonConvert.DeserializeObject<dynamic>(issueData);
+                if ((int)issueApiModel.state == 0)
+                {
+                    foreach (dynamic o in issueApiModel.list)
+                    {
+                        Issue issue = new Issue();
+                        issue.IssueId = o.issueId;
+                        issue.State = o.state;
+                        issue.IssueName = o.title;
+                        issue.Description = o.description;
+                        issue.Serverity = o.serverity;
+                        issue.Priority = o.priority;
+                        issue.ReporterId = o.reporterId;
+                        issue.ReportDate = DateTime.FromFileTime((long)o.reportTime);
+                        issue.PersonInChargeId = o.personInChargeId;
+                        issue.FinishDate = (o.finishTime == null) ? DateTime.MaxValue : DateTime.FromFileTime((long)o.finishTime);
+                        issue.ProjectId = o.projectId;
+                        issueList.Add(issue);
+                    }
+                }
+            }
+            return issueList;
         }
     }
 }
