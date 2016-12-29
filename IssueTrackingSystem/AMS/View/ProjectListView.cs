@@ -15,10 +15,33 @@ namespace IssueTrackingSystem.AMS.View
     {
         private List<Project> joinedProjectList;
         private List<Project> invitedProjectList;
+        private List<Project> allProjectList;
+        private User user;
         private UserModel userModel;
         private IssueModel issueModel;
         private ProjectModel projectModel;
-        private ProjectInfoController projectController = new ProjectInfoController();
+        private ProjectInfoController projectInfoController;
+        private ProjectMemberController projectMemberController;
+
+        public ProjectListView(UserModel userModel, IssueModel issueModel, ProjectModel projectModel)
+            : base(userModel, issueModel, projectModel)
+        {
+            InitializeComponent();
+            this.userModel = userModel;
+            this.issueModel = issueModel;
+            this.projectModel = projectModel;
+            projectInfoController = new ProjectInfoController();
+            projectMemberController = new ProjectMemberController();
+
+            user = SecurityModel.getInstance().AuthenticatedUser;
+            int userId = user.UserId;
+            allProjectList = projectInfoController.getAllProjectList(userId);
+
+            systemManagerTableLayoutPanel.Enabled = true;
+            systemManagerTableLayoutPanel.Visible = true;
+            generalUserTableLayoutPanel.Enabled = false;
+            generalUserTableLayoutPanel.Visible = false;
+        }
 
         public ProjectListView(int tabIndex, UserModel userModel, IssueModel issueModel, ProjectModel projectModel)
             : base(userModel, issueModel, projectModel)
@@ -27,22 +50,36 @@ namespace IssueTrackingSystem.AMS.View
             this.userModel = userModel;
             this.issueModel = issueModel;
             this.projectModel = projectModel;
+            projectInfoController = new ProjectInfoController();
+            projectMemberController = new ProjectMemberController();
 
-            int userId = SecurityModel.getInstance().AuthenticatedUser.UserId;
-            joinedProjectList = projectController.getProjectListByUserId(userId);
-            invitedProjectList = projectController.getInvitedProjectListByUserId(userId);
+            user = SecurityModel.getInstance().AuthenticatedUser;
+            int userId = user.UserId;
+            joinedProjectList = projectInfoController.getProjectListByUserId(userId);
+            invitedProjectList = projectInfoController.getInvitedProjectListByUserId(userId);
             projectTabControl.SelectTab(tabIndex);
+
+            systemManagerTableLayoutPanel.Enabled = false;
+            systemManagerTableLayoutPanel.Visible = false;
+            generalUserTableLayoutPanel.Enabled = true;
+            generalUserTableLayoutPanel.Visible = true;
         }
 
-        private void ProjectListViewLoad(object sender, EventArgs e)
+        private void projectListViewLoad(object sender, EventArgs e)
         {
-            foreach (Project project in joinedProjectList)
+            if (user.Authority == (int)User.AuthorityEnum.GeneralUser)
             {
-                joinedProjectsDataGridView.Rows.Add(new Object[] { project.ProjectId, project.ProjectName, project.Description, project.Manager, "檢視" });
+                foreach (Project project in joinedProjectList)
+                    joinedProjectsDataGridView.Rows.Add(new Object[] { project.ProjectId, project.ProjectName, project.Description, project.Manager, "檢視" });
+                foreach (Project project in invitedProjectList)
+                    invitedProjectsDataGridView.Rows.Add(new Object[] { project.ProjectId, project.ProjectName, project.Description, project.Manager, "接受", "拒絕" });
             }
-            foreach (Project project in invitedProjectList)
-            {
-                invitedProjectsDataGridView.Rows.Add(new Object[] { project.ProjectId, project.ProjectName, project.Description, project.Manager, "接受", "拒絕" });
+            else {
+                foreach (Project project in allProjectList)
+                {
+                    project.Members = projectMemberController.getMemberByProjectId(project.ProjectId, "1");
+                    allProjectsDataGridView.Rows.Add(new Object[] { project.ProjectId, project.ProjectName, project.Description, project.Manager, project.Members.Count });
+                }
             }
         }
     }

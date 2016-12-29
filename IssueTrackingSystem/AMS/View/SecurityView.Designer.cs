@@ -140,6 +140,7 @@
             this.viewUsersButton.TabIndex = 15;
             this.viewUsersButton.Text = "查看使用者列表";
             this.viewUsersButton.UseVisualStyleBackColor = true;
+            this.viewUsersButton.Click += new System.EventHandler(this.viewUsersButtonClicked);
             // 
             // viewIssuesButton
             // 
@@ -150,6 +151,7 @@
             this.viewIssuesButton.TabIndex = 14;
             this.viewIssuesButton.Text = "查看議題列表";
             this.viewIssuesButton.UseVisualStyleBackColor = true;
+            this.viewIssuesButton.Click += new System.EventHandler(this.viewIssuesButtonClicked);
             // 
             // viewProjectsButton
             // 
@@ -160,6 +162,7 @@
             this.viewProjectsButton.TabIndex = 13;
             this.viewProjectsButton.Text = "查看專案列表";
             this.viewProjectsButton.UseVisualStyleBackColor = true;
+            this.viewProjectsButton.Click += new System.EventHandler(this.viewProjectsButtonClicked);
             // 
             // usersNumberLabel
             // 
@@ -463,12 +466,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.ClientSize = new System.Drawing.Size(784, 561);
-            this.Controls.Add(this.editInfoTableLayoutPanel);
             this.Controls.Add(this.viewInfoTableLayoutPanel);
+            this.Controls.Add(this.editInfoTableLayoutPanel);
             this.Name = "SecurityView";
             this.Text = "管理者資料 - Issue Tracking System";
-            this.Controls.SetChildIndex(this.viewInfoTableLayoutPanel, 0);
             this.Controls.SetChildIndex(this.editInfoTableLayoutPanel, 0);
+            this.Controls.SetChildIndex(this.viewInfoTableLayoutPanel, 0);
             this.viewInfoTableLayoutPanel.ResumeLayout(false);
             this.securityTableLayoutPanel.ResumeLayout(false);
             this.securityTableLayoutPanel.PerformLayout();

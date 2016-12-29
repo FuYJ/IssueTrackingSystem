@@ -30,6 +30,9 @@
         {
             this.issueInfoSplitContainer = new System.Windows.Forms.SplitContainer();
             this.IssueTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.issueAssigneeComboBox = new System.Windows.Forms.ComboBox();
+            this.issueStateComboBox = new System.Windows.Forms.ComboBox();
+            this.issueSeverityComboBox = new System.Windows.Forms.ComboBox();
             this.issueAssigneeTitleLabel = new System.Windows.Forms.Label();
             this.issueReportDateLabel = new System.Windows.Forms.Label();
             this.issueReportDateTitleLabel = new System.Windows.Forms.Label();
@@ -43,11 +46,10 @@
             this.issueDescriptionRichTextBox = new System.Windows.Forms.RichTextBox();
             this.submitButton = new System.Windows.Forms.Button();
             this.issuePriorityComboBox = new System.Windows.Forms.ComboBox();
-            this.issueSeverityComboBox = new System.Windows.Forms.ComboBox();
-            this.issueStateComboBox = new System.Windows.Forms.ComboBox();
-            this.issueAssigneeComboBox = new System.Windows.Forms.ComboBox();
+            this.issueHistoryFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.issueInfoSplitContainer)).BeginInit();
             this.issueInfoSplitContainer.Panel1.SuspendLayout();
+            this.issueInfoSplitContainer.Panel2.SuspendLayout();
             this.issueInfoSplitContainer.SuspendLayout();
             this.IssueTableLayoutPanel.SuspendLayout();
             this.issueDescriptionGroupBox.SuspendLayout();
@@ -67,6 +69,7 @@
             // issueInfoSplitContainer.Panel2
             // 
             this.issueInfoSplitContainer.Panel2.AutoScroll = true;
+            this.issueInfoSplitContainer.Panel2.Controls.Add(this.issueHistoryFlowLayoutPanel);
             this.issueInfoSplitContainer.Size = new System.Drawing.Size(784, 512);
             this.issueInfoSplitContainer.SplitterDistance = 193;
             this.issueInfoSplitContainer.TabIndex = 2;
@@ -109,6 +112,39 @@
             this.IssueTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.IssueTableLayoutPanel.Size = new System.Drawing.Size(784, 193);
             this.IssueTableLayoutPanel.TabIndex = 0;
+            // 
+            // issueAssigneeComboBox
+            // 
+            this.issueAssigneeComboBox.Enabled = false;
+            this.issueAssigneeComboBox.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.issueAssigneeComboBox.FormattingEnabled = true;
+            this.issueAssigneeComboBox.Location = new System.Drawing.Point(198, 72);
+            this.issueAssigneeComboBox.Margin = new System.Windows.Forms.Padding(0);
+            this.issueAssigneeComboBox.Name = "issueAssigneeComboBox";
+            this.issueAssigneeComboBox.Size = new System.Drawing.Size(121, 20);
+            this.issueAssigneeComboBox.TabIndex = 20;
+            // 
+            // issueStateComboBox
+            // 
+            this.issueStateComboBox.Enabled = false;
+            this.issueStateComboBox.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.issueStateComboBox.FormattingEnabled = true;
+            this.issueStateComboBox.Location = new System.Drawing.Point(588, 3);
+            this.issueStateComboBox.Margin = new System.Windows.Forms.Padding(0);
+            this.issueStateComboBox.Name = "issueStateComboBox";
+            this.issueStateComboBox.Size = new System.Drawing.Size(121, 20);
+            this.issueStateComboBox.TabIndex = 19;
+            // 
+            // issueSeverityComboBox
+            // 
+            this.issueSeverityComboBox.Enabled = false;
+            this.issueSeverityComboBox.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.issueSeverityComboBox.FormattingEnabled = true;
+            this.issueSeverityComboBox.Location = new System.Drawing.Point(588, 26);
+            this.issueSeverityComboBox.Margin = new System.Windows.Forms.Padding(0);
+            this.issueSeverityComboBox.Name = "issueSeverityComboBox";
+            this.issueSeverityComboBox.Size = new System.Drawing.Size(121, 20);
+            this.issueSeverityComboBox.TabIndex = 18;
             // 
             // issueAssigneeTitleLabel
             // 
@@ -258,38 +294,13 @@
             this.issuePriorityComboBox.Size = new System.Drawing.Size(121, 20);
             this.issuePriorityComboBox.TabIndex = 17;
             // 
-            // issueSeverityComboBox
+            // issueHistoryFlowLayoutPanel
             // 
-            this.issueSeverityComboBox.Enabled = false;
-            this.issueSeverityComboBox.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.issueSeverityComboBox.FormattingEnabled = true;
-            this.issueSeverityComboBox.Location = new System.Drawing.Point(588, 26);
-            this.issueSeverityComboBox.Margin = new System.Windows.Forms.Padding(0);
-            this.issueSeverityComboBox.Name = "issueSeverityComboBox";
-            this.issueSeverityComboBox.Size = new System.Drawing.Size(121, 20);
-            this.issueSeverityComboBox.TabIndex = 18;
-            // 
-            // issueStateComboBox
-            // 
-            this.issueStateComboBox.Enabled = false;
-            this.issueStateComboBox.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.issueStateComboBox.FormattingEnabled = true;
-            this.issueStateComboBox.Location = new System.Drawing.Point(588, 3);
-            this.issueStateComboBox.Margin = new System.Windows.Forms.Padding(0);
-            this.issueStateComboBox.Name = "issueStateComboBox";
-            this.issueStateComboBox.Size = new System.Drawing.Size(121, 20);
-            this.issueStateComboBox.TabIndex = 19;
-            // 
-            // issueAssigneeComboBox
-            // 
-            this.issueAssigneeComboBox.Enabled = false;
-            this.issueAssigneeComboBox.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.issueAssigneeComboBox.FormattingEnabled = true;
-            this.issueAssigneeComboBox.Location = new System.Drawing.Point(198, 72);
-            this.issueAssigneeComboBox.Margin = new System.Windows.Forms.Padding(0);
-            this.issueAssigneeComboBox.Name = "issueAssigneeComboBox";
-            this.issueAssigneeComboBox.Size = new System.Drawing.Size(121, 20);
-            this.issueAssigneeComboBox.TabIndex = 20;
+            this.issueHistoryFlowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.issueHistoryFlowLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.issueHistoryFlowLayoutPanel.Name = "issueHistoryFlowLayoutPanel";
+            this.issueHistoryFlowLayoutPanel.Size = new System.Drawing.Size(784, 315);
+            this.issueHistoryFlowLayoutPanel.TabIndex = 0;
             // 
             // IssueInfoView
             // 
@@ -301,6 +312,7 @@
             this.Load += new System.EventHandler(this.IssueInfoViewLoad);
             this.Controls.SetChildIndex(this.issueInfoSplitContainer, 0);
             this.issueInfoSplitContainer.Panel1.ResumeLayout(false);
+            this.issueInfoSplitContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.issueInfoSplitContainer)).EndInit();
             this.issueInfoSplitContainer.ResumeLayout(false);
             this.IssueTableLayoutPanel.ResumeLayout(false);
@@ -331,5 +343,6 @@
         private System.Windows.Forms.ComboBox issueSeverityComboBox;
         private System.Windows.Forms.ComboBox issuePriorityComboBox;
         private System.Windows.Forms.ComboBox issueAssigneeComboBox;
+        private System.Windows.Forms.FlowLayoutPanel issueHistoryFlowLayoutPanel;
     }
 }

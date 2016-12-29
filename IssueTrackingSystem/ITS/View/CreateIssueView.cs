@@ -37,8 +37,10 @@ namespace IssueTrackingSystem.ITS.View
             {
                 projectComboBox.Items.Add(project);
             }
-
-            projectComboBox.SelectedIndex = 0;
+            if (projectList.Count > 0)
+            {
+                projectComboBox.SelectedIndex = 0;
+            }
             issuePriorityComboBox.SelectedIndex = 0;
             issueSeverityComboBox.SelectedIndex = 0;
         }

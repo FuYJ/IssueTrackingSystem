@@ -47,12 +47,17 @@ namespace IssueTrackingSystem.AMS.View
 
         private void finishEditButtonClicked(object sender, EventArgs e)
         {
+            if (editUsernameTextBox.Text == String.Empty)
+                errorProvider.SetError(editUsernameTextBox, "名稱不得為空");
+            if (editEmailAddressTextBox.Text == String.Empty)
+                errorProvider.SetError(editEmailAddressTextBox, "郵件地址不得為空");
             if (errorProvider.GetError(editConfirmPasswordTextBox) != String.Empty)
                 return;
+
             User user = SecurityModel.getInstance().AuthenticatedUser;
-            user.UserName = editUsernameTextBox.Text;
+            user.UserName = (editUsernameTextBox.Text == user.UserName) ? "" : editUsernameTextBox.Text;
             user.Password = (editPasswordTextBox.Text == String.Empty) ? "" : editPasswordTextBox.Text;
-            user.EmailAddress = editEmailAddressTextBox.Text;
+            user.EmailAddress = (editEmailAddressTextBox.Text == user.EmailAddress) ? "" : editEmailAddressTextBox.Text;
             userController.updateUser(user);
             viewInfoTableLayoutPanel.Visible = true;
             editInfoTableLayoutPanel.Visible = false;

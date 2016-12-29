@@ -1,4 +1,5 @@
 ﻿using IssueTrackingSystem.AMS.Controller;
+using IssueTrackingSystem.ITS.View;
 using IssueTrackingSystem.Model;
 using IssueTrackingSystem.Model.DataModel;
 using System;
@@ -46,6 +47,10 @@ namespace IssueTrackingSystem.AMS.View
 
         private void finishEditButtonClicked(object sender, EventArgs e)
         {
+            if (editUsernameTextBox.Text == String.Empty)
+                errorProvider.SetError(editUsernameTextBox, "名稱不得為空");
+            if (editEmailAddressTextBox.Text == String.Empty)
+                errorProvider.SetError(editEmailAddressTextBox, "郵件地址不得為空");
             if (errorProvider.GetError(editConfirmPasswordTextBox) != String.Empty)
                 return;
             User user = SecurityModel.getInstance().AuthenticatedUser;
@@ -66,6 +71,24 @@ namespace IssueTrackingSystem.AMS.View
             else {
                 errorProvider.SetError(editConfirmPasswordTextBox, String.Empty);
             }
+        }
+
+        private void viewProjectsButtonClicked(object sender, EventArgs e)
+        {
+            ProjectListView projectListView = new ProjectListView(0, userModel, issueModel, projectModel);
+            projectListView.Show();
+        }
+
+        private void viewIssuesButtonClicked(object sender, EventArgs e)
+        {
+            IssueListView issueListView = new IssueListView(userModel, issueModel, projectModel);
+            issueListView.Show();
+        }
+
+        private void viewUsersButtonClicked(object sender, EventArgs e)
+        {
+            UserListView userListView = new UserListView(userModel, issueModel, projectModel);
+            userListView.Show();
         }
     }
 }

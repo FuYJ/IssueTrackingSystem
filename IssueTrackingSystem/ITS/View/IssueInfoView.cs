@@ -38,7 +38,6 @@ namespace IssueTrackingSystem.ITS.View
             projectMemberController = new ProjectMemberController();
 
             issueDetails = issueController.getIssuedetails(issueId);
-            projectMembers = projectMemberController.getMemberByProjectId(issueDetails[0].ProjectId, "1");
         }
 
         private void IssueInfoViewLoad(object sender, EventArgs e)
@@ -88,6 +87,8 @@ namespace IssueTrackingSystem.ITS.View
 
         private void updateIssueInfoView()
         {
+            this.Text = issueDetails[0].IssueName;
+
             reporter = userController.getUser(issueDetails[0].ReporterId);
             assignee = userController.getUser(issueDetails[0].PersonInChargeId);
 
@@ -99,6 +100,24 @@ namespace IssueTrackingSystem.ITS.View
             issueReportDateLabel.Text = issueDetails[0].ReportDate.ToString();
             issueAssigneeComboBox.Text = assignee.UserName;
             issueDescriptionRichTextBox.Text = issueDetails[0].Description;
+
+            foreach (Issue issue in issueDetails) {
+                if (issue.IssueId != issueDetails[0].IssueId)
+                {
+                    issueHistoryBlock block = new issueHistoryBlock();
+                    reporter = userController.getUser(issue.ReporterId);
+                    assignee = userController.getUser(issue.PersonInChargeId);
+                    block.issueNameLabel.Text = issue.IssueName;
+                    block.issueStateLabel.Text = issue.State;
+                    block.issueReporterLabel.Text = reporter.UserName;
+                    block.issueReportDateLabel.Text = issue.ReportDate.ToString();
+                    block.issueAssigneeLabel.Text = assignee.UserName;
+                    block.issueFinishDateLabel.Text = issue.FinishDate.ToString();
+                    block.issueDescriptionRichTextBox.Text = issue.Description;
+                    issueHistoryFlowLayoutPanel.Controls.Add(block);
+                }
+
+            }
         }
     }
 }

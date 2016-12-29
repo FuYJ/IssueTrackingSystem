@@ -68,7 +68,7 @@ namespace IssueTrackingSystem.ITS.View
             {
                 User reporter = userController.getUser(issue.ReporterId);
                 User personInCharge = userController.getUser(issue.PersonInChargeId);
-                issuesDataGridView.Rows.Add(new Object[] { issue.IssueId, issue.IssueName, issue.Priority, issue.Serverity, reporter.UserName, personInCharge.UserName, issue.ReportDate, issue.FinishDate, issue.State });
+                issuesDataGridView.Rows.Add(new Object[] { issue.IssueId, issue.IssueName, issue.Priority, issue.Serverity, reporter.UserName, personInCharge.UserName, issue.ReportDate, user.JoinedProjects.Find(x => x.ProjectId == issue.ProjectId).ProjectName, issue.State });
             }
         }
 

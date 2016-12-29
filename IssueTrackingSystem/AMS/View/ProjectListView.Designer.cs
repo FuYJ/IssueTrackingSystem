@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.mainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.generalUserTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.projectTabControl = new System.Windows.Forms.TabControl();
             this.joinedProjectsTabPage = new System.Windows.Forms.TabPage();
             this.joinedProjectsDataGridView = new System.Windows.Forms.DataGridView();
@@ -45,29 +45,39 @@
             this.invitedProjectManager = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.acceptInvitedProjectButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.denyInvitedProjectButton = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.mainTableLayoutPanel.SuspendLayout();
+            this.allProjectsDataGridView = new System.Windows.Forms.DataGridView();
+            this.systemManagerTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.projectId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.projectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.projectManager = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.memberNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.generalUserTableLayoutPanel.SuspendLayout();
             this.projectTabControl.SuspendLayout();
             this.joinedProjectsTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.joinedProjectsDataGridView)).BeginInit();
             this.invitedProjectsTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.invitedProjectsDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.allProjectsDataGridView)).BeginInit();
+            this.systemManagerTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // mainTableLayoutPanel
+            // generalUserTableLayoutPanel
             // 
-            this.mainTableLayoutPanel.ColumnCount = 1;
-            this.mainTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.mainTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.mainTableLayoutPanel.Controls.Add(this.projectTabControl, 0, 0);
-            this.mainTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainTableLayoutPanel.Location = new System.Drawing.Point(0, 49);
-            this.mainTableLayoutPanel.Name = "mainTableLayoutPanel";
-            this.mainTableLayoutPanel.Padding = new System.Windows.Forms.Padding(10);
-            this.mainTableLayoutPanel.RowCount = 1;
-            this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.mainTableLayoutPanel.Size = new System.Drawing.Size(784, 512);
-            this.mainTableLayoutPanel.TabIndex = 2;
+            this.generalUserTableLayoutPanel.ColumnCount = 1;
+            this.generalUserTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.generalUserTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.generalUserTableLayoutPanel.Controls.Add(this.projectTabControl, 0, 0);
+            this.generalUserTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.generalUserTableLayoutPanel.Location = new System.Drawing.Point(0, 49);
+            this.generalUserTableLayoutPanel.Name = "generalUserTableLayoutPanel";
+            this.generalUserTableLayoutPanel.Padding = new System.Windows.Forms.Padding(10);
+            this.generalUserTableLayoutPanel.RowCount = 3;
+            this.generalUserTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.generalUserTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.generalUserTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.generalUserTableLayoutPanel.Size = new System.Drawing.Size(784, 512);
+            this.generalUserTableLayoutPanel.TabIndex = 2;
             // 
             // projectTabControl
             // 
@@ -77,7 +87,7 @@
             this.projectTabControl.Location = new System.Drawing.Point(13, 13);
             this.projectTabControl.Name = "projectTabControl";
             this.projectTabControl.SelectedIndex = 0;
-            this.projectTabControl.Size = new System.Drawing.Size(758, 486);
+            this.projectTabControl.Size = new System.Drawing.Size(758, 446);
             this.projectTabControl.TabIndex = 0;
             // 
             // joinedProjectsTabPage
@@ -150,7 +160,7 @@
             this.invitedProjectsTabPage.Location = new System.Drawing.Point(4, 22);
             this.invitedProjectsTabPage.Name = "invitedProjectsTabPage";
             this.invitedProjectsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.invitedProjectsTabPage.Size = new System.Drawing.Size(750, 460);
+            this.invitedProjectsTabPage.Size = new System.Drawing.Size(750, 420);
             this.invitedProjectsTabPage.TabIndex = 1;
             this.invitedProjectsTabPage.Text = "受邀請的專案";
             this.invitedProjectsTabPage.UseVisualStyleBackColor = true;
@@ -173,7 +183,7 @@
             this.invitedProjectsDataGridView.Name = "invitedProjectsDataGridView";
             this.invitedProjectsDataGridView.RowHeadersVisible = false;
             this.invitedProjectsDataGridView.RowTemplate.Height = 24;
-            this.invitedProjectsDataGridView.Size = new System.Drawing.Size(744, 454);
+            this.invitedProjectsDataGridView.Size = new System.Drawing.Size(744, 414);
             this.invitedProjectsDataGridView.TabIndex = 1;
             // 
             // invitedProjectId
@@ -217,22 +227,90 @@
             this.denyInvitedProjectButton.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.denyInvitedProjectButton.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // allProjectsDataGridView
+            // 
+            this.allProjectsDataGridView.AllowUserToAddRows = false;
+            this.allProjectsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.allProjectsDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.allProjectsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.allProjectsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.projectId,
+            this.projectName,
+            this.description,
+            this.projectManager,
+            this.memberNumber});
+            this.allProjectsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.allProjectsDataGridView.Location = new System.Drawing.Point(3, 3);
+            this.allProjectsDataGridView.Name = "allProjectsDataGridView";
+            this.allProjectsDataGridView.RowHeadersVisible = false;
+            this.allProjectsDataGridView.RowTemplate.Height = 24;
+            this.allProjectsDataGridView.Size = new System.Drawing.Size(778, 506);
+            this.allProjectsDataGridView.TabIndex = 2;
+            // 
+            // systemManagerTableLayoutPanel
+            // 
+            this.systemManagerTableLayoutPanel.ColumnCount = 1;
+            this.systemManagerTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.systemManagerTableLayoutPanel.Controls.Add(this.allProjectsDataGridView, 0, 0);
+            this.systemManagerTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.systemManagerTableLayoutPanel.Location = new System.Drawing.Point(0, 49);
+            this.systemManagerTableLayoutPanel.Name = "systemManagerTableLayoutPanel";
+            this.systemManagerTableLayoutPanel.RowCount = 1;
+            this.systemManagerTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.systemManagerTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.systemManagerTableLayoutPanel.Size = new System.Drawing.Size(784, 512);
+            this.systemManagerTableLayoutPanel.TabIndex = 2;
+            // 
+            // projectId
+            // 
+            this.projectId.FillWeight = 21.31845F;
+            this.projectId.HeaderText = "ID";
+            this.projectId.Name = "projectId";
+            // 
+            // projectName
+            // 
+            this.projectName.FillWeight = 57.54066F;
+            this.projectName.HeaderText = "專案名稱";
+            this.projectName.Name = "projectName";
+            // 
+            // description
+            // 
+            this.description.FillWeight = 286.7903F;
+            this.description.HeaderText = "簡介";
+            this.description.Name = "description";
+            // 
+            // projectManager
+            // 
+            this.projectManager.FillWeight = 83.58919F;
+            this.projectManager.HeaderText = "負責人";
+            this.projectManager.Name = "projectManager";
+            // 
+            // memberNumber
+            // 
+            this.memberNumber.FillWeight = 50.76143F;
+            this.memberNumber.HeaderText = "專案人數";
+            this.memberNumber.Name = "memberNumber";
+            // 
             // ProjectListView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.ClientSize = new System.Drawing.Size(784, 561);
-            this.Controls.Add(this.mainTableLayoutPanel);
+            this.Controls.Add(this.systemManagerTableLayoutPanel);
+            this.Controls.Add(this.generalUserTableLayoutPanel);
             this.Name = "ProjectListView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "專案列表  - Issue Tracking System";
-            this.Load += new System.EventHandler(this.ProjectListViewLoad);
-            this.Controls.SetChildIndex(this.mainTableLayoutPanel, 0);
-            this.mainTableLayoutPanel.ResumeLayout(false);
+            this.Load += new System.EventHandler(this.projectListViewLoad);
+            this.Controls.SetChildIndex(this.generalUserTableLayoutPanel, 0);
+            this.Controls.SetChildIndex(this.systemManagerTableLayoutPanel, 0);
+            this.generalUserTableLayoutPanel.ResumeLayout(false);
             this.projectTabControl.ResumeLayout(false);
             this.joinedProjectsTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.joinedProjectsDataGridView)).EndInit();
             this.invitedProjectsTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.invitedProjectsDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.allProjectsDataGridView)).EndInit();
+            this.systemManagerTableLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -240,7 +318,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel mainTableLayoutPanel;
+        private System.Windows.Forms.TableLayoutPanel generalUserTableLayoutPanel;
         private System.Windows.Forms.TabControl projectTabControl;
         private System.Windows.Forms.TabPage joinedProjectsTabPage;
         private System.Windows.Forms.DataGridView joinedProjectsDataGridView;
@@ -257,5 +335,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn invitedProjectManager;
         private System.Windows.Forms.DataGridViewButtonColumn acceptInvitedProjectButton;
         private System.Windows.Forms.DataGridViewButtonColumn denyInvitedProjectButton;
+        private System.Windows.Forms.DataGridView allProjectsDataGridView;
+        private System.Windows.Forms.TableLayoutPanel systemManagerTableLayoutPanel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn projectId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn projectName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn description;
+        private System.Windows.Forms.DataGridViewTextBoxColumn projectManager;
+        private System.Windows.Forms.DataGridViewTextBoxColumn memberNumber;
     }
 }
