@@ -157,8 +157,8 @@ namespace IssueTrackingSystem.Model
         public ProjectApiModel updateProjectInfo(int userId, Project project)
         {
             ProjectApiModel model = new ProjectApiModel();
-            var req = WebRequest.Create(Server.ApiUrl + "/projects/" + userId + "/" + project.ProjectId);
-            req.Method = "PUT";
+            var req = WebRequest.Create(Server.ApiUrl + "/projects/put/" + userId + "/" + project.ProjectId);
+            req.Method = "POST";
             req.ContentType = "application/json";
             String contentData = "{\"projectName\":\"" + project.ProjectName + "\"," +
                                   "\"description\":\"" + project.Description + "\"}";

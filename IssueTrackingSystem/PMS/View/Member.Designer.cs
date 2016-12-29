@@ -34,29 +34,27 @@
             this._memberList = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this._joiningMemberTable = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this._permission = new System.Windows.Forms.TextBox();
+            this._permissionList = new System.Windows.Forms.ComboBox();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this._name = new System.Windows.Forms.TextBox();
+            this._nameInput = new System.Windows.Forms.TextBox();
+            this._inviteMember = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this._nextPage = new System.Windows.Forms.Button();
             this._previousPage = new System.Windows.Forms.Button();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this._existingMembersTable = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this._inviteMember = new System.Windows.Forms.Button();
-            this._name = new System.Windows.Forms.TextBox();
-            this._nameInput = new System.Windows.Forms.TextBox();
-            this._permission = new System.Windows.Forms.TextBox();
-            this._permissionList = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this._memberList.SuspendLayout();
-            this.tabPage1.SuspendLayout();
             this._joiningMemberTable.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -116,7 +114,6 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this._existingMembersTable);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -135,6 +132,137 @@
             this._joiningMemberTable.TabIndex = 1;
             this._joiningMemberTable.Text = "Joining Member";
             this._joiningMemberTable.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 3;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 3;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(607, 294);
+            this.tableLayoutPanel3.TabIndex = 0;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.tableLayoutPanel4);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(613, 300);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 1;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel6, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel5, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this._inviteMember, 0, 2);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 3;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.91437F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60.17126F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.91437F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(607, 294);
+            this.tableLayoutPanel4.TabIndex = 0;
+            // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.ColumnCount = 2;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel6.Controls.Add(this._permission, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this._permissionList, 1, 0);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 61);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 1;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 170F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(601, 170);
+            this.tableLayoutPanel6.TabIndex = 1;
+            // 
+            // _permission
+            // 
+            this._permission.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this._permission.Dock = System.Windows.Forms.DockStyle.Top;
+            this._permission.Location = new System.Drawing.Point(3, 3);
+            this._permission.Name = "_permission";
+            this._permission.ReadOnly = true;
+            this._permission.Size = new System.Drawing.Size(114, 15);
+            this._permission.TabIndex = 0;
+            this._permission.Text = "Permission:";
+            this._permission.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // _permissionList
+            // 
+            this._permissionList.FormattingEnabled = true;
+            this._permissionList.Items.AddRange(new object[] {
+            "general_user",
+            "developer",
+            "tester",
+            "manager"});
+            this._permissionList.Location = new System.Drawing.Point(123, 3);
+            this._permissionList.Name = "_permissionList";
+            this._permissionList.Size = new System.Drawing.Size(121, 20);
+            this._permissionList.TabIndex = 1;
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 2;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel5.Controls.Add(this._name, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this._nameInput, 1, 0);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 1;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 52F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(601, 52);
+            this.tableLayoutPanel5.TabIndex = 0;
+            // 
+            // _name
+            // 
+            this._name.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this._name.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this._name.Location = new System.Drawing.Point(3, 34);
+            this._name.Name = "_name";
+            this._name.ReadOnly = true;
+            this._name.Size = new System.Drawing.Size(114, 15);
+            this._name.TabIndex = 0;
+            this._name.Text = "Name:";
+            this._name.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // _nameInput
+            // 
+            this._nameInput.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this._nameInput.Location = new System.Drawing.Point(123, 27);
+            this._nameInput.Name = "_nameInput";
+            this._nameInput.Size = new System.Drawing.Size(475, 22);
+            this._nameInput.TabIndex = 1;
+            // 
+            // _inviteMember
+            // 
+            this._inviteMember.Dock = System.Windows.Forms.DockStyle.Right;
+            this._inviteMember.Location = new System.Drawing.Point(479, 237);
+            this._inviteMember.Name = "_inviteMember";
+            this._inviteMember.Size = new System.Drawing.Size(125, 54);
+            this._inviteMember.TabIndex = 2;
+            this._inviteMember.Text = "Invite Member";
+            this._inviteMember.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel2
             // 
@@ -172,153 +300,6 @@
             this._previousPage.Text = "Previous";
             this._previousPage.UseVisualStyleBackColor = true;
             // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.tableLayoutPanel4);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(613, 300);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "tabPage3";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // _existingMembersTable
-            // 
-            this._existingMembersTable.ColumnCount = 3;
-            this._existingMembersTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this._existingMembersTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this._existingMembersTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this._existingMembersTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._existingMembersTable.Location = new System.Drawing.Point(3, 3);
-            this._existingMembersTable.Name = "_existingMembersTable";
-            this._existingMembersTable.RowCount = 3;
-            this._existingMembersTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this._existingMembersTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this._existingMembersTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this._existingMembersTable.Size = new System.Drawing.Size(607, 294);
-            this._existingMembersTable.TabIndex = 0;
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 3;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 3;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(607, 294);
-            this.tableLayoutPanel3.TabIndex = 0;
-            // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 1;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel6, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel5, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this._inviteMember, 0, 2);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 3;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.91437F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60.17126F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.91437F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(607, 294);
-            this.tableLayoutPanel4.TabIndex = 0;
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.ColumnCount = 2;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel5.Controls.Add(this._name, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this._nameInput, 1, 0);
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 1;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(601, 52);
-            this.tableLayoutPanel5.TabIndex = 0;
-            // 
-            // tableLayoutPanel6
-            // 
-            this.tableLayoutPanel6.ColumnCount = 2;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel6.Controls.Add(this._permission, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this._permissionList, 1, 0);
-            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 61);
-            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 1;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(601, 170);
-            this.tableLayoutPanel6.TabIndex = 1;
-            // 
-            // _inviteMember
-            // 
-            this._inviteMember.Dock = System.Windows.Forms.DockStyle.Right;
-            this._inviteMember.Location = new System.Drawing.Point(479, 237);
-            this._inviteMember.Name = "_inviteMember";
-            this._inviteMember.Size = new System.Drawing.Size(125, 54);
-            this._inviteMember.TabIndex = 2;
-            this._inviteMember.Text = "Invite Member";
-            this._inviteMember.UseVisualStyleBackColor = true;
-            // 
-            // _name
-            // 
-            this._name.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this._name.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this._name.Location = new System.Drawing.Point(3, 34);
-            this._name.Name = "_name";
-            this._name.ReadOnly = true;
-            this._name.Size = new System.Drawing.Size(114, 15);
-            this._name.TabIndex = 0;
-            this._name.Text = "Name:";
-            this._name.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // _nameInput
-            // 
-            this._nameInput.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this._nameInput.Location = new System.Drawing.Point(123, 27);
-            this._nameInput.Name = "_nameInput";
-            this._nameInput.Size = new System.Drawing.Size(475, 22);
-            this._nameInput.TabIndex = 1;
-            // 
-            // _permission
-            // 
-            this._permission.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this._permission.Dock = System.Windows.Forms.DockStyle.Top;
-            this._permission.Location = new System.Drawing.Point(3, 3);
-            this._permission.Name = "_permission";
-            this._permission.ReadOnly = true;
-            this._permission.Size = new System.Drawing.Size(114, 15);
-            this._permission.TabIndex = 0;
-            this._permission.Text = "Permission:";
-            this._permission.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // _permissionList
-            // 
-            this._permissionList.FormattingEnabled = true;
-            this._permissionList.Items.AddRange(new object[] {
-            "general_user",
-            "developer",
-            "tester",
-            "manager"});
-            this._permissionList.Location = new System.Drawing.Point(123, 3);
-            this._permissionList.Name = "_permissionList";
-            this._permissionList.Size = new System.Drawing.Size(121, 20);
-            this._permissionList.TabIndex = 1;
-            // 
             // Member
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -331,15 +312,14 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this._memberList.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
             this._joiningMemberTable.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -352,7 +332,6 @@
         private System.Windows.Forms.Button _mainProject;
         private System.Windows.Forms.TabControl _memberList;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TableLayoutPanel _existingMembersTable;
         private System.Windows.Forms.TabPage _joiningMemberTable;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TabPage tabPage3;

@@ -18,6 +18,9 @@ namespace IssueTrackingSystem.PMS.View
     {
         private CreateUpdateProjectController controller = new CreateUpdateProjectController();
         private ProjectInfoController infoController = new ProjectInfoController();
+        ProjectApiModel model = new ProjectApiModel();
+        Project project = new Project();
+
         public CreateUpdateProject(String purpose, int projectId)
         {
             InitializeComponent();
@@ -26,8 +29,6 @@ namespace IssueTrackingSystem.PMS.View
 
         private void ClickCreateUpdate(object sender, EventArgs e)
         {
-            ProjectApiModel model = new ProjectApiModel();
-            Project project = new Project();
             project.ProjectName = _projectNameInput.Text;
             project.Description = _descriptionInput.Text;
             model = controller.CreateUpdateProject(_createUpdate.Text, project);
@@ -52,7 +53,7 @@ namespace IssueTrackingSystem.PMS.View
         {
             if (purpose.Equals(Project.UPDATE))
             {
-                Project project = infoController.getProjectInfo(SecurityModel.getInstance().AuthenticatedUser.UserId, projectId);
+                project = infoController.getProjectInfo(SecurityModel.getInstance().AuthenticatedUser.UserId, projectId);
                 _projectNameInput.Text = project.ProjectName;
                 _descriptionInput.Text = project.Description;
             }
