@@ -15,22 +15,19 @@ namespace IssueTrackingSystem.AMS.View
     {
         private List<Project> joinedProjectList;
         private List<Project> invitedProjectList;
+        private UserModel userModel;
         private ProjectModel projectModel;
         private ProjectInfoController projectController = new ProjectInfoController();
 
-        public ProjectListView()
+        public ProjectListView(UserModel userModel, ProjectModel projectModel, int tabIndex)
         {
             InitializeComponent();
-            joinedProjectList = projectController.getProjectListByUserId(SecurityModel.getInstance().AuthenticatedUser.UserId);
-            invitedProjectList = SecurityModel.getInstance().AuthenticatedUser.JoinedProjects;
-        }
+            this.userModel = userModel;
+            this.projectModel = projectModel;
 
-        public ProjectListView(int tabIndex)
-        {
-            InitializeComponent();
             int userId = SecurityModel.getInstance().AuthenticatedUser.UserId;
             joinedProjectList = projectController.getProjectListByUserId(userId);
-            invitedProjectList = SecurityModel.getInstance().AuthenticatedUser.JoinedProjects;
+            invitedProjectList = projectController.getInvitedProjectListByUserId(userId);
             projectTabControl.SelectTab(tabIndex);
         }
 

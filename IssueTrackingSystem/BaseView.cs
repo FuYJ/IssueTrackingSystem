@@ -16,14 +16,21 @@ namespace IssueTrackingSystem.View
 {
     public partial class BaseView : Form
     {
-        public BaseView()
+        private UserModel userModel;
+        private IssueModel issueModel;
+        private ProjectModel projectModel;
+
+        public BaseView(UserModel userModel, IssueModel issueModel, ProjectModel projectModel)
         {
             InitializeComponent();
+            this.userModel = userModel;
+            this.issueModel = issueModel;
+            this.projectModel = projectModel;
         }
 
         private void userListToolStripButtonClicked(object sender, EventArgs e)
         {
-            UserListView accountListView = new UserListView();
+            UserListView accountListView = new UserListView(userModel, issueModel, projectModel);
             accountListView.Show();
         }
 

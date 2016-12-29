@@ -12,7 +12,7 @@ using Chsword;
 
 namespace IssueTrackingSystem.Model
 {
-    class ProjectModel
+    public class ProjectModel
     {
         public event ModelChangedEventHandler projectDataChanged;
         public delegate void ModelChangedEventHandler();

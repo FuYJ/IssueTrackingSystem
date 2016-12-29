@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace IssueTrackingSystem.Model
 {
-    class IssueModel
+    public class IssueModel
     {
         public event ModelChangedEventHandler issueDataChanged;
         public delegate void ModelChangedEventHandler();

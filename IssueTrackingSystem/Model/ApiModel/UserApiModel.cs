@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IssueTrackingSystem.Model.ApiModel
 {
-    class UserApiModel
+    public class UserApiModel
     {
         private String state;
         private String name;

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using IssueTrackingSystem.AMS.View;
+using IssueTrackingSystem.Model;
 
 namespace IssueTrackingSystem
 {
@@ -28,9 +29,14 @@ namespace IssueTrackingSystem
                         }
                         return false;
                     });
+
+            UserModel userModel = new UserModel();
+            IssueModel issueModel = new IssueModel();
+            ProjectModel projectModel = new ProjectModel();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginView());
+            Application.Run(new LoginView(userModel, issueModel, projectModel));
         }
     }
 }

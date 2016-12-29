@@ -13,7 +13,7 @@ using Chsword;
 
 namespace IssueTrackingSystem.Model
 {
-    class UserModel
+    public class UserModel
     {
         public event ModelChangedEventHandler userDataChanged;
         public delegate void ModelChangedEventHandler();
@@ -65,7 +65,7 @@ namespace IssueTrackingSystem.Model
                 user.Authority = formatUserRoleToAuthority(userApiModel.UserRole);
                 user.UserId = formatStateToUserId(userApiModel.State, userApiModel.UserId);
             }
-            getUserInfo(user.UserId);
+            updateAuthenticatedUser(user.UserId);
 
             return user;
         }
@@ -91,9 +91,14 @@ namespace IssueTrackingSystem.Model
                 user.InvitedProjects = getInvitedProjectsByUser(user.UserId);
                 user.Issues = getIssuesByUser(user.UserId);
             }
-            SecurityModel.getInstance().AuthenticatedUser = user;
 
             return user;
+        }
+
+        public void updateAuthenticatedUser(int userId)
+        {
+            User user = getUserInfo(userId);
+            SecurityModel.getInstance().AuthenticatedUser = user;
         }
 
         public List<User> getUserList() {
