@@ -26,5 +26,10 @@ namespace IssueTrackingSystem.PMS.Controller
         {
             return model.updateInfo(member, joined);
         }
+
+        public int deleteMember(int managerId, ProjectMember member)
+        {
+            return model.deleteMember(managerId, member);
+        }
     }
 }

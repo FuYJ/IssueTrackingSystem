@@ -120,6 +120,7 @@
     <Compile Include="AMS\Controller\UserController.cs" />
     <Compile Include="PMS\Controller\CreateUpdateProjectController.cs" />
     <Compile Include="PMS\Controller\ProjectInfoController.cs" />
+    <Compile Include="PMS\Controller\ProjectMemberController.cs" />
     <Compile Include="PMS\View\CreateUpdateProject.cs">
       <SubType>Form</SubType>
     </Compile>
