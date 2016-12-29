@@ -38,10 +38,10 @@ namespace IssueTrackingSystem.Model
             return state;
         }
 
-        public List<ProjectMember> getMemberByProjectId(ProjectMember member, String joined)
+        public List<ProjectMember> getMemberByProjectId(int projectId, bool joined)
         {
             List<ProjectMember> memberList = new List<ProjectMember>();
-            var req = WebRequest.Create(Server.ApiUrl + "/members/list/" + member.UserId + "/" + member.ProjectId);
+            var req = WebRequest.Create(Server.ApiUrl + "/members/list/" + SecurityModel.getInstance().AuthenticatedUser.UserId + "/" + projectId);
             req.Method = "GET";
             var resp = (HttpWebResponse)req.GetResponse();
             using (var reader = new StreamReader(resp.GetResponseStream()))
@@ -56,7 +56,7 @@ namespace IssueTrackingSystem.Model
                         ProjectMember projectMember = new ProjectMember();
                         projectMember.UserId = o.userId;
                         projectMember.Role = o.role;
-                        if (joined.Equals(o.isJoined))
+                        if (BooltoString(joined).Equals(o.isJoined))
                         {
                             memberList.Add(projectMember);
                         }
@@ -66,7 +66,7 @@ namespace IssueTrackingSystem.Model
             return memberList;
         }
 
-        public int updateInfo(ProjectMember member, String joined)
+        public int updateInfo(ProjectMember member, bool joined)
         {
             int state = 0;
             var req = WebRequest.Create(Server.ApiUrl + "/members/put/" + member.UserId + "/" + member.ProjectId);
@@ -74,7 +74,7 @@ namespace IssueTrackingSystem.Model
             req.ContentType = "application/json";
             String contentData = "{\"userId\":\"" + member.UserId + "\"," +
                                   "\"role\":\"" + member.Role + "\"," +
-                                  "\"isJoined\":\"" + joined + "\"}";
+                                  "\"isJoined\":\"" + BooltoString(joined) + "\"}";
             using (var writer = new StreamWriter(req.GetRequestStream()))
             {
                 writer.Write(contentData);
@@ -111,6 +111,14 @@ namespace IssueTrackingSystem.Model
                 state = memberApiModel.State;
             }
             return state;
+        }
+
+        private String BooltoString(bool value)
+        {
+            if (value)
+                return "1";
+            else
+                return "0";
         }
     }
 }

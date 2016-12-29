@@ -38,7 +38,7 @@ namespace IssueTrackingSystem.ITS.View
             projectMemberController = new ProjectMemberController();
 
             issueDetails = issueController.getIssuedetails(issueId);
-            projectMembers = projectMemberController.getMemberByProjectId(issueDetails[0].ProjectId, "1");
+//            projectMembers = projectMemberController.getMemberByProjectId(issueDetails[0].ProjectId, "1");
         }
 
         private void IssueInfoViewLoad(object sender, EventArgs e)

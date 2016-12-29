@@ -17,12 +17,12 @@ namespace IssueTrackingSystem.PMS.Controller
             return model.createMember(member);
         }
 
-        public List<ProjectMember> getMemberByProjectId(ProjectMember member, String joined)
+        public List<ProjectMember> getMemberByProjectId(int projectId, bool joined)
         {
-            return model.getMemberByProjectId(member, joined);
+            return model.getMemberByProjectId(projectId, joined);
         }
 
-        public int updateInfo(ProjectMember member, String joined)
+        public int updateInfo(ProjectMember member, bool joined)
         {
             return model.updateInfo(member, joined);
         }
