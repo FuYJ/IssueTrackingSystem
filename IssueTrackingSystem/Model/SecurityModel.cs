@@ -8,7 +8,7 @@ using System.Net;
 
 namespace IssueTrackingSystem.Model
 {
-    class SecurityModel
+    public class SecurityModel
     {
         private User authenticatedUser;
         private static SecurityModel securityModel = null;

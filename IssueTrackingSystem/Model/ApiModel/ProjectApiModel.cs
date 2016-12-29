@@ -7,7 +7,7 @@ using IssueTrackingSystem.Model.DataModel;
 
 namespace IssueTrackingSystem.Model.ApiModel
 {
-    class ProjectApiModel
+    public class ProjectApiModel
     {
         private int state;
         private Project projectContext = new Project();

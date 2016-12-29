@@ -13,15 +13,20 @@ namespace IssueTrackingSystem.AMS.View
 {
     public partial class UserListView : IssueTrackingSystem.View.BaseView
     {
+        private UserModel userModel;
+        private IssueModel issueModel;
+        private ProjectModel projectModel;
         private SecurityController securityController;
         private UserController userController;
-        private UserModel userModel;
         private List<User> userList;
 
-        public UserListView()
+        public UserListView(UserModel userModel, IssueModel issueModel, ProjectModel projectModel)
+            : base(userModel, issueModel, projectModel)
         {
             InitializeComponent();
-            userModel = new UserModel();
+            this.userModel = userModel;
+            this.issueModel = issueModel;
+            this.projectModel = projectModel;
             securityController = new SecurityController(userModel);
             userController = new UserController(userModel);
 

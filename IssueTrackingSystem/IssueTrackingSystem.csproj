@@ -139,12 +139,6 @@
     <Compile Include="PMS\View\ProjectMainMenu.Designer.cs">
       <DependentUpon>ProjectMainMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="PMS\View\Test.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PMS\View\Test.Designer.cs">
-      <DependentUpon>Test.cs</DependentUpon>
-    </Compile>
     <Compile Include="BaseView.cs">
       <SubType>Form</SubType>
     </Compile>

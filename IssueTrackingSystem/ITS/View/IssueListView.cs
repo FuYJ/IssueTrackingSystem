@@ -25,18 +25,18 @@ namespace IssueTrackingSystem.ITS.View
         private String initialKeyword;
         private int initialSearchType;
 
-        public IssueListView()
+        public IssueListView(UserModel userModel, IssueModel issueModel, ProjectModel projectModel)
+            : base(userModel, issueModel, projectModel)
         {
             InitializeComponent();
-            userModel = new UserModel();
-            issueModel = new IssueModel();
-            projectModel = new ProjectModel();
+            this.userModel = userModel;
+            this.issueModel = issueModel;
+            this.projectModel = projectModel;
             userController = new UserController(userModel);
             issueController = new IssueController(userModel, issueModel, projectModel);
             user = SecurityModel.getInstance().AuthenticatedUser;
             initialKeyword = user.UserName;
             initialSearchType = (int)Issue.SearchType.ByPersonInChargeName;
-
         }
 
         private void IssueListViewLoad(object sender, EventArgs e)
@@ -44,6 +44,7 @@ namespace IssueTrackingSystem.ITS.View
             keywordTextBox.Text = initialKeyword;
             selectSearchTypeComboBox.SelectedIndex = initialSearchType;
             issueList = issueController.listIssues(keywordTextBox.Text, selectSearchTypeComboBox.SelectedIndex);
+
             issuesDataGridView.Rows.Clear();
             foreach(Issue issue in issueList){
                 User reporter = userController.getUser(issue.ReporterId);
@@ -54,7 +55,7 @@ namespace IssueTrackingSystem.ITS.View
 
         private void createIssueButtonClicked(object sender, EventArgs e)
         {
-            CreateIssueView createIssueView = new CreateIssueView();
+            CreateIssueView createIssueView = new CreateIssueView(userModel, issueModel, projectModel);
             createIssueView.Show(this);
             this.Hide();
         }
@@ -71,11 +72,11 @@ namespace IssueTrackingSystem.ITS.View
             }
         }
 
-        private void issuesDataGridViewCellContentDoubleClicked(object sender, DataGridViewCellEventArgs e)
+        private void issuesDataGridViewCellDoubleClicked(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex > 0 && e.RowIndex < issuesDataGridView.RowCount)
+            if (e.RowIndex >= 0 && e.RowIndex < issuesDataGridView.RowCount)
             {
-                IssueInfoView issueInfoView = new IssueInfoView((int)issuesDataGridView.Rows[e.RowIndex].Cells[0].Value);
+                IssueInfoView issueInfoView = new IssueInfoView((int)issuesDataGridView.Rows[e.RowIndex].Cells[0].Value, userModel, issueModel, projectModel);
                 issueInfoView.Show(this);
             }
         }

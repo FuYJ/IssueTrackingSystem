@@ -13,8 +13,11 @@ using Chsword;
 
 namespace IssueTrackingSystem.Model
 {
-    class UserModel
+    public class UserModel
     {
+        public event ModelChangedEventHandler userDataChanged;
+        public delegate void ModelChangedEventHandler();
+
         public User createUser(User user)
         {
             var req = WebRequest.Create(Server.ApiUrl + "/users");
@@ -62,7 +65,8 @@ namespace IssueTrackingSystem.Model
                 user.Authority = formatUserRoleToAuthority(userApiModel.UserRole);
                 user.UserId = formatStateToUserId(userApiModel.State, userApiModel.UserId);
             }
-            getUserInfo(user.UserId);
+            updateAuthenticatedUser(user.UserId);
+
             return user;
         }
 
@@ -85,10 +89,16 @@ namespace IssueTrackingSystem.Model
                 user.Authority = formatUserRoleToAuthority(userApiModel.UserRole);
                 user.JoinedProjects = getJoinedProjectsByUser(user.UserId);
                 user.InvitedProjects = getInvitedProjectsByUser(user.UserId);
-                user.Issues = new List<Issue>();
+                user.Issues = getIssuesByUser(user.UserId);
             }
-            SecurityModel.getInstance().AuthenticatedUser = user;
+
             return user;
+        }
+
+        public void updateAuthenticatedUser(int userId)
+        {
+            User user = getUserInfo(userId);
+            SecurityModel.getInstance().AuthenticatedUser = user;
         }
 
         public List<User> getUserList() {
@@ -113,7 +123,7 @@ namespace IssueTrackingSystem.Model
                         user.EmailAddress = o.emailAddress;
                         user.JoinedProjects = getJoinedProjectsByUser(user.UserId);
                         user.InvitedProjects = getInvitedProjectsByUser(user.UserId);
-                        user.Issues = new List<Issue>();
+                        user.Issues = getIssuesByUser(user.UserId);
                         userList.Add(user);
                     }
                 }
@@ -121,13 +131,14 @@ namespace IssueTrackingSystem.Model
                     userList = null;
                 }
             }
+
             return userList;
         }
 
         public User updateUserInfo(User user)
         {
-            var req = WebRequest.Create(Server.ApiUrl + "/users/" + user.UserId);
-            req.Method = "PUT";
+            var req = WebRequest.Create(Server.ApiUrl + "/users/put/" + user.UserId);
+            req.Method = "POST";
             req.ContentType = "application/json";
             String contentData = "{\"name\":\"" + user.UserName + "\"," +
                                   "\"password\":\"" + user.Password + "\"," +
@@ -145,8 +156,10 @@ namespace IssueTrackingSystem.Model
                 String state = userData;
 
                 user.UserId = formatStateToUserId(state, user.UserId.ToString());
+                if(int.Parse(state) == 0)
+                    Notify();
             }
-            getUserInfo(user.UserId);
+
             return user;
         }
 
@@ -243,6 +256,49 @@ namespace IssueTrackingSystem.Model
                 }
             }
             return projectList;
+        }
+
+        private List<Issue> getIssuesByUser(int userId)
+        {
+            List<Issue> issueList = new List<Issue>();
+
+            var req = WebRequest.Create(Server.ApiUrl + "/issues/list/" + userId);
+            req.Method = "GET";
+            req.ContentType = "application/json";
+
+            var resp = (HttpWebResponse)req.GetResponse();
+            using (var reader = new StreamReader(resp.GetResponseStream()))
+            {
+                var issueData = reader.ReadToEnd();
+                dynamic issueApiModel = JsonConvert.DeserializeObject<dynamic>(issueData);
+                if ((int)issueApiModel.state == 0)
+                {
+                    foreach (dynamic o in issueApiModel.list)
+                    {
+                        Issue issue = new Issue();
+                        issue.IssueId = o.issueId;
+                        issue.State = o.state;
+                        issue.IssueName = o.title;
+                        issue.Description = o.description;
+                        issue.Serverity = o.serverity;
+                        issue.Priority = o.priority;
+                        issue.ReporterId = o.reporterId;
+                        issue.ReportDate = DateTime.FromFileTime((long)o.reportTime);
+                        issue.PersonInChargeId = o.personInChargeId;
+                        issue.FinishDate = (o.finishTime == null) ? DateTime.MaxValue : DateTime.FromFileTime((long)o.finishTime);
+                        issue.ProjectId = o.projectId;
+                        issueList.Add(issue);
+                    }
+                }
+            }
+
+            return issueList;
+        }
+
+        void Notify() {
+            if (userDataChanged != null) {
+                userDataChanged();
+            }
         }
     }
 }

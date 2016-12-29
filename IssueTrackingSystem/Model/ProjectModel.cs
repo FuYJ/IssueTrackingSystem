@@ -12,8 +12,11 @@ using Chsword;
 
 namespace IssueTrackingSystem.Model
 {
-    class ProjectModel
+    public class ProjectModel
     {
+        public event ModelChangedEventHandler projectDataChanged;
+        public delegate void ModelChangedEventHandler();
+
         public ProjectApiModel createProject(int userId, Project project)
         {
             ProjectApiModel model = new ProjectApiModel();
@@ -39,6 +42,7 @@ namespace IssueTrackingSystem.Model
                 model.ProjectContext.Manager = projectApiModel.project.manager;
                 model.ProjectContext.TimeStamp = DateTime.FromFileTime(long.Parse((string)projectApiModel.project.timeStamp));
             }
+            Notify();
             return model;
         }
 
@@ -175,12 +179,19 @@ namespace IssueTrackingSystem.Model
                 model.State = projectApiModel.state;
                 model.ProjectContext = null;
             }
+            Notify();
             return model;
         }
 
         public void deleteProject()
         {
 
+        }
+
+        public void Notify()
+        {
+            if (projectDataChanged != null)
+                projectDataChanged();
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IssueTrackingSystem.Model.DataModel
 {
-    class User
+    public class User
     {
         private int userId;
         private String userName;

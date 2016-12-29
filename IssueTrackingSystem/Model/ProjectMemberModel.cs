@@ -12,7 +12,7 @@ using Chsword;
 
 namespace IssueTrackingSystem.Model
 {
-    class ProjectMemberModel
+    public class ProjectMemberModel
     {
         public int createMember(ProjectMember member)
         {

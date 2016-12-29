@@ -14,13 +14,18 @@ namespace IssueTrackingSystem.AMS.View
     public partial class SecurityView : IssueTrackingSystem.View.BaseView
     {
         private UserModel userModel;
+        private IssueModel issueModel;
+        private ProjectModel projectModel;
         private UserController userController;
         private ErrorProvider errorProvider;
 
-        public SecurityView()
+        public SecurityView(UserModel userModel, IssueModel issueModel, ProjectModel projectModel)
+            : base(userModel, issueModel, projectModel)
         {
             InitializeComponent();
-            userModel = new UserModel();
+            this.userModel = userModel;
+            this.issueModel = issueModel;
+            this.projectModel = projectModel;
             userController = new UserController(userModel);
 
             User user = SecurityModel.getInstance().AuthenticatedUser;
