@@ -25,12 +25,13 @@ namespace IssueTrackingSystem.ITS.View
         private String initialKeyword;
         private int initialSearchType;
 
-        public IssueListView()
+        public IssueListView(UserModel userModel, IssueModel issueModel, ProjectModel projectModel)
+            : base(userModel, issueModel, projectModel)
         {
             InitializeComponent();
-            userModel = new UserModel();
-            issueModel = new IssueModel();
-            projectModel = new ProjectModel();
+            this.userModel = userModel;
+            this.issueModel = issueModel;
+            this.projectModel = projectModel;
             userController = new UserController(userModel);
             issueController = new IssueController(userModel, issueModel, projectModel);
             user = SecurityModel.getInstance().AuthenticatedUser;
@@ -54,7 +55,7 @@ namespace IssueTrackingSystem.ITS.View
 
         private void createIssueButtonClicked(object sender, EventArgs e)
         {
-            CreateIssueView createIssueView = new CreateIssueView();
+            CreateIssueView createIssueView = new CreateIssueView(userModel, issueModel, projectModel);
             createIssueView.Show(this);
             this.Hide();
         }
@@ -75,7 +76,7 @@ namespace IssueTrackingSystem.ITS.View
         {
             if (e.RowIndex >= 0 && e.RowIndex < issuesDataGridView.RowCount)
             {
-                IssueInfoView issueInfoView = new IssueInfoView((int)issuesDataGridView.Rows[e.RowIndex].Cells[0].Value);
+                IssueInfoView issueInfoView = new IssueInfoView((int)issuesDataGridView.Rows[e.RowIndex].Cells[0].Value, userModel, issueModel, projectModel);
                 issueInfoView.Show(this);
             }
         }

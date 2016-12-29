@@ -22,12 +22,13 @@ namespace IssueTrackingSystem.ITS.View
         private List<Project> projectList;
 
 
-        public CreateIssueView()
+        public CreateIssueView(UserModel userModel, IssueModel issueModel, ProjectModel projectModel)
+            : base(userModel, issueModel, projectModel)
         {
             InitializeComponent();
-            issueModel = new IssueModel();
-            userModel = new UserModel();
-            projectModel = new ProjectModel();
+            this.userModel = userModel;
+            this.issueModel = issueModel;
+            this.projectModel = projectModel;
             
             issueController = new IssueController(userModel, issueModel, projectModel);
             user = SecurityModel.getInstance().AuthenticatedUser;
@@ -42,12 +43,13 @@ namespace IssueTrackingSystem.ITS.View
             issueSeverityComboBox.SelectedIndex = 0;
         }
 
-        public CreateIssueView(int projectId)
+        public CreateIssueView(int projectId, UserModel userModel, IssueModel issueModel, ProjectModel projectModel)
+            : base(userModel, issueModel, projectModel)
         {
             InitializeComponent();
-            issueModel = new IssueModel();
-            userModel = new UserModel();
-            projectModel = new ProjectModel();
+            this.userModel = userModel;
+            this.issueModel = issueModel;
+            this.projectModel = projectModel;
             issueController = new IssueController(userModel, issueModel, projectModel);
             projectList = user.JoinedProjects;
             Project nowProject = projectList.Find(x => x.ProjectId == projectId);

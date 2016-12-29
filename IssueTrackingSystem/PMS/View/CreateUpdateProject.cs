@@ -16,11 +16,18 @@ namespace IssueTrackingSystem.PMS.View
 {
     public partial class CreateUpdateProject : IssueTrackingSystem.View.BaseView
     {
+        private UserModel userModel;
+        private IssueModel issueModel;
+        private ProjectModel projectModel;
         private CreateUpdateProjectController controller = new CreateUpdateProjectController();
         private ProjectInfoController infoController = new ProjectInfoController();
-        public CreateUpdateProject(String purpose, int projectId)
+        public CreateUpdateProject(String purpose, int projectId, UserModel userModel, IssueModel issueModel, ProjectModel projectModel)
+            : base(userModel, issueModel, projectModel)
         {
             InitializeComponent();
+            this.userModel = userModel;
+            this.issueModel = issueModel;
+            this.projectModel = projectModel;
             Initialize(purpose, projectId);
         }
 
@@ -38,7 +45,7 @@ namespace IssueTrackingSystem.PMS.View
         {
             if(model.State == 0)
             {
-                ProjectMainMenu main = new ProjectMainMenu(model.ProjectContext);
+                ProjectMainMenu main = new ProjectMainMenu(model.ProjectContext, userModel, issueModel, projectModel);
                 main.Show();
                 this.Close();
             }

@@ -2,6 +2,7 @@
 using IssueTrackingSystem.ITS.Controller;
 using IssueTrackingSystem.Model;
 using IssueTrackingSystem.Model.DataModel;
+using IssueTrackingSystem.PMS.Controller;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,32 +19,26 @@ namespace IssueTrackingSystem.ITS.View
         private IssueModel issueModel;
         private ProjectModel projectModel;
         private UserController userController;
+        private ProjectMemberController projectMemberController;
         private IssueController issueController;
         private List<Issue> issueDetails;
         private List<User> projectMembers;
         private User reporter;
         private User assignee;
 
-        public IssueInfoView()
+        public IssueInfoView(int issueId, UserModel userModel, IssueModel issueModel, ProjectModel projectModel)
+            : base(userModel, issueModel, projectModel)
         {
             InitializeComponent();
-            userModel = new UserModel();
-            issueModel = new IssueModel();
-            projectModel = new ProjectModel();
+            this.userModel = userModel;
+            this.issueModel = issueModel;
+            this.projectModel = projectModel;
             userController = new UserController(userModel);
             issueController = new IssueController(userModel, issueModel, projectModel);
-        }
-
-        public IssueInfoView(int issueId)
-        {
-            InitializeComponent();
-            userModel = new UserModel();
-            issueModel = new IssueModel();
-            projectModel = new ProjectModel();
-            userController = new UserController(userModel);
-            issueController = new IssueController(userModel, issueModel, projectModel);
+            projectMemberController = new ProjectMemberController();
 
             issueDetails = issueController.getIssuedetails(issueId);
+            projectMembers = projectMemberController.getMemberByProjectId(issueDetails[0].ProjectId, "1");
         }
 
         private void IssueInfoViewLoad(object sender, EventArgs e)

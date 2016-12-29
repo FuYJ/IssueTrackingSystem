@@ -74,19 +74,19 @@ namespace IssueTrackingSystem.AMS.View
 
         private void viewJoinedProjectsButtonClicked(object sender, EventArgs e)
         {
-            ProjectListView projectListView = new ProjectListView(userModel, projectModel, 0);
+            ProjectListView projectListView = new ProjectListView(0, userModel, issueModel, projectModel);
             projectListView.Show();
         }
 
         private void viewInvitedProjectsButtonClicked(object sender, EventArgs e)
         {
-            ProjectListView projectListView = new ProjectListView(userModel, projectModel, 1);
+            ProjectListView projectListView = new ProjectListView(1, userModel, issueModel, projectModel);
             projectListView.Show();
         }
 
         private void viewIssuesButtonClicked(object sender, EventArgs e)
         {
-            IssueListView issueListView = new IssueListView();
+            IssueListView issueListView = new IssueListView(userModel, issueModel, projectModel);
             issueListView.Show();
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IssueTrackingSystem.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,17 @@ namespace IssueTrackingSystem.PMS.View
 {
     public partial class Member : IssueTrackingSystem.View.BaseView
     {
-        public Member()
+        private UserModel userModel;
+        private IssueModel issueModel;
+        private ProjectModel projectModel;
+
+        public Member(UserModel userModel, IssueModel issueModel, ProjectModel projectModel)
+            : base(userModel, issueModel, projectModel)
         {
             InitializeComponent();
+            this.userModel = userModel;
+            this.issueModel = issueModel;
+            this.projectModel = projectModel;
         }
     }
 }

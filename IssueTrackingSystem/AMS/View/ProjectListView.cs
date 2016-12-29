@@ -16,13 +16,16 @@ namespace IssueTrackingSystem.AMS.View
         private List<Project> joinedProjectList;
         private List<Project> invitedProjectList;
         private UserModel userModel;
+        private IssueModel issueModel;
         private ProjectModel projectModel;
         private ProjectInfoController projectController = new ProjectInfoController();
 
-        public ProjectListView(UserModel userModel, ProjectModel projectModel, int tabIndex)
+        public ProjectListView(int tabIndex, UserModel userModel, IssueModel issueModel, ProjectModel projectModel)
+            : base(userModel, issueModel, projectModel)
         {
             InitializeComponent();
             this.userModel = userModel;
+            this.issueModel = issueModel;
             this.projectModel = projectModel;
 
             int userId = SecurityModel.getInstance().AuthenticatedUser.UserId;
