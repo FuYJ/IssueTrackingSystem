@@ -12,6 +12,9 @@ namespace IssueTrackingSystem.Model
 {
     class IssueModel
     {
+        public event ModelChangedEventHandler issueDataChanged;
+        public delegate void ModelChangedEventHandler();
+
         public Issue createIssue(Issue issue)
         {
             User user = SecurityModel.getInstance().AuthenticatedUser;
@@ -40,6 +43,7 @@ namespace IssueTrackingSystem.Model
                 issue.ReportDate = DateTime.FromFileTime((long)issueApiModel.issue.reportTime);
                 issue.FinishDate = DateTime.MaxValue;
             }
+            Notify();
 
             return issue;
         }
@@ -212,6 +216,7 @@ namespace IssueTrackingSystem.Model
                 dynamic issueApiModel = JsonConvert.DeserializeObject<dynamic>(issueData);
                 issue.IssueId = formatStateToIssueId((String)issueApiModel.state, (String)issueApiModel.issueId);
             }
+            Notify();
 
             return issue.IssueId;
         }
@@ -225,6 +230,14 @@ namespace IssueTrackingSystem.Model
             else
             {
                 return 0;
+            }
+        }
+
+        void Notify()
+        {
+            if (issueDataChanged != null)
+            {
+                issueDataChanged();
             }
         }
     }

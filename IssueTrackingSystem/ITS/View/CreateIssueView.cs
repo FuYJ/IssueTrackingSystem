@@ -1,6 +1,7 @@
 ﻿using IssueTrackingSystem.ITS.Controller;
 using IssueTrackingSystem.Model;
 using IssueTrackingSystem.Model.DataModel;
+using IssueTrackingSystem.PMS.Controller;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,6 +28,7 @@ namespace IssueTrackingSystem.ITS.View
             issueModel = new IssueModel();
             userModel = new UserModel();
             projectModel = new ProjectModel();
+            
             issueController = new IssueController(userModel, issueModel, projectModel);
             user = SecurityModel.getInstance().AuthenticatedUser;
             projectList = user.JoinedProjects;
@@ -34,6 +36,7 @@ namespace IssueTrackingSystem.ITS.View
             {
                 projectComboBox.Items.Add(project);
             }
+
             projectComboBox.SelectedIndex = 0;
             issuePriorityComboBox.SelectedIndex = 0;
             issueSeverityComboBox.SelectedIndex = 0;

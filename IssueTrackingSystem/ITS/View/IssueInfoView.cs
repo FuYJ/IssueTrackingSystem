@@ -65,6 +65,7 @@ namespace IssueTrackingSystem.ITS.View
 
                 Issue issue = new Issue();
                 issue.IssueId = issueDetails[0].IssueId;
+                issue.IssueGroupId = issueDetails[0].IssueGroupId;
                 issue.IssueName = issueNameLabel.Text;
                 issue.Description = issueDescriptionRichTextBox.Text;
                 issue.State = issueStateComboBox.SelectedText;

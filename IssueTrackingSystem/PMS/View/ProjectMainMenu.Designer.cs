@@ -42,7 +42,7 @@
             this._projectName.ReadOnly = true;
             this._projectName.Size = new System.Drawing.Size(369, 32);
             this._projectName.TabIndex = 2;
-            this._projectName.Text = "123";
+            this._projectName.TabStop = false;
             this._projectName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // _memberList
@@ -62,7 +62,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(203, 102);
             this.button1.TabIndex = 4;
-            this.button1.Text = "_description";
+            this.button1.Text = "Description";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // ProjectMainMenu

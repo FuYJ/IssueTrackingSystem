@@ -105,6 +105,7 @@
     <Compile Include="ITS\View\issueHistoryBlock.Designer.cs">
       <DependentUpon>issueHistoryBlock.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\ApiModel\ProjectApiModel.cs" />
     <Compile Include="Model\ApiModel\UserApiModel.cs" />
     <Compile Include="Model\DataModel\Issue.cs" />
     <Compile Include="Model\DataModel\Project.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="Model\UserModel.cs" />
     <Compile Include="AMS\Controller\UserController.cs" />
     <Compile Include="PMS\Controller\CreateUpdateProjectController.cs" />
+    <Compile Include="PMS\Controller\ProjectInfoController.cs" />
     <Compile Include="PMS\View\CreateUpdateProject.cs">
       <SubType>Form</SubType>
     </Compile>

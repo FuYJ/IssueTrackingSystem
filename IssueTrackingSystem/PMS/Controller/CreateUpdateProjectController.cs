@@ -5,38 +5,40 @@ using System.Text;
 using System.Threading.Tasks;
 using IssueTrackingSystem.Model;
 using IssueTrackingSystem.Model.DataModel;
+using IssueTrackingSystem.Model.ApiModel;
 
 namespace IssueTrackingSystem.PMS.Controller
 {
     class CreateUpdateProjectController
     {
-        public int CreateUpdateProject(String movement, Project project)
+        public ProjectApiModel CreateUpdateProject(String movement, Project project)
         {
-            int state = 0;
+            ProjectApiModel model = new ProjectApiModel();
             if (Project.CREATE.Equals(movement))
             {
-                state = CreateProject(project);
+                model = CreateProject(project);
             }
             else if (Project.UPDATE.Equals(movement))
             {
-                return 0;
+                model = UpdateProject(project);
             }
-            return state;
+            return model;
         }
 
-        public int CreateProject(Project project)
+        public ProjectApiModel CreateProject(Project project)
         {
             User user = SecurityModel.getInstance().AuthenticatedUser;
             ProjectModel projectModel = new ProjectModel();
-            int state = projectModel.createProject(user.UserId, project);
-            return state;
+            ProjectApiModel model = projectModel.createProject(user.UserId, project);
+            return model;
         }
 
-        public int UpdateProject(Project project)
+        public ProjectApiModel UpdateProject(Project project)
         {
-            int state = 0;
-
-            return state;
+            User user = SecurityModel.getInstance().AuthenticatedUser;
+            ProjectModel projectModel = new ProjectModel();
+            ProjectApiModel model = projectModel.updateProjectInfo(user.UserId, project);
+            return model;
         }
     }
 }

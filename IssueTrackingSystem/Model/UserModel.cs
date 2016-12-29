@@ -15,6 +15,9 @@ namespace IssueTrackingSystem.Model
 {
     class UserModel
     {
+        public event ModelChangedEventHandler userDataChanged;
+        public delegate void ModelChangedEventHandler();
+
         public User createUser(User user)
         {
             var req = WebRequest.Create(Server.ApiUrl + "/users");
@@ -52,7 +55,7 @@ namespace IssueTrackingSystem.Model
                 writer.Write(contentData);
             }
 
-            var resp = (HttpWebResponse)req.GetResponse();
+            var resp = (HttpWebResponse)req.GetResponse();                      
             using (var reader = new StreamReader(resp.GetResponseStream()))
             {
                 var userData = reader.ReadToEnd();
@@ -63,6 +66,7 @@ namespace IssueTrackingSystem.Model
                 user.UserId = formatStateToUserId(userApiModel.State, userApiModel.UserId);
             }
             getUserInfo(user.UserId);
+
             return user;
         }
 
@@ -88,6 +92,7 @@ namespace IssueTrackingSystem.Model
                 user.Issues = getIssuesByUser(user.UserId);
             }
             SecurityModel.getInstance().AuthenticatedUser = user;
+
             return user;
         }
 
@@ -113,7 +118,7 @@ namespace IssueTrackingSystem.Model
                         user.EmailAddress = o.emailAddress;
                         user.JoinedProjects = getJoinedProjectsByUser(user.UserId);
                         user.InvitedProjects = getInvitedProjectsByUser(user.UserId);
-                        user.Issues = new List<Issue>();
+                        user.Issues = getIssuesByUser(user.UserId);
                         userList.Add(user);
                     }
                 }
@@ -121,13 +126,14 @@ namespace IssueTrackingSystem.Model
                     userList = null;
                 }
             }
+
             return userList;
         }
 
         public User updateUserInfo(User user)
         {
-            var req = WebRequest.Create(Server.ApiUrl + "/users/" + user.UserId);
-            req.Method = "PUT";
+            var req = WebRequest.Create(Server.ApiUrl + "/users/put/" + user.UserId);
+            req.Method = "POST";
             req.ContentType = "application/json";
             String contentData = "{\"name\":\"" + user.UserName + "\"," +
                                   "\"password\":\"" + user.Password + "\"," +
@@ -145,8 +151,10 @@ namespace IssueTrackingSystem.Model
                 String state = userData;
 
                 user.UserId = formatStateToUserId(state, user.UserId.ToString());
+                if(int.Parse(state) == 0)
+                    Notify();
             }
-            getUserInfo(user.UserId);
+
             return user;
         }
 
@@ -196,7 +204,7 @@ namespace IssueTrackingSystem.Model
             {
                 var userData = reader.ReadToEnd();
                 dynamic userApiModel = JsonConvert.DeserializeObject<dynamic>(userData);
-                int state = (int)userApiModel.state;
+                int state = int.Parse((string)userApiModel.state);
 
                 if (state == 0)
                 {
@@ -248,8 +256,10 @@ namespace IssueTrackingSystem.Model
         private List<Issue> getIssuesByUser(int userId)
         {
             List<Issue> issueList = new List<Issue>();
+
             var req = WebRequest.Create(Server.ApiUrl + "/issues/list/" + userId);
             req.Method = "GET";
+            req.ContentType = "application/json";
 
             var resp = (HttpWebResponse)req.GetResponse();
             using (var reader = new StreamReader(resp.GetResponseStream()))
@@ -276,7 +286,14 @@ namespace IssueTrackingSystem.Model
                     }
                 }
             }
+
             return issueList;
+        }
+
+        void Notify() {
+            if (userDataChanged != null) {
+                userDataChanged();
+            }
         }
     }
 }

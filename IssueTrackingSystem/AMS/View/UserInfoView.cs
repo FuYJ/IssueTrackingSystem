@@ -16,6 +16,8 @@ namespace IssueTrackingSystem.AMS.View
     {
         private User user;
         private UserModel userModel;
+        private IssueModel issueModel;
+        private ProjectModel projectModel;
         private UserController userController;
         private ErrorProvider errorProvider;
 
@@ -23,8 +25,15 @@ namespace IssueTrackingSystem.AMS.View
         {
             InitializeComponent();
             userModel = new UserModel();
+            issueModel = new IssueModel();
+            projectModel = new ProjectModel();
+
             userController = new UserController(userModel);
             user = SecurityModel.getInstance().AuthenticatedUser;
+
+            userModel.userDataChanged += updateView;
+            issueModel.issueDataChanged += updateView;
+            projectModel.projectDataChanged += updateView;
 
             errorProvider = new ErrorProvider();
             errorProvider.BlinkStyle = ErrorBlinkStyle.NeverBlink;
@@ -32,13 +41,7 @@ namespace IssueTrackingSystem.AMS.View
 
         private void UserInfoViewLoad(object sender, EventArgs e)
         {
-            usernameLabel.Text = user.UserName;
-            emailAddressLabel.Text = user.EmailAddress;
-            editUsernameTextBox.Text = user.UserName;
-            editEmailAddressTextBox.Text = user.EmailAddress;
-            joinedProjectNumberLabel.Text = user.JoinedProjects.Count.ToString();
-            invitedProjectNumberLabel.Text = user.InvitedProjects.Count.ToString();
-            trackingIssueNumberLabel.Text = user.Issues.Count.ToString();
+            updateView();
         }
 
         private void finishEditButtonClicked(object sender, EventArgs e)
@@ -47,7 +50,7 @@ namespace IssueTrackingSystem.AMS.View
                 return;
             User user = SecurityModel.getInstance().AuthenticatedUser;
             user.UserName = editUsernameTextBox.Text;
-            user.Password = editPasswordTextBox.Text;
+            user.Password = (editPasswordTextBox.Text == String.Empty) ? "" : editPasswordTextBox.Text;
             user.EmailAddress = editEmailAddressTextBox.Text;
             userController.updateUser(user);
             viewInfoTableLayoutPanel.Visible = true;
@@ -84,6 +87,19 @@ namespace IssueTrackingSystem.AMS.View
         {
             IssueListView issueListView = new IssueListView();
             issueListView.Show();
+        }
+
+        private void updateView() {
+            userModel.getUserInfo(SecurityModel.getInstance().AuthenticatedUser.UserId);
+            user = SecurityModel.getInstance().AuthenticatedUser;
+
+            usernameLabel.Text = user.UserName;
+            emailAddressLabel.Text = user.EmailAddress;
+            editUsernameTextBox.Text = user.UserName;
+            editEmailAddressTextBox.Text = user.EmailAddress;
+            joinedProjectNumberLabel.Text = user.JoinedProjects.Count.ToString();
+            invitedProjectNumberLabel.Text = user.InvitedProjects.Count.ToString();
+            trackingIssueNumberLabel.Text = user.Issues.Count.ToString();
         }
     }
 }

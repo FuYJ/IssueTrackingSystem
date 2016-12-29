@@ -73,7 +73,7 @@ namespace IssueTrackingSystem.ITS.View
 
         private void issuesDataGridViewCellDoubleClicked(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex > 0 && e.RowIndex < issuesDataGridView.RowCount)
+            if (e.RowIndex >= 0 && e.RowIndex < issuesDataGridView.RowCount)
             {
                 IssueInfoView issueInfoView = new IssueInfoView((int)issuesDataGridView.Rows[e.RowIndex].Cells[0].Value);
                 issueInfoView.Show(this);
