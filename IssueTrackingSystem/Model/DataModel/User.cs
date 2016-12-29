@@ -23,6 +23,11 @@ namespace IssueTrackingSystem.Model.DataModel
             GeneralUser
         }
 
+        public override string ToString()
+        {
+             return userName;
+        }
+
         public int UserId
         {
             get { return userId; }

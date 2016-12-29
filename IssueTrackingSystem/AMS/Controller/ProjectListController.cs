@@ -11,31 +11,20 @@ namespace IssueTrackingSystem.AMS.Controller
     class ProjectListController
     {
         private ProjectModel projectModel;
+        private ProjectMemberModel projectMemberModel;
 
-        public ProjectListController(ProjectModel projectModel) {
+        public ProjectListController(ProjectModel projectModel, ProjectMemberModel projectMemberModel) {
             this.projectModel = projectModel;
+            this.projectMemberModel = projectMemberModel;
         }
 
-        public List<Project> listJoinedProjects() { 
-            List<Project> projectList = new List<Project>();
-
-            //api
-
-            return projectList;
-        }
-
-        public List<Project> listInvitedProjects()
+        public void dealWithProjectInvitation(int projectId, bool isAccepted)
         {
-            List<Project> projectList = new List<Project>();
-
-            //api
-
-            return projectList;
-        }
-
-        public void acceptInvitation(int projectId)
-        {
-            //api
+            User user = SecurityModel.getInstance().AuthenticatedUser;
+            ProjectMember projectMember = new ProjectMember();
+            projectMember.UserId = user.UserId;
+            projectMember.ProjectId = projectId;
+            projectMemberModel.dealWithProjectInvitation(projectMember, isAccepted);
         }
     }
 }

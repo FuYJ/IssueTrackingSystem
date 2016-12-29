@@ -47,12 +47,15 @@
             this.submitButton = new System.Windows.Forms.Button();
             this.issuePriorityComboBox = new System.Windows.Forms.ComboBox();
             this.issueHistoryFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.issueNameTitleLabel = new System.Windows.Forms.Label();
+            this.issueHistoryGroupBox = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.issueInfoSplitContainer)).BeginInit();
             this.issueInfoSplitContainer.Panel1.SuspendLayout();
             this.issueInfoSplitContainer.Panel2.SuspendLayout();
             this.issueInfoSplitContainer.SuspendLayout();
             this.IssueTableLayoutPanel.SuspendLayout();
             this.issueDescriptionGroupBox.SuspendLayout();
+            this.issueHistoryGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // issueInfoSplitContainer
@@ -69,7 +72,7 @@
             // issueInfoSplitContainer.Panel2
             // 
             this.issueInfoSplitContainer.Panel2.AutoScroll = true;
-            this.issueInfoSplitContainer.Panel2.Controls.Add(this.issueHistoryFlowLayoutPanel);
+            this.issueInfoSplitContainer.Panel2.Controls.Add(this.issueHistoryGroupBox);
             this.issueInfoSplitContainer.Size = new System.Drawing.Size(784, 512);
             this.issueInfoSplitContainer.SplitterDistance = 193;
             this.issueInfoSplitContainer.TabIndex = 2;
@@ -82,6 +85,7 @@
             this.IssueTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.IssueTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.IssueTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.IssueTableLayoutPanel.Controls.Add(this.issueNameTitleLabel, 0, 0);
             this.IssueTableLayoutPanel.Controls.Add(this.issueAssigneeComboBox, 1, 3);
             this.IssueTableLayoutPanel.Controls.Add(this.issueStateComboBox, 3, 0);
             this.IssueTableLayoutPanel.Controls.Add(this.issueSeverityComboBox, 3, 1);
@@ -92,15 +96,16 @@
             this.IssueTableLayoutPanel.Controls.Add(this.issueReporterTitleLabel, 0, 2);
             this.IssueTableLayoutPanel.Controls.Add(this.issueSeverityTitleLabel, 2, 1);
             this.IssueTableLayoutPanel.Controls.Add(this.issuePriorityTitleLabel, 0, 1);
-            this.IssueTableLayoutPanel.Controls.Add(this.issueNameLabel, 0, 0);
             this.IssueTableLayoutPanel.Controls.Add(this.issueStateTitleLabel, 2, 0);
             this.IssueTableLayoutPanel.Controls.Add(this.issueDescriptionGroupBox, 0, 4);
             this.IssueTableLayoutPanel.Controls.Add(this.submitButton, 3, 7);
             this.IssueTableLayoutPanel.Controls.Add(this.issuePriorityComboBox, 1, 1);
+            this.IssueTableLayoutPanel.Controls.Add(this.issueNameLabel, 1, 0);
             this.IssueTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.IssueTableLayoutPanel.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.IssueTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.IssueTableLayoutPanel.Name = "IssueTableLayoutPanel";
+            this.IssueTableLayoutPanel.Padding = new System.Windows.Forms.Padding(5);
             this.IssueTableLayoutPanel.RowCount = 8;
             this.IssueTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.IssueTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
@@ -118,7 +123,7 @@
             this.issueAssigneeComboBox.Enabled = false;
             this.issueAssigneeComboBox.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.issueAssigneeComboBox.FormattingEnabled = true;
-            this.issueAssigneeComboBox.Location = new System.Drawing.Point(198, 72);
+            this.issueAssigneeComboBox.Location = new System.Drawing.Point(200, 74);
             this.issueAssigneeComboBox.Margin = new System.Windows.Forms.Padding(0);
             this.issueAssigneeComboBox.Name = "issueAssigneeComboBox";
             this.issueAssigneeComboBox.Size = new System.Drawing.Size(121, 20);
@@ -129,7 +134,11 @@
             this.issueStateComboBox.Enabled = false;
             this.issueStateComboBox.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.issueStateComboBox.FormattingEnabled = true;
-            this.issueStateComboBox.Location = new System.Drawing.Point(588, 3);
+            this.issueStateComboBox.Items.AddRange(new object[] {
+            "處理中",
+            "測試中",
+            "等待中"});
+            this.issueStateComboBox.Location = new System.Drawing.Point(584, 8);
             this.issueStateComboBox.Margin = new System.Windows.Forms.Padding(0);
             this.issueStateComboBox.Name = "issueStateComboBox";
             this.issueStateComboBox.Size = new System.Drawing.Size(121, 20);
@@ -140,7 +149,11 @@
             this.issueSeverityComboBox.Enabled = false;
             this.issueSeverityComboBox.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.issueSeverityComboBox.FormattingEnabled = true;
-            this.issueSeverityComboBox.Location = new System.Drawing.Point(588, 26);
+            this.issueSeverityComboBox.Items.AddRange(new object[] {
+            "Optional",
+            "Important",
+            "Emergent"});
+            this.issueSeverityComboBox.Location = new System.Drawing.Point(584, 30);
             this.issueSeverityComboBox.Margin = new System.Windows.Forms.Padding(0);
             this.issueSeverityComboBox.Name = "issueSeverityComboBox";
             this.issueSeverityComboBox.Size = new System.Drawing.Size(121, 20);
@@ -150,7 +163,7 @@
             // 
             this.issueAssigneeTitleLabel.AutoSize = true;
             this.issueAssigneeTitleLabel.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.issueAssigneeTitleLabel.Location = new System.Drawing.Point(6, 72);
+            this.issueAssigneeTitleLabel.Location = new System.Drawing.Point(11, 74);
             this.issueAssigneeTitleLabel.Name = "issueAssigneeTitleLabel";
             this.issueAssigneeTitleLabel.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             this.issueAssigneeTitleLabel.Size = new System.Drawing.Size(41, 16);
@@ -161,7 +174,7 @@
             // 
             this.issueReportDateLabel.AutoSize = true;
             this.issueReportDateLabel.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.issueReportDateLabel.Location = new System.Drawing.Point(591, 49);
+            this.issueReportDateLabel.Location = new System.Drawing.Point(587, 52);
             this.issueReportDateLabel.Name = "issueReportDateLabel";
             this.issueReportDateLabel.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             this.issueReportDateLabel.Size = new System.Drawing.Size(61, 16);
@@ -172,7 +185,7 @@
             // 
             this.issueReportDateTitleLabel.AutoSize = true;
             this.issueReportDateTitleLabel.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.issueReportDateTitleLabel.Location = new System.Drawing.Point(396, 49);
+            this.issueReportDateTitleLabel.Location = new System.Drawing.Point(395, 52);
             this.issueReportDateTitleLabel.Name = "issueReportDateTitleLabel";
             this.issueReportDateTitleLabel.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             this.issueReportDateTitleLabel.Size = new System.Drawing.Size(53, 16);
@@ -183,7 +196,7 @@
             // 
             this.issueReporterLabel.AutoSize = true;
             this.issueReporterLabel.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.issueReporterLabel.Location = new System.Drawing.Point(201, 49);
+            this.issueReporterLabel.Location = new System.Drawing.Point(203, 52);
             this.issueReporterLabel.Name = "issueReporterLabel";
             this.issueReporterLabel.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             this.issueReporterLabel.Size = new System.Drawing.Size(49, 16);
@@ -194,7 +207,7 @@
             // 
             this.issueReporterTitleLabel.AutoSize = true;
             this.issueReporterTitleLabel.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.issueReporterTitleLabel.Location = new System.Drawing.Point(6, 49);
+            this.issueReporterTitleLabel.Location = new System.Drawing.Point(11, 52);
             this.issueReporterTitleLabel.Name = "issueReporterTitleLabel";
             this.issueReporterTitleLabel.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             this.issueReporterTitleLabel.Size = new System.Drawing.Size(41, 16);
@@ -205,7 +218,7 @@
             // 
             this.issueSeverityTitleLabel.AutoSize = true;
             this.issueSeverityTitleLabel.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.issueSeverityTitleLabel.Location = new System.Drawing.Point(396, 26);
+            this.issueSeverityTitleLabel.Location = new System.Drawing.Point(395, 30);
             this.issueSeverityTitleLabel.Name = "issueSeverityTitleLabel";
             this.issueSeverityTitleLabel.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             this.issueSeverityTitleLabel.Size = new System.Drawing.Size(41, 16);
@@ -216,7 +229,7 @@
             // 
             this.issuePriorityTitleLabel.AutoSize = true;
             this.issuePriorityTitleLabel.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.issuePriorityTitleLabel.Location = new System.Drawing.Point(6, 26);
+            this.issuePriorityTitleLabel.Location = new System.Drawing.Point(11, 30);
             this.issuePriorityTitleLabel.Name = "issuePriorityTitleLabel";
             this.issuePriorityTitleLabel.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             this.issuePriorityTitleLabel.Size = new System.Drawing.Size(41, 16);
@@ -227,7 +240,7 @@
             // 
             this.issueNameLabel.AutoSize = true;
             this.issueNameLabel.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.issueNameLabel.Location = new System.Drawing.Point(6, 3);
+            this.issueNameLabel.Location = new System.Drawing.Point(203, 8);
             this.issueNameLabel.Name = "issueNameLabel";
             this.issueNameLabel.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             this.issueNameLabel.Size = new System.Drawing.Size(61, 16);
@@ -238,7 +251,7 @@
             // 
             this.issueStateTitleLabel.AutoSize = true;
             this.issueStateTitleLabel.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.issueStateTitleLabel.Location = new System.Drawing.Point(396, 3);
+            this.issueStateTitleLabel.Location = new System.Drawing.Point(395, 8);
             this.issueStateTitleLabel.Name = "issueStateTitleLabel";
             this.issueStateTitleLabel.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             this.issueStateTitleLabel.Size = new System.Drawing.Size(29, 16);
@@ -251,10 +264,10 @@
             this.issueDescriptionGroupBox.Controls.Add(this.issueDescriptionRichTextBox);
             this.issueDescriptionGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.issueDescriptionGroupBox.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.issueDescriptionGroupBox.Location = new System.Drawing.Point(6, 98);
+            this.issueDescriptionGroupBox.Location = new System.Drawing.Point(11, 99);
             this.issueDescriptionGroupBox.Name = "issueDescriptionGroupBox";
             this.IssueTableLayoutPanel.SetRowSpan(this.issueDescriptionGroupBox, 3);
-            this.issueDescriptionGroupBox.Size = new System.Drawing.Size(772, 60);
+            this.issueDescriptionGroupBox.Size = new System.Drawing.Size(762, 57);
             this.issueDescriptionGroupBox.TabIndex = 15;
             this.issueDescriptionGroupBox.TabStop = false;
             this.issueDescriptionGroupBox.Text = "敘述";
@@ -266,7 +279,7 @@
             this.issueDescriptionRichTextBox.Location = new System.Drawing.Point(3, 18);
             this.issueDescriptionRichTextBox.Name = "issueDescriptionRichTextBox";
             this.issueDescriptionRichTextBox.ReadOnly = true;
-            this.issueDescriptionRichTextBox.Size = new System.Drawing.Size(766, 39);
+            this.issueDescriptionRichTextBox.Size = new System.Drawing.Size(756, 36);
             this.issueDescriptionRichTextBox.TabIndex = 0;
             this.issueDescriptionRichTextBox.Text = "[敘述]";
             // 
@@ -274,10 +287,10 @@
             // 
             this.submitButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.submitButton.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.submitButton.Location = new System.Drawing.Point(668, 164);
+            this.submitButton.Location = new System.Drawing.Point(664, 162);
             this.submitButton.Margin = new System.Windows.Forms.Padding(80, 0, 3, 0);
             this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(110, 26);
+            this.submitButton.Size = new System.Drawing.Size(109, 23);
             this.submitButton.TabIndex = 16;
             this.submitButton.Text = "提交議題";
             this.submitButton.UseVisualStyleBackColor = true;
@@ -288,7 +301,11 @@
             this.issuePriorityComboBox.Enabled = false;
             this.issuePriorityComboBox.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.issuePriorityComboBox.FormattingEnabled = true;
-            this.issuePriorityComboBox.Location = new System.Drawing.Point(198, 26);
+            this.issuePriorityComboBox.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
+            this.issuePriorityComboBox.Location = new System.Drawing.Point(200, 30);
             this.issuePriorityComboBox.Margin = new System.Windows.Forms.Padding(0);
             this.issuePriorityComboBox.Name = "issuePriorityComboBox";
             this.issuePriorityComboBox.Size = new System.Drawing.Size(121, 20);
@@ -296,11 +313,37 @@
             // 
             // issueHistoryFlowLayoutPanel
             // 
+            this.issueHistoryFlowLayoutPanel.AutoScroll = true;
             this.issueHistoryFlowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.issueHistoryFlowLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.issueHistoryFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.issueHistoryFlowLayoutPanel.Location = new System.Drawing.Point(3, 18);
             this.issueHistoryFlowLayoutPanel.Name = "issueHistoryFlowLayoutPanel";
-            this.issueHistoryFlowLayoutPanel.Size = new System.Drawing.Size(784, 315);
+            this.issueHistoryFlowLayoutPanel.Padding = new System.Windows.Forms.Padding(5);
+            this.issueHistoryFlowLayoutPanel.Size = new System.Drawing.Size(778, 294);
             this.issueHistoryFlowLayoutPanel.TabIndex = 0;
+            this.issueHistoryFlowLayoutPanel.WrapContents = false;
+            // 
+            // issueNameTitleLabel
+            // 
+            this.issueNameTitleLabel.AutoSize = true;
+            this.issueNameTitleLabel.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.issueNameTitleLabel.Location = new System.Drawing.Point(11, 8);
+            this.issueNameTitleLabel.Name = "issueNameTitleLabel";
+            this.issueNameTitleLabel.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
+            this.issueNameTitleLabel.Size = new System.Drawing.Size(53, 16);
+            this.issueNameTitleLabel.TabIndex = 21;
+            this.issueNameTitleLabel.Text = "議題名稱";
+            // 
+            // issueHistoryGroupBox
+            // 
+            this.issueHistoryGroupBox.Controls.Add(this.issueHistoryFlowLayoutPanel);
+            this.issueHistoryGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.issueHistoryGroupBox.Location = new System.Drawing.Point(0, 0);
+            this.issueHistoryGroupBox.Name = "issueHistoryGroupBox";
+            this.issueHistoryGroupBox.Size = new System.Drawing.Size(784, 315);
+            this.issueHistoryGroupBox.TabIndex = 0;
+            this.issueHistoryGroupBox.TabStop = false;
+            this.issueHistoryGroupBox.Text = "歷史紀錄";
             // 
             // IssueInfoView
             // 
@@ -318,6 +361,7 @@
             this.IssueTableLayoutPanel.ResumeLayout(false);
             this.IssueTableLayoutPanel.PerformLayout();
             this.issueDescriptionGroupBox.ResumeLayout(false);
+            this.issueHistoryGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -344,5 +388,7 @@
         private System.Windows.Forms.ComboBox issuePriorityComboBox;
         private System.Windows.Forms.ComboBox issueAssigneeComboBox;
         private System.Windows.Forms.FlowLayoutPanel issueHistoryFlowLayoutPanel;
+        private System.Windows.Forms.Label issueNameTitleLabel;
+        private System.Windows.Forms.GroupBox issueHistoryGroupBox;
     }
 }

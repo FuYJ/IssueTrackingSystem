@@ -19,13 +19,16 @@ namespace IssueTrackingSystem.AMS.View
         private UserModel userModel;
         private IssueModel issueModel;
         private ProjectModel projectModel;
+        private ProjectMemberModel projectMemberModel;
 
-        public LoginView(UserModel userModel, IssueModel issueModel, ProjectModel projectModel)
+        public LoginView(UserModel userModel, IssueModel issueModel, ProjectModel projectModel, ProjectMemberModel projectMemberModel)
         {
             InitializeComponent();
             this.userModel = userModel;
             this.issueModel = issueModel;
             this.projectModel = projectModel;
+            this.projectMemberModel = projectMemberModel;
+
             userController = new UserController(userModel);
         }
 
@@ -53,13 +56,13 @@ namespace IssueTrackingSystem.AMS.View
             {
                 if (user.Authority == (int)User.AuthorityEnum.GeneralUser)
                 {
-                    UserInfoView userInfoView = new UserInfoView(userModel, issueModel, projectModel);
-                    userInfoView.Show(this);
+                    UserInfoView userInfoView = new UserInfoView(userModel, issueModel, projectModel, projectMemberModel);
+                    userInfoView.Show(this.Owner);
                 }
                 else if (user.Authority == (int)User.AuthorityEnum.SystemManager)
                 {
-                    SecurityView securityView = new SecurityView(userModel, issueModel, projectModel);
-                    securityView.Show(this);
+                    SecurityView securityView = new SecurityView(userModel, issueModel, projectModel, projectMemberModel);
+                    securityView.Show(this.Owner);
                 }
                 this.Hide();
             }

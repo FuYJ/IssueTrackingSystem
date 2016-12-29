@@ -17,16 +17,18 @@ namespace IssueTrackingSystem.AMS.View
         private UserModel userModel;
         private IssueModel issueModel;
         private ProjectModel projectModel;
+        private ProjectMemberModel projectMemberModel;
         private UserController userController;
         private ErrorProvider errorProvider;
 
-        public SecurityView(UserModel userModel, IssueModel issueModel, ProjectModel projectModel)
+        public SecurityView(UserModel userModel, IssueModel issueModel, ProjectModel projectModel, ProjectMemberModel projectMemberModel)
             : base(userModel, issueModel, projectModel)
         {
             InitializeComponent();
             this.userModel = userModel;
             this.issueModel = issueModel;
             this.projectModel = projectModel;
+            this.projectMemberModel = projectMemberModel;
             userController = new UserController(userModel);
 
             User user = SecurityModel.getInstance().AuthenticatedUser;
@@ -75,7 +77,7 @@ namespace IssueTrackingSystem.AMS.View
 
         private void viewProjectsButtonClicked(object sender, EventArgs e)
         {
-            ProjectListView projectListView = new ProjectListView(0, userModel, issueModel, projectModel);
+            ProjectListView projectListView = new ProjectListView(userModel, issueModel, projectModel, projectMemberModel);
             projectListView.Show();
         }
 

@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using IssueTrackingSystem.PMS.Controller;
+using IssueTrackingSystem.AMS.Controller;
 
 namespace IssueTrackingSystem.AMS.View
 {
@@ -20,18 +21,20 @@ namespace IssueTrackingSystem.AMS.View
         private UserModel userModel;
         private IssueModel issueModel;
         private ProjectModel projectModel;
+        private ProjectMemberModel projectMemberModel;
         private ProjectInfoController projectInfoController;
-        private ProjectMemberController projectMemberController;
+        private ProjectListController projectListController;
 
-        public ProjectListView(UserModel userModel, IssueModel issueModel, ProjectModel projectModel)
+        public ProjectListView(UserModel userModel, IssueModel issueModel, ProjectModel projectModel, ProjectMemberModel projectMemberModel)
             : base(userModel, issueModel, projectModel)
         {
             InitializeComponent();
             this.userModel = userModel;
             this.issueModel = issueModel;
             this.projectModel = projectModel;
+            this.projectMemberModel = projectMemberModel;
             projectInfoController = new ProjectInfoController();
-            projectMemberController = new ProjectMemberController();
+            projectListController = new ProjectListController(projectModel, projectMemberModel);
 
             user = SecurityModel.getInstance().AuthenticatedUser;
             int userId = user.UserId;
@@ -43,15 +46,15 @@ namespace IssueTrackingSystem.AMS.View
             generalUserTableLayoutPanel.Visible = false;
         }
 
-        public ProjectListView(int tabIndex, UserModel userModel, IssueModel issueModel, ProjectModel projectModel)
+        public ProjectListView(int tabIndex, UserModel userModel, IssueModel issueModel, ProjectModel projectModel, ProjectMemberModel projectMemberModel)
             : base(userModel, issueModel, projectModel)
         {
             InitializeComponent();
             this.userModel = userModel;
             this.issueModel = issueModel;
             this.projectModel = projectModel;
+            this.projectMemberModel = projectMemberModel;
             projectInfoController = new ProjectInfoController();
-            projectMemberController = new ProjectMemberController();
 
             user = SecurityModel.getInstance().AuthenticatedUser;
             int userId = user.UserId;
@@ -76,10 +79,17 @@ namespace IssueTrackingSystem.AMS.View
             }
             else {
                 foreach (Project project in allProjectList)
-                {
-                    project.Members = projectMemberController.getMemberByProjectId(project.ProjectId, "1");
-                    allProjectsDataGridView.Rows.Add(new Object[] { project.ProjectId, project.ProjectName, project.Description, project.Manager, project.Members.Count });
-                }
+                    allProjectsDataGridView.Rows.Add(new Object[] { project.ProjectId, project.ProjectName, project.Description, project.Manager});
+            }
+        }
+
+        private void invitedProjectsDataGridViewCellContentClicked(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 4 && e.RowIndex >= 0 && e.RowIndex < invitedProjectsDataGridView.RowCount) {
+                projectListController.dealWithProjectInvitation((int)invitedProjectsDataGridView.Rows[e.RowIndex].Cells[0].Value, true);
+            }
+            else if (e.ColumnIndex == 5 && e.RowIndex >= 0 && e.RowIndex < invitedProjectsDataGridView.RowCount) {
+                projectListController.dealWithProjectInvitation((int)invitedProjectsDataGridView.Rows[e.RowIndex].Cells[0].Value, false);
             }
         }
     }
