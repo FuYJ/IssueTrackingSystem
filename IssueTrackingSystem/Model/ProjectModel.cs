@@ -56,11 +56,11 @@ namespace IssueTrackingSystem.Model
                 if(projectApiModel.state == 0)
                 {
                     project = new Project();
-                    project.ProjectId = projectApiModel.projectId;
-                    project.ProjectName = projectApiModel.projectName;
-                    project.Description = projectApiModel.description;
-                    project.Manager = projectApiModel.manager;
-                    project.TimeStamp = DateTime.FromFileTime(long.Parse((string)projectApiModel.timeStamp));
+                    project.ProjectId = projectApiModel.project.projectId;
+                    project.ProjectName = projectApiModel.project.projectName;
+                    project.Description = projectApiModel.project.description;
+                    project.Manager = projectApiModel.project.manager;
+                    project.TimeStamp = DateTime.FromFileTime(long.Parse((string)projectApiModel.project.timeStamp));
                 }
                 else
                 {
@@ -173,11 +173,7 @@ namespace IssueTrackingSystem.Model
                 var projectData = reader.ReadToEnd();
                 dynamic projectApiModel = JsonConvert.DeserializeObject<dynamic>(projectData);
                 model.State = projectApiModel.state;
-                model.ProjectContext.ProjectId = projectApiModel.project.projectId;
-                model.ProjectContext.ProjectName = projectApiModel.project.projectName;
-                model.ProjectContext.Description = projectApiModel.project.description;
-                model.ProjectContext.Manager = projectApiModel.project.manager;
-                model.ProjectContext.TimeStamp = DateTime.FromFileTime(long.Parse((string)projectApiModel.project.timeStamp));
+                model.ProjectContext = null;
             }
             return model;
         }

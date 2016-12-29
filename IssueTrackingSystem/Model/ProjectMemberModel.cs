@@ -90,5 +90,27 @@ namespace IssueTrackingSystem.Model
 
             return state;
         }
+
+        public int deleteMember(int managerId,ProjectMember member)
+        {
+            int state = 0;
+            var req = WebRequest.Create(Server.ApiUrl + "/members/delete/" + managerId + "/" + member.ProjectId + "/" + member.UserId);
+            req.Method = "POST";
+            req.ContentType = "application/json";
+            String contentData = "{}";
+            using (var writer = new StreamWriter(req.GetRequestStream()))
+            {
+                writer.Write(contentData);
+            }
+
+            var resp = (HttpWebResponse)req.GetResponse();
+            using (var reader = new StreamReader(resp.GetResponseStream()))
+            {
+                var membertData = reader.ReadToEnd();
+                dynamic memberApiModel = JsonConvert.DeserializeObject<dynamic>(membertData);
+                state = memberApiModel.State;
+            }
+            return state;
+        }
     }
 }

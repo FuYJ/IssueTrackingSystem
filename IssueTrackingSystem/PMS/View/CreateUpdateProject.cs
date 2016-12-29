@@ -17,10 +17,11 @@ namespace IssueTrackingSystem.PMS.View
     public partial class CreateUpdateProject : IssueTrackingSystem.View.BaseView
     {
         private CreateUpdateProjectController controller = new CreateUpdateProjectController();
-        public CreateUpdateProject(String purpose)
+        private ProjectInfoController infoController = new ProjectInfoController();
+        public CreateUpdateProject(String purpose, int projectId)
         {
             InitializeComponent();
-            _createUpdate.Text = purpose;
+            Initialize(purpose, projectId);
         }
 
         private void ClickCreateUpdate(object sender, EventArgs e)
@@ -45,6 +46,17 @@ namespace IssueTrackingSystem.PMS.View
             {
                 _errorMessage.Text = "建立失敗";
             }
+        }
+
+        private void Initialize(String purpose, int projectId)
+        {
+            if (purpose.Equals(Project.UPDATE))
+            {
+                Project project = infoController.getProjectInfo(SecurityModel.getInstance().AuthenticatedUser.UserId, projectId);
+                _projectNameInput.Text = project.ProjectName;
+                _descriptionInput.Text = project.Description;
+            }
+            _createUpdate.Text = purpose;
         }
     }
 }

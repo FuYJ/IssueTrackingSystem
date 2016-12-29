@@ -12,12 +12,12 @@ namespace IssueTrackingSystem.Model.DataModel
         private int projectId;
         private String role;
 
-        void ProjeMember()
+        public ProjectMember()
         {
 
         }
 
-        void ProjeMember(int userId, int projectId, String role)
+        public ProjectMember(int userId, int projectId, String role)
         {
             this.userId = userId;
             this.projectId = projectId;

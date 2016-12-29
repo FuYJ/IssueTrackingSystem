@@ -30,7 +30,8 @@
         {
             this._projectName = new System.Windows.Forms.TextBox();
             this._memberList = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this._descriptionButton = new System.Windows.Forms.Button();
+            this._deleteButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // _projectName
@@ -55,29 +56,42 @@
             this._memberList.Text = "Member";
             this._memberList.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // _descriptionButton
             // 
-            this.button1.Font = new System.Drawing.Font("PMingLiU", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button1.Location = new System.Drawing.Point(304, 316);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(203, 102);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Description";
-            this.button1.UseVisualStyleBackColor = true;
+            this._descriptionButton.Font = new System.Drawing.Font("PMingLiU", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this._descriptionButton.Location = new System.Drawing.Point(304, 295);
+            this._descriptionButton.Name = "_descriptionButton";
+            this._descriptionButton.Size = new System.Drawing.Size(203, 102);
+            this._descriptionButton.TabIndex = 4;
+            this._descriptionButton.Text = "Description";
+            this._descriptionButton.UseVisualStyleBackColor = true;
+            this._descriptionButton.Click += new System.EventHandler(this.DescriptionButtonClicked);
+            // 
+            // _deleteButton
+            // 
+            this._deleteButton.Font = new System.Drawing.Font("PMingLiU", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this._deleteButton.Location = new System.Drawing.Point(304, 432);
+            this._deleteButton.Name = "_deleteButton";
+            this._deleteButton.Size = new System.Drawing.Size(203, 102);
+            this._deleteButton.TabIndex = 5;
+            this._deleteButton.Text = "Delete";
+            this._deleteButton.UseVisualStyleBackColor = true;
             // 
             // ProjectMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this._deleteButton);
+            this.Controls.Add(this._descriptionButton);
             this.Controls.Add(this._memberList);
             this.Controls.Add(this._projectName);
             this.Name = "ProjectMainMenu";
             this.Text = "ProjectMainMenu";
             this.Controls.SetChildIndex(this._projectName, 0);
             this.Controls.SetChildIndex(this._memberList, 0);
-            this.Controls.SetChildIndex(this.button1, 0);
+            this.Controls.SetChildIndex(this._descriptionButton, 0);
+            this.Controls.SetChildIndex(this._deleteButton, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -87,6 +101,7 @@
 
         private System.Windows.Forms.TextBox _projectName;
         private System.Windows.Forms.Button _memberList;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button _descriptionButton;
+        private System.Windows.Forms.Button _deleteButton;
     }
 }
