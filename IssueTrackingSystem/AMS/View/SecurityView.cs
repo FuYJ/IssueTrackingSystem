@@ -83,7 +83,7 @@ namespace IssueTrackingSystem.AMS.View
 
         private void viewIssuesButtonClicked(object sender, EventArgs e)
         {
-            IssueListView issueListView = new IssueListView(userModel, issueModel, projectModel);
+            IssueListView issueListView = new IssueListView(userModel, issueModel, projectModel, projectMemberModel);
             issueListView.Show();
         }
 

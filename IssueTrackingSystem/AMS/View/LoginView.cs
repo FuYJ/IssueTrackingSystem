@@ -52,7 +52,7 @@ namespace IssueTrackingSystem.AMS.View
             user.UserName = usernameTextBox.Text;
             user.Password = passwordTextBox.Text;
             user = userController.authenticateUser(user);
-            if (user.UserId != 0)
+            if (user.UserId > 0)
             {
                 if (user.Authority == (int)User.AuthorityEnum.GeneralUser)
                 {
@@ -68,7 +68,15 @@ namespace IssueTrackingSystem.AMS.View
             }
             else
             {
-                toolStripStatusLabel.Text = "認證錯誤";
+                switch(user.UserId){
+                    case -(int)ErrorManager.ErrorCode.UserAccountNotExist:
+                        toolStripStatusLabel.Text = "該使用者不存在";
+                        break;
+                    case -(int)ErrorManager.ErrorCode.AuthenticateError:
+                        toolStripStatusLabel.Text = "密碼錯誤";
+                        break;
+                }
+                
             }
         }
     }

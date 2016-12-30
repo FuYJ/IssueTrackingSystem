@@ -62,6 +62,7 @@ namespace IssueTrackingSystem.Model
                 var issueData = reader.ReadToEnd();
                 dynamic issueApiModel = JsonConvert.DeserializeObject<dynamic>(issueData);
                 issue.IssueId = formatStateToIssueId((String)issueApiModel.state, (String)issueApiModel.issue.issueId);
+                issue.State = issueApiModel.issue.state;
                 issue.IssueName = issueApiModel.issue.title;
                 issue.IssueGroupId = issueApiModel.issue.issueGroupId;
                 issue.Description = issueApiModel.issue.description;
@@ -204,7 +205,6 @@ namespace IssueTrackingSystem.Model
             String contentData = "{\"title\":\"" + issue.IssueName + "\"," +
                                   "\"description\":\"" + issue.Description + "\"," +
                                   "\"state\":\"" + issue.State + "\"," +
-                                  "\"issueGroupId\":\"" + issue.IssueGroupId + "\"," +
                                   "\"serverity\":\"" + issue.Serverity + "\"," +
                                   "\"priority\":\"" + issue.Priority + "\"," +
                                   "\"personInChargeId\":\"" + issue.PersonInChargeId + "\"}";
@@ -233,7 +233,7 @@ namespace IssueTrackingSystem.Model
             }
             else
             {
-                return 0;
+                return -int.Parse(state);
             }
         }
 

@@ -30,6 +30,7 @@
         {
             this.issueInfoSplitContainer = new System.Windows.Forms.SplitContainer();
             this.IssueTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.issueNameTitleLabel = new System.Windows.Forms.Label();
             this.issueAssigneeComboBox = new System.Windows.Forms.ComboBox();
             this.issueStateComboBox = new System.Windows.Forms.ComboBox();
             this.issueSeverityComboBox = new System.Windows.Forms.ComboBox();
@@ -40,15 +41,14 @@
             this.issueReporterTitleLabel = new System.Windows.Forms.Label();
             this.issueSeverityTitleLabel = new System.Windows.Forms.Label();
             this.issuePriorityTitleLabel = new System.Windows.Forms.Label();
-            this.issueNameLabel = new System.Windows.Forms.Label();
             this.issueStateTitleLabel = new System.Windows.Forms.Label();
             this.issueDescriptionGroupBox = new System.Windows.Forms.GroupBox();
             this.issueDescriptionRichTextBox = new System.Windows.Forms.RichTextBox();
             this.submitButton = new System.Windows.Forms.Button();
             this.issuePriorityComboBox = new System.Windows.Forms.ComboBox();
-            this.issueHistoryFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.issueNameTitleLabel = new System.Windows.Forms.Label();
+            this.issueNameLabel = new System.Windows.Forms.Label();
             this.issueHistoryGroupBox = new System.Windows.Forms.GroupBox();
+            this.issueHistoryFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.issueInfoSplitContainer)).BeginInit();
             this.issueInfoSplitContainer.Panel1.SuspendLayout();
             this.issueInfoSplitContainer.Panel2.SuspendLayout();
@@ -118,6 +118,17 @@
             this.IssueTableLayoutPanel.Size = new System.Drawing.Size(784, 193);
             this.IssueTableLayoutPanel.TabIndex = 0;
             // 
+            // issueNameTitleLabel
+            // 
+            this.issueNameTitleLabel.AutoSize = true;
+            this.issueNameTitleLabel.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.issueNameTitleLabel.Location = new System.Drawing.Point(11, 8);
+            this.issueNameTitleLabel.Name = "issueNameTitleLabel";
+            this.issueNameTitleLabel.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
+            this.issueNameTitleLabel.Size = new System.Drawing.Size(53, 16);
+            this.issueNameTitleLabel.TabIndex = 21;
+            this.issueNameTitleLabel.Text = "議題名稱";
+            // 
             // issueAssigneeComboBox
             // 
             this.issueAssigneeComboBox.Enabled = false;
@@ -137,7 +148,8 @@
             this.issueStateComboBox.Items.AddRange(new object[] {
             "處理中",
             "測試中",
-            "等待中"});
+            "等待中",
+            "已完成"});
             this.issueStateComboBox.Location = new System.Drawing.Point(584, 8);
             this.issueStateComboBox.Margin = new System.Windows.Forms.Padding(0);
             this.issueStateComboBox.Name = "issueStateComboBox";
@@ -236,17 +248,6 @@
             this.issuePriorityTitleLabel.TabIndex = 3;
             this.issuePriorityTitleLabel.Text = "優先度";
             // 
-            // issueNameLabel
-            // 
-            this.issueNameLabel.AutoSize = true;
-            this.issueNameLabel.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.issueNameLabel.Location = new System.Drawing.Point(203, 8);
-            this.issueNameLabel.Name = "issueNameLabel";
-            this.issueNameLabel.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.issueNameLabel.Size = new System.Drawing.Size(61, 16);
-            this.issueNameLabel.TabIndex = 0;
-            this.issueNameLabel.Text = "[議題名稱]";
-            // 
             // issueStateTitleLabel
             // 
             this.issueStateTitleLabel.AutoSize = true;
@@ -311,28 +312,16 @@
             this.issuePriorityComboBox.Size = new System.Drawing.Size(121, 20);
             this.issuePriorityComboBox.TabIndex = 17;
             // 
-            // issueHistoryFlowLayoutPanel
+            // issueNameLabel
             // 
-            this.issueHistoryFlowLayoutPanel.AutoScroll = true;
-            this.issueHistoryFlowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.issueHistoryFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.issueHistoryFlowLayoutPanel.Location = new System.Drawing.Point(3, 18);
-            this.issueHistoryFlowLayoutPanel.Name = "issueHistoryFlowLayoutPanel";
-            this.issueHistoryFlowLayoutPanel.Padding = new System.Windows.Forms.Padding(5);
-            this.issueHistoryFlowLayoutPanel.Size = new System.Drawing.Size(778, 294);
-            this.issueHistoryFlowLayoutPanel.TabIndex = 0;
-            this.issueHistoryFlowLayoutPanel.WrapContents = false;
-            // 
-            // issueNameTitleLabel
-            // 
-            this.issueNameTitleLabel.AutoSize = true;
-            this.issueNameTitleLabel.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.issueNameTitleLabel.Location = new System.Drawing.Point(11, 8);
-            this.issueNameTitleLabel.Name = "issueNameTitleLabel";
-            this.issueNameTitleLabel.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.issueNameTitleLabel.Size = new System.Drawing.Size(53, 16);
-            this.issueNameTitleLabel.TabIndex = 21;
-            this.issueNameTitleLabel.Text = "議題名稱";
+            this.issueNameLabel.AutoSize = true;
+            this.issueNameLabel.Font = new System.Drawing.Font("新細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.issueNameLabel.Location = new System.Drawing.Point(203, 8);
+            this.issueNameLabel.Name = "issueNameLabel";
+            this.issueNameLabel.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
+            this.issueNameLabel.Size = new System.Drawing.Size(61, 16);
+            this.issueNameLabel.TabIndex = 0;
+            this.issueNameLabel.Text = "[議題名稱]";
             // 
             // issueHistoryGroupBox
             // 
@@ -344,6 +333,18 @@
             this.issueHistoryGroupBox.TabIndex = 0;
             this.issueHistoryGroupBox.TabStop = false;
             this.issueHistoryGroupBox.Text = "歷史紀錄";
+            // 
+            // issueHistoryFlowLayoutPanel
+            // 
+            this.issueHistoryFlowLayoutPanel.AutoScroll = true;
+            this.issueHistoryFlowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.issueHistoryFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.BottomUp;
+            this.issueHistoryFlowLayoutPanel.Location = new System.Drawing.Point(3, 18);
+            this.issueHistoryFlowLayoutPanel.Name = "issueHistoryFlowLayoutPanel";
+            this.issueHistoryFlowLayoutPanel.Padding = new System.Windows.Forms.Padding(5);
+            this.issueHistoryFlowLayoutPanel.Size = new System.Drawing.Size(778, 294);
+            this.issueHistoryFlowLayoutPanel.TabIndex = 0;
+            this.issueHistoryFlowLayoutPanel.WrapContents = false;
             // 
             // IssueInfoView
             // 

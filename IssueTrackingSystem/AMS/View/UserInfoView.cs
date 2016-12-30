@@ -1,4 +1,5 @@
 ﻿using IssueTrackingSystem.AMS.Controller;
+using IssueTrackingSystem.ITS.Controller;
 using IssueTrackingSystem.ITS.View;
 using IssueTrackingSystem.Model;
 using IssueTrackingSystem.Model.DataModel;
@@ -20,6 +21,7 @@ namespace IssueTrackingSystem.AMS.View
         private ProjectModel projectModel;
         private ProjectMemberModel projectMemberModel;
         private UserController userController;
+        private IssueController issueController;
         private ErrorProvider errorProvider;
 
         public UserInfoView(UserModel userModel, IssueModel issueModel, ProjectModel projectModel, ProjectMemberModel projectMemberModel)
@@ -31,6 +33,7 @@ namespace IssueTrackingSystem.AMS.View
             this.projectModel = projectModel;
             this.projectMemberModel = projectMemberModel;
             userController = new UserController(userModel);
+            issueController = new IssueController(userModel, issueModel, projectModel);
 
             user = SecurityModel.getInstance().AuthenticatedUser;
 
@@ -93,7 +96,7 @@ namespace IssueTrackingSystem.AMS.View
 
         private void viewIssuesButtonClicked(object sender, EventArgs e)
         {
-            IssueListView issueListView = new IssueListView(userModel, issueModel, projectModel);
+            IssueListView issueListView = new IssueListView(userModel, issueModel, projectModel, projectMemberModel);
             issueListView.Show();
         }
 
@@ -107,7 +110,7 @@ namespace IssueTrackingSystem.AMS.View
             editEmailAddressTextBox.Text = user.EmailAddress;
             joinedProjectNumberLabel.Text = user.JoinedProjects.Count.ToString();
             invitedProjectNumberLabel.Text = user.InvitedProjects.Count.ToString();
-            trackingIssueNumberLabel.Text = user.Issues.Count.ToString();
+            trackingIssueNumberLabel.Text = issueController.getIssueList().Count.ToString(); ;
         }
     }
 }

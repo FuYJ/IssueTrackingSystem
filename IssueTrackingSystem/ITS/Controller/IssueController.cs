@@ -35,7 +35,7 @@ namespace IssueTrackingSystem.ITS.Controller
             return issueList;
         }
         
-        public List<Issue> listIssues(String keyword, int searchType)
+        public List<Issue> searchIssues(String keyword, int searchType)
         {
             List<Issue> searchedIssueList = new List<Issue>();
 
@@ -79,6 +79,15 @@ namespace IssueTrackingSystem.ITS.Controller
                         }
                     }
                     break;
+                case (int)Issue.SearchType.ByIssueState:
+                    foreach (Issue issue in issueList)
+                    {
+                        if (issue.State.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) != -1)
+                        {
+                            searchedIssueList.Add(issue);
+                        }
+                    }
+                    break;
             }
 
             return searchedIssueList;
@@ -115,7 +124,7 @@ namespace IssueTrackingSystem.ITS.Controller
             return issue.IssueId;
         }
 
-        private void getIssueList()
+        public List<Issue> getIssueList()
         {
             issueList.Clear();
             if (user.Authority == (int)User.AuthorityEnum.GeneralUser)
@@ -142,6 +151,8 @@ namespace IssueTrackingSystem.ITS.Controller
                 }
             }
             issueList.Sort(compareIssueOrder);
+
+            return issueList;
         }
 
         private void getIssueHistory()
@@ -166,7 +177,7 @@ namespace IssueTrackingSystem.ITS.Controller
                 newIssueList = issueModel.getAllIssueList();
                 foreach (Issue issue in newIssueList)
                 {
-                    if (issue.FinishDate != DateTime.MaxValue)
+                    if (issue.FinishDate != DateTime.MaxValue || issue.State == "已完成")
                         issueHistory.Add(issue);
                 }
             }

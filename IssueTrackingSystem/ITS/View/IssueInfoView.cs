@@ -69,9 +69,9 @@ namespace IssueTrackingSystem.ITS.View
                 issue.Priority = (String)issuePriorityComboBox.SelectedItem;
                 issue.Serverity = (String)issueSeverityComboBox.SelectedItem;
                 issue.PersonInChargeId = ((User)issueAssigneeComboBox.SelectedItem).UserId;
+                
                 issue.IssueId = issueController.updateIssue(issue);
-
-                if (issue.IssueId != 0)
+                if (issue.IssueId > 0)
                 {
                     issueDetails = issueController.getIssueDetails(issue.IssueId);
                     updateIssueInfoView();
@@ -86,6 +86,7 @@ namespace IssueTrackingSystem.ITS.View
             issueSeverityComboBox.Enabled = isEnabled;
             issueAssigneeComboBox.Enabled = isEnabled;
             issueDescriptionRichTextBox.Enabled = isEnabled;
+            issueDescriptionRichTextBox.ReadOnly = !isEnabled;
         }
 
         private void updateIssueInfoView()
@@ -96,9 +97,9 @@ namespace IssueTrackingSystem.ITS.View
             assignee = userController.getUser(issueDetails[0].PersonInChargeId);
 
             issueNameLabel.Text = issueDetails[0].IssueName;
-            issueStateComboBox.Text = issueDetails[0].State;
-            issuePriorityComboBox.Text = issueDetails[0].Priority;
-            issueSeverityComboBox.Text = issueDetails[0].Serverity;
+            issueStateComboBox.SelectedIndex = issueStateComboBox.FindStringExact(issueDetails[0].State);
+            issuePriorityComboBox.SelectedIndex = issuePriorityComboBox.FindStringExact(issueDetails[0].Priority);
+            issueSeverityComboBox.SelectedIndex = issueSeverityComboBox.FindStringExact(issueDetails[0].Serverity);
             issueReporterLabel.Text = reporter.UserName;
             issueReportDateLabel.Text = issueDetails[0].ReportDate.ToString();
             issueAssigneeComboBox.Text = assignee.UserName;
