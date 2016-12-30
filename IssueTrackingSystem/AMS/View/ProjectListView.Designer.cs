@@ -46,11 +46,11 @@
             this.acceptInvitedProjectButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.denyInvitedProjectButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.allProjectsDataGridView = new System.Windows.Forms.DataGridView();
-            this.systemManagerTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.projectId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.projectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.projectManager = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.systemManagerTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.generalUserTableLayoutPanel.SuspendLayout();
             this.projectTabControl.SuspendLayout();
             this.joinedProjectsTabPage.SuspendLayout();
@@ -119,6 +119,8 @@
             this.joinedProjectsDataGridView.RowTemplate.Height = 24;
             this.joinedProjectsDataGridView.Size = new System.Drawing.Size(744, 414);
             this.joinedProjectsDataGridView.TabIndex = 0;
+            this.joinedProjectsDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.joinedProjectsDataGridViewCellContentClicked);
+            this.joinedProjectsDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.joinedProjectsDataGridViewCellDoubleClicked);
             // 
             // joinedProjectId
             // 
@@ -247,20 +249,6 @@
             this.allProjectsDataGridView.Size = new System.Drawing.Size(764, 472);
             this.allProjectsDataGridView.TabIndex = 2;
             // 
-            // systemManagerTableLayoutPanel
-            // 
-            this.systemManagerTableLayoutPanel.ColumnCount = 1;
-            this.systemManagerTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.systemManagerTableLayoutPanel.Controls.Add(this.allProjectsDataGridView, 0, 0);
-            this.systemManagerTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.systemManagerTableLayoutPanel.Location = new System.Drawing.Point(0, 49);
-            this.systemManagerTableLayoutPanel.Name = "systemManagerTableLayoutPanel";
-            this.systemManagerTableLayoutPanel.RowCount = 2;
-            this.systemManagerTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.systemManagerTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.systemManagerTableLayoutPanel.Size = new System.Drawing.Size(784, 512);
-            this.systemManagerTableLayoutPanel.TabIndex = 2;
-            // 
             // projectId
             // 
             this.projectId.FillWeight = 21.31845F;
@@ -284,6 +272,20 @@
             this.projectManager.FillWeight = 83.58919F;
             this.projectManager.HeaderText = "負責人";
             this.projectManager.Name = "projectManager";
+            // 
+            // systemManagerTableLayoutPanel
+            // 
+            this.systemManagerTableLayoutPanel.ColumnCount = 1;
+            this.systemManagerTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.systemManagerTableLayoutPanel.Controls.Add(this.allProjectsDataGridView, 0, 0);
+            this.systemManagerTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.systemManagerTableLayoutPanel.Location = new System.Drawing.Point(0, 49);
+            this.systemManagerTableLayoutPanel.Name = "systemManagerTableLayoutPanel";
+            this.systemManagerTableLayoutPanel.RowCount = 2;
+            this.systemManagerTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.systemManagerTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.systemManagerTableLayoutPanel.Size = new System.Drawing.Size(784, 512);
+            this.systemManagerTableLayoutPanel.TabIndex = 2;
             // 
             // ProjectListView
             // 

@@ -78,7 +78,6 @@
       <DependentUpon>UserListView.cs</DependentUpon>
     </Compile>
     <Compile Include="ITS\Controller\IssueController.cs" />
-    <Compile Include="ITS\Controller\ReportController.cs" />
     <Compile Include="ITS\View\CreateIssueView.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -92,5 +92,23 @@ namespace IssueTrackingSystem.AMS.View
                 projectListController.dealWithProjectInvitation((int)invitedProjectsDataGridView.Rows[e.RowIndex].Cells[0].Value, false);
             }
         }
+
+        private void joinedProjectsDataGridViewCellDoubleClicked(object sender, DataGridViewCellEventArgs e)
+        {
+            User user = SecurityModel.getInstance().AuthenticatedUser;
+            if (e.RowIndex >= 0 && e.RowIndex < invitedProjectsDataGridView.RowCount)
+            {
+                projectInfoController.getProjectInfo(user.UserId, (int)invitedProjectsDataGridView.Rows[e.RowIndex].Cells[0].Value);
+            }
+        }
+
+        private void joinedProjectsDataGridViewCellContentClicked(object sender, DataGridViewCellEventArgs e)
+        {
+            User user = SecurityModel.getInstance().AuthenticatedUser;
+            if (e.ColumnIndex == 4 && e.RowIndex >= 0 && e.RowIndex < invitedProjectsDataGridView.RowCount)
+            {
+                projectInfoController.getProjectInfo(user.UserId, (int)invitedProjectsDataGridView.Rows[e.RowIndex].Cells[0].Value);
+            }
+        }
     }
 }
