@@ -17,6 +17,7 @@ namespace IssueTrackingSystem.ITS.View
         private UserModel userModel;
         private IssueModel issueModel;
         private ProjectModel projectModel;
+        private ProjectMemberModel projectMemberModel;
         private UserController userController;
         private IssueController issueController;
 
@@ -25,15 +26,17 @@ namespace IssueTrackingSystem.ITS.View
         private String initialKeyword;
         private int initialSearchType;
 
-        public IssueListView(UserModel userModel, IssueModel issueModel, ProjectModel projectModel)
+        public IssueListView(UserModel userModel, IssueModel issueModel, ProjectModel projectModel, ProjectMemberModel projectMemberModel)
             : base(userModel, issueModel, projectModel)
         {
             InitializeComponent();
             this.userModel = userModel;
             this.issueModel = issueModel;
             this.projectModel = projectModel;
+            this.projectMemberModel = projectMemberModel;
             userController = new UserController(userModel);
             issueController = new IssueController(userModel, issueModel, projectModel);
+
             user = SecurityModel.getInstance().AuthenticatedUser;
             initialKeyword = user.UserName;
             initialSearchType = (int)Issue.SearchType.ByPersonInChargeName;
@@ -43,7 +46,7 @@ namespace IssueTrackingSystem.ITS.View
         {
             keywordTextBox.Text = initialKeyword;
             selectSearchTypeComboBox.SelectedIndex = initialSearchType;
-            issueList = issueController.listIssues(keywordTextBox.Text, selectSearchTypeComboBox.SelectedIndex);
+            issueList = issueController.searchIssues(keywordTextBox.Text, selectSearchTypeComboBox.SelectedIndex);
 
             issuesDataGridView.Rows.Clear();
             foreach(Issue issue in issueList){
@@ -55,20 +58,20 @@ namespace IssueTrackingSystem.ITS.View
 
         private void createIssueButtonClicked(object sender, EventArgs e)
         {
-            CreateIssueView createIssueView = new CreateIssueView(userModel, issueModel, projectModel);
+            CreateIssueView createIssueView = new CreateIssueView(userModel, issueModel, projectModel, projectMemberModel);
             createIssueView.Show(this);
             this.Hide();
         }
 
         private void searchButtonClicked(object sender, EventArgs e)
         {
-            issueList = issueController.listIssues(keywordTextBox.Text, selectSearchTypeComboBox.SelectedIndex);
+            issueList = issueController.searchIssues(keywordTextBox.Text, selectSearchTypeComboBox.SelectedIndex);
             issuesDataGridView.Rows.Clear();
             foreach (Issue issue in issueList)
             {
                 User reporter = userController.getUser(issue.ReporterId);
                 User personInCharge = userController.getUser(issue.PersonInChargeId);
-                issuesDataGridView.Rows.Add(new Object[] { issue.IssueId, issue.IssueName, issue.Priority, issue.Serverity, reporter.UserName, personInCharge.UserName, issue.ReportDate, issue.FinishDate, issue.State });
+                issuesDataGridView.Rows.Add(new Object[] { issue.IssueId, issue.IssueName, issue.Priority, issue.Serverity, reporter.UserName, personInCharge.UserName, issue.ReportDate, user.JoinedProjects.Find(x => x.ProjectId == issue.ProjectId).ProjectName, issue.State });
             }
         }
 
@@ -79,6 +82,12 @@ namespace IssueTrackingSystem.ITS.View
                 IssueInfoView issueInfoView = new IssueInfoView((int)issuesDataGridView.Rows[e.RowIndex].Cells[0].Value, userModel, issueModel, projectModel);
                 issueInfoView.Show(this);
             }
+        }
+
+        private void viewStatisticReportButtonClicked(object sender, EventArgs e)
+        {
+            ReportView reportView = new ReportView(issueList, userModel, issueModel, projectModel);
+            reportView.Show(this);
         }
     }
 }

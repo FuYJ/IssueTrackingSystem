@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using IssueTrackingSystem.PMS.Controller;
+using IssueTrackingSystem.AMS.Controller;
 
 namespace IssueTrackingSystem.AMS.View
 {
@@ -15,34 +16,98 @@ namespace IssueTrackingSystem.AMS.View
     {
         private List<Project> joinedProjectList;
         private List<Project> invitedProjectList;
+        private List<Project> allProjectList;
+        private User user;
         private UserModel userModel;
         private IssueModel issueModel;
         private ProjectModel projectModel;
-        private ProjectInfoController projectController = new ProjectInfoController();
+        private ProjectMemberModel projectMemberModel;
+        private ProjectInfoController projectInfoController;
+        private ProjectListController projectListController;
 
-        public ProjectListView(int tabIndex, UserModel userModel, IssueModel issueModel, ProjectModel projectModel)
+        public ProjectListView(UserModel userModel, IssueModel issueModel, ProjectModel projectModel, ProjectMemberModel projectMemberModel)
             : base(userModel, issueModel, projectModel)
         {
             InitializeComponent();
             this.userModel = userModel;
             this.issueModel = issueModel;
             this.projectModel = projectModel;
+            this.projectMemberModel = projectMemberModel;
+            projectInfoController = new ProjectInfoController();
+            projectListController = new ProjectListController(projectModel, projectMemberModel);
 
-            int userId = SecurityModel.getInstance().AuthenticatedUser.UserId;
-            joinedProjectList = projectController.getProjectListByUserId(userId);
-            invitedProjectList = projectController.getInvitedProjectListByUserId(userId);
-            projectTabControl.SelectTab(tabIndex);
+            user = SecurityModel.getInstance().AuthenticatedUser;
+            int userId = user.UserId;
+            allProjectList = projectInfoController.getAllProjectList(userId);
+
+            systemManagerTableLayoutPanel.Enabled = true;
+            systemManagerTableLayoutPanel.Visible = true;
+            generalUserTableLayoutPanel.Enabled = false;
+            generalUserTableLayoutPanel.Visible = false;
         }
 
-        private void ProjectListViewLoad(object sender, EventArgs e)
+        public ProjectListView(int tabIndex, UserModel userModel, IssueModel issueModel, ProjectModel projectModel, ProjectMemberModel projectMemberModel)
+            : base(userModel, issueModel, projectModel)
         {
-            foreach (Project project in joinedProjectList)
+            InitializeComponent();
+            this.userModel = userModel;
+            this.issueModel = issueModel;
+            this.projectModel = projectModel;
+            this.projectMemberModel = projectMemberModel;
+            projectInfoController = new ProjectInfoController();
+
+            user = SecurityModel.getInstance().AuthenticatedUser;
+            int userId = user.UserId;
+            joinedProjectList = projectInfoController.getProjectListByUserId(userId);
+            invitedProjectList = projectInfoController.getInvitedProjectListByUserId(userId);
+            projectTabControl.SelectTab(tabIndex);
+
+            systemManagerTableLayoutPanel.Enabled = false;
+            systemManagerTableLayoutPanel.Visible = false;
+            generalUserTableLayoutPanel.Enabled = true;
+            generalUserTableLayoutPanel.Visible = true;
+        }
+
+        private void projectListViewLoad(object sender, EventArgs e)
+        {
+            if (user.Authority == (int)User.AuthorityEnum.GeneralUser)
             {
-                joinedProjectsDataGridView.Rows.Add(new Object[] { project.ProjectId, project.ProjectName, project.Description, project.Manager, "檢視" });
+                foreach (Project project in joinedProjectList)
+                    joinedProjectsDataGridView.Rows.Add(new Object[] { project.ProjectId, project.ProjectName, project.Description, project.Manager, "檢視" });
+                foreach (Project project in invitedProjectList)
+                    invitedProjectsDataGridView.Rows.Add(new Object[] { project.ProjectId, project.ProjectName, project.Description, project.Manager, "接受", "拒絕" });
             }
-            foreach (Project project in invitedProjectList)
+            else {
+                foreach (Project project in allProjectList)
+                    allProjectsDataGridView.Rows.Add(new Object[] { project.ProjectId, project.ProjectName, project.Description, project.Manager});
+            }
+        }
+
+        private void invitedProjectsDataGridViewCellContentClicked(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 4 && e.RowIndex >= 0 && e.RowIndex < invitedProjectsDataGridView.RowCount) {
+                projectListController.dealWithProjectInvitation((int)invitedProjectsDataGridView.Rows[e.RowIndex].Cells[0].Value, true);
+            }
+            else if (e.ColumnIndex == 5 && e.RowIndex >= 0 && e.RowIndex < invitedProjectsDataGridView.RowCount) {
+                projectListController.dealWithProjectInvitation((int)invitedProjectsDataGridView.Rows[e.RowIndex].Cells[0].Value, false);
+            }
+        }
+
+        private void joinedProjectsDataGridViewCellDoubleClicked(object sender, DataGridViewCellEventArgs e)
+        {
+            User user = SecurityModel.getInstance().AuthenticatedUser;
+            if (e.RowIndex >= 0 && e.RowIndex < invitedProjectsDataGridView.RowCount)
             {
-                invitedProjectsDataGridView.Rows.Add(new Object[] { project.ProjectId, project.ProjectName, project.Description, project.Manager, "接受", "拒絕" });
+                projectInfoController.getProjectInfo(user.UserId, (int)invitedProjectsDataGridView.Rows[e.RowIndex].Cells[0].Value);
+            }
+        }
+
+        private void joinedProjectsDataGridViewCellContentClicked(object sender, DataGridViewCellEventArgs e)
+        {
+            User user = SecurityModel.getInstance().AuthenticatedUser;
+            if (e.ColumnIndex == 4 && e.RowIndex >= 0 && e.RowIndex < invitedProjectsDataGridView.RowCount)
+            {
+                projectInfoController.getProjectInfo(user.UserId, (int)invitedProjectsDataGridView.Rows[e.RowIndex].Cells[0].Value);
             }
         }
     }

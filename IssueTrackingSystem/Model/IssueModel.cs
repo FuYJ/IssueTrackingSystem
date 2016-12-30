@@ -40,7 +40,7 @@ namespace IssueTrackingSystem.Model
                 issue.IssueId = formatStateToIssueId((String)issueApiModel.state, (String)issueApiModel.issue.issueId);
                 issue.IssueGroupId = issueApiModel.issue.issueGroupId;
                 issue.ReporterId = issueApiModel.issue.reporterId;
-                issue.ReportDate = DateTime.FromFileTime((long)issueApiModel.issue.reportTime);
+                issue.ReportDate = new DateTime((new DateTime(1970, 1, 1, 0, 0, 0).Ticks) + (long)issueApiModel.issue.reportTime * 10000).ToLocalTime();
                 issue.FinishDate = DateTime.MaxValue;
             }
             Notify();
@@ -62,15 +62,16 @@ namespace IssueTrackingSystem.Model
                 var issueData = reader.ReadToEnd();
                 dynamic issueApiModel = JsonConvert.DeserializeObject<dynamic>(issueData);
                 issue.IssueId = formatStateToIssueId((String)issueApiModel.state, (String)issueApiModel.issue.issueId);
+                issue.State = issueApiModel.issue.state;
                 issue.IssueName = issueApiModel.issue.title;
                 issue.IssueGroupId = issueApiModel.issue.issueGroupId;
                 issue.Description = issueApiModel.issue.description;
                 issue.Priority = issueApiModel.issue.priority;
                 issue.Serverity = issueApiModel.issue.serverity;
                 issue.ReporterId = issueApiModel.issue.reporterId;
-                issue.ReportDate = DateTime.FromFileTime((long)issueApiModel.issue.reportTime);
+                issue.ReportDate = new DateTime((new DateTime(1970, 1, 1, 0, 0, 0).Ticks) + (long)issueApiModel.issue.reportTime * 10000).ToLocalTime();
                 issue.PersonInChargeId = issueApiModel.issue.personInChargeId;
-                issue.FinishDate = (issueApiModel.issue.finishTime == null) ? DateTime.MaxValue : DateTime.FromFileTime((long)issueApiModel.issue.finishTime);
+                issue.FinishDate = (issueApiModel.issue.finishTime == null) ? DateTime.MaxValue : new DateTime((new DateTime(1970, 1, 1, 0, 0, 0).Ticks) + (long)issueApiModel.issue.finishTime * 10000).ToLocalTime();
                 issue.ProjectId = issueApiModel.issue.projectId;
             }
 
@@ -95,15 +96,17 @@ namespace IssueTrackingSystem.Model
                     {
                         Issue issue = new Issue();
                         issue.IssueId = o.issueId;
+                        issue.IssueGroupId = o.issueGroupId;
                         issue.State = o.state;
                         issue.IssueName = o.title;
+                        issue.IssueGroupId = o.issueGroupId;
                         issue.Description = o.description;
                         issue.Serverity = o.serverity;
                         issue.Priority = o.priority;
                         issue.ReporterId = o.reporterId;
-                        issue.ReportDate = DateTime.FromFileTime((long)o.reportTime);
+                        issue.ReportDate = new DateTime((new DateTime(1970, 1, 1, 0, 0, 0).Ticks) + (long)o.reportTime * 10000).ToLocalTime();
                         issue.PersonInChargeId = o.personInChargeId;
-                        issue.FinishDate = (o.finishTime == null) ? DateTime.MaxValue : DateTime.FromFileTime((long)o.finishTime);
+                        issue.FinishDate = (o.finishTime == null) ? DateTime.MaxValue : new DateTime((new DateTime(1970, 1, 1, 0, 0, 0).Ticks) + (long)o.finishTime * 10000).ToLocalTime();
                         issue.ProjectId = o.projectId;
                         issueList.Add(issue);
                     }
@@ -134,15 +137,16 @@ namespace IssueTrackingSystem.Model
                     {
                         Issue issue = new Issue();
                         issue.IssueId = o.issueId;
+                        issue.IssueGroupId = o.issueGroupId;
                         issue.State = o.state;
                         issue.IssueName = o.title;
                         issue.Description = o.description;
                         issue.Serverity = o.serverity;
                         issue.Priority = o.priority;
                         issue.ReporterId = o.reporterId;
-                        issue.ReportDate = DateTime.FromFileTime((long)o.reportTime);
+                        issue.ReportDate = new DateTime((new DateTime(1970, 1, 1, 0, 0, 0).Ticks) + (long)o.reportTime * 10000).ToLocalTime();
                         issue.PersonInChargeId = o.personInChargeId;
-                        issue.FinishDate = (o.finishTime == null) ? DateTime.MaxValue : DateTime.FromFileTime((long)o.finishTime);
+                        issue.FinishDate = (o.finishTime == null) ? DateTime.MaxValue : new DateTime((new DateTime(1970, 1, 1, 0, 0, 0).Ticks) + (long)o.finishTime * 10000).ToLocalTime();
                         issue.ProjectId = o.projectId;
                         issueList.Add(issue);
                     }
@@ -172,15 +176,16 @@ namespace IssueTrackingSystem.Model
                     {
                         Issue issue = new Issue();
                         issue.IssueId = o.issueId;
+                        issue.IssueGroupId = o.issueGroupId;
                         issue.State = o.state;
                         issue.IssueName = o.title;
                         issue.Description = o.description;
                         issue.Serverity = o.serverity;
                         issue.Priority = o.priority;
                         issue.ReporterId = o.reporterId;
-                        issue.ReportDate = DateTime.FromFileTime((long)o.reportTime);
+                        issue.ReportDate = new DateTime((new DateTime(1970, 1, 1, 0, 0, 0).Ticks) + (long)o.reportTime * 10000).AddHours(8);
                         issue.PersonInChargeId = o.personInChargeId;
-                        issue.FinishDate = (o.finishTime == null) ? DateTime.MaxValue : DateTime.FromFileTime((long)o.finishTime);
+                        issue.FinishDate = (o.finishTime == null) ? DateTime.MaxValue : new DateTime((new DateTime(1970, 1, 1, 0, 0, 0).Ticks) + (long)o.finishTime * 10000).ToLocalTime();
                         issue.ProjectId = o.projectId;
                         issueList.Add(issue);
                     }
@@ -200,7 +205,6 @@ namespace IssueTrackingSystem.Model
             String contentData = "{\"title\":\"" + issue.IssueName + "\"," +
                                   "\"description\":\"" + issue.Description + "\"," +
                                   "\"state\":\"" + issue.State + "\"," +
-                                  "\"issueGroupId\":\"" + issue.IssueGroupId + "\"," +
                                   "\"serverity\":\"" + issue.Serverity + "\"," +
                                   "\"priority\":\"" + issue.Priority + "\"," +
                                   "\"personInChargeId\":\"" + issue.PersonInChargeId + "\"}";
@@ -229,7 +233,7 @@ namespace IssueTrackingSystem.Model
             }
             else
             {
-                return 0;
+                return -int.Parse(state);
             }
         }
 

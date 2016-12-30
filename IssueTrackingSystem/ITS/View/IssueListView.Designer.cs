@@ -82,6 +82,7 @@
             this.viewStatisticReportButton.TabIndex = 2;
             this.viewStatisticReportButton.Text = "查看報表";
             this.viewStatisticReportButton.UseVisualStyleBackColor = true;
+            this.viewStatisticReportButton.Click += new System.EventHandler(this.viewStatisticReportButtonClicked);
             // 
             // issuesDataGridView
             // 
@@ -181,7 +182,8 @@
             "以議題名稱",
             "以專案名稱",
             "以提出人名稱",
-            "以負責人名稱"});
+            "以負責人名稱",
+            "以議題狀態"});
             this.selectSearchTypeComboBox.Location = new System.Drawing.Point(127, 13);
             this.selectSearchTypeComboBox.Name = "selectSearchTypeComboBox";
             this.selectSearchTypeComboBox.Size = new System.Drawing.Size(108, 20);

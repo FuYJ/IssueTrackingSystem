@@ -176,7 +176,7 @@ namespace IssueTrackingSystem.Model
             }
             else
             {
-                return 0;
+                return -int.Parse(state);
             }
         }
 

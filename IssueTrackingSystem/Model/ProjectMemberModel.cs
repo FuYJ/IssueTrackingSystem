@@ -51,12 +51,12 @@ namespace IssueTrackingSystem.Model
                 int state = memberApiModel.state;
                 if(state == 0)
                 {
-                    foreach (dynamic o in memberApiModel.list)
+                    foreach (dynamic o in memberApiModel.member)
                     {
                         ProjectMember projectMember = new ProjectMember();
                         projectMember.UserId = o.userId;
                         projectMember.Role = o.role;
-                        if (BooltoString(joined).Equals(o.isJoined))
+                        if (int.Parse((String)o.isJoined) == 1)
                         {
                             memberList.Add(projectMember);
                         }
@@ -110,6 +110,32 @@ namespace IssueTrackingSystem.Model
                 dynamic memberApiModel = JsonConvert.DeserializeObject<dynamic>(membertData);
                 state = memberApiModel.state;
             }
+            return state;
+        }
+
+        public int dealWithProjectInvitation(ProjectMember projectMember, bool isAccepted)
+        {
+            int state = -1;
+
+            var req = WebRequest.Create(Server.ApiUrl + "/members/put/" + projectMember.UserId + "/" + projectMember.ProjectId);
+            req.Method = "POST";
+            req.ContentType = "application/json";
+            String contentData = "{\"userId\":\"" + projectMember.UserId + "\"," +
+                                  "\"isJoined\":\"" + isAccepted.ToString() + "\"," +
+                                  "\"role\":\"\"}";
+            using (var writer = new StreamWriter(req.GetRequestStream()))
+            {
+                writer.Write(contentData);
+            }
+
+            var resp = (HttpWebResponse)req.GetResponse();
+            using (var reader = new StreamReader(resp.GetResponseStream()))
+            {
+                var membertData = reader.ReadToEnd();
+                dynamic memberApiModel = JsonConvert.DeserializeObject<dynamic>(membertData);
+                state = memberApiModel.state;
+            }
+
             return state;
         }
 

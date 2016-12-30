@@ -1,4 +1,5 @@
 ﻿using IssueTrackingSystem.AMS.Controller;
+using IssueTrackingSystem.ITS.Controller;
 using IssueTrackingSystem.ITS.View;
 using IssueTrackingSystem.Model;
 using IssueTrackingSystem.Model.DataModel;
@@ -18,18 +19,22 @@ namespace IssueTrackingSystem.AMS.View
         private UserModel userModel;
         private IssueModel issueModel;
         private ProjectModel projectModel;
+        private ProjectMemberModel projectMemberModel;
         private UserController userController;
+        private IssueController issueController;
         private ErrorProvider errorProvider;
 
-        public UserInfoView(UserModel userModel, IssueModel issueModel, ProjectModel projectModel)
+        public UserInfoView(UserModel userModel, IssueModel issueModel, ProjectModel projectModel, ProjectMemberModel projectMemberModel)
             : base(userModel, issueModel, projectModel)
         {
             InitializeComponent();
             this.userModel = userModel;
             this.issueModel = issueModel;
             this.projectModel = projectModel;
-
+            this.projectMemberModel = projectMemberModel;
             userController = new UserController(userModel);
+            issueController = new IssueController(userModel, issueModel, projectModel);
+
             user = SecurityModel.getInstance().AuthenticatedUser;
 
             userModel.userDataChanged += updateView;
@@ -47,12 +52,17 @@ namespace IssueTrackingSystem.AMS.View
 
         private void finishEditButtonClicked(object sender, EventArgs e)
         {
+            if (editUsernameTextBox.Text == String.Empty)
+                errorProvider.SetError(editUsernameTextBox, "名稱不得為空");
+            if (editEmailAddressTextBox.Text == String.Empty)
+                errorProvider.SetError(editEmailAddressTextBox, "郵件地址不得為空");
             if (errorProvider.GetError(editConfirmPasswordTextBox) != String.Empty)
                 return;
+
             User user = SecurityModel.getInstance().AuthenticatedUser;
-            user.UserName = editUsernameTextBox.Text;
+            user.UserName = (editUsernameTextBox.Text == user.UserName) ? "" : editUsernameTextBox.Text;
             user.Password = (editPasswordTextBox.Text == String.Empty) ? "" : editPasswordTextBox.Text;
-            user.EmailAddress = editEmailAddressTextBox.Text;
+            user.EmailAddress = (editEmailAddressTextBox.Text == user.EmailAddress) ? "" : editEmailAddressTextBox.Text;
             userController.updateUser(user);
             viewInfoTableLayoutPanel.Visible = true;
             editInfoTableLayoutPanel.Visible = false;
@@ -74,19 +84,19 @@ namespace IssueTrackingSystem.AMS.View
 
         private void viewJoinedProjectsButtonClicked(object sender, EventArgs e)
         {
-            ProjectListView projectListView = new ProjectListView(0, userModel, issueModel, projectModel);
+            ProjectListView projectListView = new ProjectListView(0, userModel, issueModel, projectModel, projectMemberModel);
             projectListView.Show();
         }
 
         private void viewInvitedProjectsButtonClicked(object sender, EventArgs e)
         {
-            ProjectListView projectListView = new ProjectListView(1, userModel, issueModel, projectModel);
+            ProjectListView projectListView = new ProjectListView(1, userModel, issueModel, projectModel, projectMemberModel);
             projectListView.Show();
         }
 
         private void viewIssuesButtonClicked(object sender, EventArgs e)
         {
-            IssueListView issueListView = new IssueListView(userModel, issueModel, projectModel);
+            IssueListView issueListView = new IssueListView(userModel, issueModel, projectModel, projectMemberModel);
             issueListView.Show();
         }
 
@@ -100,7 +110,7 @@ namespace IssueTrackingSystem.AMS.View
             editEmailAddressTextBox.Text = user.EmailAddress;
             joinedProjectNumberLabel.Text = user.JoinedProjects.Count.ToString();
             invitedProjectNumberLabel.Text = user.InvitedProjects.Count.ToString();
-            trackingIssueNumberLabel.Text = user.Issues.Count.ToString();
+            trackingIssueNumberLabel.Text = issueController.getIssueList().Count.ToString(); ;
         }
     }
 }

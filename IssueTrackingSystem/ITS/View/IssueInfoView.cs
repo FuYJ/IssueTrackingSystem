@@ -37,12 +37,14 @@ namespace IssueTrackingSystem.ITS.View
             issueController = new IssueController(userModel, issueModel, projectModel);
             projectMemberController = new ProjectMemberController();
 
-            issueDetails = issueController.getIssuedetails(issueId);
-//            projectMembers = projectMemberController.getMemberByProjectId(issueDetails[0].ProjectId, "1");
+            issueDetails = issueController.getIssueDetails(issueId);
+            projectMembers = projectMemberController.getUserByProjectId(issueDetails[0].ProjectId, true);
         }
 
         private void IssueInfoViewLoad(object sender, EventArgs e)
         {
+            foreach (User projectMember in projectMembers)
+                issueAssigneeComboBox.Items.Add(projectMember);
             updateIssueInfoView();
         }
 
@@ -63,15 +65,15 @@ namespace IssueTrackingSystem.ITS.View
                 issue.IssueGroupId = issueDetails[0].IssueGroupId;
                 issue.IssueName = issueNameLabel.Text;
                 issue.Description = issueDescriptionRichTextBox.Text;
-                issue.State = issueStateComboBox.SelectedText;
-                issue.Priority = issuePriorityComboBox.SelectedText;
-                issue.Serverity = issueSeverityComboBox.SelectedText;
-                issue.PersonInChargeId = 1;
+                issue.State = (String)issueStateComboBox.SelectedItem;
+                issue.Priority = (String)issuePriorityComboBox.SelectedItem;
+                issue.Serverity = (String)issueSeverityComboBox.SelectedItem;
+                issue.PersonInChargeId = ((User)issueAssigneeComboBox.SelectedItem).UserId;
+                
                 issue.IssueId = issueController.updateIssue(issue);
-
-                if (issue.IssueId != 0)
+                if (issue.IssueId > 0)
                 {
-                    issueDetails = issueController.getIssuedetails(issue.IssueId);
+                    issueDetails = issueController.getIssueDetails(issue.IssueId);
                     updateIssueInfoView();
                 }
             }
@@ -84,21 +86,45 @@ namespace IssueTrackingSystem.ITS.View
             issueSeverityComboBox.Enabled = isEnabled;
             issueAssigneeComboBox.Enabled = isEnabled;
             issueDescriptionRichTextBox.Enabled = isEnabled;
+            issueDescriptionRichTextBox.ReadOnly = !isEnabled;
         }
 
         private void updateIssueInfoView()
         {
+            this.Text = issueDetails[0].IssueName;
+
             reporter = userController.getUser(issueDetails[0].ReporterId);
             assignee = userController.getUser(issueDetails[0].PersonInChargeId);
 
             issueNameLabel.Text = issueDetails[0].IssueName;
-            issueStateComboBox.Text = issueDetails[0].State;
-            issuePriorityComboBox.Text = issueDetails[0].Priority;
-            issueSeverityComboBox.Text = issueDetails[0].Serverity;
+            issueStateComboBox.SelectedIndex = issueStateComboBox.FindStringExact(issueDetails[0].State);
+            issuePriorityComboBox.SelectedIndex = issuePriorityComboBox.FindStringExact(issueDetails[0].Priority);
+            issueSeverityComboBox.SelectedIndex = issueSeverityComboBox.FindStringExact(issueDetails[0].Serverity);
             issueReporterLabel.Text = reporter.UserName;
             issueReportDateLabel.Text = issueDetails[0].ReportDate.ToString();
             issueAssigneeComboBox.Text = assignee.UserName;
             issueDescriptionRichTextBox.Text = issueDetails[0].Description;
+
+            issueHistoryFlowLayoutPanel.Controls.Clear();
+            foreach (Issue issue in issueDetails) {
+                if (issue.IssueId != issueDetails[0].IssueId)
+                {
+                    issueHistoryBlock block = new issueHistoryBlock();
+                    reporter = userController.getUser(issue.ReporterId);
+                    assignee = userController.getUser(issue.PersonInChargeId);
+                    block.Width = issueHistoryFlowLayoutPanel.Width - 80;
+                    block.Margin = new System.Windows.Forms.Padding(20);
+                    block.issueNameLabel.Text = issue.IssueName;
+                    block.issueStateLabel.Text = issue.State;
+                    block.issueReporterLabel.Text = reporter.UserName;
+                    block.issueReportDateLabel.Text = issue.ReportDate.ToString();
+                    block.issueAssigneeLabel.Text = assignee.UserName;
+                    block.issueFinishDateLabel.Text = issue.FinishDate.ToString();
+                    block.issueDescriptionRichTextBox.Text = issue.Description;
+                    issueHistoryFlowLayoutPanel.Controls.Add(block);
+                }
+
+            }
         }
     }
 }

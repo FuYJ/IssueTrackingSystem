@@ -30,6 +30,13 @@ namespace IssueTrackingSystem.AMS.View
 
         private void registerButtonClicked(object sender, EventArgs e)
         {
+            if (usernameTextBox.Text == String.Empty)
+                errorProvider.SetError(usernameTextBox, "名稱不得為空");
+            if (emailAddressTextBox.Text == String.Empty)
+                errorProvider.SetError(emailAddressTextBox, "郵件地址不得為空");
+            if (errorProvider.GetError(confirmPasswordTextBox) != String.Empty)
+                return;
+
             User user = new User();
             user.UserName = usernameTextBox.Text;
             user.Password = passwordTextBox.Text;

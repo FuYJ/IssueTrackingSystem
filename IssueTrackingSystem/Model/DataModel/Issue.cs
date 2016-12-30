@@ -25,7 +25,8 @@ namespace IssueTrackingSystem.Model.DataModel
             ByIssueName,
             ByProjectName,
             ByReporterName,
-            ByPersonInChargeName
+            ByPersonInChargeName,
+            ByIssueState
         }
 
         public int IssueId

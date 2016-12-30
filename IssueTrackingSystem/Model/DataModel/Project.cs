@@ -13,7 +13,7 @@ namespace IssueTrackingSystem.Model.DataModel
         private String description;
         private String manager;
         private DateTime timeStamp;
-        private List<int> members;
+        private List<ProjectMember> members;
         private List<int> issues;
         public static String CREATE = "Create";
         public static String UPDATE = "Update";
@@ -53,7 +53,7 @@ namespace IssueTrackingSystem.Model.DataModel
             set { timeStamp = value; }
         }
 
-        public List<int> Members
+        public List<ProjectMember> Members
         {
             get { return members; }
             set { members = value; }

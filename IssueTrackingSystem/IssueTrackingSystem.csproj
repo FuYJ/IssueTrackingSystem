@@ -36,6 +36,8 @@
       <HintPath>..\packages\JDynamic.1.2.0.0\lib\net\Chsword.JDynamic.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -43,6 +45,8 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -74,7 +78,6 @@
       <DependentUpon>UserListView.cs</DependentUpon>
     </Compile>
     <Compile Include="ITS\Controller\IssueController.cs" />
-    <Compile Include="ITS\Controller\ReportController.cs" />
     <Compile Include="ITS\View\CreateIssueView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +108,7 @@
     <Compile Include="ITS\View\issueHistoryBlock.Designer.cs">
       <DependentUpon>issueHistoryBlock.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\DataModel\ErrorManager.cs" />
     <Compile Include="Model\ApiModel\ProjectApiModel.cs" />
     <Compile Include="Model\ApiModel\UserApiModel.cs" />
     <Compile Include="Model\DataModel\Issue.cs" />

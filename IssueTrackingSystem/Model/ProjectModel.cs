@@ -132,7 +132,7 @@ namespace IssueTrackingSystem.Model
 
         public List<Project> getAllProjectList(int userId)
         {
-            List<Project> projectList = null;
+            List<Project> projectList = new List<Project>();
             var req = WebRequest.Create(Server.ApiUrl + "/all-projects/" + userId);
             req.Method = "GET";
 
@@ -150,7 +150,7 @@ namespace IssueTrackingSystem.Model
                         project.ProjectName = o.projectName;
                         project.Description = o.description;
                         project.Manager = o.manager;
-                        project.TimeStamp = DateTime.FromFileTime(long.Parse((string)projectApiModel.timeStamp));
+                        project.TimeStamp = DateTime.FromFileTime(long.Parse((string)o.timeStamp));
                         projectList.Add(project);
                     }
                 }

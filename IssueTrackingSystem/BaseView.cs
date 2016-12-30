@@ -20,6 +20,11 @@ namespace IssueTrackingSystem.View
         private IssueModel issueModel;
         private ProjectModel projectModel;
 
+        public BaseView()
+        {
+            InitializeComponent();
+        }
+
         public BaseView(UserModel userModel, IssueModel issueModel, ProjectModel projectModel)
         {
             InitializeComponent();
@@ -30,8 +35,8 @@ namespace IssueTrackingSystem.View
 
         private void userListToolStripButtonClicked(object sender, EventArgs e)
         {
-            UserListView accountListView = new UserListView(userModel, issueModel, projectModel);
-            accountListView.Show();
+            UserListView userListView = new UserListView(userModel, issueModel, projectModel);
+            userListView.Show();
         }
 
         private void createProjectButtonClicked(object sender, EventArgs e)

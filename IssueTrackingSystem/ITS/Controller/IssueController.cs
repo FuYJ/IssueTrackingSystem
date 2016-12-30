@@ -15,6 +15,7 @@ namespace IssueTrackingSystem.ITS.Controller
         private ProjectModel projectModel;
         private IssueModel issueModel;
         private List<Issue> issueList;
+        private List<Issue> issueHistory;
 
         public IssueController(UserModel userModel, IssueModel issueModel, ProjectModel projectModel)
         {
@@ -23,6 +24,7 @@ namespace IssueTrackingSystem.ITS.Controller
             this.projectModel = projectModel;
             user = SecurityModel.getInstance().AuthenticatedUser;
             issueList = new List<Issue>();
+            issueHistory = new List<Issue>();
 
             getIssueList();
         }
@@ -33,7 +35,7 @@ namespace IssueTrackingSystem.ITS.Controller
             return issueList;
         }
         
-        public List<Issue> listIssues(String keyword, int searchType)
+        public List<Issue> searchIssues(String keyword, int searchType)
         {
             List<Issue> searchedIssueList = new List<Issue>();
 
@@ -77,20 +79,29 @@ namespace IssueTrackingSystem.ITS.Controller
                         }
                     }
                     break;
+                case (int)Issue.SearchType.ByIssueState:
+                    foreach (Issue issue in issueList)
+                    {
+                        if (issue.State.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) != -1)
+                        {
+                            searchedIssueList.Add(issue);
+                        }
+                    }
+                    break;
             }
 
             return searchedIssueList;
         }
 
-        public List<Issue> getIssuedetails(int issueId)
+        public List<Issue> getIssueDetails(int issueId)
         {
             List<Issue> historyIssueList = new List<Issue>();
             Issue issue = new Issue();
 
             issue = issueModel.getIssueInfo(issueId);
             historyIssueList.Add(issue);
-            getIssueList();
-            foreach (Issue historyIssue in issueList) {
+            getIssueHistory();
+            foreach (Issue historyIssue in issueHistory) {
                 if (historyIssue.IssueGroupId == issue.IssueGroupId) {
                     historyIssueList.Add(historyIssue);
                 }
@@ -113,7 +124,7 @@ namespace IssueTrackingSystem.ITS.Controller
             return issue.IssueId;
         }
 
-        private void getIssueList()
+        public List<Issue> getIssueList()
         {
             issueList.Clear();
             if (user.Authority == (int)User.AuthorityEnum.GeneralUser)
@@ -131,8 +142,54 @@ namespace IssueTrackingSystem.ITS.Controller
             }
             else
             {
-                issueList = listAllIssues();
+                List<Issue> newIssueList = new List<Issue>();
+                newIssueList = issueModel.getAllIssueList();
+                foreach (Issue issue in newIssueList)
+                {
+                    if (issue.FinishDate == DateTime.MaxValue)
+                        issueList.Add(issue);
+                }
             }
+            issueList.Sort(compareIssueOrder);
+
+            return issueList;
+        }
+
+        private void getIssueHistory()
+        {
+            issueHistory.Clear();
+            if (user.Authority == (int)User.AuthorityEnum.GeneralUser)
+            {
+                foreach (Project project in user.JoinedProjects)
+                {
+                    List<Issue> newIssueList = new List<Issue>();
+                    newIssueList = issueModel.getIssueListByProjectId(project.ProjectId);
+                    foreach (Issue issue in newIssueList)
+                    {
+                        if (issue.FinishDate != DateTime.MaxValue)
+                            issueHistory.Add(issue);
+                    }
+                }
+            }
+            else
+            {
+                List<Issue> newIssueList = new List<Issue>();
+                newIssueList = issueModel.getAllIssueList();
+                foreach (Issue issue in newIssueList)
+                {
+                    if (issue.FinishDate != DateTime.MaxValue || issue.State == "已完成")
+                        issueHistory.Add(issue);
+                }
+            }
+            issueHistory.Sort(compareIssueOrder);
+        }
+
+        private int compareIssueOrder(Issue a, Issue b) {
+            if (a.IssueId > b.IssueId)
+                return 1;
+            else if (a.IssueId < b.IssueId)
+                return -1;
+            return 0;
         }
     }
 }

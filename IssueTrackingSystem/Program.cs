@@ -34,10 +34,11 @@ namespace IssueTrackingSystem
             UserModel userModel = new UserModel();
             IssueModel issueModel = new IssueModel();
             ProjectModel projectModel = new ProjectModel();
+            ProjectMemberModel projectMemberModel = new ProjectMemberModel();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginView(userModel, issueModel, projectModel));
+            Application.Run(new LoginView(userModel, issueModel, projectModel, projectMemberModel));
 //            Application.Run(new Member(userModel, issueModel, projectModel, new Model.DataModel.Project()));
         }
     }
