@@ -55,6 +55,7 @@
             this._memberList.TabIndex = 3;
             this._memberList.Text = "Member";
             this._memberList.UseVisualStyleBackColor = true;
+            this._memberList.Click += new System.EventHandler(this.MemberListClicked);
             // 
             // _descriptionButton
             // 
@@ -88,10 +89,6 @@
             this.Controls.Add(this._projectName);
             this.Name = "ProjectMainMenu";
             this.Text = "ProjectMainMenu";
-            this.Controls.SetChildIndex(this._projectName, 0);
-            this.Controls.SetChildIndex(this._memberList, 0);
-            this.Controls.SetChildIndex(this._descriptionButton, 0);
-            this.Controls.SetChildIndex(this._deleteButton, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 

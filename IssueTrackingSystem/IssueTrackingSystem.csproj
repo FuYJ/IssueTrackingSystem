@@ -127,6 +127,8 @@
     <Compile Include="PMS\View\CreateUpdateProject.Designer.cs">
       <DependentUpon>CreateUpdateProject.cs</DependentUpon>
     </Compile>
+    <Compile Include="PMS\View\DataGridViewDisableButtonCell.cs" />
+    <Compile Include="PMS\View\DataGridViewDisableButtonColumn.cs" />
     <Compile Include="PMS\View\Member.cs">
       <SubType>Form</SubType>
     </Compile>

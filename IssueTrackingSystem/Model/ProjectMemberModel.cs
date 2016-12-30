@@ -32,7 +32,7 @@ namespace IssueTrackingSystem.Model
             {
                 var membertData = reader.ReadToEnd();
                 dynamic memberApiModel = JsonConvert.DeserializeObject<dynamic>(membertData);
-                state = memberApiModel.State;
+                state = memberApiModel.state;
             }
 
             return state;
@@ -48,7 +48,7 @@ namespace IssueTrackingSystem.Model
             {
                 var membertData = reader.ReadToEnd();
                 dynamic memberApiModel = JsonConvert.DeserializeObject<dynamic>(membertData);
-                int state = memberApiModel.State;
+                int state = memberApiModel.state;
                 if(state == 0)
                 {
                     foreach (dynamic o in memberApiModel.list)
@@ -85,7 +85,7 @@ namespace IssueTrackingSystem.Model
             {
                 var membertData = reader.ReadToEnd();
                 dynamic memberApiModel = JsonConvert.DeserializeObject<dynamic>(membertData);
-                state = memberApiModel.State;
+                state = memberApiModel.state;
             }
 
             return state;
@@ -108,7 +108,7 @@ namespace IssueTrackingSystem.Model
             {
                 var membertData = reader.ReadToEnd();
                 dynamic memberApiModel = JsonConvert.DeserializeObject<dynamic>(membertData);
-                state = memberApiModel.State;
+                state = memberApiModel.state;
             }
             return state;
         }

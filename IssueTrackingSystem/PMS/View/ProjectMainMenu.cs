@@ -52,5 +52,11 @@ namespace IssueTrackingSystem.PMS.View
             CreateUpdateProject view = new CreateUpdateProject(Project.UPDATE, project.ProjectId, userModel, issueModel, projectModel);
             view.Show();
         }
+
+        private void MemberListClicked(object sender, EventArgs e)
+        {
+            Member member = new Member(userModel, issueModel, projectModel, project);
+            member.Show();
+        }
     }
 }

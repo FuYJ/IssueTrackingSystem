@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using IssueTrackingSystem.AMS.View;
 using IssueTrackingSystem.Model;
+using IssueTrackingSystem.PMS.View;
 
 namespace IssueTrackingSystem
 {
@@ -37,6 +38,7 @@ namespace IssueTrackingSystem
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginView(userModel, issueModel, projectModel));
+//            Application.Run(new Member(userModel, issueModel, projectModel, new Model.DataModel.Project()));
         }
     }
 }
