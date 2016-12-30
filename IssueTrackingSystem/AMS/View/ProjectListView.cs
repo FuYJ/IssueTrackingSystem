@@ -26,14 +26,14 @@ namespace IssueTrackingSystem.AMS.View
         private ProjectListController projectListController;
 
         public ProjectListView(UserModel userModel, IssueModel issueModel, ProjectModel projectModel, ProjectMemberModel projectMemberModel)
-            : base(userModel, issueModel, projectModel)
+            : base(userModel, issueModel, projectModel, projectMemberModel)
         {
             InitializeComponent();
             this.userModel = userModel;
             this.issueModel = issueModel;
             this.projectModel = projectModel;
             this.projectMemberModel = projectMemberModel;
-            projectInfoController = new ProjectInfoController();
+            projectInfoController = new ProjectInfoController(projectModel);
             projectListController = new ProjectListController(projectModel, projectMemberModel);
 
             user = SecurityModel.getInstance().AuthenticatedUser;
@@ -47,14 +47,14 @@ namespace IssueTrackingSystem.AMS.View
         }
 
         public ProjectListView(int tabIndex, UserModel userModel, IssueModel issueModel, ProjectModel projectModel, ProjectMemberModel projectMemberModel)
-            : base(userModel, issueModel, projectModel)
+            : base(userModel, issueModel, projectModel, projectMemberModel)
         {
             InitializeComponent();
             this.userModel = userModel;
             this.issueModel = issueModel;
             this.projectModel = projectModel;
             this.projectMemberModel = projectMemberModel;
-            projectInfoController = new ProjectInfoController();
+            projectInfoController = new ProjectInfoController(projectModel);
 
             user = SecurityModel.getInstance().AuthenticatedUser;
             int userId = user.UserId;

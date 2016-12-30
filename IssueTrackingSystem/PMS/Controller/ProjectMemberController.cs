@@ -14,6 +14,12 @@ namespace IssueTrackingSystem.PMS.Controller
         ProjectMemberModel model = new ProjectMemberModel();
         UserModel userModel = new UserModel();
 
+        public ProjectMemberController(ProjectMemberModel projectMemberModel, UserModel userModel)
+        {
+            model = projectMemberModel;
+            this.userModel = userModel;
+        }
+
         public int createMember(ProjectMember member)
         {
             return model.createMember(member);

@@ -19,27 +19,34 @@ namespace IssueTrackingSystem.PMS.View
         private UserModel userModel;
         private IssueModel issueModel;
         private ProjectModel projectModel;
-        ProjectInfoController infoController = new ProjectInfoController();
+        private ProjectMemberModel projectMemberModel;
+        ProjectInfoController infoController;
 
-        public ProjectMainMenu(Project project, UserModel userModel, IssueModel issueModel, ProjectModel projectModel)
-            : base(userModel, issueModel, projectModel)
+        public ProjectMainMenu(Project project, UserModel userModel, IssueModel issueModel, ProjectModel projectModel, ProjectMemberModel projectMemberModel)
+            : base(userModel, issueModel, projectModel, projectMemberModel)
         {
             InitializeComponent();
             this.userModel = userModel;
             this.issueModel = issueModel;
             this.projectModel = projectModel;
+            this.projectMemberModel = projectMemberModel;
             this.project = project;
+            this.projectModel.projectDataChanged += UpdateView;
+            infoController = new ProjectInfoController(projectModel);
             SetProjectContext();
         }
 
-        public ProjectMainMenu(int projectId, UserModel userModel, IssueModel issueModel, ProjectModel projectModel)
-            : base(userModel, issueModel, projectModel)
+        public ProjectMainMenu(int projectId, UserModel userModel, IssueModel issueModel, ProjectModel projectModel, ProjectMemberModel projectMemberModel)
+            : base(userModel, issueModel, projectModel, projectMemberModel)
         {
             InitializeComponent();
             this.userModel = userModel;
             this.issueModel = issueModel;
             this.projectModel = projectModel;
-            project = infoController.getProjectInfo(SecurityModel.getInstance().AuthenticatedUser.UserId, projectId);
+            this.projectMemberModel = projectMemberModel;
+            this.projectModel.projectDataChanged += UpdateView;
+            infoController = new ProjectInfoController(projectModel);
+            project = projectModel.getProjectInfo(SecurityModel.getInstance().AuthenticatedUser.UserId, projectId);
         }
 
         private void SetProjectContext()
@@ -49,14 +56,26 @@ namespace IssueTrackingSystem.PMS.View
 
         private void DescriptionButtonClicked(object sender, EventArgs e)
         {
-            CreateUpdateProject view = new CreateUpdateProject(Project.UPDATE, project.ProjectId, userModel, issueModel, projectModel);
+            CreateUpdateProject view = new CreateUpdateProject(Project.UPDATE, project.ProjectId, userModel, issueModel, projectModel, projectMemberModel);
             view.Show();
         }
 
         private void MemberListClicked(object sender, EventArgs e)
         {
-            Member member = new Member(userModel, issueModel, projectModel, project);
+            Member member = new Member(userModel, issueModel, projectModel, project, projectMemberModel);
             member.Show();
+        }
+
+        public void UpdateView()
+        {
+            project = projectModel.getProjectInfo(SecurityModel.getInstance().AuthenticatedUser.UserId, project.ProjectId);
+            _projectName.Text = project.ProjectName;
+        }
+
+        private void DeleteButtonClicked(object sender, EventArgs e)
+        {
+            int state = infoController.deleteProject(SecurityModel.getInstance().AuthenticatedUser.UserId, project.ProjectId);
+            this.Close();
         }
     }
 }

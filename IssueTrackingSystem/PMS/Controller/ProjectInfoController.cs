@@ -10,7 +10,12 @@ namespace IssueTrackingSystem.PMS.Controller
 {
     class ProjectInfoController
     {
-        ProjectModel model = new ProjectModel();
+        ProjectModel model;
+
+        public ProjectInfoController(ProjectModel projectModel)
+        {
+            model = projectModel;
+        }
 
         public Project getProjectInfo(int userId, int projectId)
         {
@@ -30,6 +35,11 @@ namespace IssueTrackingSystem.PMS.Controller
         public List<Project> getAllProjectList(int userId)
         {
             return model.getAllProjectList(userId);
+        }
+
+        public int deleteProject(int userId, int projectId)
+        {
+            return model.deleteProject(userId, projectId);
         }
     }
 }

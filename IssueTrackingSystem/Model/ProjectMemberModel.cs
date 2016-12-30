@@ -14,6 +14,9 @@ namespace IssueTrackingSystem.Model
 {
     public class ProjectMemberModel
     {
+        public event ModelChangedEventHandler projectMemberDataChanged;
+        public delegate void ModelChangedEventHandler();
+
         public int createMember(ProjectMember member)
         {
             int state = 0;
@@ -56,7 +59,8 @@ namespace IssueTrackingSystem.Model
                         ProjectMember projectMember = new ProjectMember();
                         projectMember.UserId = o.userId;
                         projectMember.Role = o.role;
-                        if (int.Parse((String)o.isJoined) == 1)
+                        int temp = BooltoString(joined);
+                        if (int.Parse((String)o.isJoined) == temp)
                         {
                             memberList.Add(projectMember);
                         }
@@ -74,7 +78,7 @@ namespace IssueTrackingSystem.Model
             req.ContentType = "application/json";
             String contentData = "{\"userId\":\"" + member.UserId + "\"," +
                                   "\"role\":\"" + member.Role + "\"," +
-                                  "\"isJoined\":\"" + BooltoString(joined) + "\"}";
+                                  "\"isJoined\":\"" + "" + "\"}";
             using (var writer = new StreamWriter(req.GetRequestStream()))
             {
                 writer.Write(contentData);
@@ -139,12 +143,20 @@ namespace IssueTrackingSystem.Model
             return state;
         }
 
-        private String BooltoString(bool value)
+        private int BooltoString(bool value)
         {
             if (value)
-                return "1";
+                return 1;
             else
-                return "0";
+                return 0;
+        }
+
+        void Notify()
+        {
+            if (projectMemberDataChanged != null)
+            {
+                projectMemberDataChanged();
+            }
         }
     }
 }

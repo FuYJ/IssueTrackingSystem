@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using IssueTrackingSystem.PMS.Controller;
 using IssueTrackingSystem.Model.DataModel;
-
+using IssueTrackingSystem.Model.ApiModel;
 
 namespace IssueTrackingSystem.PMS.View
 {
@@ -19,21 +19,26 @@ namespace IssueTrackingSystem.PMS.View
         private UserModel userModel;
         private IssueModel issueModel;
         private ProjectModel projectModel;
-        private ProjectMemberController memberController = new ProjectMemberController();
+        private ProjectMemberModel projectMemberModel;
+        private ProjectMemberController memberController;
         private Project project = new Project();
         private String UPDATE = "Update";
         private String DELETE = "Delete";
 
-        public Member(UserModel userModel, IssueModel issueModel, ProjectModel projectModel, Project project)
-                    : base(userModel, issueModel, projectModel)
+        public Member(UserModel userModel, IssueModel issueModel, ProjectModel projectModel, Project project, ProjectMemberModel projectMemberModel)
+                    : base(userModel, issueModel, projectModel, projectMemberModel)
         {
             InitializeComponent();
             this.userModel = userModel;
             this.issueModel = issueModel;
             this.projectModel = projectModel;
             this.project = project;
+            this.projectMemberModel = projectMemberModel;
+            memberController = new ProjectMemberController(projectMemberModel, userModel);
+            _projectName.Text = project.ProjectName;
+            this.projectModel.projectDataChanged += UpdateView;
             ShowData();
-            _dataGridView.Rows.Add("1", "TEST", "123", "general_user", "Update", "Delete");
+//            _dataGridView.Rows.Add("1", "TEST", "123", "general_user", "Update", "Delete");
         }
 
         public void ShowData()
@@ -66,8 +71,9 @@ namespace IssueTrackingSystem.PMS.View
 
         private void InviteMemberClicked(object sender, EventArgs e)
         {
-            ProjectMember member = new ProjectMember();
-//            memberController.createMember()
+            UserApiModel member = new UserApiModel();
+            member = userModel.getUserInfoByName(_nameInput.Text);
+            
         }
 
         private void MemberListSelectedIndexChanged(object sender, EventArgs e)
@@ -87,7 +93,7 @@ namespace IssueTrackingSystem.PMS.View
                 }
                 if(col == 5)
                 {
-
+                    DeleteMember(new ProjectMember(Convert.ToInt16(_dataGridView.Rows[row].Cells[0].Value), project.ProjectId, _dataGridView.Rows[row].Cells[3].Value.ToString()));
                 }
             }
         }
@@ -95,6 +101,34 @@ namespace IssueTrackingSystem.PMS.View
         public void UpdateMember(ProjectMember member, bool joined)
         {
             memberController.updateInfo(member, joined);
+        }
+
+        public void DeleteMember(ProjectMember member)
+        {
+            memberController.deleteMember(SecurityModel.getInstance().AuthenticatedUser.UserId, member);
+        }
+
+        private void DataGridViewJoiningCellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int col = e.ColumnIndex;
+            int row = e.RowIndex;
+            if (e.RowIndex >= 0)
+            {
+                if (col == 4)
+                {
+                    UpdateMember(new ProjectMember(Convert.ToInt16(_dataGridViewJoining.Rows[row].Cells[0].Value), project.ProjectId, _dataGridView.Rows[row].Cells[3].Value.ToString()), false);
+                }
+                if (col == 5)
+                {
+                    DeleteMember(new ProjectMember(Convert.ToInt16(_dataGridViewJoining.Rows[row].Cells[0].Value), project.ProjectId, _dataGridView.Rows[row].Cells[3].Value.ToString()));
+                }
+            }
+        }
+
+        public void UpdateView()
+        {
+            project = projectModel.getProjectInfo(SecurityModel.getInstance().AuthenticatedUser.UserId, project.ProjectId);
+            _projectName.Text = project.ProjectName;
         }
     }
 }

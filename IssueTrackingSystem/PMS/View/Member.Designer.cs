@@ -29,8 +29,7 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this._mainProject = new System.Windows.Forms.Button();
+            this._projectName = new System.Windows.Forms.TextBox();
             this._memberList = new System.Windows.Forms.TabControl();
             this._existingMemberTable = new System.Windows.Forms.TabPage();
             this._dataGridView = new System.Windows.Forms.DataGridView();
@@ -57,6 +56,8 @@
             this._name = new System.Windows.Forms.TextBox();
             this._nameInput = new System.Windows.Forms.TextBox();
             this._inviteMember = new System.Windows.Forms.Button();
+            this.dataGridViewButtonColumn3 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.dataGridViewButtonColumn4 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this._memberList.SuspendLayout();
             this._existingMemberTable.SuspendLayout();
@@ -75,8 +76,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.Controls.Add(this.textBox1, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this._mainProject, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this._projectName, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this._memberList, 1, 2);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 49);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -88,28 +88,18 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 512);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
-            // textBox1
+            // _projectName
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.textBox1.Font = new System.Drawing.Font("PMingLiU", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox1.Location = new System.Drawing.Point(81, 41);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(621, 32);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "123";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // _mainProject
-            // 
-            this._mainProject.Dock = System.Windows.Forms.DockStyle.Right;
-            this._mainProject.Location = new System.Drawing.Point(627, 79);
-            this._mainProject.Name = "_mainProject";
-            this._mainProject.Size = new System.Drawing.Size(75, 45);
-            this._mainProject.TabIndex = 1;
-            this._mainProject.Text = "Main";
-            this._mainProject.UseVisualStyleBackColor = true;
+            this._projectName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this._projectName.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this._projectName.Font = new System.Drawing.Font("PMingLiU", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this._projectName.Location = new System.Drawing.Point(81, 41);
+            this._projectName.Name = "_projectName";
+            this._projectName.ReadOnly = true;
+            this._projectName.Size = new System.Drawing.Size(621, 32);
+            this._projectName.TabIndex = 0;
+            this._projectName.Text = "123";
+            this._projectName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // _memberList
             // 
@@ -180,16 +170,16 @@
             // 
             // _userRole
             // 
-            this._userRole.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this._userRole.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this._userRole.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
             this._userRole.HeaderText = "Role";
             this._userRole.Items.AddRange(new object[] {
-            "general_user",
-            "developer",
-            "tester",
-            "manager"});
+            "GeneralUser",
+            "ProjectDeveloper",
+            "ProjectTester",
+            "ProjectManager"});
             this._userRole.Name = "_userRole";
-            this._userRole.Width = 33;
+            this._userRole.Width = 5;
             // 
             // _updateButton
             // 
@@ -238,6 +228,7 @@
             this._dataGridViewJoining.RowTemplate.Height = 24;
             this._dataGridViewJoining.Size = new System.Drawing.Size(607, 294);
             this._dataGridViewJoining.TabIndex = 1;
+            this._dataGridViewJoining.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewJoiningCellContentClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -267,29 +258,29 @@
             this.dataGridViewComboBoxColumn1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
             this.dataGridViewComboBoxColumn1.HeaderText = "Role";
             this.dataGridViewComboBoxColumn1.Items.AddRange(new object[] {
-            "general_user",
-            "developer",
-            "tester",
-            "manager"});
+            "GeneralUser",
+            "ProjectDeveloper",
+            "ProjectTester",
+            "ProjectManager"});
             this.dataGridViewComboBoxColumn1.Name = "dataGridViewComboBoxColumn1";
             this.dataGridViewComboBoxColumn1.Width = 5;
             // 
             // dataGridViewButtonColumn1
             // 
-            this.dataGridViewButtonColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.dataGridViewButtonColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.dataGridViewButtonColumn1.HeaderText = "Update";
             this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
             this.dataGridViewButtonColumn1.ReadOnly = true;
             this.dataGridViewButtonColumn1.Text = "Update";
-            this.dataGridViewButtonColumn1.Width = 5;
+            this.dataGridViewButtonColumn1.Width = 44;
             // 
             // dataGridViewButtonColumn2
             // 
-            this.dataGridViewButtonColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.dataGridViewButtonColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.dataGridViewButtonColumn2.HeaderText = "Delete";
             this.dataGridViewButtonColumn2.Name = "dataGridViewButtonColumn2";
             this.dataGridViewButtonColumn2.Text = "Delete";
-            this.dataGridViewButtonColumn2.Width = 5;
+            this.dataGridViewButtonColumn2.Width = 40;
             // 
             // _inviteMemberTable
             // 
@@ -351,10 +342,10 @@
             // 
             this._permissionList.FormattingEnabled = true;
             this._permissionList.Items.AddRange(new object[] {
-            "general_user",
-            "developer",
-            "tester",
-            "manager"});
+            "GeneralUser",
+            "ProjectDeveloper",
+            "ProjectTester",
+            "ProjectManager"});
             this._permissionList.Location = new System.Drawing.Point(123, 3);
             this._permissionList.Name = "_permissionList";
             this._permissionList.Size = new System.Drawing.Size(121, 20);
@@ -407,6 +398,21 @@
             this._inviteMember.UseVisualStyleBackColor = true;
             this._inviteMember.Click += new System.EventHandler(this.InviteMemberClicked);
             // 
+            // dataGridViewButtonColumn3
+            // 
+            this.dataGridViewButtonColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dataGridViewButtonColumn3.HeaderText = "Update";
+            this.dataGridViewButtonColumn3.Name = "dataGridViewButtonColumn3";
+            this.dataGridViewButtonColumn3.ReadOnly = true;
+            this.dataGridViewButtonColumn3.Text = "Update";
+            // 
+            // dataGridViewButtonColumn4
+            // 
+            this.dataGridViewButtonColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dataGridViewButtonColumn4.HeaderText = "Delete";
+            this.dataGridViewButtonColumn4.Name = "dataGridViewButtonColumn4";
+            this.dataGridViewButtonColumn4.Text = "Delete";
+            // 
             // Member
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -415,6 +421,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Member";
             this.Text = "Member";
+            this.Controls.SetChildIndex(this.tableLayoutPanel1, 0);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this._memberList.ResumeLayout(false);
@@ -429,14 +436,14 @@
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button _mainProject;
+        private System.Windows.Forms.TextBox _projectName;
         private System.Windows.Forms.TabControl _memberList;
         private System.Windows.Forms.TabPage _existingMemberTable;
         private System.Windows.Forms.TabPage _joiningMemberTable;
@@ -451,17 +458,19 @@
         private System.Windows.Forms.Button _inviteMember;
         private System.Windows.Forms.DataGridView _dataGridView;
         private System.Windows.Forms.DataGridView _dataGridViewJoining;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn1;
-        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
-        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn _userID;
         private System.Windows.Forms.DataGridViewTextBoxColumn _userName;
         private System.Windows.Forms.DataGridViewTextBoxColumn _userEmail;
         private System.Windows.Forms.DataGridViewComboBoxColumn _userRole;
         private System.Windows.Forms.DataGridViewButtonColumn _updateButton;
         private System.Windows.Forms.DataGridViewButtonColumn _deleteButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn1;
+        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
+        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn2;
+        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn3;
+        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn4;
     }
 }

@@ -15,16 +15,17 @@ namespace IssueTrackingSystem.ITS.View
         private UserModel userModel;
         private IssueModel issueModel;
         private ProjectModel projectModel;
+        private ProjectMemberModel projectMemberModel;
         private List<Issue> issueList;
 
-        public ReportView(List<Issue> issueList, UserModel userModel, IssueModel issueModel, ProjectModel projectModel)
-            : base(userModel, issueModel, projectModel)
+        public ReportView(List<Issue> issueList, UserModel userModel, IssueModel issueModel, ProjectModel projectModel, ProjectMemberModel projectMemberModel)
+            : base(userModel, issueModel, projectModel, projectMemberModel)
         {
             InitializeComponent();
             this.userModel = userModel;
             this.issueModel = issueModel;
             this.projectModel = projectModel;
-
+            this.projectMemberModel = projectMemberModel;
             this.issueList = issueList;
         }
 

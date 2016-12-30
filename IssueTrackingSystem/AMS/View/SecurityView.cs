@@ -22,7 +22,7 @@ namespace IssueTrackingSystem.AMS.View
         private ErrorProvider errorProvider;
 
         public SecurityView(UserModel userModel, IssueModel issueModel, ProjectModel projectModel, ProjectMemberModel projectMemberModel)
-            : base(userModel, issueModel, projectModel)
+            : base(userModel, issueModel, projectModel, projectMemberModel)
         {
             InitializeComponent();
             this.userModel = userModel;
@@ -89,7 +89,7 @@ namespace IssueTrackingSystem.AMS.View
 
         private void viewUsersButtonClicked(object sender, EventArgs e)
         {
-            UserListView userListView = new UserListView(userModel, issueModel, projectModel);
+            UserListView userListView = new UserListView(userModel, issueModel, projectModel, projectMemberModel);
             userListView.Show();
         }
     }
