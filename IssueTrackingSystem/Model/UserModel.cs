@@ -308,6 +308,29 @@ namespace IssueTrackingSystem.Model
             return issueList;
         }
 
+        public UserApiModel getUserInfoByName(String userName)
+        {
+            UserApiModel user = new UserApiModel();
+            var req = WebRequest.Create(Server.ApiUrl + "/users/name/" + userName);
+            req.Method = "GET";
+            req.ContentType = "application/json";
+
+            var resp = (HttpWebResponse)req.GetResponse();
+            using (var reader = new StreamReader(resp.GetResponseStream()))
+            {
+                var userData = reader.ReadToEnd();
+                dynamic userApiModel = JsonConvert.DeserializeObject<dynamic>(userData);
+                if ((int)userApiModel.state == 0)
+                {
+                    user.UserId = userApiModel.userId;
+                    user.Name = userApiModel.name;
+                    user.EmailAddress = userApiModel.emailAddress;
+                    user.UserRole = userApiModel.userRole;
+                }
+            }
+            return user;
+        }
+
         void Notify() {
             if (userDataChanged != null) {
                 userDataChanged();

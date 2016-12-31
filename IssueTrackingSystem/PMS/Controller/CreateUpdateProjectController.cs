@@ -11,6 +11,17 @@ namespace IssueTrackingSystem.PMS.Controller
 {
     class CreateUpdateProjectController
     {
+        private UserModel userModel;
+        private IssueModel issueModel;
+        private ProjectModel projectModel;
+
+        public CreateUpdateProjectController(UserModel userModel, IssueModel issueModel, ProjectModel projectModel)
+        {
+            this.userModel = userModel;
+            this.issueModel = issueModel;
+            this.projectModel = projectModel;
+        }
+
         public ProjectApiModel CreateUpdateProject(String movement, Project project)
         {
             ProjectApiModel model = new ProjectApiModel();
@@ -28,7 +39,6 @@ namespace IssueTrackingSystem.PMS.Controller
         public ProjectApiModel CreateProject(Project project)
         {
             User user = SecurityModel.getInstance().AuthenticatedUser;
-            ProjectModel projectModel = new ProjectModel();
             ProjectApiModel model = projectModel.createProject(user.UserId, project);
             return model;
         }
@@ -36,7 +46,6 @@ namespace IssueTrackingSystem.PMS.Controller
         public ProjectApiModel UpdateProject(Project project)
         {
             User user = SecurityModel.getInstance().AuthenticatedUser;
-            ProjectModel projectModel = new ProjectModel();
             ProjectApiModel model = projectModel.updateProjectInfo(user.UserId, project);
             return model;
         }

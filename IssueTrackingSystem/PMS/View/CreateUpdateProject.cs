@@ -20,8 +20,8 @@ namespace IssueTrackingSystem.PMS.View
         private IssueModel issueModel;
         private ProjectModel projectModel;
         private ProjectMemberModel projectMemberModel;
-        private CreateUpdateProjectController controller = new CreateUpdateProjectController();
-        private ProjectInfoController infoController = new ProjectInfoController();
+        private CreateUpdateProjectController controller;
+        private ProjectInfoController infoController;
         ProjectApiModel model = new ProjectApiModel();
         Project project = new Project();
 
@@ -33,6 +33,8 @@ namespace IssueTrackingSystem.PMS.View
             this.issueModel = issueModel;
             this.projectModel = projectModel;
             this.projectMemberModel = projectMemberModel;
+            controller = new CreateUpdateProjectController(userModel, issueModel, projectModel);
+            infoController = new ProjectInfoController(projectModel);
             Initialize(purpose, projectId);
         }
 
@@ -46,10 +48,14 @@ namespace IssueTrackingSystem.PMS.View
 
         private void HandleErrorMessage(ProjectApiModel model)
         {
-            if(model.State == 0)
+            if(model.State == 0 && _createUpdate.Text.Equals(Project.CREATE))
             {
                 ProjectMainMenu main = new ProjectMainMenu(model.ProjectContext, userModel, issueModel, projectModel, projectMemberModel);
                 main.Show();
+                this.Close();
+            }
+            else if (model.State == 0 && _createUpdate.Text.Equals(Project.UPDATE))
+            {
                 this.Close();
             }
             else

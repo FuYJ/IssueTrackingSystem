@@ -34,7 +34,7 @@ namespace IssueTrackingSystem.ITS.View
             this.projectMemberModel = projectMemberModel;
             
             issueController = new IssueController(userModel, issueModel, projectModel);
-            projectMemberController = new ProjectMemberController();
+            projectMemberController = new ProjectMemberController(projectMemberModel, userModel);
             user = SecurityModel.getInstance().AuthenticatedUser;
             projectList = user.JoinedProjects;
             foreach (Project project in projectList)

@@ -176,16 +176,28 @@ namespace IssueTrackingSystem.Model
             {
                 var projectData = reader.ReadToEnd();
                 dynamic projectApiModel = JsonConvert.DeserializeObject<dynamic>(projectData);
-                model.State = projectApiModel.state;
-                model.ProjectContext = null;
+//                model.State = projectApiModel.state;
+                model.State = 0;
+                model.ProjectContext = getProjectInfo(userId, project.ProjectId);
             }
             Notify();
             return model;
         }
 
-        public void deleteProject()
+        public int deleteProject(int userId, int projectId)
         {
+            int state;
+            var req = WebRequest.Create(Server.ApiUrl + "/projects/delete/" + userId + "/" + projectId);
+            req.Method = "GET";
 
+            var resp = (HttpWebResponse)req.GetResponse();
+            using (var reader = new StreamReader(resp.GetResponseStream()))
+            {
+                var projectData = reader.ReadToEnd();
+                dynamic projectApiModel = JsonConvert.DeserializeObject<dynamic>(projectData);
+                state = projectApiModel.state;
+            }
+            return state;
         }
 
         public void Notify()

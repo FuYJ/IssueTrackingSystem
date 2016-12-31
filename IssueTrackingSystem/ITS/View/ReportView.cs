@@ -34,7 +34,7 @@ namespace IssueTrackingSystem.ITS.View
             this.projectModel = projectModel;
             this.projectMemberModel = projectMemberModel;
             securityController = new SecurityController(userModel);
-            projectInfoController = new ProjectInfoController();
+            projectInfoController = new ProjectInfoController(projectModel);
             reportController = new ReportController(userModel, issueModel, projectModel);
 
             user = SecurityModel.getInstance().AuthenticatedUser;

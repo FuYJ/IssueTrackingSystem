@@ -37,7 +37,7 @@ namespace IssueTrackingSystem.ITS.View
             this.projectMemberModel = projectMemberModel;
             userController = new UserController(userModel);
             issueController = new IssueController(userModel, issueModel, projectModel);
-            projectMemberController = new ProjectMemberController();
+            projectMemberController = new ProjectMemberController(projectMemberModel, userModel);
 
             issueDetails = issueController.getIssueDetails(issueId);
             projectMembers = projectMemberController.getUserByProjectId(issueDetails[0].ProjectId, true);

@@ -32,6 +32,7 @@
             this._memberList = new System.Windows.Forms.Button();
             this._descriptionButton = new System.Windows.Forms.Button();
             this._deleteButton = new System.Windows.Forms.Button();
+            this._issueButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // _projectName
@@ -49,17 +50,18 @@
             // _memberList
             // 
             this._memberList.Font = new System.Drawing.Font("PMingLiU", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this._memberList.Location = new System.Drawing.Point(304, 158);
+            this._memberList.Location = new System.Drawing.Point(146, 166);
             this._memberList.Name = "_memberList";
             this._memberList.Size = new System.Drawing.Size(203, 102);
             this._memberList.TabIndex = 3;
             this._memberList.Text = "Member";
             this._memberList.UseVisualStyleBackColor = true;
+            this._memberList.Click += new System.EventHandler(this.MemberListClicked);
             // 
             // _descriptionButton
             // 
             this._descriptionButton.Font = new System.Drawing.Font("PMingLiU", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this._descriptionButton.Location = new System.Drawing.Point(304, 295);
+            this._descriptionButton.Location = new System.Drawing.Point(440, 166);
             this._descriptionButton.Name = "_descriptionButton";
             this._descriptionButton.Size = new System.Drawing.Size(203, 102);
             this._descriptionButton.TabIndex = 4;
@@ -70,18 +72,30 @@
             // _deleteButton
             // 
             this._deleteButton.Font = new System.Drawing.Font("PMingLiU", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this._deleteButton.Location = new System.Drawing.Point(304, 432);
+            this._deleteButton.Location = new System.Drawing.Point(440, 312);
             this._deleteButton.Name = "_deleteButton";
             this._deleteButton.Size = new System.Drawing.Size(203, 102);
             this._deleteButton.TabIndex = 5;
             this._deleteButton.Text = "Delete";
             this._deleteButton.UseVisualStyleBackColor = true;
+            this._deleteButton.Click += new System.EventHandler(this.DeleteButtonClicked);
+            // 
+            // _issueButton
+            // 
+            this._issueButton.Font = new System.Drawing.Font("PMingLiU", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this._issueButton.Location = new System.Drawing.Point(146, 312);
+            this._issueButton.Name = "_issueButton";
+            this._issueButton.Size = new System.Drawing.Size(203, 102);
+            this._issueButton.TabIndex = 6;
+            this._issueButton.Text = "Issue";
+            this._issueButton.UseVisualStyleBackColor = true;
             // 
             // ProjectMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this._issueButton);
             this.Controls.Add(this._deleteButton);
             this.Controls.Add(this._descriptionButton);
             this.Controls.Add(this._memberList);
@@ -92,6 +106,7 @@
             this.Controls.SetChildIndex(this._memberList, 0);
             this.Controls.SetChildIndex(this._descriptionButton, 0);
             this.Controls.SetChildIndex(this._deleteButton, 0);
+            this.Controls.SetChildIndex(this._issueButton, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -103,5 +118,6 @@
         private System.Windows.Forms.Button _memberList;
         private System.Windows.Forms.Button _descriptionButton;
         private System.Windows.Forms.Button _deleteButton;
+        private System.Windows.Forms.Button _issueButton;
     }
 }

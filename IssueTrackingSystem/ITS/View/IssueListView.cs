@@ -87,7 +87,6 @@ namespace IssueTrackingSystem.ITS.View
         private void viewStatisticReportButtonClicked(object sender, EventArgs e)
         {
             ReportView reportView = new ReportView(userModel, issueModel, projectModel, projectMemberModel);
-            reportView.Show(this);
         }
     }
 }

@@ -34,7 +34,7 @@ namespace IssueTrackingSystem.AMS.View
             this.issueModel = issueModel;
             this.projectModel = projectModel;
             this.projectMemberModel = projectMemberModel;
-            projectInfoController = new ProjectInfoController();
+            projectInfoController = new ProjectInfoController(projectModel);
             projectListController = new ProjectListController(projectModel, projectMemberModel);
 
             user = SecurityModel.getInstance().AuthenticatedUser;
@@ -55,7 +55,7 @@ namespace IssueTrackingSystem.AMS.View
             this.issueModel = issueModel;
             this.projectModel = projectModel;
             this.projectMemberModel = projectMemberModel;
-            projectInfoController = new ProjectInfoController();
+            projectInfoController = new ProjectInfoController(projectModel);
 
             user = SecurityModel.getInstance().AuthenticatedUser;
             int userId = user.UserId;

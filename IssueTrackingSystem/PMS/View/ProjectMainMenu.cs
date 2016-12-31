@@ -20,7 +20,7 @@ namespace IssueTrackingSystem.PMS.View
         private IssueModel issueModel;
         private ProjectModel projectModel;
         private ProjectMemberModel projectMemberModel;
-        private ProjectInfoController infoController = new ProjectInfoController();
+        private ProjectInfoController infoController;
 
         public ProjectMainMenu(Project project, UserModel userModel, IssueModel issueModel, ProjectModel projectModel, ProjectMemberModel projectMemberModel)
             : base(userModel, issueModel, projectModel, projectMemberModel)
@@ -31,6 +31,8 @@ namespace IssueTrackingSystem.PMS.View
             this.projectModel = projectModel;
             this.projectMemberModel = projectMemberModel;
             this.project = project;
+            this.projectModel.projectDataChanged += UpdateView;
+            infoController = new ProjectInfoController(projectModel);
             SetProjectContext();
         }
 
@@ -42,6 +44,8 @@ namespace IssueTrackingSystem.PMS.View
             this.issueModel = issueModel;
             this.projectModel = projectModel;
             this.projectMemberModel = projectMemberModel;
+            this.projectModel.projectDataChanged += UpdateView;
+            infoController = new ProjectInfoController(projectModel);
             project = infoController.getProjectInfo(SecurityModel.getInstance().AuthenticatedUser.UserId, projectId);
         }
 
@@ -54,6 +58,24 @@ namespace IssueTrackingSystem.PMS.View
         {
             CreateUpdateProject view = new CreateUpdateProject(Project.UPDATE, project.ProjectId, userModel, issueModel, projectModel, projectMemberModel);
             view.Show();
+        }
+
+        private void MemberListClicked(object sender, EventArgs e)
+        {
+            Member member = new Member(userModel, issueModel, projectModel, project, projectMemberModel);
+            member.Show();
+        }
+
+        public void UpdateView()
+        {
+            project = projectModel.getProjectInfo(SecurityModel.getInstance().AuthenticatedUser.UserId, project.ProjectId);
+            _projectName.Text = project.ProjectName;
+        }
+
+        private void DeleteButtonClicked(object sender, EventArgs e)
+        {
+            int state = infoController.deleteProject(SecurityModel.getInstance().AuthenticatedUser.UserId, project.ProjectId);
+            this.Close();
         }
     }
 }
