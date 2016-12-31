@@ -18,6 +18,7 @@ namespace IssueTrackingSystem.ITS.View
         private UserModel userModel;
         private IssueModel issueModel;
         private ProjectModel projectModel;
+        private ProjectMemberModel projectMemberModel;
         private UserController userController;
         private ProjectMemberController projectMemberController;
         private IssueController issueController;
@@ -26,13 +27,14 @@ namespace IssueTrackingSystem.ITS.View
         private User reporter;
         private User assignee;
 
-        public IssueInfoView(int issueId, UserModel userModel, IssueModel issueModel, ProjectModel projectModel)
-            : base(userModel, issueModel, projectModel)
+        public IssueInfoView(int issueId, UserModel userModel, IssueModel issueModel, ProjectModel projectModel, ProjectMemberModel projectMemberModel)
+            : base(userModel, issueModel, projectModel, projectMemberModel)
         {
             InitializeComponent();
             this.userModel = userModel;
             this.issueModel = issueModel;
             this.projectModel = projectModel;
+            this.projectMemberModel = projectMemberModel;
             userController = new UserController(userModel);
             issueController = new IssueController(userModel, issueModel, projectModel);
             projectMemberController = new ProjectMemberController();

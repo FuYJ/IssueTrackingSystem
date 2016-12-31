@@ -15,30 +15,33 @@ namespace IssueTrackingSystem.PMS.View
 {
     public partial class ProjectMainMenu : IssueTrackingSystem.View.BaseView
     {
-        Project project = new Project();
+        private Project project = new Project();
         private UserModel userModel;
         private IssueModel issueModel;
         private ProjectModel projectModel;
-        ProjectInfoController infoController = new ProjectInfoController();
+        private ProjectMemberModel projectMemberModel;
+        private ProjectInfoController infoController = new ProjectInfoController();
 
-        public ProjectMainMenu(Project project, UserModel userModel, IssueModel issueModel, ProjectModel projectModel)
-            : base(userModel, issueModel, projectModel)
+        public ProjectMainMenu(Project project, UserModel userModel, IssueModel issueModel, ProjectModel projectModel, ProjectMemberModel projectMemberModel)
+            : base(userModel, issueModel, projectModel, projectMemberModel)
         {
             InitializeComponent();
             this.userModel = userModel;
             this.issueModel = issueModel;
             this.projectModel = projectModel;
+            this.projectMemberModel = projectMemberModel;
             this.project = project;
             SetProjectContext();
         }
 
-        public ProjectMainMenu(int projectId, UserModel userModel, IssueModel issueModel, ProjectModel projectModel)
-            : base(userModel, issueModel, projectModel)
+        public ProjectMainMenu(int projectId, UserModel userModel, IssueModel issueModel, ProjectModel projectModel, ProjectMemberModel projectMemberModel)
+            : base(userModel, issueModel, projectModel, projectMemberModel)
         {
             InitializeComponent();
             this.userModel = userModel;
             this.issueModel = issueModel;
             this.projectModel = projectModel;
+            this.projectMemberModel = projectMemberModel;
             project = infoController.getProjectInfo(SecurityModel.getInstance().AuthenticatedUser.UserId, projectId);
         }
 
@@ -49,7 +52,7 @@ namespace IssueTrackingSystem.PMS.View
 
         private void DescriptionButtonClicked(object sender, EventArgs e)
         {
-            CreateUpdateProject view = new CreateUpdateProject(Project.UPDATE, project.ProjectId, userModel, issueModel, projectModel);
+            CreateUpdateProject view = new CreateUpdateProject(Project.UPDATE, project.ProjectId, userModel, issueModel, projectModel, projectMemberModel);
             view.Show();
         }
     }

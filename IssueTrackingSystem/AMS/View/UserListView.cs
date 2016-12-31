@@ -16,17 +16,19 @@ namespace IssueTrackingSystem.AMS.View
         private UserModel userModel;
         private IssueModel issueModel;
         private ProjectModel projectModel;
+        private ProjectMemberModel projectMemberModel;
         private SecurityController securityController;
         private UserController userController;
         private List<User> userList;
 
-        public UserListView(UserModel userModel, IssueModel issueModel, ProjectModel projectModel)
-            : base(userModel, issueModel, projectModel)
+        public UserListView(UserModel userModel, IssueModel issueModel, ProjectModel projectModel, ProjectMemberModel projectMemberModel)
+            : base(userModel, issueModel, projectModel, projectMemberModel)
         {
             InitializeComponent();
             this.userModel = userModel;
             this.issueModel = issueModel;
             this.projectModel = projectModel;
+            this.projectMemberModel = projectMemberModel;
             securityController = new SecurityController(userModel);
             userController = new UserController(userModel);
 
@@ -51,6 +53,15 @@ namespace IssueTrackingSystem.AMS.View
             if (e.ColumnIndex == 3 && e.RowIndex >= 0) {
                 User user = userModel.getUserInfo(int.Parse((String)userListDataGridView.Rows[e.RowIndex].Cells[0].Value));
                 
+            }
+        }
+
+        private void userListDataGridViewCellContentClicked(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 7 && e.RowIndex >= 0 && e.RowIndex < userListDataGridView.RowCount)
+            {
+                int state = 0;
+                state = userController.deleteUser((int)userListDataGridView.Rows[e.RowIndex].Cells[0].Value);
             }
         }
     }

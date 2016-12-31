@@ -25,7 +25,7 @@ namespace IssueTrackingSystem.AMS.View
         private ErrorProvider errorProvider;
 
         public UserInfoView(UserModel userModel, IssueModel issueModel, ProjectModel projectModel, ProjectMemberModel projectMemberModel)
-            : base(userModel, issueModel, projectModel)
+            : base(userModel, issueModel, projectModel, projectMemberModel)
         {
             InitializeComponent();
             this.userModel = userModel;

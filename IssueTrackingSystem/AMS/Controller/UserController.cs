@@ -44,5 +44,9 @@ namespace IssueTrackingSystem.AMS.Controller
 
             return user;
         }
+
+        public int deleteUser(int userId) {
+            return userModel.deleteUser(userId);
+        }
     }
 }

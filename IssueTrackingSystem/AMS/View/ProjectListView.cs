@@ -9,6 +9,7 @@ using System.Text;
 using System.Windows.Forms;
 using IssueTrackingSystem.PMS.Controller;
 using IssueTrackingSystem.AMS.Controller;
+using IssueTrackingSystem.PMS.View;
 
 namespace IssueTrackingSystem.AMS.View
 {
@@ -26,7 +27,7 @@ namespace IssueTrackingSystem.AMS.View
         private ProjectListController projectListController;
 
         public ProjectListView(UserModel userModel, IssueModel issueModel, ProjectModel projectModel, ProjectMemberModel projectMemberModel)
-            : base(userModel, issueModel, projectModel)
+            : base(userModel, issueModel, projectModel, projectMemberModel)
         {
             InitializeComponent();
             this.userModel = userModel;
@@ -47,7 +48,7 @@ namespace IssueTrackingSystem.AMS.View
         }
 
         public ProjectListView(int tabIndex, UserModel userModel, IssueModel issueModel, ProjectModel projectModel, ProjectMemberModel projectMemberModel)
-            : base(userModel, issueModel, projectModel)
+            : base(userModel, issueModel, projectModel, projectMemberModel)
         {
             InitializeComponent();
             this.userModel = userModel;
@@ -105,9 +106,10 @@ namespace IssueTrackingSystem.AMS.View
         private void joinedProjectsDataGridViewCellContentClicked(object sender, DataGridViewCellEventArgs e)
         {
             User user = SecurityModel.getInstance().AuthenticatedUser;
-            if (e.ColumnIndex == 4 && e.RowIndex >= 0 && e.RowIndex < invitedProjectsDataGridView.RowCount)
+            if (e.ColumnIndex == 4 && e.RowIndex >= 0 && e.RowIndex < joinedProjectsDataGridView.RowCount)
             {
-                projectInfoController.getProjectInfo(user.UserId, (int)invitedProjectsDataGridView.Rows[e.RowIndex].Cells[0].Value);
+                ProjectMainMenu projectMainMenu = new ProjectMainMenu((int)joinedProjectsDataGridView.Rows[e.RowIndex].Cells[0].Value, userModel, issueModel, projectModel, projectMemberModel);
+                projectMainMenu.Show(this);
             }
         }
     }

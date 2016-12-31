@@ -40,7 +40,7 @@ namespace IssueTrackingSystem.Model
                 issue.IssueId = formatStateToIssueId((String)issueApiModel.state, (String)issueApiModel.issue.issueId);
                 issue.IssueGroupId = issueApiModel.issue.issueGroupId;
                 issue.ReporterId = issueApiModel.issue.reporterId;
-                issue.ReportDate = new DateTime((new DateTime(1970, 1, 1, 0, 0, 0).Ticks) + (long)issueApiModel.issue.reportTime * 10000).ToLocalTime();
+                issue.ReportDate = formatDateToDateTime((long)issueApiModel.issue.reportTime);
                 issue.FinishDate = DateTime.MaxValue;
             }
             Notify();
@@ -62,17 +62,21 @@ namespace IssueTrackingSystem.Model
                 var issueData = reader.ReadToEnd();
                 dynamic issueApiModel = JsonConvert.DeserializeObject<dynamic>(issueData);
                 issue.IssueId = formatStateToIssueId((String)issueApiModel.state, (String)issueApiModel.issue.issueId);
+                issue.IssueGroupId = issueApiModel.issue.issueGroupId;
+                issue.ProjectId = issueApiModel.issue.projectId;
                 issue.State = issueApiModel.issue.state;
                 issue.IssueName = issueApiModel.issue.title;
-                issue.IssueGroupId = issueApiModel.issue.issueGroupId;
                 issue.Description = issueApiModel.issue.description;
                 issue.Priority = issueApiModel.issue.priority;
                 issue.Serverity = issueApiModel.issue.serverity;
                 issue.ReporterId = issueApiModel.issue.reporterId;
-                issue.ReportDate = new DateTime((new DateTime(1970, 1, 1, 0, 0, 0).Ticks) + (long)issueApiModel.issue.reportTime * 10000).ToLocalTime();
+                issue.ReportDate = formatDateToDateTime((long)issueApiModel.issue.reportTime);
                 issue.PersonInChargeId = issueApiModel.issue.personInChargeId;
-                issue.FinishDate = (issueApiModel.issue.finishTime == null) ? DateTime.MaxValue : new DateTime((new DateTime(1970, 1, 1, 0, 0, 0).Ticks) + (long)issueApiModel.issue.finishTime * 10000).ToLocalTime();
-                issue.ProjectId = issueApiModel.issue.projectId;
+
+                if (issue.State == "已完成")
+                    issue.FinishDate = issue.ReportDate;
+                else
+                    issue.FinishDate = (issueApiModel.issue.finishTime == null) ? DateTime.MaxValue : formatDateToDateTime((long)issueApiModel.issue.finishTime);
             }
 
             return issue;
@@ -104,9 +108,12 @@ namespace IssueTrackingSystem.Model
                         issue.Serverity = o.serverity;
                         issue.Priority = o.priority;
                         issue.ReporterId = o.reporterId;
-                        issue.ReportDate = new DateTime((new DateTime(1970, 1, 1, 0, 0, 0).Ticks) + (long)o.reportTime * 10000).ToLocalTime();
+                        issue.ReportDate = formatDateToDateTime((long)o.reportTime);
                         issue.PersonInChargeId = o.personInChargeId;
-                        issue.FinishDate = (o.finishTime == null) ? DateTime.MaxValue : new DateTime((new DateTime(1970, 1, 1, 0, 0, 0).Ticks) + (long)o.finishTime * 10000).ToLocalTime();
+                        if(issue.State == "已完成")
+                            issue.FinishDate = issue.ReportDate;
+                        else
+                            issue.FinishDate = (o.finishTime == null) ? DateTime.MaxValue : formatDateToDateTime((long)o.finishTime);
                         issue.ProjectId = o.projectId;
                         issueList.Add(issue);
                     }
@@ -144,9 +151,12 @@ namespace IssueTrackingSystem.Model
                         issue.Serverity = o.serverity;
                         issue.Priority = o.priority;
                         issue.ReporterId = o.reporterId;
-                        issue.ReportDate = new DateTime((new DateTime(1970, 1, 1, 0, 0, 0).Ticks) + (long)o.reportTime * 10000).ToLocalTime();
+                        issue.ReportDate = formatDateToDateTime((long)o.reportTime);
                         issue.PersonInChargeId = o.personInChargeId;
-                        issue.FinishDate = (o.finishTime == null) ? DateTime.MaxValue : new DateTime((new DateTime(1970, 1, 1, 0, 0, 0).Ticks) + (long)o.finishTime * 10000).ToLocalTime();
+                        if (issue.State == "已完成")
+                            issue.FinishDate = issue.ReportDate;
+                        else
+                            issue.FinishDate = (o.finishTime == null) ? DateTime.MaxValue : formatDateToDateTime((long)o.finishTime);
                         issue.ProjectId = o.projectId;
                         issueList.Add(issue);
                     }
@@ -183,9 +193,12 @@ namespace IssueTrackingSystem.Model
                         issue.Serverity = o.serverity;
                         issue.Priority = o.priority;
                         issue.ReporterId = o.reporterId;
-                        issue.ReportDate = new DateTime((new DateTime(1970, 1, 1, 0, 0, 0).Ticks) + (long)o.reportTime * 10000).AddHours(8);
+                        issue.ReportDate = formatDateToDateTime((long)o.reportTime);
                         issue.PersonInChargeId = o.personInChargeId;
-                        issue.FinishDate = (o.finishTime == null) ? DateTime.MaxValue : new DateTime((new DateTime(1970, 1, 1, 0, 0, 0).Ticks) + (long)o.finishTime * 10000).ToLocalTime();
+                        if (issue.State == "已完成")
+                            issue.FinishDate = issue.ReportDate;
+                        else
+                            issue.FinishDate = (o.finishTime == null) ? DateTime.MaxValue : formatDateToDateTime((long)o.finishTime);
                         issue.ProjectId = o.projectId;
                         issueList.Add(issue);
                     }
@@ -235,6 +248,10 @@ namespace IssueTrackingSystem.Model
             {
                 return -int.Parse(state);
             }
+        }
+
+        private DateTime formatDateToDateTime(long date) {
+            return new DateTime((new DateTime(1970, 1, 1, 0, 0, 0).Ticks) + date * 10000).ToLocalTime();
         }
 
         void Notify()

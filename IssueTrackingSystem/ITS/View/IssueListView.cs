@@ -27,7 +27,7 @@ namespace IssueTrackingSystem.ITS.View
         private int initialSearchType;
 
         public IssueListView(UserModel userModel, IssueModel issueModel, ProjectModel projectModel, ProjectMemberModel projectMemberModel)
-            : base(userModel, issueModel, projectModel)
+            : base(userModel, issueModel, projectModel, projectMemberModel)
         {
             InitializeComponent();
             this.userModel = userModel;
@@ -79,14 +79,14 @@ namespace IssueTrackingSystem.ITS.View
         {
             if (e.RowIndex >= 0 && e.RowIndex < issuesDataGridView.RowCount)
             {
-                IssueInfoView issueInfoView = new IssueInfoView((int)issuesDataGridView.Rows[e.RowIndex].Cells[0].Value, userModel, issueModel, projectModel);
+                IssueInfoView issueInfoView = new IssueInfoView((int)issuesDataGridView.Rows[e.RowIndex].Cells[0].Value, userModel, issueModel, projectModel, projectMemberModel);
                 issueInfoView.Show(this);
             }
         }
 
         private void viewStatisticReportButtonClicked(object sender, EventArgs e)
         {
-            ReportView reportView = new ReportView(issueList, userModel, issueModel, projectModel);
+            ReportView reportView = new ReportView(userModel, issueModel, projectModel, projectMemberModel);
             reportView.Show(this);
         }
     }

@@ -78,6 +78,7 @@
       <DependentUpon>UserListView.cs</DependentUpon>
     </Compile>
     <Compile Include="ITS\Controller\IssueController.cs" />
+    <Compile Include="ITS\Controller\ReportController.cs" />
     <Compile Include="ITS\View\CreateIssueView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -213,6 +214,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="AMS\View\ProjectListView.resx">
       <DependentUpon>ProjectListView.cs</DependentUpon>
@@ -239,6 +241,8 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="src\users.png" />
+    <None Include="src\addProject.png" />
     <Content Include="src\alarm.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -254,6 +258,7 @@
     <Content Include="src\issue.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="src\pieChart.png" />
     <Content Include="src\project.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

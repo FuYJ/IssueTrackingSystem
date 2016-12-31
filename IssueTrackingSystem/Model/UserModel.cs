@@ -163,10 +163,23 @@ namespace IssueTrackingSystem.Model
             return user;
         }
 
-        public void deleteUser(int userId) { 
-            
-            //api
+        public int deleteUser(int userId) {
+            User user = SecurityModel.getInstance().AuthenticatedUser;
+            var req = WebRequest.Create(Server.ApiUrl + "/users/delete/" + user.UserId + "/" + userId);
+            req.Method = "GET";
 
+            String state;
+            var resp = (HttpWebResponse)req.GetResponse();
+            using (var reader = new StreamReader(resp.GetResponseStream()))
+            {
+                var userData = reader.ReadToEnd();
+                state = userData;
+
+                if (int.Parse(state) == 0)
+                    Notify();
+            }
+
+            return int.Parse(state);
         }
 
         private int formatStateToUserId(String state, String userId) {

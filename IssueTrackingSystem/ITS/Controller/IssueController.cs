@@ -135,7 +135,7 @@ namespace IssueTrackingSystem.ITS.Controller
                     newIssueList = issueModel.getIssueListByProjectId(project.ProjectId);
                     foreach (Issue issue in newIssueList)
                     {
-                        if (issue.FinishDate == DateTime.MaxValue)
+                        if (issue.FinishDate == DateTime.MaxValue || issue.State == "已完成")
                             issueList.Add(issue);
                     }
                 }
@@ -146,7 +146,7 @@ namespace IssueTrackingSystem.ITS.Controller
                 newIssueList = issueModel.getAllIssueList();
                 foreach (Issue issue in newIssueList)
                 {
-                    if (issue.FinishDate == DateTime.MaxValue)
+                    if (issue.FinishDate == DateTime.MaxValue || issue.State == "已完成")
                         issueList.Add(issue);
                 }
             }

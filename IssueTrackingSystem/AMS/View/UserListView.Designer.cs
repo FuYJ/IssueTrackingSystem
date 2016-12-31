@@ -56,7 +56,7 @@
             this.mainTableLayoutPanel.Size = new System.Drawing.Size(784, 512);
             this.mainTableLayoutPanel.TabIndex = 3;
             // 
-            // accountListDataGridView
+            // userListDataGridView
             // 
             this.userListDataGridView.AllowUserToAddRows = false;
             this.userListDataGridView.AllowUserToOrderColumns = true;
@@ -74,11 +74,12 @@
             this.delete});
             this.userListDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.userListDataGridView.Location = new System.Drawing.Point(3, 3);
-            this.userListDataGridView.Name = "accountListDataGridView";
+            this.userListDataGridView.Name = "userListDataGridView";
             this.userListDataGridView.RowHeadersVisible = false;
             this.userListDataGridView.RowTemplate.Height = 24;
             this.userListDataGridView.Size = new System.Drawing.Size(778, 506);
             this.userListDataGridView.TabIndex = 0;
+            this.userListDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.userListDataGridViewCellContentClicked);
             this.userListDataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.userRoleValueChanged);
             // 
             // userId
@@ -143,12 +144,12 @@
             this.delete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.delete.Text = "刪除";
             // 
-            // AccountListView
+            // UserListView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.mainTableLayoutPanel);
-            this.Name = "AccountListView";
+            this.Name = "UserListView";
             this.Text = "使用者列表 - Issue Tracking System";
             this.Load += new System.EventHandler(this.AccountListViewLoad);
             this.Controls.SetChildIndex(this.mainTableLayoutPanel, 0);
