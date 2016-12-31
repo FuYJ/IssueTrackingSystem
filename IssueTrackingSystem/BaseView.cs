@@ -50,6 +50,8 @@ namespace IssueTrackingSystem.View
                 createProjectButton.Enabled = false;
                 createIssueToolStripButton.Visible = false;
                 createIssueToolStripButton.Visible = false;
+                viewReportToolStripButton.Visible = false;
+                viewReportToolStripButton.Enabled = false;
                 toolStripSeparator1.Visible = false;
             }
         }
