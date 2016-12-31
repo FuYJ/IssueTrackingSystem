@@ -309,10 +309,10 @@ namespace IssueTrackingSystem.Model
                 dynamic userApiModel = JsonConvert.DeserializeObject<dynamic>(userData);
                 if ((int)userApiModel.state == 0)
                 {
-                    user.UserId = userApiModel.User.userId;
-                    user.Name = userApiModel.User.name;
-                    user.EmailAddress = userApiModel.User.emailAddress;
-                    user.UserRole = userApiModel.User.userRole;
+                    user.UserId = userApiModel.userId;
+                    user.Name = userApiModel.name;
+                    user.EmailAddress = userApiModel.emailAddress;
+                    user.UserRole = userApiModel.userRole;
                 }
             }
             return user;

@@ -73,7 +73,8 @@ namespace IssueTrackingSystem.PMS.View
         {
             UserApiModel member = new UserApiModel();
             member = userModel.getUserInfoByName(_nameInput.Text);
-            
+            String role = _permissionList.SelectedItem.ToString();
+            memberController.createMember(new ProjectMember(Int32.Parse(member.UserId), project.ProjectId, role));
         }
 
         private void MemberListSelectedIndexChanged(object sender, EventArgs e)
