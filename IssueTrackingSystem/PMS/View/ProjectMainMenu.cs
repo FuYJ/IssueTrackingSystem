@@ -48,11 +48,20 @@ namespace IssueTrackingSystem.PMS.View
             this.projectModel.projectDataChanged += UpdateView;
             infoController = new ProjectInfoController(projectModel);
             project = infoController.getProjectInfo(SecurityModel.getInstance().AuthenticatedUser.UserId, projectId);
+            SetProjectContext();
         }
 
         private void SetProjectContext()
         {
             _projectName.Text = project.ProjectName;
+            if(project != null && project.Manager != null)
+            {
+                if (!SecurityModel.getInstance().AuthenticatedUser.UserName.Equals(project.Manager))
+                {
+                    _deleteButton.Visible = false;
+                    _deleteButton.Enabled = false;
+                }
+            }
         }
 
         private void DescriptionButtonClicked(object sender, EventArgs e)
@@ -71,6 +80,7 @@ namespace IssueTrackingSystem.PMS.View
         {
             project = projectModel.getProjectInfo(SecurityModel.getInstance().AuthenticatedUser.UserId, project.ProjectId);
             _projectName.Text = project.ProjectName;
+            _errorMessage.Text = "";
         }
 
         private void DeleteButtonClicked(object sender, EventArgs e)
@@ -83,6 +93,11 @@ namespace IssueTrackingSystem.PMS.View
         {
             IssueListView view = new IssueListView(userModel, issueModel, projectModel, projectMemberModel);
             view.Show();
+        }
+
+        private void ShowErrorMessage(int state)
+        {
+            _errorMessage.Text = ((ErrorManager.ErrorCode)state).ToString();
         }
     }
 }

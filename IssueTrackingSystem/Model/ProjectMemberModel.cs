@@ -37,7 +37,7 @@ namespace IssueTrackingSystem.Model
                 dynamic memberApiModel = JsonConvert.DeserializeObject<dynamic>(membertData);
                 state = memberApiModel.state;
             }
-
+            Notify();
             return state;
         }
 
@@ -94,7 +94,7 @@ namespace IssueTrackingSystem.Model
                 dynamic memberApiModel = JsonConvert.DeserializeObject<dynamic>(membertData);
                 state = (int)memberApiModel;
             }
-
+            Notify();
             return state;
         }
 
@@ -117,6 +117,7 @@ namespace IssueTrackingSystem.Model
                 dynamic memberApiModel = JsonConvert.DeserializeObject<dynamic>(membertData);
                 state = (int)memberApiModel;
             }
+            Notify();
             return state;
         }
 

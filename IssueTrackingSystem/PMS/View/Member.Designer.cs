@@ -33,12 +33,20 @@
             this._memberList = new System.Windows.Forms.TabControl();
             this._existingMemberTable = new System.Windows.Forms.TabPage();
             this._dataGridView = new System.Windows.Forms.DataGridView();
+            this._userID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._userName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._userEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._userRole = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this._updateButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this._deleteButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this._joiningMemberTable = new System.Windows.Forms.TabPage();
             this._dataGridViewJoining = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewComboBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this._userRole2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.dataGridViewButtonColumn2 = new System.Windows.Forms.DataGridViewButtonColumn();
             this._inviteMemberTable = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
@@ -48,16 +56,9 @@
             this._name = new System.Windows.Forms.TextBox();
             this._nameInput = new System.Windows.Forms.TextBox();
             this._inviteMember = new System.Windows.Forms.Button();
-            this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.dataGridViewButtonColumn2 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dataGridViewButtonColumn3 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dataGridViewButtonColumn4 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this._userID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this._userName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this._userEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this._userRole = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this._updateButton = new System.Windows.Forms.DataGridViewButtonColumn();
-            this._deleteButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this._errorMessage = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this._memberList.SuspendLayout();
             this._existingMemberTable.SuspendLayout();
@@ -78,6 +79,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.Controls.Add(this._projectName, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this._memberList, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this._errorMessage, 1, 3);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 49);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
@@ -146,6 +148,58 @@
             this._dataGridView.TabIndex = 0;
             this._dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewCellContentClick);
             // 
+            // _userID
+            // 
+            this._userID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this._userID.HeaderText = "ID";
+            this._userID.Name = "_userID";
+            this._userID.ReadOnly = true;
+            this._userID.Width = 42;
+            // 
+            // _userName
+            // 
+            this._userName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this._userName.HeaderText = "Name";
+            this._userName.Name = "_userName";
+            this._userName.ReadOnly = true;
+            this._userName.Width = 57;
+            // 
+            // _userEmail
+            // 
+            this._userEmail.HeaderText = "Email";
+            this._userEmail.Name = "_userEmail";
+            this._userEmail.ReadOnly = true;
+            // 
+            // _userRole
+            // 
+            this._userRole.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this._userRole.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            this._userRole.HeaderText = "Role";
+            this._userRole.Items.AddRange(new object[] {
+            "GeneralUser",
+            "ProjectDeveloper",
+            "ProjectTester",
+            "ProjectManager"});
+            this._userRole.Name = "_userRole";
+            this._userRole.Width = 5;
+            // 
+            // _updateButton
+            // 
+            this._updateButton.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this._updateButton.HeaderText = "Update";
+            this._updateButton.Name = "_updateButton";
+            this._updateButton.ReadOnly = true;
+            this._updateButton.Text = "Update";
+            this._updateButton.Width = 44;
+            // 
+            // _deleteButton
+            // 
+            this._deleteButton.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this._deleteButton.HeaderText = "Delete";
+            this._deleteButton.Name = "_deleteButton";
+            this._deleteButton.Text = "Delete";
+            this._deleteButton.Width = 40;
+            // 
             // _joiningMemberTable
             // 
             this._joiningMemberTable.Controls.Add(this._dataGridViewJoining);
@@ -166,7 +220,7 @@
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
-            this.dataGridViewComboBoxColumn1,
+            this._userRole2,
             this.dataGridViewButtonColumn1,
             this.dataGridViewButtonColumn2});
             this._dataGridViewJoining.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -200,18 +254,35 @@
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
-            // dataGridViewComboBoxColumn1
+            // _userRole2
             // 
-            this.dataGridViewComboBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.dataGridViewComboBoxColumn1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
-            this.dataGridViewComboBoxColumn1.HeaderText = "Role";
-            this.dataGridViewComboBoxColumn1.Items.AddRange(new object[] {
+            this._userRole2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this._userRole2.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            this._userRole2.HeaderText = "Role";
+            this._userRole2.Items.AddRange(new object[] {
             "GeneralUser",
             "ProjectDeveloper",
             "ProjectTester",
             "ProjectManager"});
-            this.dataGridViewComboBoxColumn1.Name = "dataGridViewComboBoxColumn1";
-            this.dataGridViewComboBoxColumn1.Width = 5;
+            this._userRole2.Name = "_userRole2";
+            this._userRole2.Width = 5;
+            // 
+            // dataGridViewButtonColumn1
+            // 
+            this.dataGridViewButtonColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dataGridViewButtonColumn1.HeaderText = "Update";
+            this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
+            this.dataGridViewButtonColumn1.ReadOnly = true;
+            this.dataGridViewButtonColumn1.Text = "Update";
+            this.dataGridViewButtonColumn1.Width = 44;
+            // 
+            // dataGridViewButtonColumn2
+            // 
+            this.dataGridViewButtonColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dataGridViewButtonColumn2.HeaderText = "Delete";
+            this.dataGridViewButtonColumn2.Name = "dataGridViewButtonColumn2";
+            this.dataGridViewButtonColumn2.Text = "Delete";
+            this.dataGridViewButtonColumn2.Width = 40;
             // 
             // _inviteMemberTable
             // 
@@ -329,23 +400,6 @@
             this._inviteMember.UseVisualStyleBackColor = true;
             this._inviteMember.Click += new System.EventHandler(this.InviteMemberClicked);
             // 
-            // dataGridViewButtonColumn1
-            // 
-            this.dataGridViewButtonColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dataGridViewButtonColumn1.HeaderText = "Update";
-            this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
-            this.dataGridViewButtonColumn1.ReadOnly = true;
-            this.dataGridViewButtonColumn1.Text = "Update";
-            this.dataGridViewButtonColumn1.Width = 44;
-            // 
-            // dataGridViewButtonColumn2
-            // 
-            this.dataGridViewButtonColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dataGridViewButtonColumn2.HeaderText = "Delete";
-            this.dataGridViewButtonColumn2.Name = "dataGridViewButtonColumn2";
-            this.dataGridViewButtonColumn2.Text = "Delete";
-            this.dataGridViewButtonColumn2.Width = 40;
-            // 
             // dataGridViewButtonColumn3
             // 
             this.dataGridViewButtonColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -353,7 +407,6 @@
             this.dataGridViewButtonColumn3.Name = "dataGridViewButtonColumn3";
             this.dataGridViewButtonColumn3.ReadOnly = true;
             this.dataGridViewButtonColumn3.Text = "Update";
-            this.dataGridViewButtonColumn3.Width = 44;
             // 
             // dataGridViewButtonColumn4
             // 
@@ -361,59 +414,17 @@
             this.dataGridViewButtonColumn4.HeaderText = "Delete";
             this.dataGridViewButtonColumn4.Name = "dataGridViewButtonColumn4";
             this.dataGridViewButtonColumn4.Text = "Delete";
-            this.dataGridViewButtonColumn4.Width = 40;
             // 
-            // _userID
+            // _errorMessage
             // 
-            this._userID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this._userID.HeaderText = "ID";
-            this._userID.Name = "_userID";
-            this._userID.ReadOnly = true;
-            this._userID.Width = 42;
-            // 
-            // _userName
-            // 
-            this._userName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this._userName.HeaderText = "Name";
-            this._userName.Name = "_userName";
-            this._userName.ReadOnly = true;
-            this._userName.Width = 57;
-            // 
-            // _userEmail
-            // 
-            this._userEmail.HeaderText = "Email";
-            this._userEmail.Name = "_userEmail";
-            this._userEmail.ReadOnly = true;
-            // 
-            // _userRole
-            // 
-            this._userRole.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this._userRole.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
-            this._userRole.HeaderText = "Role";
-            this._userRole.Items.AddRange(new object[] {
-            "GeneralUser",
-            "ProjectDeveloper",
-            "ProjectTester",
-            "ProjectManager"});
-            this._userRole.Name = "_userRole";
-            this._userRole.Width = 5;
-            // 
-            // _updateButton
-            // 
-            this._updateButton.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this._updateButton.HeaderText = "Update";
-            this._updateButton.Name = "_updateButton";
-            this._updateButton.ReadOnly = true;
-            this._updateButton.Text = "Update";
-            this._updateButton.Width = 44;
-            // 
-            // _deleteButton
-            // 
-            this._deleteButton.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this._deleteButton.HeaderText = "Delete";
-            this._deleteButton.Name = "_deleteButton";
-            this._deleteButton.Text = "Delete";
-            this._deleteButton.Width = 40;
+            this._errorMessage.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this._errorMessage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._errorMessage.Font = new System.Drawing.Font("PMingLiU", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this._errorMessage.Location = new System.Drawing.Point(81, 462);
+            this._errorMessage.Name = "_errorMessage";
+            this._errorMessage.ReadOnly = true;
+            this._errorMessage.Size = new System.Drawing.Size(621, 33);
+            this._errorMessage.TabIndex = 3;
             // 
             // Member
             // 
@@ -458,12 +469,6 @@
         private System.Windows.Forms.Button _inviteMember;
         private System.Windows.Forms.DataGridView _dataGridView;
         private System.Windows.Forms.DataGridView _dataGridViewJoining;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumn1;
-        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
-        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn2;
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn3;
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn _userID;
@@ -472,5 +477,12 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn _userRole;
         private System.Windows.Forms.DataGridViewButtonColumn _updateButton;
         private System.Windows.Forms.DataGridViewButtonColumn _deleteButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewComboBoxColumn _userRole2;
+        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
+        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn2;
+        private System.Windows.Forms.TextBox _errorMessage;
     }
 }

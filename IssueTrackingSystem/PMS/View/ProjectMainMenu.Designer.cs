@@ -33,6 +33,7 @@
             this._descriptionButton = new System.Windows.Forms.Button();
             this._deleteButton = new System.Windows.Forms.Button();
             this._issueButton = new System.Windows.Forms.Button();
+            this._errorMessage = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // _projectName
@@ -91,11 +92,23 @@
             this._issueButton.UseVisualStyleBackColor = true;
             this._issueButton.Click += new System.EventHandler(this.IssueButtonClicked);
             // 
+            // _errorMessage
+            // 
+            this._errorMessage.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this._errorMessage.Font = new System.Drawing.Font("PMingLiU", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this._errorMessage.Location = new System.Drawing.Point(305, 473);
+            this._errorMessage.Name = "_errorMessage";
+            this._errorMessage.ReadOnly = true;
+            this._errorMessage.Size = new System.Drawing.Size(171, 32);
+            this._errorMessage.TabIndex = 7;
+            this._errorMessage.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // ProjectMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this._errorMessage);
             this.Controls.Add(this._issueButton);
             this.Controls.Add(this._deleteButton);
             this.Controls.Add(this._descriptionButton);
@@ -115,5 +128,6 @@
         private System.Windows.Forms.Button _descriptionButton;
         private System.Windows.Forms.Button _deleteButton;
         private System.Windows.Forms.Button _issueButton;
+        private System.Windows.Forms.TextBox _errorMessage;
     }
 }

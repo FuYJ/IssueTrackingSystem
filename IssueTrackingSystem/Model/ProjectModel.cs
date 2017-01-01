@@ -176,7 +176,7 @@ namespace IssueTrackingSystem.Model
             {
                 var projectData = reader.ReadToEnd();
                 dynamic projectApiModel = JsonConvert.DeserializeObject<dynamic>(projectData);
-//                model.State = projectApiModel.state;
+                model.State = (int)projectApiModel.state;
                 model.State = 0;
                 model.ProjectContext = getProjectInfo(userId, project.ProjectId);
             }

@@ -14,7 +14,7 @@ using IssueTrackingSystem.PMS.Controller;
 
 namespace IssueTrackingSystem.PMS.View
 {
-    public partial class CreateUpdateProject : IssueTrackingSystem.View.BaseView
+    public partial class CreateUpdateProject : Form
     {
         private UserModel userModel;
         private IssueModel issueModel;
@@ -26,7 +26,7 @@ namespace IssueTrackingSystem.PMS.View
         Project project = new Project();
 
         public CreateUpdateProject(String purpose, int projectId, UserModel userModel, IssueModel issueModel, ProjectModel projectModel, ProjectMemberModel projectMemberModel)
-            : base(userModel, issueModel, projectModel, projectMemberModel)
+//            : base(userModel, issueModel, projectModel, projectMemberModel)
         {
             InitializeComponent();
             this.userModel = userModel;
@@ -35,6 +35,7 @@ namespace IssueTrackingSystem.PMS.View
             this.projectMemberModel = projectMemberModel;
             controller = new CreateUpdateProjectController(userModel, issueModel, projectModel);
             infoController = new ProjectInfoController(projectModel);
+            this.projectModel.projectDataChanged += Update;
             Initialize(purpose, projectId);
         }
 
@@ -60,7 +61,7 @@ namespace IssueTrackingSystem.PMS.View
             }
             else
             {
-                _errorMessage.Text = "建立失敗";
+                _errorMessage.Text = ((ErrorManager.ErrorCode)model.State).ToString();
             }
         }
 
@@ -73,6 +74,25 @@ namespace IssueTrackingSystem.PMS.View
                 _descriptionInput.Text = project.Description;
             }
             _createUpdate.Text = purpose;
+
+            if (project != null && project.Manager != null)
+            {
+                if (!SecurityModel.getInstance().AuthenticatedUser.UserName.Equals(project.Manager))
+                {
+                    _createUpdate.Visible = false;
+                    _createUpdate.Enabled = false;
+                    _descriptionInput.ReadOnly = true;
+                    _projectNameInput.ReadOnly = true;
+                }
+            } 
+        }
+
+        private void Update()
+        {
+            project = infoController.getProjectInfo(SecurityModel.getInstance().AuthenticatedUser.UserId, project.ProjectId);
+            _projectNameInput.Text = project.ProjectName;
+            _descriptionInput.Text = project.Description;
+            _errorMessage.Text = "";
         }
     }
 }

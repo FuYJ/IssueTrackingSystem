@@ -159,7 +159,7 @@ namespace IssueTrackingSystem.Model
                 if(int.Parse(state) == 0)
                     Notify();
             }
-
+            Notify();
             return user;
         }
 
@@ -178,7 +178,7 @@ namespace IssueTrackingSystem.Model
                 if (int.Parse(state) == 0)
                     Notify();
             }
-
+            Notify();
             return int.Parse(state);
         }
 

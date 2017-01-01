@@ -14,7 +14,7 @@ using IssueTrackingSystem.Model.ApiModel;
 
 namespace IssueTrackingSystem.PMS.View
 {
-    public partial class Member : Form
+    public partial class Member : IssueTrackingSystem.View.BaseView
     {
         private UserModel userModel;
         private IssueModel issueModel;
@@ -26,7 +26,7 @@ namespace IssueTrackingSystem.PMS.View
         private String DELETE = "Delete";
 
         public Member(UserModel userModel, IssueModel issueModel, ProjectModel projectModel, Project project, ProjectMemberModel projectMemberModel)
-//                    : base(userModel, issueModel, projectModel, projectMemberModel)
+                    : base(userModel, issueModel, projectModel, projectMemberModel)
         {
             InitializeComponent();
             this.userModel = userModel;
@@ -36,7 +36,9 @@ namespace IssueTrackingSystem.PMS.View
             this.projectMemberModel = projectMemberModel;
             memberController = new ProjectMemberController(projectMemberModel, userModel);
             _projectName.Text = project.ProjectName;
+            this.userModel.userDataChanged += UpdateView;
             this.projectModel.projectDataChanged += UpdateView;
+            this.projectMemberModel.projectMemberDataChanged += UpdateView;
             InitializeDataGridView(_dataGridView);
             InitializeDataGridView(_dataGridViewJoining);
             InitializeTabControl(_memberList);
@@ -53,10 +55,7 @@ namespace IssueTrackingSystem.PMS.View
             {
                 ShowgMember(_dataGridViewJoining, false);
             }
-            else if (_memberList.SelectedTab.Name.Equals("_inviteMemberTable"))
-            {
-
-            }
+            _errorMessage.Text = "";
         }
 
         public void ShowgMember(DataGridView table, bool joined)
@@ -77,7 +76,9 @@ namespace IssueTrackingSystem.PMS.View
             UserApiModel member = new UserApiModel();
             member = userModel.getUserInfoByName(_nameInput.Text);
             String role = _permissionList.SelectedItem.ToString();
-            memberController.createMember(new ProjectMember(Int32.Parse(member.UserId), project.ProjectId, role));
+            int state = memberController.createMember(new ProjectMember(Int32.Parse(member.UserId), project.ProjectId, role));
+            _nameInput.Text = "";
+            _permissionList.Text = "";
         }
 
         private void MemberListSelectedIndexChanged(object sender, EventArgs e)
@@ -104,12 +105,12 @@ namespace IssueTrackingSystem.PMS.View
 
         public void UpdateMember(ProjectMember member, bool joined)
         {
-            memberController.updateInfo(member, joined);
+            int state = memberController.updateInfo(member, joined);
         }
 
         public void DeleteMember(ProjectMember member)
         {
-            memberController.deleteMember(SecurityModel.getInstance().AuthenticatedUser.UserId, member);
+            int state = memberController.deleteMember(SecurityModel.getInstance().AuthenticatedUser.UserId, member);
         }
 
         private void DataGridViewJoiningCellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -133,13 +134,16 @@ namespace IssueTrackingSystem.PMS.View
         {
             project = projectModel.getProjectInfo(SecurityModel.getInstance().AuthenticatedUser.UserId, project.ProjectId);
             _projectName.Text = project.ProjectName;
+            ShowData();
         }
 
         public void InitializeDataGridView(DataGridView table)
         {
             if (!project.Manager.Equals(SecurityModel.getInstance().AuthenticatedUser.UserName))
             {
-                table.Columns.Remove("_userRole");
+                table.Columns[5].Visible = false;
+                table.Columns[4].Visible = false;
+                table.Columns.RemoveAt(3);
                 DataGridViewTextBoxColumn role = new DataGridViewTextBoxColumn();
                 role.HeaderText = "Role";
                 role.Name = "_userRole";
@@ -154,6 +158,11 @@ namespace IssueTrackingSystem.PMS.View
             {
                 control.TabPages[2].Parent = null;
             }
+        }
+
+        private void ShowError(int state)
+        {
+            _errorMessage.Text = ((ErrorManager.ErrorCode)state).ToString();
         }
     }
 }
