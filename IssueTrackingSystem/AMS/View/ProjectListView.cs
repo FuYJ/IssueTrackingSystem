@@ -56,6 +56,7 @@ namespace IssueTrackingSystem.AMS.View
             this.projectModel = projectModel;
             this.projectMemberModel = projectMemberModel;
             projectInfoController = new ProjectInfoController(projectModel);
+            projectListController = new ProjectListController(projectModel, projectMemberModel);
 
             user = SecurityModel.getInstance().AuthenticatedUser;
             int userId = user.UserId;

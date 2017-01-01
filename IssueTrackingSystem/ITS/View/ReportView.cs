@@ -23,7 +23,6 @@ namespace IssueTrackingSystem.ITS.View
         private SecurityController securityController;
         private ProjectInfoController projectInfoController;
         private User user;
-        private List<Issue> issueList;
 
         public ReportView(UserModel userModel, IssueModel issueModel, ProjectModel projectModel, ProjectMemberModel projectMemberModel)
             : base(userModel, issueModel, projectModel, projectMemberModel)

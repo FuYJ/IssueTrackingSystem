@@ -1,7 +1,9 @@
 ﻿using IssueTrackingSystem.AMS.Controller;
+using IssueTrackingSystem.ITS.Controller;
 using IssueTrackingSystem.ITS.View;
 using IssueTrackingSystem.Model;
 using IssueTrackingSystem.Model.DataModel;
+using IssueTrackingSystem.PMS.Controller;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +21,9 @@ namespace IssueTrackingSystem.AMS.View
         private ProjectModel projectModel;
         private ProjectMemberModel projectMemberModel;
         private UserController userController;
+        private IssueController issueController;
+        private ProjectInfoController projectInfoController;
+        private SecurityController securityController;
         private ErrorProvider errorProvider;
 
         public SecurityView(UserModel userModel, IssueModel issueModel, ProjectModel projectModel, ProjectMemberModel projectMemberModel)
@@ -30,10 +35,17 @@ namespace IssueTrackingSystem.AMS.View
             this.projectModel = projectModel;
             this.projectMemberModel = projectMemberModel;
             userController = new UserController(userModel);
+            securityController = new SecurityController(userModel);
+            issueController = new IssueController(userModel, issueModel, projectModel);
+            projectInfoController = new ProjectInfoController(projectModel);
 
             User user = SecurityModel.getInstance().AuthenticatedUser;
             usernameLabel.Text = user.UserName;
             emailAddressLabel.Text = user.EmailAddress;
+            projectsNumberLabel.Text = projectInfoController.getAllProjectList(user.UserId).Count.ToString();
+            issuesNumberLabel.Text = issueController.getIssueList().Count.ToString();
+            usersNumberLabel.Text = securityController.listAccounts().Count.ToString();
+
             editUsernameTextBox.Text = user.UserName;
             editEmailAddressTextBox.Text = user.EmailAddress;
 
