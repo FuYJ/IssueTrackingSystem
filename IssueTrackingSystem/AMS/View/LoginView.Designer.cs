@@ -193,6 +193,7 @@
             this.ClientSize = new System.Drawing.Size(584, 361);
             this.Controls.Add(this.mainTableLayoutPanel);
             this.Name = "LoginView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "登入";
             this.mainTableLayoutPanel.ResumeLayout(false);
             this.mainTableLayoutPanel.PerformLayout();

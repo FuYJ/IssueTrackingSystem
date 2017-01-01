@@ -177,6 +177,7 @@
             // 
             // searchTypeComboBox
             // 
+            this.searchTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.searchTypeComboBox.FormattingEnabled = true;
             this.searchTypeComboBox.Items.AddRange(new object[] {
             "依據專案",
@@ -190,6 +191,7 @@
             // 
             // searchKeyComboBox
             // 
+            this.searchKeyComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.searchKeyComboBox.FormattingEnabled = true;
             this.searchKeyComboBox.Location = new System.Drawing.Point(5, 61);
             this.searchKeyComboBox.Margin = new System.Windows.Forms.Padding(5);

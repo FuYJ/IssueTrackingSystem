@@ -37,6 +37,8 @@ namespace IssueTrackingSystem.AMS.View
             projectInfoController = new ProjectInfoController(projectModel);
             projectListController = new ProjectListController(projectModel, projectMemberModel);
 
+            projectModel.projectDataChanged += updateView;
+
             user = SecurityModel.getInstance().AuthenticatedUser;
             int userId = user.UserId;
             allProjectList = projectInfoController.getAllProjectList(userId);
@@ -72,17 +74,7 @@ namespace IssueTrackingSystem.AMS.View
 
         private void projectListViewLoad(object sender, EventArgs e)
         {
-            if (user.Authority == (int)User.AuthorityEnum.GeneralUser)
-            {
-                foreach (Project project in joinedProjectList)
-                    joinedProjectsDataGridView.Rows.Add(new Object[] { project.ProjectId, project.ProjectName, project.Description, project.Manager, "檢視" });
-                foreach (Project project in invitedProjectList)
-                    invitedProjectsDataGridView.Rows.Add(new Object[] { project.ProjectId, project.ProjectName, project.Description, project.Manager, "接受", "拒絕" });
-            }
-            else {
-                foreach (Project project in allProjectList)
-                    allProjectsDataGridView.Rows.Add(new Object[] { project.ProjectId, project.ProjectName, project.Description, project.Manager});
-            }
+            updateView();
         }
 
         private void invitedProjectsDataGridViewCellContentClicked(object sender, DataGridViewCellEventArgs e)
@@ -111,6 +103,21 @@ namespace IssueTrackingSystem.AMS.View
             {
                 ProjectMainMenu projectMainMenu = new ProjectMainMenu((int)joinedProjectsDataGridView.Rows[e.RowIndex].Cells[0].Value, userModel, issueModel, projectModel, projectMemberModel);
                 projectMainMenu.Show(this);
+            }
+        }
+
+        private void updateView() {
+            if (user.Authority == (int)User.AuthorityEnum.GeneralUser)
+            {
+                foreach (Project project in joinedProjectList)
+                    joinedProjectsDataGridView.Rows.Add(new Object[] { project.ProjectId, project.ProjectName, project.Description, project.Manager, "檢視" });
+                foreach (Project project in invitedProjectList)
+                    invitedProjectsDataGridView.Rows.Add(new Object[] { project.ProjectId, project.ProjectName, project.Description, project.Manager, "接受", "拒絕" });
+            }
+            else
+            {
+                foreach (Project project in allProjectList)
+                    allProjectsDataGridView.Rows.Add(new Object[] { project.ProjectId, project.ProjectName, project.Description, project.Manager });
             }
         }
     }

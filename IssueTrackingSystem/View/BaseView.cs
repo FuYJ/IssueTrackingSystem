@@ -60,40 +60,41 @@ namespace IssueTrackingSystem.View
         {
             UserListView userListView = new UserListView(userModel, issueModel, projectModel, projectMemberModel);
             userListView.Visible = true;
-            userListView.Activate();
-            this.Close();
+            userListView.Owner = null;
+            //if (this.Owner != null)
+                this.Close();
         }
 
         private void createProjectButtonClicked(object sender, EventArgs e)
         {
             CreateUpdateProject createProject = new CreateUpdateProject(Project.CREATE, -1, userModel, issueModel, projectModel, projectMemberModel);
             createProject.Visible = true;
-            createProject.Activate();
-            this.Close();
+            if (this.Owner != null)
+                this.Close();
         }
 
         private void addIssueToolStripButtonClicked(object sender, EventArgs e)
         {
             CreateIssueView createIssueView = new CreateIssueView(userModel, issueModel, projectModel, projectMemberModel);
             createIssueView.Visible = true;
-            createIssueView.Activate();
-            this.Close();
+            if (this.Owner != null)
+                this.Close();
         }
 
         private void userInfoToolStripButtonClicked(object sender, EventArgs e)
         {
             UserInfoView userInfoView = new UserInfoView(userModel, issueModel, projectModel, projectMemberModel);
             userInfoView.Visible = true;
-            userInfoView.Activate();
-            this.Close();
+            if (this.Owner != null)
+                this.Close();
         }
 
         private void issueListToolStripButtonClicked(object sender, EventArgs e)
         {
             IssueListView issueListView = new IssueListView(userModel, issueModel, projectModel, projectMemberModel);
             issueListView.Visible = true;
-            issueListView.Activate();
-            this.Close();
+            if (this.Owner != null)
+                this.Close();
         }
 
         private void projectListToolStripButtonClicked(object sender, EventArgs e)
@@ -104,15 +105,22 @@ namespace IssueTrackingSystem.View
             else
                 projectListView = new ProjectListView(userModel, issueModel, projectModel, projectMemberModel);
             projectListView.Visible = true;
-            projectListView.Activate();
-            this.Close();
+            if (this.Owner != null)
+                this.Close();
         }
 
         private void viewReportToolStripButtonClicked(object sender, EventArgs e)
         {
             ReportView reportView = new ReportView(userModel, issueModel, projectModel, projectMemberModel);
             reportView.Visible = true;
-            reportView.Activate();
+            if(this.Owner != null)
+                this.Close();
+        }
+
+        private void logoutToolStripButtonClicked(object sender, EventArgs e)
+        {
+            SecurityModel.getInstance().AuthenticatedUser = null;
+            SecurityModel.getInstance().IsProgramRunning = true;
             this.Close();
         }
     }

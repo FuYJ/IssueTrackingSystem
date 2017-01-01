@@ -41,6 +41,7 @@
             this.viewReportToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.userListToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.logoutToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -79,7 +80,8 @@
             this.createIssueToolStripButton,
             this.viewReportToolStripButton,
             this.toolStripSeparator2,
-            this.userListToolStripButton});
+            this.userListToolStripButton,
+            this.logoutToolStripButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(784, 25);
@@ -159,6 +161,17 @@
             this.userListToolStripButton.Text = "使用者列表";
             this.userListToolStripButton.Click += new System.EventHandler(this.userListToolStripButtonClicked);
             // 
+            // logoutToolStripButton
+            // 
+            this.logoutToolStripButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.logoutToolStripButton.Image = global::IssueTrackingSystem.Properties.Resources.sign_out;
+            this.logoutToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.logoutToolStripButton.Name = "logoutToolStripButton";
+            this.logoutToolStripButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.logoutToolStripButton.Size = new System.Drawing.Size(51, 22);
+            this.logoutToolStripButton.Text = "登出";
+            this.logoutToolStripButton.Click += new System.EventHandler(this.logoutToolStripButtonClicked);
+            // 
             // BaseView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -194,5 +207,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton createIssueToolStripButton;
         private System.Windows.Forms.ToolStripButton viewReportToolStripButton;
+        private System.Windows.Forms.ToolStripButton logoutToolStripButton;
     }
 }

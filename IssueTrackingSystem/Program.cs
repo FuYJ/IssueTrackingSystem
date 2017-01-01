@@ -6,6 +6,8 @@ using System.Windows.Forms;
 using IssueTrackingSystem.AMS.View;
 using IssueTrackingSystem.Model;
 using IssueTrackingSystem.PMS.View;
+using IssueTrackingSystem.Model.DataModel;
+using IssueTrackingSystem.View;
 
 namespace IssueTrackingSystem
 {
@@ -38,8 +40,19 @@ namespace IssueTrackingSystem
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginView(userModel, issueModel, projectModel, projectMemberModel));
-//            Application.Run(new Member(userModel, issueModel, projectModel, new Model.DataModel.Project()));
+            while (SecurityModel.getInstance().IsProgramRunning)
+            {
+                Application.Run(new LoginView(userModel, issueModel, projectModel, projectMemberModel));
+                while (SecurityModel.getInstance().AuthenticatedUser != null)
+                {
+                    if (SecurityModel.getInstance().AuthenticatedUser.Authority == (int)User.AuthorityEnum.GeneralUser)
+                    {
+                        Application.Run(new UserInfoView(userModel, issueModel, projectModel, projectMemberModel));
+                    }
+                    else
+                        Application.Run(new SecurityView(userModel, issueModel, projectModel, projectMemberModel));
+                }
+            }
         }
     }
 }

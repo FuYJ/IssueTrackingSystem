@@ -470,6 +470,7 @@
             this.Controls.Add(this.editInfoTableLayoutPanel);
             this.Name = "SecurityView";
             this.Text = "管理者資料 - Issue Tracking System";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SecurityViewFormClosing);
             this.Controls.SetChildIndex(this.editInfoTableLayoutPanel, 0);
             this.Controls.SetChildIndex(this.viewInfoTableLayoutPanel, 0);
             this.viewInfoTableLayoutPanel.ResumeLayout(false);

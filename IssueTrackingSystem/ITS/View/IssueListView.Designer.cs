@@ -177,6 +177,7 @@
             // selectSearchTypeComboBox
             // 
             this.selectSearchTypeComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.selectSearchTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.selectSearchTypeComboBox.FormattingEnabled = true;
             this.selectSearchTypeComboBox.Items.AddRange(new object[] {
             "以議題名稱",

@@ -104,5 +104,11 @@ namespace IssueTrackingSystem.AMS.View
             UserListView userListView = new UserListView(userModel, issueModel, projectModel, projectMemberModel);
             userListView.Show();
         }
+
+        private void SecurityViewFormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.Owner == null)
+                SecurityModel.getInstance().AuthenticatedUser = null;
+        }
     }
 }

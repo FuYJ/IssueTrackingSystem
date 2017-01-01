@@ -2,6 +2,7 @@
 using IssueTrackingSystem.ITS.Controller;
 using IssueTrackingSystem.Model;
 using IssueTrackingSystem.Model.DataModel;
+using IssueTrackingSystem.PMS.Controller;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,6 +21,7 @@ namespace IssueTrackingSystem.ITS.View
         private ProjectMemberModel projectMemberModel;
         private UserController userController;
         private IssueController issueController;
+        private ProjectInfoController projectInfoController;
 
         private User user;
         private List<Issue> issueList;
@@ -36,10 +38,18 @@ namespace IssueTrackingSystem.ITS.View
             this.projectMemberModel = projectMemberModel;
             userController = new UserController(userModel);
             issueController = new IssueController(userModel, issueModel, projectModel);
+            projectInfoController = new ProjectInfoController(projectModel);
 
             user = SecurityModel.getInstance().AuthenticatedUser;
             initialKeyword = user.UserName;
             initialSearchType = (int)Issue.SearchType.ByPersonInChargeName;
+
+            if (user.Authority == (int)User.AuthorityEnum.SystemManager) {
+                createIssueButton.Enabled = false;
+                createIssueButton.Visible = false;
+                viewStatisticReportButton.Enabled = false;
+                viewStatisticReportButton.Visible = false;
+            }
         }
 
         private void IssueListViewLoad(object sender, EventArgs e)
@@ -49,10 +59,24 @@ namespace IssueTrackingSystem.ITS.View
             issueList = issueController.searchIssues(keywordTextBox.Text, selectSearchTypeComboBox.SelectedIndex);
 
             issuesDataGridView.Rows.Clear();
-            foreach(Issue issue in issueList){
-                User reporter = userController.getUser(issue.ReporterId);
-                User personInCharge = userController.getUser(issue.PersonInChargeId);
-                issuesDataGridView.Rows.Add(new Object[] { issue.IssueId, issue.IssueName, issue.Priority, issue.Serverity, reporter.UserName, personInCharge.UserName, issue.ReportDate.Date, user.JoinedProjects.Find(x => x.ProjectId == issue.ProjectId).ProjectName, issue.State });
+            if (user.Authority == (int)User.AuthorityEnum.GeneralUser)
+            {
+                foreach (Issue issue in issueList)
+                {
+                    User reporter = userController.getUser(issue.ReporterId);
+                    User personInCharge = userController.getUser(issue.PersonInChargeId);
+                    issuesDataGridView.Rows.Add(new Object[] { issue.IssueId, issue.IssueName, issue.Priority, issue.Serverity, reporter.UserName, personInCharge.UserName, issue.ReportDate.Date, user.JoinedProjects.Find(x => x.ProjectId == issue.ProjectId).ProjectName, issue.State });
+                }
+            }
+            else
+            {
+                List<Project> allProjects = projectInfoController.getAllProjectList(user.UserId);
+                foreach (Issue issue in issueList)
+                {
+                    User reporter = userController.getUser(issue.ReporterId);
+                    User personInCharge = userController.getUser(issue.PersonInChargeId);
+                    issuesDataGridView.Rows.Add(new Object[] { issue.IssueId, issue.IssueName, issue.Priority, issue.Serverity, reporter.UserName, personInCharge.UserName, issue.ReportDate.Date, allProjects.Find(x => x.ProjectId == issue.ProjectId).ProjectName, issue.State });
+                }
             }
         }
 
@@ -67,11 +91,24 @@ namespace IssueTrackingSystem.ITS.View
         {
             issueList = issueController.searchIssues(keywordTextBox.Text, selectSearchTypeComboBox.SelectedIndex);
             issuesDataGridView.Rows.Clear();
-            foreach (Issue issue in issueList)
+            if (user.Authority == (int)User.AuthorityEnum.GeneralUser)
             {
-                User reporter = userController.getUser(issue.ReporterId);
-                User personInCharge = userController.getUser(issue.PersonInChargeId);
-                issuesDataGridView.Rows.Add(new Object[] { issue.IssueId, issue.IssueName, issue.Priority, issue.Serverity, reporter.UserName, personInCharge.UserName, issue.ReportDate, user.JoinedProjects.Find(x => x.ProjectId == issue.ProjectId).ProjectName, issue.State });
+                foreach (Issue issue in issueList)
+                {
+                    User reporter = userController.getUser(issue.ReporterId);
+                    User personInCharge = userController.getUser(issue.PersonInChargeId);
+                    issuesDataGridView.Rows.Add(new Object[] { issue.IssueId, issue.IssueName, issue.Priority, issue.Serverity, reporter.UserName, personInCharge.UserName, issue.ReportDate, user.JoinedProjects.Find(x => x.ProjectId == issue.ProjectId).ProjectName, issue.State });
+                }
+            }
+            else
+            {
+                List<Project> allProjects = projectInfoController.getAllProjectList(user.UserId);
+                foreach (Issue issue in issueList)
+                {
+                    User reporter = userController.getUser(issue.ReporterId);
+                    User personInCharge = userController.getUser(issue.PersonInChargeId);
+                    issuesDataGridView.Rows.Add(new Object[] { issue.IssueId, issue.IssueName, issue.Priority, issue.Serverity, reporter.UserName, personInCharge.UserName, issue.ReportDate.Date, allProjects.Find(x => x.ProjectId == issue.ProjectId).ProjectName, issue.State });
+                }
             }
         }
 
@@ -87,6 +124,7 @@ namespace IssueTrackingSystem.ITS.View
         private void viewStatisticReportButtonClicked(object sender, EventArgs e)
         {
             ReportView reportView = new ReportView(userModel, issueModel, projectModel, projectMemberModel);
+            reportView.Show(this);
         }
     }
 }

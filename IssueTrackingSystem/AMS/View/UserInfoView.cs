@@ -112,5 +112,11 @@ namespace IssueTrackingSystem.AMS.View
             invitedProjectNumberLabel.Text = user.InvitedProjects.Count.ToString();
             trackingIssueNumberLabel.Text = issueController.getIssueList().Count.ToString(); ;
         }
+
+        private void UserInfoViewFormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.Owner == null)
+                SecurityModel.getInstance().AuthenticatedUser = null;
+        }
     }
 }

@@ -30,6 +30,7 @@ namespace IssueTrackingSystem.AMS.View
             this.projectMemberModel = projectMemberModel;
 
             userController = new UserController(userModel);
+            SecurityModel.getInstance().IsProgramRunning = false;
         }
 
 
@@ -54,7 +55,8 @@ namespace IssueTrackingSystem.AMS.View
             user = userController.authenticateUser(user);
             if (user.UserId > 0)
             {
-                if (user.Authority == (int)User.AuthorityEnum.GeneralUser)
+                this.Close();
+                /*if (user.Authority == (int)User.AuthorityEnum.GeneralUser)
                 {
                     UserInfoView userInfoView = new UserInfoView(userModel, issueModel, projectModel, projectMemberModel);
                     userInfoView.Show(this.Owner);
@@ -64,7 +66,7 @@ namespace IssueTrackingSystem.AMS.View
                     SecurityView securityView = new SecurityView(userModel, issueModel, projectModel, projectMemberModel);
                     securityView.Show(this.Owner);
                 }
-                this.Hide();
+                this.Hide();*/
             }
             else
             {

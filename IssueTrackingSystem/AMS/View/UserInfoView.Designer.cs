@@ -462,14 +462,15 @@
             this.editUsernameTextBox.Size = new System.Drawing.Size(452, 27);
             this.editUsernameTextBox.TabIndex = 4;
             // 
-            // UserInfoView
+            // UserInfoView1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.viewInfoTableLayoutPanel);
             this.Controls.Add(this.editInfoTableLayoutPanel);
-            this.Name = "UserInfoView";
+            this.Name = "UserInfoView1";
             this.Text = "使用者資料 - Issue Tracking System";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UserInfoViewFormClosing);
             this.Load += new System.EventHandler(this.UserInfoViewLoad);
             this.Controls.SetChildIndex(this.editInfoTableLayoutPanel, 0);
             this.Controls.SetChildIndex(this.viewInfoTableLayoutPanel, 0);

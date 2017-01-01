@@ -11,6 +11,7 @@ namespace IssueTrackingSystem.Model
     public class SecurityModel
     {
         private User authenticatedUser;
+        private bool isProgramRunning;
         private static SecurityModel securityModel = null;
 
         HttpWebRequest req = WebRequest.Create(Server.ApiUrl) as HttpWebRequest;
@@ -24,13 +25,19 @@ namespace IssueTrackingSystem.Model
         }
 
         private SecurityModel(){
-            
+            isProgramRunning = true;
         }
 
         public User AuthenticatedUser
         {
             get { return authenticatedUser; }
             set { authenticatedUser = value; }
+        }
+
+        public bool IsProgramRunning
+        {
+            get { return isProgramRunning; }
+            set { isProgramRunning = value; }
         }
     }
 }
