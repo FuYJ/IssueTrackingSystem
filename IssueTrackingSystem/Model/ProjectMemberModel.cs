@@ -124,9 +124,9 @@ namespace IssueTrackingSystem.Model
             var req = WebRequest.Create(Server.ApiUrl + "/members/put/" + projectMember.UserId + "/" + projectMember.ProjectId);
             req.Method = "POST";
             req.ContentType = "application/json";
-            String contentData = "{\"userId\":\"" + projectMember.UserId + "\"," +
-                                  "\"isJoined\":\"" + isAccepted.ToString() + "\"," +
-                                  "\"role\":\"\"}";
+            String contentData = "{\"member\":{\"userId\":\"" + projectMember.UserId + "\"," +
+                                  "\"isJoined\":\"" + (isAccepted ? 1: 0).ToString() + "\"," +
+                                  "\"role\":\"\"}}";
             using (var writer = new StreamWriter(req.GetRequestStream()))
             {
                 writer.Write(contentData);
@@ -135,9 +135,8 @@ namespace IssueTrackingSystem.Model
             var resp = (HttpWebResponse)req.GetResponse();
             using (var reader = new StreamReader(resp.GetResponseStream()))
             {
-                var membertData = reader.ReadToEnd();
-                dynamic memberApiModel = JsonConvert.DeserializeObject<dynamic>(membertData);
-                state = memberApiModel.state;
+                var memberData = reader.ReadToEnd();
+                state = int.Parse((String)memberData);
             }
 
             return state;
