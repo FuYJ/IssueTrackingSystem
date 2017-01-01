@@ -43,6 +43,12 @@ namespace IssueTrackingSystem.AMS.View
 
             errorProvider = new ErrorProvider();
             errorProvider.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+
+            if (this.Owner == null)
+            {
+                base.logoutToolStripButton.Visible = true;
+                base.logoutToolStripButton.Enabled = true;
+            }
         }
 
         private void UserInfoViewLoad(object sender, EventArgs e)
@@ -85,19 +91,19 @@ namespace IssueTrackingSystem.AMS.View
         private void viewJoinedProjectsButtonClicked(object sender, EventArgs e)
         {
             ProjectListView projectListView = new ProjectListView(0, userModel, issueModel, projectModel, projectMemberModel);
-            projectListView.Show();
+            projectListView.Show(this);
         }
 
         private void viewInvitedProjectsButtonClicked(object sender, EventArgs e)
         {
             ProjectListView projectListView = new ProjectListView(1, userModel, issueModel, projectModel, projectMemberModel);
-            projectListView.Show();
+            projectListView.Show(this);
         }
 
         private void viewIssuesButtonClicked(object sender, EventArgs e)
         {
             IssueListView issueListView = new IssueListView(userModel, issueModel, projectModel, projectMemberModel);
-            issueListView.Show();
+            issueListView.Show(this);
         }
 
         private void updateView() {

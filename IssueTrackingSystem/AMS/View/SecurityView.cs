@@ -51,6 +51,12 @@ namespace IssueTrackingSystem.AMS.View
 
             errorProvider = new ErrorProvider();
             errorProvider.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+
+            if (this.Owner == null)
+            {
+                base.logoutToolStripButton.Visible = true;
+                base.logoutToolStripButton.Enabled = true;
+            }
         }
 
         private void editButtonClicked(object sender, EventArgs e)

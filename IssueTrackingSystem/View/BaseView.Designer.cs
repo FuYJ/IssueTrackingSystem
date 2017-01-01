@@ -164,12 +164,14 @@
             // logoutToolStripButton
             // 
             this.logoutToolStripButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.logoutToolStripButton.Enabled = false;
             this.logoutToolStripButton.Image = global::IssueTrackingSystem.Properties.Resources.sign_out;
             this.logoutToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.logoutToolStripButton.Name = "logoutToolStripButton";
             this.logoutToolStripButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.logoutToolStripButton.Size = new System.Drawing.Size(51, 22);
             this.logoutToolStripButton.Text = "登出";
+            this.logoutToolStripButton.Visible = false;
             this.logoutToolStripButton.Click += new System.EventHandler(this.logoutToolStripButtonClicked);
             // 
             // BaseView
@@ -207,6 +209,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton createIssueToolStripButton;
         private System.Windows.Forms.ToolStripButton viewReportToolStripButton;
-        private System.Windows.Forms.ToolStripButton logoutToolStripButton;
+        protected System.Windows.Forms.ToolStripButton logoutToolStripButton;
     }
 }

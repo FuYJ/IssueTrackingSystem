@@ -32,11 +32,6 @@
             this.projectTabControl = new System.Windows.Forms.TabControl();
             this.joinedProjectsTabPage = new System.Windows.Forms.TabPage();
             this.joinedProjectsDataGridView = new System.Windows.Forms.DataGridView();
-            this.joinedProjectId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.joinedProjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.joinedProjectDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.joinedProjectManager = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.viewJoinedProjectButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.invitedProjectsTabPage = new System.Windows.Forms.TabPage();
             this.invitedProjectsDataGridView = new System.Windows.Forms.DataGridView();
             this.invitedProjectId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,6 +46,10 @@
             this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.projectManager = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.systemManagerTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.joinedProjectId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.joinedProjectName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.joinedProjectDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.joinedProjectManager = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.generalUserTableLayoutPanel.SuspendLayout();
             this.projectTabControl.SuspendLayout();
             this.joinedProjectsTabPage.SuspendLayout();
@@ -110,8 +109,7 @@
             this.joinedProjectId,
             this.joinedProjectName,
             this.joinedProjectDescription,
-            this.joinedProjectManager,
-            this.viewJoinedProjectButton});
+            this.joinedProjectManager});
             this.joinedProjectsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.joinedProjectsDataGridView.Location = new System.Drawing.Point(3, 3);
             this.joinedProjectsDataGridView.Name = "joinedProjectsDataGridView";
@@ -119,45 +117,8 @@
             this.joinedProjectsDataGridView.RowTemplate.Height = 24;
             this.joinedProjectsDataGridView.Size = new System.Drawing.Size(744, 414);
             this.joinedProjectsDataGridView.TabIndex = 0;
-            this.joinedProjectsDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.joinedProjectsDataGridViewCellContentClicked);
+            this.joinedProjectsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.joinedProjectsDataGridViewCellClicked);
             this.joinedProjectsDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.joinedProjectsDataGridViewCellDoubleClicked);
-            // 
-            // joinedProjectId
-            // 
-            this.joinedProjectId.FillWeight = 24.83928F;
-            this.joinedProjectId.HeaderText = "ID";
-            this.joinedProjectId.Name = "joinedProjectId";
-            this.joinedProjectId.ReadOnly = true;
-            // 
-            // joinedProjectName
-            // 
-            this.joinedProjectName.FillWeight = 116.1236F;
-            this.joinedProjectName.HeaderText = "專案名稱";
-            this.joinedProjectName.Name = "joinedProjectName";
-            this.joinedProjectName.ReadOnly = true;
-            // 
-            // joinedProjectDescription
-            // 
-            this.joinedProjectDescription.FillWeight = 239.4765F;
-            this.joinedProjectDescription.HeaderText = "簡介";
-            this.joinedProjectDescription.Name = "joinedProjectDescription";
-            this.joinedProjectDescription.ReadOnly = true;
-            // 
-            // joinedProjectManager
-            // 
-            this.joinedProjectManager.FillWeight = 63.45178F;
-            this.joinedProjectManager.HeaderText = "專案管理員";
-            this.joinedProjectManager.Name = "joinedProjectManager";
-            this.joinedProjectManager.ReadOnly = true;
-            // 
-            // viewJoinedProjectButton
-            // 
-            this.viewJoinedProjectButton.DataPropertyName = "檢視專案";
-            this.viewJoinedProjectButton.FillWeight = 56.10882F;
-            this.viewJoinedProjectButton.HeaderText = "檢視專案";
-            this.viewJoinedProjectButton.Name = "viewJoinedProjectButton";
-            this.viewJoinedProjectButton.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.viewJoinedProjectButton.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // invitedProjectsTabPage
             // 
@@ -165,7 +126,7 @@
             this.invitedProjectsTabPage.Location = new System.Drawing.Point(4, 22);
             this.invitedProjectsTabPage.Name = "invitedProjectsTabPage";
             this.invitedProjectsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.invitedProjectsTabPage.Size = new System.Drawing.Size(744, 394);
+            this.invitedProjectsTabPage.Size = new System.Drawing.Size(750, 420);
             this.invitedProjectsTabPage.TabIndex = 1;
             this.invitedProjectsTabPage.Text = "受邀請的專案";
             this.invitedProjectsTabPage.UseVisualStyleBackColor = true;
@@ -188,7 +149,7 @@
             this.invitedProjectsDataGridView.Name = "invitedProjectsDataGridView";
             this.invitedProjectsDataGridView.RowHeadersVisible = false;
             this.invitedProjectsDataGridView.RowTemplate.Height = 24;
-            this.invitedProjectsDataGridView.Size = new System.Drawing.Size(738, 388);
+            this.invitedProjectsDataGridView.Size = new System.Drawing.Size(744, 414);
             this.invitedProjectsDataGridView.TabIndex = 1;
             this.invitedProjectsDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.invitedProjectsDataGridViewCellContentClicked);
             // 
@@ -291,6 +252,34 @@
             this.systemManagerTableLayoutPanel.Size = new System.Drawing.Size(784, 512);
             this.systemManagerTableLayoutPanel.TabIndex = 2;
             // 
+            // joinedProjectId
+            // 
+            this.joinedProjectId.FillWeight = 24.83928F;
+            this.joinedProjectId.HeaderText = "ID";
+            this.joinedProjectId.Name = "joinedProjectId";
+            this.joinedProjectId.ReadOnly = true;
+            // 
+            // joinedProjectName
+            // 
+            this.joinedProjectName.FillWeight = 116.1236F;
+            this.joinedProjectName.HeaderText = "專案名稱";
+            this.joinedProjectName.Name = "joinedProjectName";
+            this.joinedProjectName.ReadOnly = true;
+            // 
+            // joinedProjectDescription
+            // 
+            this.joinedProjectDescription.FillWeight = 239.4765F;
+            this.joinedProjectDescription.HeaderText = "簡介";
+            this.joinedProjectDescription.Name = "joinedProjectDescription";
+            this.joinedProjectDescription.ReadOnly = true;
+            // 
+            // joinedProjectManager
+            // 
+            this.joinedProjectManager.FillWeight = 63.45178F;
+            this.joinedProjectManager.HeaderText = "專案管理員";
+            this.joinedProjectManager.Name = "joinedProjectManager";
+            this.joinedProjectManager.ReadOnly = true;
+            // 
             // ProjectListView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -340,6 +329,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn joinedProjectName;
         private System.Windows.Forms.DataGridViewTextBoxColumn joinedProjectDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn joinedProjectManager;
-        private System.Windows.Forms.DataGridViewButtonColumn viewJoinedProjectButton;
     }
 }

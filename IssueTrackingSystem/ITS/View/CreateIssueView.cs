@@ -35,8 +35,8 @@ namespace IssueTrackingSystem.ITS.View
             
             issueController = new IssueController(userModel, issueModel, projectModel);
             projectMemberController = new ProjectMemberController(projectMemberModel, userModel);
-            userModel.updateAuthenticatedUser(user.UserId);
             user = SecurityModel.getInstance().AuthenticatedUser;
+            userModel.updateAuthenticatedUser(user.UserId);
             projectList = user.JoinedProjects;
             foreach (Project project in projectList)
             {

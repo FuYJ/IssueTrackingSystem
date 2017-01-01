@@ -38,10 +38,9 @@ namespace IssueTrackingSystem.AMS.View
             projectListController = new ProjectListController(projectModel, projectMemberModel);
 
             projectModel.projectDataChanged += updateView;
+            projectMemberModel.projectMemberDataChanged += updateView;
 
             user = SecurityModel.getInstance().AuthenticatedUser;
-            int userId = user.UserId;
-            allProjectList = projectInfoController.getAllProjectList(userId);
 
             systemManagerTableLayoutPanel.Enabled = true;
             systemManagerTableLayoutPanel.Visible = true;
@@ -90,27 +89,30 @@ namespace IssueTrackingSystem.AMS.View
         private void joinedProjectsDataGridViewCellDoubleClicked(object sender, DataGridViewCellEventArgs e)
         {
             User user = SecurityModel.getInstance().AuthenticatedUser;
-            if (e.RowIndex >= 0 && e.RowIndex < invitedProjectsDataGridView.RowCount)
+            if (e.RowIndex >= 0 && e.RowIndex < joinedProjectsDataGridView.RowCount)
             {
-                projectInfoController.getProjectInfo(user.UserId, (int)invitedProjectsDataGridView.Rows[e.RowIndex].Cells[0].Value);
+                joinedProjectsDataGridView.Rows[e.RowIndex].Selected = true;
+                ProjectMainMenu projectMainMenu = new ProjectMainMenu((int)(joinedProjectsDataGridView.Rows[e.RowIndex].Cells[0].Value), userModel, issueModel, projectModel, projectMemberModel);
             }
         }
 
-        private void joinedProjectsDataGridViewCellContentClicked(object sender, DataGridViewCellEventArgs e)
+        private void joinedProjectsDataGridViewCellClicked(object sender, DataGridViewCellEventArgs e)
         {
-            User user = SecurityModel.getInstance().AuthenticatedUser;
-            if (e.ColumnIndex == 4 && e.RowIndex >= 0 && e.RowIndex < joinedProjectsDataGridView.RowCount)
+            if (e.RowIndex >= 0 && e.RowIndex < joinedProjectsDataGridView.RowCount)
             {
-                ProjectMainMenu projectMainMenu = new ProjectMainMenu((int)joinedProjectsDataGridView.Rows[e.RowIndex].Cells[0].Value, userModel, issueModel, projectModel, projectMemberModel);
-                projectMainMenu.Show(this);
+                joinedProjectsDataGridView.Rows[e.RowIndex].Selected = true;
             }
         }
 
-        private void updateView() {
+        private void updateView()
+        {
+            userModel.updateAuthenticatedUser(user.UserId);
+            allProjectList = projectInfoController.getAllProjectList(user.UserId);
+
             if (user.Authority == (int)User.AuthorityEnum.GeneralUser)
             {
                 foreach (Project project in joinedProjectList)
-                    joinedProjectsDataGridView.Rows.Add(new Object[] { project.ProjectId, project.ProjectName, project.Description, project.Manager, "檢視" });
+                    joinedProjectsDataGridView.Rows.Add(new Object[] { project.ProjectId, project.ProjectName, project.Description, project.Manager});
                 foreach (Project project in invitedProjectList)
                     invitedProjectsDataGridView.Rows.Add(new Object[] { project.ProjectId, project.ProjectName, project.Description, project.Manager, "接受", "拒絕" });
             }

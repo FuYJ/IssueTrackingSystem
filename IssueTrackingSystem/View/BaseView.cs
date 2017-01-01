@@ -49,7 +49,7 @@ namespace IssueTrackingSystem.View
                 createProjectButton.Visible = false;
                 createProjectButton.Enabled = false;
                 createIssueToolStripButton.Visible = false;
-                createIssueToolStripButton.Visible = false;
+                createIssueToolStripButton.Enabled = false;
                 viewReportToolStripButton.Visible = false;
                 viewReportToolStripButton.Enabled = false;
                 toolStripSeparator1.Visible = false;
