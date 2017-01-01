@@ -14,7 +14,7 @@ using IssueTrackingSystem.Model.ApiModel;
 
 namespace IssueTrackingSystem.PMS.View
 {
-    public partial class Member : IssueTrackingSystem.View.BaseView
+    public partial class Member : Form
     {
         private UserModel userModel;
         private IssueModel issueModel;
@@ -26,7 +26,7 @@ namespace IssueTrackingSystem.PMS.View
         private String DELETE = "Delete";
 
         public Member(UserModel userModel, IssueModel issueModel, ProjectModel projectModel, Project project, ProjectMemberModel projectMemberModel)
-                    : base(userModel, issueModel, projectModel, projectMemberModel)
+//                    : base(userModel, issueModel, projectModel, projectMemberModel)
         {
             InitializeComponent();
             this.userModel = userModel;
@@ -37,8 +37,10 @@ namespace IssueTrackingSystem.PMS.View
             memberController = new ProjectMemberController(projectMemberModel, userModel);
             _projectName.Text = project.ProjectName;
             this.projectModel.projectDataChanged += UpdateView;
+            InitializeDataGridView(_dataGridView);
+            InitializeDataGridView(_dataGridViewJoining);
+            InitializeTabControl(_memberList);
             ShowData();
-//            _dataGridView.Rows.Add("1", "TEST", "123", "general_user", "Update", "Delete");
         }
 
         public void ShowData()
@@ -63,7 +65,8 @@ namespace IssueTrackingSystem.PMS.View
             List<User> userList = new List<User>();
             memberList = memberController.getMemberByProjectId(project.ProjectId, joined);
             userList = memberController.getUserByProjectId(project.ProjectId, joined);
-            for(int i = 0; i < userList.Count; i++)
+            table.Rows.Clear();
+            for (int i = 0; i < userList.Count; i++)
             {
                 table.Rows.Add(userList[i].UserId.ToString(), userList[i].UserName, userList[i].EmailAddress, memberList[i].Role, UPDATE, DELETE);
             }
@@ -117,11 +120,11 @@ namespace IssueTrackingSystem.PMS.View
             {
                 if (col == 4)
                 {
-                    UpdateMember(new ProjectMember(Convert.ToInt16(_dataGridViewJoining.Rows[row].Cells[0].Value), project.ProjectId, _dataGridView.Rows[row].Cells[3].Value.ToString()), false);
+                    UpdateMember(new ProjectMember(Convert.ToInt16(_dataGridViewJoining.Rows[row].Cells[0].Value), project.ProjectId, _dataGridViewJoining.Rows[row].Cells[3].Value.ToString()), false);
                 }
                 if (col == 5)
                 {
-                    DeleteMember(new ProjectMember(Convert.ToInt16(_dataGridViewJoining.Rows[row].Cells[0].Value), project.ProjectId, _dataGridView.Rows[row].Cells[3].Value.ToString()));
+                    DeleteMember(new ProjectMember(Convert.ToInt16(_dataGridViewJoining.Rows[row].Cells[0].Value), project.ProjectId, _dataGridViewJoining.Rows[row].Cells[3].Value.ToString()));
                 }
             }
         }
@@ -130,6 +133,27 @@ namespace IssueTrackingSystem.PMS.View
         {
             project = projectModel.getProjectInfo(SecurityModel.getInstance().AuthenticatedUser.UserId, project.ProjectId);
             _projectName.Text = project.ProjectName;
+        }
+
+        public void InitializeDataGridView(DataGridView table)
+        {
+            if (!project.Manager.Equals(SecurityModel.getInstance().AuthenticatedUser.UserName))
+            {
+                table.Columns.Remove("_userRole");
+                DataGridViewTextBoxColumn role = new DataGridViewTextBoxColumn();
+                role.HeaderText = "Role";
+                role.Name = "_userRole";
+                role.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+                table.Columns.Insert(3, role);
+            }
+        }
+
+        public void InitializeTabControl(TabControl control)
+        {
+            if (!project.Manager.Equals(SecurityModel.getInstance().AuthenticatedUser.UserName))
+            {
+                control.TabPages[2].Parent = null;
+            }
         }
     }
 }

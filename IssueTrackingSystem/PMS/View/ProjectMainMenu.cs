@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using IssueTrackingSystem.Model;
 using IssueTrackingSystem.Model.DataModel;
 using IssueTrackingSystem.PMS.Controller;
+using IssueTrackingSystem.ITS.View;
 
 namespace IssueTrackingSystem.PMS.View
 {
@@ -76,6 +77,12 @@ namespace IssueTrackingSystem.PMS.View
         {
             int state = infoController.deleteProject(SecurityModel.getInstance().AuthenticatedUser.UserId, project.ProjectId);
             this.Close();
+        }
+
+        private void IssueButtonClicked(object sender, EventArgs e)
+        {
+            IssueListView view = new IssueListView(userModel, issueModel, projectModel, projectMemberModel);
+            view.Show();
         }
     }
 }

@@ -122,7 +122,7 @@ namespace IssueTrackingSystem.Model
                         project.ProjectName = o.projectName;
                         project.Description = o.description;
                         project.Manager = o.manager;
-                        project.TimeStamp = DateTime.FromFileTime(long.Parse((string)projectApiModel.timeStamp));
+                        project.TimeStamp = DateTime.FromFileTime(long.Parse((string)o.timeStamp));
                         projectList.Add(project);
                     }
                 }
@@ -195,7 +195,7 @@ namespace IssueTrackingSystem.Model
             {
                 var projectData = reader.ReadToEnd();
                 dynamic projectApiModel = JsonConvert.DeserializeObject<dynamic>(projectData);
-                state = projectApiModel.state;
+                state = (int)projectApiModel;
             }
             return state;
         }

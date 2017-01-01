@@ -22,7 +22,7 @@ namespace IssueTrackingSystem.PMS.Controller
 
         public int createMember(ProjectMember member)
         {
-            return model.createMember(member);
+            return model.createMember(SecurityModel.getInstance().AuthenticatedUser.UserId, member);
         }
 
         public List<ProjectMember> getMemberByProjectId(int projectId, bool joined)
@@ -43,7 +43,7 @@ namespace IssueTrackingSystem.PMS.Controller
 
         public int updateInfo(ProjectMember member, bool joined)
         {
-            return model.updateInfo(member, joined);
+            return model.updateInfo(SecurityModel.getInstance().AuthenticatedUser.UserId, member, joined);
         }
 
         public int deleteMember(int managerId, ProjectMember member)

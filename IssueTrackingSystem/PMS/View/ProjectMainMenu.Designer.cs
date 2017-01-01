@@ -89,6 +89,7 @@
             this._issueButton.TabIndex = 6;
             this._issueButton.Text = "Issue";
             this._issueButton.UseVisualStyleBackColor = true;
+            this._issueButton.Click += new System.EventHandler(this.IssueButtonClicked);
             // 
             // ProjectMainMenu
             // 
@@ -102,11 +103,6 @@
             this.Controls.Add(this._projectName);
             this.Name = "ProjectMainMenu";
             this.Text = "ProjectMainMenu";
-            this.Controls.SetChildIndex(this._projectName, 0);
-            this.Controls.SetChildIndex(this._memberList, 0);
-            this.Controls.SetChildIndex(this._descriptionButton, 0);
-            this.Controls.SetChildIndex(this._deleteButton, 0);
-            this.Controls.SetChildIndex(this._issueButton, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 

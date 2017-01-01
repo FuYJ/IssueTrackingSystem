@@ -17,10 +17,10 @@ namespace IssueTrackingSystem.Model
         public event ModelChangedEventHandler projectMemberDataChanged;
         public delegate void ModelChangedEventHandler();
 
-        public int createMember(ProjectMember member)
+        public int createMember(int managerId, ProjectMember member)
         {
             int state = 0;
-            var req = WebRequest.Create(Server.ApiUrl + "/members/" + member.UserId + "/" + member.ProjectId);
+            var req = WebRequest.Create(Server.ApiUrl + "/members/" + managerId + "/" + member.ProjectId);
             req.Method = "POST";
             req.ContentType = "application/json";
             String contentData = "{\"userId\":\"" + member.UserId + "\"," +
@@ -70,15 +70,18 @@ namespace IssueTrackingSystem.Model
             return memberList;
         }
 
-        public int updateInfo(ProjectMember member, bool joined)
+        public int updateInfo(int managerId, ProjectMember member, bool joined)
         {
-            int state = 0;
-            var req = WebRequest.Create(Server.ApiUrl + "/members/put/" + member.UserId + "/" + member.ProjectId);
+            int state;
+            var req = WebRequest.Create(Server.ApiUrl + "/members/put/" + managerId + "/" + member.ProjectId);
             req.Method = "POST";
             req.ContentType = "application/json";
-            String contentData = "{\"userId\":\"" + member.UserId + "\"," +
-                                  "\"role\":\"" + member.Role + "\"," +
-                                  "\"isJoined\":\"" + "" + "\"}";
+            String contentData = "{" + 
+                                 "\"member\":" + "{" +
+                                 "\"userId\":" + member.UserId + "," +
+                                 "\"role\":\"" + member.Role + "\"," +
+                                 "\"isJoined\":\"" + "0" + "\"}" + 
+                                 "}";
             using (var writer = new StreamWriter(req.GetRequestStream()))
             {
                 writer.Write(contentData);
@@ -89,7 +92,7 @@ namespace IssueTrackingSystem.Model
             {
                 var membertData = reader.ReadToEnd();
                 dynamic memberApiModel = JsonConvert.DeserializeObject<dynamic>(membertData);
-                state = memberApiModel.state;
+                state = (int)memberApiModel;
             }
 
             return state;
@@ -112,7 +115,7 @@ namespace IssueTrackingSystem.Model
             {
                 var membertData = reader.ReadToEnd();
                 dynamic memberApiModel = JsonConvert.DeserializeObject<dynamic>(membertData);
-                state = memberApiModel.state;
+                state = (int)memberApiModel;
             }
             return state;
         }
