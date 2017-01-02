@@ -38,6 +38,7 @@
             this.invitedProjectsNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.trackingIssuesNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.mainTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userListDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -47,10 +48,11 @@
             this.mainTableLayoutPanel.ColumnCount = 1;
             this.mainTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.mainTableLayoutPanel.Controls.Add(this.userListDataGridView, 0, 0);
+            this.mainTableLayoutPanel.Controls.Add(this.statusStrip1, 0, 1);
             this.mainTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTableLayoutPanel.Location = new System.Drawing.Point(0, 49);
             this.mainTableLayoutPanel.Name = "mainTableLayoutPanel";
-            this.mainTableLayoutPanel.RowCount = 1;
+            this.mainTableLayoutPanel.RowCount = 2;
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.mainTableLayoutPanel.Size = new System.Drawing.Size(784, 512);
@@ -77,7 +79,7 @@
             this.userListDataGridView.Name = "userListDataGridView";
             this.userListDataGridView.RowHeadersVisible = false;
             this.userListDataGridView.RowTemplate.Height = 24;
-            this.userListDataGridView.Size = new System.Drawing.Size(778, 506);
+            this.userListDataGridView.Size = new System.Drawing.Size(778, 486);
             this.userListDataGridView.TabIndex = 0;
             this.userListDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.userListDataGridViewCellContentClicked);
             this.userListDataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.userRoleValueChanged);
@@ -144,6 +146,14 @@
             this.delete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.delete.Text = "刪除";
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Location = new System.Drawing.Point(0, 492);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(784, 20);
+            this.statusStrip1.TabIndex = 1;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
             // UserListView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -154,6 +164,7 @@
             this.Load += new System.EventHandler(this.AccountListViewLoad);
             this.Controls.SetChildIndex(this.mainTableLayoutPanel, 0);
             this.mainTableLayoutPanel.ResumeLayout(false);
+            this.mainTableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userListDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -172,6 +183,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn invitedProjectsNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn trackingIssuesNumber;
         private System.Windows.Forms.DataGridViewButtonColumn delete;
+        private System.Windows.Forms.StatusStrip statusStrip1;
 
     }
 }

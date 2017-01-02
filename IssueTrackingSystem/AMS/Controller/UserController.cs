@@ -30,11 +30,9 @@ namespace IssueTrackingSystem.AMS.Controller
             return user;
         }
 
-        public User updateUser(User user)
+        public int updateUser(User user)
         {
-            user = userModel.updateUserInfo(user);
-
-            return user;
+            return userModel.updateUserInfo(user);
         }
 
         public User getUser(int userId) {

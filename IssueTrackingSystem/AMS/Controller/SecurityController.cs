@@ -23,17 +23,5 @@ namespace IssueTrackingSystem.AMS.Controller
 
             return userList;
         }
-
-        public User changeAuthority(User user)
-        {
-            user = userModel.updateUserInfo(user);
-
-            return user;
-        }
-
-        public void deleteUser(int userId)
-        {
-            //api
-        }
     }
 }

@@ -26,7 +26,12 @@ namespace IssueTrackingSystem.Model.DataModel
             EmailAddressFormatError,
             UserAccountNotExist,
             AuthenticateError,
-            UserNotGeneralUser
+            UserNotGeneralUser,
+            IssueClosed,
+            CannotUpdateProjectManagerInfo,
+            InvalidAuthoritySetting,
+            InvitationIsReplied,
+            IsInvitedOrIsJoinedProject
         }
     }
 }

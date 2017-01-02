@@ -135,7 +135,7 @@ namespace IssueTrackingSystem.Model
             return userList;
         }
 
-        public User updateUserInfo(User user)
+        public int updateUserInfo(User user)
         {
             var req = WebRequest.Create(Server.ApiUrl + "/users/put/" + user.UserId);
             req.Method = "POST";
@@ -156,11 +156,9 @@ namespace IssueTrackingSystem.Model
                 String state = userData;
 
                 user.UserId = formatStateToUserId(state, user.UserId.ToString());
-                if(int.Parse(state) == 0)
-                    Notify();
             }
             Notify();
-            return user;
+            return user.UserId;
         }
 
         public int deleteUser(int userId) {

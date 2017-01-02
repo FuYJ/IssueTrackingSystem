@@ -50,7 +50,15 @@ namespace IssueTrackingSystem.AMS.View
                     user.Authority = (int)User.AuthorityEnum.SystemManager;
                 else
                     user.Authority = (int)User.AuthorityEnum.GeneralUser;
-                userController.updateUser(user);
+                int state = userController.updateUser(user);
+                switch (state) { 
+                    case (int)ErrorManager.ErrorCode.CannotUpdateProjectManagerInfo:
+                        statusStrip1.Text = "無法修改專案管理員資料";
+                        break;
+                    case (int)ErrorManager.ErrorCode.InvalidAuthoritySetting:
+                        statusStrip1.Text = "不合法的權限設定";
+                        break;
+                }
             }
         }
 
@@ -60,10 +68,20 @@ namespace IssueTrackingSystem.AMS.View
             {
                 int state = 0;
                 state = userController.deleteUser((int)userListDataGridView.Rows[e.RowIndex].Cells[0].Value);
+                switch (state)
+                {
+                    case (int)ErrorManager.ErrorCode.CannotUpdateProjectManagerInfo:
+                        statusStrip1.Text = "無法刪除專案管理員";
+                        break;
+                    case (int)ErrorManager.ErrorCode.InvalidAuthoritySetting:
+                        statusStrip1.Text = "不合法的刪除動作";
+                        break;
+                }
             }
         }
 
         private void updateUserList(){
+            statusStrip1.Text = "";
             userList = securityController.listAccounts();
             userListDataGridView.Rows.Clear();
             foreach (User user in userList)
