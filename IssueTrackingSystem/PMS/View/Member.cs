@@ -14,7 +14,7 @@ using IssueTrackingSystem.Model.ApiModel;
 
 namespace IssueTrackingSystem.PMS.View
 {
-    public partial class Member : IssueTrackingSystem.View.BaseView
+    public partial class Member : Form
     {
         private UserModel userModel;
         private IssueModel issueModel;
@@ -26,7 +26,6 @@ namespace IssueTrackingSystem.PMS.View
         private String DELETE = "Delete";
 
         public Member(UserModel userModel, IssueModel issueModel, ProjectModel projectModel, Project project, ProjectMemberModel projectMemberModel)
-                    : base(userModel, issueModel, projectModel, projectMemberModel)
         {
             InitializeComponent();
             this.userModel = userModel;
@@ -43,6 +42,7 @@ namespace IssueTrackingSystem.PMS.View
             InitializeDataGridView(_dataGridViewJoining);
             InitializeTabControl(_memberList);
             ShowData();
+//            _dataGridView += dataGridView1_CellValueChanged;
         }
 
         public void ShowData()
@@ -119,11 +119,11 @@ namespace IssueTrackingSystem.PMS.View
             int row = e.RowIndex;
             if (e.RowIndex >= 0)
             {
-                if (col == 4)
+                if (col == 3)
                 {
                     UpdateMember(new ProjectMember(Convert.ToInt16(_dataGridViewJoining.Rows[row].Cells[0].Value), project.ProjectId, _dataGridViewJoining.Rows[row].Cells[3].Value.ToString()), false);
                 }
-                if (col == 5)
+                if (col == 4)
                 {
                     DeleteMember(new ProjectMember(Convert.ToInt16(_dataGridViewJoining.Rows[row].Cells[0].Value), project.ProjectId, _dataGridViewJoining.Rows[row].Cells[3].Value.ToString()));
                 }
@@ -163,6 +163,11 @@ namespace IssueTrackingSystem.PMS.View
         private void ShowError(int state)
         {
             _errorMessage.Text = ((ErrorManager.ErrorCode)state).ToString();
+        }
+
+        private void LeaveButtonClicked(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

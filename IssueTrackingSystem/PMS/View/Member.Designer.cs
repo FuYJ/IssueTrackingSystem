@@ -56,9 +56,10 @@
             this._name = new System.Windows.Forms.TextBox();
             this._nameInput = new System.Windows.Forms.TextBox();
             this._inviteMember = new System.Windows.Forms.Button();
+            this._errorMessage = new System.Windows.Forms.TextBox();
             this.dataGridViewButtonColumn3 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dataGridViewButtonColumn4 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this._errorMessage = new System.Windows.Forms.TextBox();
+            this._leaveButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this._memberList.SuspendLayout();
             this._existingMemberTable.SuspendLayout();
@@ -80,6 +81,7 @@
             this.tableLayoutPanel1.Controls.Add(this._projectName, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this._memberList, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this._errorMessage, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this._leaveButton, 1, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 49);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
@@ -173,7 +175,6 @@
             // _userRole
             // 
             this._userRole.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this._userRole.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
             this._userRole.HeaderText = "Role";
             this._userRole.Items.AddRange(new object[] {
             "GeneralUser",
@@ -257,7 +258,6 @@
             // _userRole2
             // 
             this._userRole2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this._userRole2.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
             this._userRole2.HeaderText = "Role";
             this._userRole2.Items.AddRange(new object[] {
             "GeneralUser",
@@ -342,12 +342,12 @@
             // 
             // _permissionList
             // 
+            this._permissionList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._permissionList.FormattingEnabled = true;
             this._permissionList.Items.AddRange(new object[] {
             "GeneralUser",
             "ProjectDeveloper",
-            "ProjectTester",
-            "ProjectManager"});
+            "ProjectTester"});
             this._permissionList.Location = new System.Drawing.Point(123, 3);
             this._permissionList.Name = "_permissionList";
             this._permissionList.Size = new System.Drawing.Size(121, 20);
@@ -400,6 +400,17 @@
             this._inviteMember.UseVisualStyleBackColor = true;
             this._inviteMember.Click += new System.EventHandler(this.InviteMemberClicked);
             // 
+            // _errorMessage
+            // 
+            this._errorMessage.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this._errorMessage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._errorMessage.Font = new System.Drawing.Font("PMingLiU", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this._errorMessage.Location = new System.Drawing.Point(81, 462);
+            this._errorMessage.Name = "_errorMessage";
+            this._errorMessage.ReadOnly = true;
+            this._errorMessage.Size = new System.Drawing.Size(621, 33);
+            this._errorMessage.TabIndex = 3;
+            // 
             // dataGridViewButtonColumn3
             // 
             this.dataGridViewButtonColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -415,16 +426,16 @@
             this.dataGridViewButtonColumn4.Name = "dataGridViewButtonColumn4";
             this.dataGridViewButtonColumn4.Text = "Delete";
             // 
-            // _errorMessage
+            // _leaveButton
             // 
-            this._errorMessage.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this._errorMessage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._errorMessage.Font = new System.Drawing.Font("PMingLiU", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this._errorMessage.Location = new System.Drawing.Point(81, 462);
-            this._errorMessage.Name = "_errorMessage";
-            this._errorMessage.ReadOnly = true;
-            this._errorMessage.Size = new System.Drawing.Size(621, 33);
-            this._errorMessage.TabIndex = 3;
+            this._leaveButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this._leaveButton.Location = new System.Drawing.Point(627, 79);
+            this._leaveButton.Name = "_leaveButton";
+            this._leaveButton.Size = new System.Drawing.Size(75, 45);
+            this._leaveButton.TabIndex = 4;
+            this._leaveButton.Text = "Leave";
+            this._leaveButton.UseVisualStyleBackColor = true;
+            this._leaveButton.Click += new System.EventHandler(this.LeaveButtonClicked);
             // 
             // Member
             // 
@@ -471,6 +482,7 @@
         private System.Windows.Forms.DataGridView _dataGridViewJoining;
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn3;
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn4;
+        private System.Windows.Forms.TextBox _errorMessage;
         private System.Windows.Forms.DataGridViewTextBoxColumn _userID;
         private System.Windows.Forms.DataGridViewTextBoxColumn _userName;
         private System.Windows.Forms.DataGridViewTextBoxColumn _userEmail;
@@ -483,6 +495,6 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn _userRole2;
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn2;
-        private System.Windows.Forms.TextBox _errorMessage;
+        private System.Windows.Forms.Button _leaveButton;
     }
 }

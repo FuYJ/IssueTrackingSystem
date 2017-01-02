@@ -64,13 +64,13 @@
             this.mainTableLayoutPanel.Controls.Add(this.keywordTextBox, 0, 0);
             this.mainTableLayoutPanel.Controls.Add(this.searchButton, 2, 0);
             this.mainTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainTableLayoutPanel.Location = new System.Drawing.Point(0, 49);
+            this.mainTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.mainTableLayoutPanel.Name = "mainTableLayoutPanel";
             this.mainTableLayoutPanel.Padding = new System.Windows.Forms.Padding(10);
             this.mainTableLayoutPanel.RowCount = 2;
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
-            this.mainTableLayoutPanel.Size = new System.Drawing.Size(784, 512);
+            this.mainTableLayoutPanel.Size = new System.Drawing.Size(784, 561);
             this.mainTableLayoutPanel.TabIndex = 2;
             // 
             // viewStatisticReportButton
@@ -78,7 +78,7 @@
             this.viewStatisticReportButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.viewStatisticReportButton.Location = new System.Drawing.Point(660, 13);
             this.viewStatisticReportButton.Name = "viewStatisticReportButton";
-            this.viewStatisticReportButton.Size = new System.Drawing.Size(111, 43);
+            this.viewStatisticReportButton.Size = new System.Drawing.Size(111, 48);
             this.viewStatisticReportButton.TabIndex = 2;
             this.viewStatisticReportButton.Text = "查看報表";
             this.viewStatisticReportButton.UseVisualStyleBackColor = true;
@@ -101,11 +101,11 @@
             this.issueState});
             this.mainTableLayoutPanel.SetColumnSpan(this.issuesDataGridView, 6);
             this.issuesDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.issuesDataGridView.Location = new System.Drawing.Point(13, 62);
+            this.issuesDataGridView.Location = new System.Drawing.Point(13, 67);
             this.issuesDataGridView.Name = "issuesDataGridView";
             this.issuesDataGridView.RowHeadersVisible = false;
             this.issuesDataGridView.RowTemplate.Height = 24;
-            this.issuesDataGridView.Size = new System.Drawing.Size(758, 437);
+            this.issuesDataGridView.Size = new System.Drawing.Size(758, 481);
             this.issuesDataGridView.TabIndex = 0;
             this.issuesDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.issuesDataGridViewCellDoubleClicked);
             // 
@@ -168,7 +168,7 @@
             this.createIssueButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.createIssueButton.Location = new System.Drawing.Point(546, 13);
             this.createIssueButton.Name = "createIssueButton";
-            this.createIssueButton.Size = new System.Drawing.Size(108, 43);
+            this.createIssueButton.Size = new System.Drawing.Size(108, 48);
             this.createIssueButton.TabIndex = 1;
             this.createIssueButton.Text = "新增議題";
             this.createIssueButton.UseVisualStyleBackColor = true;
@@ -202,7 +202,7 @@
             this.searchButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.searchButton.Location = new System.Drawing.Point(241, 13);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(108, 43);
+            this.searchButton.Size = new System.Drawing.Size(108, 48);
             this.searchButton.TabIndex = 5;
             this.searchButton.Text = "開始搜索";
             this.searchButton.UseVisualStyleBackColor = true;
@@ -210,18 +210,15 @@
             // 
             // IssueListView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.mainTableLayoutPanel);
             this.Name = "IssueListView";
             this.Text = "議題列表 - Issue Tracking System";
             this.Load += new System.EventHandler(this.IssueListViewLoad);
-            this.Controls.SetChildIndex(this.mainTableLayoutPanel, 0);
             this.mainTableLayoutPanel.ResumeLayout(false);
             this.mainTableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.issuesDataGridView)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

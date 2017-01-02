@@ -170,6 +170,7 @@
     <Compile Include="Model\SecurityModel.cs" />
     <Compile Include="Model\UserModel.cs" />
     <Compile Include="AMS\Controller\UserController.cs" />
+    <Compile Include="Model\ViewModel\ViewModel.cs" />
     <Compile Include="PMS\Controller\CreateUpdateProjectController.cs" />
     <Compile Include="PMS\Controller\ProjectInfoController.cs" />
     <Compile Include="PMS\Controller\ProjectMemberController.cs" />
@@ -178,6 +179,12 @@
     </Compile>
     <Compile Include="PMS\View\CreateUpdateProject.Designer.cs">
       <DependentUpon>CreateUpdateProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PMS\View\IssueList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PMS\View\IssueList.Designer.cs">
+      <DependentUpon>IssueList.cs</DependentUpon>
     </Compile>
     <Compile Include="PMS\View\Member.cs">
       <SubType>Form</SubType>
@@ -225,6 +232,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AMS\View\UserListView.resx">
       <DependentUpon>UserListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PMS\View\IssueList.resx">
+      <DependentUpon>IssueList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\BaseView.resx">
       <DependentUpon>BaseView.cs</DependentUpon>

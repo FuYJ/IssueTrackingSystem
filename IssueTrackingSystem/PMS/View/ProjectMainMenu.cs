@@ -14,7 +14,7 @@ using IssueTrackingSystem.ITS.View;
 
 namespace IssueTrackingSystem.PMS.View
 {
-    public partial class ProjectMainMenu : IssueTrackingSystem.View.BaseView
+    public partial class ProjectMainMenu : Form
     {
         private Project project = new Project();
         private UserModel userModel;
@@ -24,7 +24,6 @@ namespace IssueTrackingSystem.PMS.View
         private ProjectInfoController infoController;
 
         public ProjectMainMenu(Project project, UserModel userModel, IssueModel issueModel, ProjectModel projectModel, ProjectMemberModel projectMemberModel)
-            : base(userModel, issueModel, projectModel, projectMemberModel)
         {
             InitializeComponent();
             this.userModel = userModel;
@@ -38,7 +37,6 @@ namespace IssueTrackingSystem.PMS.View
         }
 
         public ProjectMainMenu(int projectId, UserModel userModel, IssueModel issueModel, ProjectModel projectModel, ProjectMemberModel projectMemberModel)
-            : base(userModel, issueModel, projectModel, projectMemberModel)
         {
             InitializeComponent();
             this.userModel = userModel;
@@ -67,13 +65,13 @@ namespace IssueTrackingSystem.PMS.View
         private void DescriptionButtonClicked(object sender, EventArgs e)
         {
             CreateUpdateProject view = new CreateUpdateProject(Project.UPDATE, project.ProjectId, userModel, issueModel, projectModel, projectMemberModel);
-            view.Show();
+            view.ShowDialog();
         }
 
         private void MemberListClicked(object sender, EventArgs e)
         {
             Member member = new Member(userModel, issueModel, projectModel, project, projectMemberModel);
-            member.Show();
+            member.ShowDialog();
         }
 
         public void UpdateView()
@@ -91,13 +89,18 @@ namespace IssueTrackingSystem.PMS.View
 
         private void IssueButtonClicked(object sender, EventArgs e)
         {
-            IssueListView view = new IssueListView(userModel, issueModel, projectModel, projectMemberModel);
-            view.Show();
+            IssueList view = new IssueList(userModel, issueModel, projectModel, projectMemberModel, project);
+            view.ShowDialog();
         }
 
         private void ShowErrorMessage(int state)
         {
             _errorMessage.Text = ((ErrorManager.ErrorCode)state).ToString();
+        }
+
+        private void LeaveButtonClicked(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

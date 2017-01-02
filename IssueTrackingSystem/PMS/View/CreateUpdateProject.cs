@@ -26,7 +26,6 @@ namespace IssueTrackingSystem.PMS.View
         Project project = new Project();
 
         public CreateUpdateProject(String purpose, int projectId, UserModel userModel, IssueModel issueModel, ProjectModel projectModel, ProjectMemberModel projectMemberModel)
-//            : base(userModel, issueModel, projectModel, projectMemberModel)
         {
             InitializeComponent();
             this.userModel = userModel;
@@ -90,9 +89,14 @@ namespace IssueTrackingSystem.PMS.View
         private void Update()
         {
             project = infoController.getProjectInfo(SecurityModel.getInstance().AuthenticatedUser.UserId, project.ProjectId);
-            _projectNameInput.Text = project.ProjectName;
-            _descriptionInput.Text = project.Description;
+//            _projectNameInput.Text = project.ProjectName;
+//            _descriptionInput.Text = project.Description;
             _errorMessage.Text = "";
+        }
+
+        private void LeaveButtonClicked(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

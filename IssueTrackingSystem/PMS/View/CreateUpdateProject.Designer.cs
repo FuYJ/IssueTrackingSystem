@@ -34,6 +34,7 @@
             this._descriptionInput = new System.Windows.Forms.TextBox();
             this._createUpdate = new System.Windows.Forms.Button();
             this._errorMessage = new System.Windows.Forms.TextBox();
+            this._leaveButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // _projectNameText
@@ -45,7 +46,7 @@
             this._projectNameText.Size = new System.Drawing.Size(100, 15);
             this._projectNameText.TabIndex = 2;
             this._projectNameText.TabStop = false;
-            this._projectNameText.Text = "ProjectName:";
+            this._projectNameText.Text = "專案名稱:";
             this._projectNameText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // _projectNameInput
@@ -64,7 +65,7 @@
             this._destriptionText.Size = new System.Drawing.Size(100, 15);
             this._destriptionText.TabIndex = 4;
             this._destriptionText.TabStop = false;
-            this._destriptionText.Text = "Destription:";
+            this._destriptionText.Text = "專案內容:";
             this._destriptionText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // _descriptionInput
@@ -77,7 +78,7 @@
             // 
             // _createUpdate
             // 
-            this._createUpdate.Location = new System.Drawing.Point(639, 517);
+            this._createUpdate.Location = new System.Drawing.Point(646, 517);
             this._createUpdate.Name = "_createUpdate";
             this._createUpdate.Size = new System.Drawing.Size(119, 32);
             this._createUpdate.TabIndex = 6;
@@ -95,11 +96,22 @@
             this._errorMessage.TabIndex = 7;
             this._errorMessage.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // _leaveButton
+            // 
+            this._leaveButton.Location = new System.Drawing.Point(511, 517);
+            this._leaveButton.Name = "_leaveButton";
+            this._leaveButton.Size = new System.Drawing.Size(119, 32);
+            this._leaveButton.TabIndex = 8;
+            this._leaveButton.Text = "Leave";
+            this._leaveButton.UseVisualStyleBackColor = true;
+            this._leaveButton.Click += new System.EventHandler(this.LeaveButtonClicked);
+            // 
             // CreateUpdateProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this._leaveButton);
             this.Controls.Add(this._errorMessage);
             this.Controls.Add(this._createUpdate);
             this.Controls.Add(this._descriptionInput);
@@ -108,12 +120,6 @@
             this.Controls.Add(this._projectNameText);
             this.Name = "CreateUpdateProject";
             this.Text = "CreateUpdateProject";
-            this.Controls.SetChildIndex(this._projectNameText, 0);
-            this.Controls.SetChildIndex(this._projectNameInput, 0);
-            this.Controls.SetChildIndex(this._destriptionText, 0);
-            this.Controls.SetChildIndex(this._descriptionInput, 0);
-            this.Controls.SetChildIndex(this._createUpdate, 0);
-            this.Controls.SetChildIndex(this._errorMessage, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -127,5 +133,6 @@
         private System.Windows.Forms.TextBox _descriptionInput;
         private System.Windows.Forms.Button _createUpdate;
         private System.Windows.Forms.TextBox _errorMessage;
+        private System.Windows.Forms.Button _leaveButton;
     }
 }

@@ -68,33 +68,53 @@ namespace IssueTrackingSystem.View
         private void createProjectButtonClicked(object sender, EventArgs e)
         {
             CreateUpdateProject createProject = new CreateUpdateProject(Project.CREATE, -1, userModel, issueModel, projectModel, projectMemberModel);
-            createProject.Visible = true;
-            if (this.Owner != null)
-                this.Close();
+            /*            createProject.Visible = true;
+                        if (this.Owner != null)
+                            this.Close();*/
+            Form form = FindForm("CreateUpdateProject");
+            if(form == null)
+            {
+                createProject.ShowDialog();
+            }
         }
 
         private void addIssueToolStripButtonClicked(object sender, EventArgs e)
         {
             CreateIssueView createIssueView = new CreateIssueView(userModel, issueModel, projectModel, projectMemberModel);
-            createIssueView.Visible = true;
-            if (this.Owner != null)
-                this.Close();
+            /*            createIssueView.Visible = true;
+                        if (this.Owner != null)
+                            this.Close();*/
+            Form form = FindForm("CreateIssueView");
+            if (form == null)
+            {
+                createIssueView.ShowDialog();
+            }
         }
 
         private void userInfoToolStripButtonClicked(object sender, EventArgs e)
         {
             UserInfoView userInfoView = new UserInfoView(userModel, issueModel, projectModel, projectMemberModel);
-            userInfoView.Visible = true;
-            if (this.Owner != null)
-                this.Close();
+            /*            userInfoView.Visible = true;
+                        if (this.Owner != null)
+                            this.Close();*/
+            Form form = FindForm("UserInfoView");
+            if (form == null)
+            {
+                userInfoView.ShowDialog();
+            }
         }
 
         private void issueListToolStripButtonClicked(object sender, EventArgs e)
         {
             IssueListView issueListView = new IssueListView(userModel, issueModel, projectModel, projectMemberModel);
-            issueListView.Visible = true;
-            if (this.Owner != null)
-                this.Close();
+            /*            issueListView.Visible = true;
+                        if (this.Owner != null)
+                            this.Close();*/
+            Form form = FindForm("IssueListView");
+            if (form == null)
+            {
+                issueListView.ShowDialog();
+            }
         }
 
         private void projectListToolStripButtonClicked(object sender, EventArgs e)
@@ -104,24 +124,55 @@ namespace IssueTrackingSystem.View
                 projectListView = new ProjectListView(0, userModel, issueModel, projectModel, projectMemberModel);
             else
                 projectListView = new ProjectListView(userModel, issueModel, projectModel, projectMemberModel);
-            projectListView.Visible = true;
-            if (this.Owner != null)
-                this.Close();
+            /*            projectListView.Visible = true;
+                        if (this.Owner != null)
+                            this.Close();*/
+            Form form = FindForm("ProjectListView");
+            if (form == null)
+            {
+                projectListView.ShowDialog();
+            }
         }
 
         private void viewReportToolStripButtonClicked(object sender, EventArgs e)
         {
             ReportView reportView = new ReportView(userModel, issueModel, projectModel, projectMemberModel);
-            reportView.Visible = true;
-            if(this.Owner != null)
-                this.Close();
+            /*            reportView.Visible = true;
+                        if(this.Owner != null)
+                            this.Close();*/
+            Form form = FindForm("ReportView");
+            if (form == null)
+            {
+                reportView.ShowDialog();
+            }
         }
 
         private void logoutToolStripButtonClicked(object sender, EventArgs e)
         {
             SecurityModel.getInstance().AuthenticatedUser = null;
             SecurityModel.getInstance().IsProgramRunning = true;
+            CloseForm();
             this.Close();
+        }
+
+        public static Form FindForm(string formName)
+        {
+            foreach (Form form in Application.OpenForms)//获得所有打开的窗体
+            {
+                if (form.Name == formName)
+                {
+                    return form;
+                }
+            }
+            return null;
+        }
+
+        public static void CloseForm()
+        {
+            foreach (Form form in Application.OpenForms)//获得所有打开的窗体
+            {
+                form.Close();
+            }
         }
     }
 }
