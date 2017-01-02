@@ -92,7 +92,15 @@ namespace IssueTrackingSystem.AMS.View
             if (e.RowIndex >= 0 && e.RowIndex < joinedProjectsDataGridView.RowCount)
             {
                 joinedProjectsDataGridView.Rows[e.RowIndex].Selected = true;
-                ProjectMainMenu projectMainMenu = new ProjectMainMenu((int)(joinedProjectsDataGridView.Rows[e.RowIndex].Cells[0].Value), userModel, issueModel, projectModel, projectMemberModel);
+                Form form = FindForm("ProjectMainMenu");
+                if(form != null)
+                    form.Show();
+                else
+                {
+                    ProjectMainMenu projectMainMenu = new ProjectMainMenu((int)(joinedProjectsDataGridView.Rows[e.RowIndex].Cells[0].Value), userModel, issueModel, projectModel, projectMemberModel);
+                    projectMainMenu.Show();
+                }
+                
             }
         }
 
@@ -121,6 +129,18 @@ namespace IssueTrackingSystem.AMS.View
                 foreach (Project project in allProjectList)
                     allProjectsDataGridView.Rows.Add(new Object[] { project.ProjectId, project.ProjectName, project.Description, project.Manager });
             }
+        }
+
+        private Form FindForm(string formName)
+        {
+            foreach (Form form in Application.OpenForms)//获得所有打开的窗体
+            {
+                if (form.Name == formName)
+                {
+                    return form;
+                }
+            }
+            return null;
         }
     }
 }
