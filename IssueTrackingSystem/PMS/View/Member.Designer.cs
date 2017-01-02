@@ -57,9 +57,9 @@
             this._nameInput = new System.Windows.Forms.TextBox();
             this._inviteMember = new System.Windows.Forms.Button();
             this._errorMessage = new System.Windows.Forms.TextBox();
+            this._leaveButton = new System.Windows.Forms.Button();
             this.dataGridViewButtonColumn3 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dataGridViewButtonColumn4 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this._leaveButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this._memberList.SuspendLayout();
             this._existingMemberTable.SuspendLayout();
@@ -411,6 +411,17 @@
             this._errorMessage.Size = new System.Drawing.Size(621, 33);
             this._errorMessage.TabIndex = 3;
             // 
+            // _leaveButton
+            // 
+            this._leaveButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this._leaveButton.Location = new System.Drawing.Point(627, 79);
+            this._leaveButton.Name = "_leaveButton";
+            this._leaveButton.Size = new System.Drawing.Size(75, 45);
+            this._leaveButton.TabIndex = 4;
+            this._leaveButton.Text = "Leave";
+            this._leaveButton.UseVisualStyleBackColor = true;
+            this._leaveButton.Click += new System.EventHandler(this.LeaveButtonClicked);
+            // 
             // dataGridViewButtonColumn3
             // 
             this.dataGridViewButtonColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -425,17 +436,6 @@
             this.dataGridViewButtonColumn4.HeaderText = "Delete";
             this.dataGridViewButtonColumn4.Name = "dataGridViewButtonColumn4";
             this.dataGridViewButtonColumn4.Text = "Delete";
-            // 
-            // _leaveButton
-            // 
-            this._leaveButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this._leaveButton.Location = new System.Drawing.Point(627, 79);
-            this._leaveButton.Name = "_leaveButton";
-            this._leaveButton.Size = new System.Drawing.Size(75, 45);
-            this._leaveButton.TabIndex = 4;
-            this._leaveButton.Text = "Leave";
-            this._leaveButton.UseVisualStyleBackColor = true;
-            this._leaveButton.Click += new System.EventHandler(this.LeaveButtonClicked);
             // 
             // Member
             // 

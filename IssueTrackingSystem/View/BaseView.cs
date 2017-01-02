@@ -151,7 +151,7 @@ namespace IssueTrackingSystem.View
         {
             SecurityModel.getInstance().AuthenticatedUser = null;
             SecurityModel.getInstance().IsProgramRunning = true;
-            CloseForm();
+//            CloseForm();
             this.Close();
         }
 

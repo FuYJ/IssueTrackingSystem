@@ -96,19 +96,34 @@ namespace IssueTrackingSystem.AMS.View
         private void viewProjectsButtonClicked(object sender, EventArgs e)
         {
             ProjectListView projectListView = new ProjectListView(userModel, issueModel, projectModel, projectMemberModel);
-            projectListView.Show();
+            Form form = FindForm("ProjectListView");
+            if (form == null)
+            {
+                projectListView.Show();
+            }
+//            projectListView.Show();
         }
 
         private void viewIssuesButtonClicked(object sender, EventArgs e)
         {
             IssueListView issueListView = new IssueListView(userModel, issueModel, projectModel, projectMemberModel);
-            issueListView.Show();
+            Form form = FindForm("IssueListView");
+            if (form == null)
+            {
+                issueListView.ShowDialog();
+            }
+            //            issueListView.Show();
         }
 
         private void viewUsersButtonClicked(object sender, EventArgs e)
         {
             UserListView userListView = new UserListView(userModel, issueModel, projectModel, projectMemberModel);
-            userListView.Show();
+            Form form = FindForm("UserListView");
+            if (form == null)
+            {
+                userListView.ShowDialog();
+            }
+            //            userListView.Show();
         }
 
         private void SecurityViewFormClosing(object sender, FormClosingEventArgs e)

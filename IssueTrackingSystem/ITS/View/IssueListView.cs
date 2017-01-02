@@ -83,8 +83,13 @@ namespace IssueTrackingSystem.ITS.View
         private void createIssueButtonClicked(object sender, EventArgs e)
         {
             CreateIssueView createIssueView = new CreateIssueView(userModel, issueModel, projectModel, projectMemberModel);
-            createIssueView.Show(this);
-            this.Hide();
+            Form form = FindForm("CreateIssueView");
+            if (form == null)
+            {
+                createIssueView.Show(this);
+            }
+            
+//            this.Hide();
         }
 
         private void searchButtonClicked(object sender, EventArgs e)
@@ -117,14 +122,24 @@ namespace IssueTrackingSystem.ITS.View
             if (e.RowIndex >= 0 && e.RowIndex < issuesDataGridView.RowCount)
             {
                 IssueInfoView issueInfoView = new IssueInfoView((int)issuesDataGridView.Rows[e.RowIndex].Cells[0].Value, userModel, issueModel, projectModel, projectMemberModel);
-                issueInfoView.Show(this);
+                Form form = FindForm("CreateIssueView");
+                if (form == null)
+                {
+                    issueInfoView.Show(this);
+                }
+                
             }
         }
 
         private void viewStatisticReportButtonClicked(object sender, EventArgs e)
         {
             ReportView reportView = new ReportView(userModel, issueModel, projectModel, projectMemberModel);
-            reportView.Show(this);
+            Form form = FindForm("ReportView");
+            if (form == null)
+            {
+                reportView.Show(this);
+            }
+            
         }
     }
 }
