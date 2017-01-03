@@ -42,7 +42,7 @@ namespace IssueTrackingSystem.AMS.View
             user.Password = passwordTextBox.Text;
             user.EmailAddress = emailAddressTextBox.Text;
             user = userController.createUser(user);
-            if (user.UserId != 0)
+            if (user.UserId > 0)
             {
                 LoginView loginView = (LoginView)this.Owner;
                 loginView.ToolStripStatusLabel.Text = "註冊成功";
@@ -50,7 +50,15 @@ namespace IssueTrackingSystem.AMS.View
                 this.Close();
             }
             else {
-                toolStripStatusLabel.Text = "註冊失敗";
+                switch (user.UserId) {
+                    case -(int)ErrorManager.ErrorCode.EmailAddressFormatError:
+                        toolStripStatusLabel.Text = "E-mail格式錯誤";
+                        break;
+                    case -(int)ErrorManager.ErrorCode.UsernameRepeated:
+                        toolStripStatusLabel.Text = "使用者名稱重複";
+                        break;
+                }
+
             }
         }
 

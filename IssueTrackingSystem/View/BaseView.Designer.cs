@@ -28,11 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.issueTackingSystemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.視窗ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.userInfoToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.issueListToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.projectListToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -42,37 +38,12 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.userListToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.logoutToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.issueTackingSystemToolStripMenuItem,
-            this.視窗ToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(784, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // issueTackingSystemToolStripMenuItem
-            // 
-            this.issueTackingSystemToolStripMenuItem.Name = "issueTackingSystemToolStripMenuItem";
-            this.issueTackingSystemToolStripMenuItem.Size = new System.Drawing.Size(136, 20);
-            this.issueTackingSystemToolStripMenuItem.Text = "Issue Tacking System";
-            // 
-            // 視窗ToolStripMenuItem
-            // 
-            this.視窗ToolStripMenuItem.Name = "視窗ToolStripMenuItem";
-            this.視窗ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.視窗ToolStripMenuItem.Text = "視窗";
             // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.userInfoToolStripButton,
             this.issueListToolStripButton,
             this.projectListToolStripButton,
             this.toolStripSeparator1,
@@ -82,20 +53,11 @@
             this.toolStripSeparator2,
             this.userListToolStripButton,
             this.logoutToolStripButton});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(784, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // userInfoToolStripButton
-            // 
-            this.userInfoToolStripButton.Image = global::IssueTrackingSystem.Properties.Resources.user;
-            this.userInfoToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.userInfoToolStripButton.Name = "userInfoToolStripButton";
-            this.userInfoToolStripButton.Size = new System.Drawing.Size(87, 22);
-            this.userInfoToolStripButton.Text = "使用者資訊";
-            this.userInfoToolStripButton.Click += new System.EventHandler(this.userInfoToolStripButtonClicked);
             // 
             // issueListToolStripButton
             // 
@@ -180,13 +142,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
             this.Name = "BaseView";
             this.Text = "null";
             this.Load += new System.EventHandler(this.BaseViewLoad);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -195,12 +153,7 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem issueTackingSystemToolStripMenuItem;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton userInfoToolStripButton;
-        private System.Windows.Forms.ToolStripMenuItem 視窗ToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton issueListToolStripButton;
         private System.Windows.Forms.ToolStripButton projectListToolStripButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;

@@ -69,7 +69,7 @@
             // 
             this.loginGroupBox.Controls.Add(this.tableLayoutPanel1);
             this.loginGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.loginGroupBox.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.loginGroupBox.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.loginGroupBox.Location = new System.Drawing.Point(119, 75);
             this.loginGroupBox.Name = "loginGroupBox";
             this.loginGroupBox.Size = new System.Drawing.Size(344, 210);
@@ -103,7 +103,7 @@
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.registerButton, 2);
             this.registerButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.registerButton.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.registerButton.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.registerButton.Location = new System.Drawing.Point(3, 141);
             this.registerButton.Name = "registerButton";
             this.registerButton.Size = new System.Drawing.Size(332, 40);
@@ -115,7 +115,7 @@
             // usernameTextBox
             // 
             this.usernameTextBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.usernameTextBox.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.usernameTextBox.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.usernameTextBox.Location = new System.Drawing.Point(104, 3);
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(231, 27);
@@ -124,7 +124,7 @@
             // passwordTextBox
             // 
             this.passwordTextBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.passwordTextBox.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.passwordTextBox.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.passwordTextBox.Location = new System.Drawing.Point(104, 49);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '‧';
@@ -135,7 +135,7 @@
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.loginButton, 2);
             this.loginButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.loginButton.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.loginButton.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.loginButton.Location = new System.Drawing.Point(3, 95);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(332, 40);
@@ -148,7 +148,7 @@
             // 
             this.usernameLabel.AutoSize = true;
             this.usernameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.usernameLabel.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.usernameLabel.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.usernameLabel.Location = new System.Drawing.Point(3, 0);
             this.usernameLabel.Name = "usernameLabel";
             this.usernameLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
@@ -161,7 +161,7 @@
             // 
             this.passwordLabel.AutoSize = true;
             this.passwordLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.passwordLabel.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.passwordLabel.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.passwordLabel.Location = new System.Drawing.Point(3, 46);
             this.passwordLabel.Name = "passwordLabel";
             this.passwordLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
@@ -217,7 +217,7 @@
         private System.Windows.Forms.Button loginButton;
         private System.Windows.Forms.Label usernameLabel;
         private System.Windows.Forms.Label passwordLabel;
-        private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
+        public System.Windows.Forms.StatusStrip statusStrip1;
     }
 }

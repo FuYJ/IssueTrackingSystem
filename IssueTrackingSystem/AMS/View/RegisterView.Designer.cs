@@ -84,7 +84,7 @@
             // 
             this.registerGroupBox.Controls.Add(this.registerTableLayoutPanel);
             this.registerGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.registerGroupBox.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.registerGroupBox.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.registerGroupBox.Location = new System.Drawing.Point(3, 3);
             this.registerGroupBox.Name = "registerGroupBox";
             this.registerGroupBox.Size = new System.Drawing.Size(578, 335);

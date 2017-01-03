@@ -81,7 +81,7 @@ namespace IssueTrackingSystem.ITS.View
             issue.State = "待審核";
             issue = issueController.createIssue(issue);
 
-            this.Owner.Show();
+            //this.Owner.Show();
             this.Close();
         }
     }

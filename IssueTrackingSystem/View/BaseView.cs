@@ -96,19 +96,6 @@ namespace IssueTrackingSystem.View
             }
         }
 
-        private void userInfoToolStripButtonClicked(object sender, EventArgs e)
-        {
-            UserInfoView userInfoView = new UserInfoView(userModel, issueModel, projectModel, projectMemberModel);
-            /*            userInfoView.Visible = true;
-                        if (this.Owner != null)
-                            this.Close();*/
-            Form form = FindForm("UserInfoView");
-            if (form == null)
-            {
-                userInfoView.ShowDialog();
-            }
-        }
-
         private void issueListToolStripButtonClicked(object sender, EventArgs e)
         {
             IssueListView issueListView = new IssueListView(userModel, issueModel, projectModel, projectMemberModel);
