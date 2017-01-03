@@ -117,15 +117,35 @@ namespace IssueTrackingSystem.ITS.View
             }
         }
 
+        private void issuesDataGridViewCellClicked(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < issuesDataGridView.RowCount)
+            {
+                issuesDataGridView.Rows[e.RowIndex].Selected = true;
+            }
+        }
+
         private void issuesDataGridViewCellDoubleClicked(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.RowIndex < issuesDataGridView.RowCount)
             {
-                IssueInfoView issueInfoView = new IssueInfoView((int)issuesDataGridView.Rows[e.RowIndex].Cells[0].Value, userModel, issueModel, projectModel, projectMemberModel);
-                Form form = FindForm("CreateIssueView");
-                if (form == null)
+                issuesDataGridView.Rows[e.RowIndex].Selected = true;
+                int state = issueModel.getIssueInfo((int)issuesDataGridView.Rows[e.RowIndex].Cells[0].Value).IssueId;
+                if (state > 0)
                 {
-                    issueInfoView.Show(this);
+                    IssueInfoView issueInfoView = new IssueInfoView((int)issuesDataGridView.Rows[e.RowIndex].Cells[0].Value, userModel, issueModel, projectModel, projectMemberModel);
+                    Form form = FindForm("CreateIssueView");
+                    if (form == null)
+                    {
+                        issueInfoView.Show(this);
+                    }
+                }
+                else {
+                    switch(state){
+                        case (int)ErrorManager.ErrorCode.UserNotProjectManager:
+                            toolStripStatusLabel1.Text = "使用者並非專案管理員，無法檢視此議題內容";
+                            break;
+                }
                 }
                 
             }

@@ -54,8 +54,8 @@ namespace IssueTrackingSystem.ITS.Controller
                 case (int)Issue.SearchType.ByProjectName:
                     foreach (Issue issue in issueList)
                     {
-                        //Project project = projectModel.getProjectInfo(issue.ProjectId);
-                        if (issue.IssueName.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) != -1)
+                        Project project = projectModel.getProjectInfo(user.UserId, issue.ProjectId);
+                        if (project.ProjectName.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) != -1)
                         {
                             searchedIssueList.Add(issue);
                         }

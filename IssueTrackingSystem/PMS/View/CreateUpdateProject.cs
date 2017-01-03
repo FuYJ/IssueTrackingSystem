@@ -41,7 +41,7 @@ namespace IssueTrackingSystem.PMS.View
         private void ClickCreateUpdate(object sender, EventArgs e)
         {
             project.ProjectName = _projectNameInput.Text;
-            project.Description = _descriptionInput.Text;
+            project.Description = _descriptionInput.Text.Replace("\r\n", "<br>");
             model = controller.CreateUpdateProject(_createUpdate.Text, project);
             HandleErrorMessage(model);
         }
@@ -70,7 +70,7 @@ namespace IssueTrackingSystem.PMS.View
             {
                 project = infoController.getProjectInfo(SecurityModel.getInstance().AuthenticatedUser.UserId, projectId);
                 _projectNameInput.Text = project.ProjectName;
-                _descriptionInput.Text = project.Description;
+                _descriptionInput.Text = project.Description.Replace("<br>", "\r\n");
             }
             _createUpdate.Text = purpose;
 

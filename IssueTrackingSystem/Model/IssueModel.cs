@@ -61,22 +61,28 @@ namespace IssueTrackingSystem.Model
             {
                 var issueData = reader.ReadToEnd();
                 dynamic issueApiModel = JsonConvert.DeserializeObject<dynamic>(issueData);
-                issue.IssueId = formatStateToIssueId((String)issueApiModel.state, (String)issueApiModel.issue.issueId);
-                issue.IssueGroupId = issueApiModel.issue.issueGroupId;
-                issue.ProjectId = issueApiModel.issue.projectId;
-                issue.State = issueApiModel.issue.state;
-                issue.IssueName = issueApiModel.issue.title;
-                issue.Description = issueApiModel.issue.description;
-                issue.Priority = issueApiModel.issue.priority;
-                issue.Serverity = issueApiModel.issue.serverity;
-                issue.ReporterId = issueApiModel.issue.reporterId;
-                issue.ReportDate = formatDateToDateTime((long)issueApiModel.issue.reportTime);
-                issue.PersonInChargeId = issueApiModel.issue.personInChargeId;
+                if (int.Parse((String)issueApiModel.state) == 0)
+                {
+                    issue.IssueId = int.Parse((String)issueApiModel.issue.issueId);
+                    issue.IssueGroupId = issueApiModel.issue.issueGroupId;
+                    issue.ProjectId = issueApiModel.issue.projectId;
+                    issue.State = issueApiModel.issue.state;
+                    issue.IssueName = issueApiModel.issue.title;
+                    issue.Description = issueApiModel.issue.description;
+                    issue.Priority = issueApiModel.issue.priority;
+                    issue.Serverity = issueApiModel.issue.serverity;
+                    issue.ReporterId = issueApiModel.issue.reporterId;
+                    issue.ReportDate = formatDateToDateTime((long)issueApiModel.issue.reportTime);
+                    issue.PersonInChargeId = issueApiModel.issue.personInChargeId;
 
-                if (issue.State == "已完成")
-                    issue.FinishDate = issue.ReportDate;
-                else
-                    issue.FinishDate = (issueApiModel.issue.finishTime == null) ? DateTime.MaxValue : formatDateToDateTime((long)issueApiModel.issue.finishTime);
+                    if (issue.State == "已完成")
+                        issue.FinishDate = issue.ReportDate;
+                    else
+                        issue.FinishDate = (issueApiModel.issue.finishTime == null) ? DateTime.MaxValue : formatDateToDateTime((long)issueApiModel.issue.finishTime);
+                }
+                else {
+                    issue.IssueId = -int.Parse((String)issueApiModel.state);
+                }
             }
 
             return issue;

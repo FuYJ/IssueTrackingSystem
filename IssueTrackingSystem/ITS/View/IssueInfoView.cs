@@ -106,6 +106,8 @@ namespace IssueTrackingSystem.ITS.View
             issueReportDateLabel.Text = issueDetails[0].ReportDate.ToString();
             issueAssigneeComboBox.Text = assignee.UserName;
             issueDescriptionRichTextBox.Text = issueDetails[0].Description.Replace("<br>", "\n");
+            if (issueAssigneeComboBox.Text != SecurityModel.getInstance().AuthenticatedUser.UserName)
+                submitButton.Enabled = false;
 
             issueHistoryFlowLayoutPanel.Controls.Clear();
             foreach (Issue issue in issueDetails) {
