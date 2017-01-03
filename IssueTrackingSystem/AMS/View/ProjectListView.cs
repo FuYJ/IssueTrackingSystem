@@ -59,6 +59,9 @@ namespace IssueTrackingSystem.AMS.View
             projectInfoController = new ProjectInfoController(projectModel);
             projectListController = new ProjectListController(projectModel, projectMemberModel);
 
+            projectModel.projectDataChanged += updateView;
+            projectMemberModel.projectMemberDataChanged += updateView;
+
             user = SecurityModel.getInstance().AuthenticatedUser;
             int userId = user.UserId;
             joinedProjectList = projectInfoController.getProjectListByUserId(userId);
@@ -116,9 +119,16 @@ namespace IssueTrackingSystem.AMS.View
         {
             userModel.updateAuthenticatedUser(user.UserId);
             allProjectList = projectInfoController.getAllProjectList(user.UserId);
+            allProjectList.Sort(compareProjectOrder);
 
             if (user.Authority == (int)User.AuthorityEnum.GeneralUser)
             {
+                joinedProjectList = SecurityModel.getInstance().AuthenticatedUser.JoinedProjects;
+                invitedProjectList = SecurityModel.getInstance().AuthenticatedUser.InvitedProjects;
+                joinedProjectList.Sort(compareProjectOrder);
+                invitedProjectList.Sort(compareProjectOrder);
+                joinedProjectsDataGridView.Rows.Clear();
+                invitedProjectsDataGridView.Rows.Clear();
                 foreach (Project project in joinedProjectList)
                     joinedProjectsDataGridView.Rows.Add(new Object[] { project.ProjectId, project.ProjectName, project.Description, project.Manager});
                 foreach (Project project in invitedProjectList)
@@ -126,6 +136,7 @@ namespace IssueTrackingSystem.AMS.View
             }
             else
             {
+                allProjectsDataGridView.Rows.Clear();
                 foreach (Project project in allProjectList)
                     allProjectsDataGridView.Rows.Add(new Object[] { project.ProjectId, project.ProjectName, project.Description, project.Manager });
             }
@@ -141,6 +152,15 @@ namespace IssueTrackingSystem.AMS.View
                 }
             }
             return null;
+        }
+
+        private int compareProjectOrder(Project a, Project b)
+        {
+            if (a.ProjectId > b.ProjectId)
+                return 1;
+            else if (a.ProjectId < b.ProjectId)
+                return -1;
+            return 0;
         }
     }
 }

@@ -89,6 +89,7 @@ namespace IssueTrackingSystem.ITS.Controller
                     }
                     break;
             }
+            searchedIssueList.Sort(compareIssueOrder);
 
             return searchedIssueList;
         }

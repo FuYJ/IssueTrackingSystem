@@ -95,6 +95,7 @@ namespace IssueTrackingSystem.AMS.View
         private void updateUserList(){
             toolStripStatusLabel1.Text = "";
             userList = securityController.listAccounts();
+            userList.Sort(compareUserOrder);
             userListDataGridView.Rows.Clear();
             foreach (User user in userList)
             {
@@ -105,6 +106,15 @@ namespace IssueTrackingSystem.AMS.View
                     userRole = "系統管理員";
                 userListDataGridView.Rows.Add(new Object[] { user.UserId, user.UserName, user.EmailAddress, userRole, user.JoinedProjects.Count, user.InvitedProjects.Count, user.Issues.Count, "刪除" });
             }
+        }
+
+        private int compareUserOrder(User a, User b)
+        {
+            if (a.UserId > b.UserId)
+                return 1;
+            else if (a.UserId < b.UserId)
+                return -1;
+            return 0;
         }
     }
 }

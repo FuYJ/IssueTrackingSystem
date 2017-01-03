@@ -102,6 +102,7 @@ namespace IssueTrackingSystem.ITS.View
 
         private void initializeView()
         {
+            searchKeyComboBox.Items.Clear();
             if (user.Authority == (int)User.AuthorityEnum.GeneralUser)
             {
                 searchTypeComboBox.SelectedIndex = 0;

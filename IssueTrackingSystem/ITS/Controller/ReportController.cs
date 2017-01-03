@@ -127,18 +127,22 @@ namespace IssueTrackingSystem.ITS.Controller
         {
             issueStates.Clear();
 
+            //issueList = issueController.getIssueList();
             issueList = issueModel.getIssueListByProjectId(projectId);
             int value = 0;
             foreach (Issue issue in issueList)
             {
-                if (issueStates.TryGetValue(issue.State, out value))
+                if (issue.FinishDate == DateTime.MaxValue || issue.State == "已完成")
                 {
-                    issueStates.Remove(issue.State);
-                    issueStates.Add(issue.State, value + 1);
-                }
-                else
-                {
-                    issueStates.Add(issue.State, 1);
+                    if (issueStates.TryGetValue(issue.State, out value))
+                    {
+                        issueStates.Remove(issue.State);
+                        issueStates.Add(issue.State, value + 1);
+                    }
+                    else
+                    {
+                        issueStates.Add(issue.State, 1);
+                    }
                 }
             }
         }
@@ -151,14 +155,17 @@ namespace IssueTrackingSystem.ITS.Controller
             int value = 0;
             foreach (Issue issue in issueList)
             {
-                if (issueStates.TryGetValue(issue.State, out value))
+                if (issue.FinishDate == DateTime.MaxValue || issue.State == "已完成")
                 {
-                    issueStates.Remove(issue.State);
-                    issueStates.Add(issue.State, value + 1);
-                }
-                else
-                {
-                    issueStates.Add(issue.State, 1);
+                    if (issueStates.TryGetValue(issue.State, out value))
+                    {
+                        issueStates.Remove(issue.State);
+                        issueStates.Add(issue.State, value + 1);
+                    }
+                    else
+                    {
+                        issueStates.Add(issue.State, 1);
+                    }
                 }
             }
         }

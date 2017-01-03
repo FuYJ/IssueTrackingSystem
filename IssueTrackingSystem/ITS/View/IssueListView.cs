@@ -145,7 +145,7 @@ namespace IssueTrackingSystem.ITS.View
                         case (int)ErrorManager.ErrorCode.UserNotProjectManager:
                             toolStripStatusLabel1.Text = "使用者並非專案管理員，無法檢視此議題內容";
                             break;
-                }
+                    }
                 }
                 
             }
@@ -159,7 +159,6 @@ namespace IssueTrackingSystem.ITS.View
             {
                 reportView.Show(this);
             }
-            
         }
     }
 }
