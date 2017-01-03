@@ -88,7 +88,7 @@ namespace IssueTrackingSystem.PMS.View
 
         private void Update()
         {
-            project = infoController.getProjectInfo(SecurityModel.getInstance().AuthenticatedUser.UserId, project.ProjectId);
+//            project = infoController.getProjectInfo(SecurityModel.getInstance().AuthenticatedUser.UserId, project.ProjectId);
 //            _projectNameInput.Text = project.ProjectName;
 //            _descriptionInput.Text = project.Description;
             _errorMessage.Text = "";
