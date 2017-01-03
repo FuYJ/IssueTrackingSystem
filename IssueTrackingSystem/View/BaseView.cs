@@ -59,10 +59,15 @@ namespace IssueTrackingSystem.View
         private void userListToolStripButtonClicked(object sender, EventArgs e)
         {
             UserListView userListView = new UserListView(userModel, issueModel, projectModel, projectMemberModel);
-            userListView.Visible = true;
-            userListView.Owner = null;
-            //if (this.Owner != null)
-                this.Close();
+            Form form = FindForm("UserListView");
+            if (form == null)
+            {
+                userListView.ShowDialog();
+            }
+            /*            userListView.Visible = true;
+                        userListView.Owner = null;
+                        //if (this.Owner != null)
+                            this.Close();*/
         }
 
         private void createProjectButtonClicked(object sender, EventArgs e)

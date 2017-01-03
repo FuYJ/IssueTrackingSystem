@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.viewInfoTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.editButton = new System.Windows.Forms.Button();
             this.userInfoTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.viewInvitedProjectsButton = new System.Windows.Forms.Button();
             this.viewJoinedProjectsButton = new System.Windows.Forms.Button();
@@ -44,6 +42,7 @@
             this.emailAddressTitleLabel = new System.Windows.Forms.Label();
             this.usernameTitleLabel = new System.Windows.Forms.Label();
             this.viewIssuesButton = new System.Windows.Forms.Button();
+            this.editButton = new System.Windows.Forms.Button();
             this.editInfoTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.finishEditButton = new System.Windows.Forms.Button();
             this.editUserInfoGroupBox = new System.Windows.Forms.GroupBox();
@@ -56,47 +55,13 @@
             this.editEmailAddressLabel = new System.Windows.Forms.Label();
             this.editUsernameLabel = new System.Windows.Forms.Label();
             this.editUsernameTextBox = new System.Windows.Forms.TextBox();
-            this.viewInfoTableLayoutPanel.SuspendLayout();
+            this.viewInfoTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.userInfoTableLayoutPanel.SuspendLayout();
             this.editInfoTableLayoutPanel.SuspendLayout();
             this.editUserInfoGroupBox.SuspendLayout();
             this.editUserInfoTableLayoutPanel.SuspendLayout();
+            this.viewInfoTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // viewInfoTableLayoutPanel
-            // 
-            this.viewInfoTableLayoutPanel.ColumnCount = 4;
-            this.viewInfoTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.5F));
-            this.viewInfoTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 77.5F));
-            this.viewInfoTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.5F));
-            this.viewInfoTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.5F));
-            this.viewInfoTableLayoutPanel.Controls.Add(this.editButton, 2, 0);
-            this.viewInfoTableLayoutPanel.Controls.Add(this.userInfoTableLayoutPanel, 1, 1);
-            this.viewInfoTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.viewInfoTableLayoutPanel.Location = new System.Drawing.Point(0, 49);
-            this.viewInfoTableLayoutPanel.Name = "viewInfoTableLayoutPanel";
-            this.viewInfoTableLayoutPanel.Padding = new System.Windows.Forms.Padding(10);
-            this.viewInfoTableLayoutPanel.RowCount = 3;
-            this.viewInfoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.viewInfoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.viewInfoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.viewInfoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.viewInfoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.viewInfoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.viewInfoTableLayoutPanel.Size = new System.Drawing.Size(784, 512);
-            this.viewInfoTableLayoutPanel.TabIndex = 2;
-            // 
-            // editButton
-            // 
-            this.viewInfoTableLayoutPanel.SetColumnSpan(this.editButton, 2);
-            this.editButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.editButton.Location = new System.Drawing.Point(662, 13);
-            this.editButton.Name = "editButton";
-            this.editButton.Size = new System.Drawing.Size(109, 43);
-            this.editButton.TabIndex = 0;
-            this.editButton.Text = "編輯使用者資料";
-            this.editButton.UseVisualStyleBackColor = true;
-            this.editButton.Click += new System.EventHandler(this.editButtonClicked);
             // 
             // userInfoTableLayoutPanel
             // 
@@ -157,7 +122,7 @@
             // 
             this.trackingIssueNumberLabel.AutoSize = true;
             this.trackingIssueNumberLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trackingIssueNumberLabel.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.trackingIssueNumberLabel.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.trackingIssueNumberLabel.Location = new System.Drawing.Point(135, 307);
             this.trackingIssueNumberLabel.Name = "trackingIssueNumberLabel";
             this.trackingIssueNumberLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
@@ -170,7 +135,7 @@
             // 
             this.invitedProjectNumberLabel.AutoSize = true;
             this.invitedProjectNumberLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.invitedProjectNumberLabel.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.invitedProjectNumberLabel.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.invitedProjectNumberLabel.Location = new System.Drawing.Point(135, 231);
             this.invitedProjectNumberLabel.Name = "invitedProjectNumberLabel";
             this.invitedProjectNumberLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
@@ -183,7 +148,7 @@
             // 
             this.joinedProjectNumberLabel.AutoSize = true;
             this.joinedProjectNumberLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.joinedProjectNumberLabel.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.joinedProjectNumberLabel.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.joinedProjectNumberLabel.Location = new System.Drawing.Point(135, 155);
             this.joinedProjectNumberLabel.Name = "joinedProjectNumberLabel";
             this.joinedProjectNumberLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
@@ -196,7 +161,7 @@
             // 
             this.emailAddressLabel.AutoSize = true;
             this.emailAddressLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.emailAddressLabel.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.emailAddressLabel.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.emailAddressLabel.Location = new System.Drawing.Point(135, 79);
             this.emailAddressLabel.Name = "emailAddressLabel";
             this.emailAddressLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
@@ -209,7 +174,7 @@
             // 
             this.usernameLabel.AutoSize = true;
             this.usernameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.usernameLabel.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.usernameLabel.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.usernameLabel.Location = new System.Drawing.Point(135, 3);
             this.usernameLabel.Name = "usernameLabel";
             this.usernameLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
@@ -222,7 +187,7 @@
             // 
             this.trackingIssueNumberTitleLabel.AutoSize = true;
             this.trackingIssueNumberTitleLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trackingIssueNumberTitleLabel.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.trackingIssueNumberTitleLabel.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.trackingIssueNumberTitleLabel.Location = new System.Drawing.Point(6, 307);
             this.trackingIssueNumberTitleLabel.Name = "trackingIssueNumberTitleLabel";
             this.trackingIssueNumberTitleLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
@@ -235,7 +200,7 @@
             // 
             this.invitedProjectNumberTitleLabel.AutoSize = true;
             this.invitedProjectNumberTitleLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.invitedProjectNumberTitleLabel.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.invitedProjectNumberTitleLabel.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.invitedProjectNumberTitleLabel.Location = new System.Drawing.Point(6, 231);
             this.invitedProjectNumberTitleLabel.Name = "invitedProjectNumberTitleLabel";
             this.invitedProjectNumberTitleLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
@@ -248,7 +213,7 @@
             // 
             this.joinedProjectNumberTitleLabel.AutoSize = true;
             this.joinedProjectNumberTitleLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.joinedProjectNumberTitleLabel.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.joinedProjectNumberTitleLabel.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.joinedProjectNumberTitleLabel.Location = new System.Drawing.Point(6, 155);
             this.joinedProjectNumberTitleLabel.Name = "joinedProjectNumberTitleLabel";
             this.joinedProjectNumberTitleLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
@@ -261,7 +226,7 @@
             // 
             this.emailAddressTitleLabel.AutoSize = true;
             this.emailAddressTitleLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.emailAddressTitleLabel.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.emailAddressTitleLabel.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.emailAddressTitleLabel.Location = new System.Drawing.Point(6, 79);
             this.emailAddressTitleLabel.Name = "emailAddressTitleLabel";
             this.emailAddressTitleLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
@@ -274,7 +239,7 @@
             // 
             this.usernameTitleLabel.AutoSize = true;
             this.usernameTitleLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.usernameTitleLabel.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.usernameTitleLabel.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.usernameTitleLabel.Location = new System.Drawing.Point(6, 3);
             this.usernameTitleLabel.Name = "usernameTitleLabel";
             this.usernameTitleLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
@@ -293,6 +258,18 @@
             this.viewIssuesButton.Text = "查看議題列表";
             this.viewIssuesButton.UseVisualStyleBackColor = true;
             this.viewIssuesButton.Click += new System.EventHandler(this.viewIssuesButtonClicked);
+            // 
+            // editButton
+            // 
+            this.viewInfoTableLayoutPanel.SetColumnSpan(this.editButton, 2);
+            this.editButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.editButton.Location = new System.Drawing.Point(662, 13);
+            this.editButton.Name = "editButton";
+            this.editButton.Size = new System.Drawing.Size(109, 43);
+            this.editButton.TabIndex = 0;
+            this.editButton.Text = "編輯使用者資料";
+            this.editButton.UseVisualStyleBackColor = true;
+            this.editButton.Click += new System.EventHandler(this.editButtonClicked);
             // 
             // editInfoTableLayoutPanel
             // 
@@ -322,7 +299,7 @@
             // 
             this.editInfoTableLayoutPanel.SetColumnSpan(this.finishEditButton, 2);
             this.finishEditButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.finishEditButton.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.finishEditButton.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.finishEditButton.Location = new System.Drawing.Point(662, 13);
             this.finishEditButton.Name = "finishEditButton";
             this.finishEditButton.Size = new System.Drawing.Size(109, 43);
@@ -336,7 +313,7 @@
             this.editInfoTableLayoutPanel.SetColumnSpan(this.editUserInfoGroupBox, 2);
             this.editUserInfoGroupBox.Controls.Add(this.editUserInfoTableLayoutPanel);
             this.editUserInfoGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.editUserInfoGroupBox.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.editUserInfoGroupBox.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.editUserInfoGroupBox.Location = new System.Drawing.Point(70, 62);
             this.editUserInfoGroupBox.Name = "editUserInfoGroupBox";
             this.editUserInfoGroupBox.Size = new System.Drawing.Size(643, 387);
@@ -374,7 +351,7 @@
             // editConfirmPasswordTextBox
             // 
             this.editConfirmPasswordTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.editConfirmPasswordTextBox.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.editConfirmPasswordTextBox.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.editConfirmPasswordTextBox.Location = new System.Drawing.Point(159, 184);
             this.editConfirmPasswordTextBox.Name = "editConfirmPasswordTextBox";
             this.editConfirmPasswordTextBox.PasswordChar = '‧';
@@ -385,7 +362,7 @@
             // editEmailAddressTextBox
             // 
             this.editEmailAddressTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.editEmailAddressTextBox.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.editEmailAddressTextBox.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.editEmailAddressTextBox.Location = new System.Drawing.Point(159, 273);
             this.editEmailAddressTextBox.Name = "editEmailAddressTextBox";
             this.editEmailAddressTextBox.Size = new System.Drawing.Size(452, 27);
@@ -394,7 +371,7 @@
             // editPasswordTextBox
             // 
             this.editPasswordTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.editPasswordTextBox.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.editPasswordTextBox.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.editPasswordTextBox.Location = new System.Drawing.Point(159, 95);
             this.editPasswordTextBox.Name = "editPasswordTextBox";
             this.editPasswordTextBox.PasswordChar = '‧';
@@ -405,7 +382,7 @@
             // 
             this.editConfirmPasswordLabel.AutoSize = true;
             this.editConfirmPasswordLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.editConfirmPasswordLabel.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.editConfirmPasswordLabel.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.editConfirmPasswordLabel.Location = new System.Drawing.Point(26, 181);
             this.editConfirmPasswordLabel.Name = "editConfirmPasswordLabel";
             this.editConfirmPasswordLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
@@ -418,7 +395,7 @@
             // 
             this.editPassworLabel.AutoSize = true;
             this.editPassworLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.editPassworLabel.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.editPassworLabel.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.editPassworLabel.Location = new System.Drawing.Point(26, 92);
             this.editPassworLabel.Name = "editPassworLabel";
             this.editPassworLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
@@ -431,7 +408,7 @@
             // 
             this.editEmailAddressLabel.AutoSize = true;
             this.editEmailAddressLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.editEmailAddressLabel.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.editEmailAddressLabel.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.editEmailAddressLabel.Location = new System.Drawing.Point(26, 270);
             this.editEmailAddressLabel.Name = "editEmailAddressLabel";
             this.editEmailAddressLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
@@ -444,7 +421,7 @@
             // 
             this.editUsernameLabel.AutoSize = true;
             this.editUsernameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.editUsernameLabel.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.editUsernameLabel.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.editUsernameLabel.Location = new System.Drawing.Point(26, 3);
             this.editUsernameLabel.Name = "editUsernameLabel";
             this.editUsernameLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
@@ -456,31 +433,54 @@
             // editUsernameTextBox
             // 
             this.editUsernameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.editUsernameTextBox.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.editUsernameTextBox.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.editUsernameTextBox.Location = new System.Drawing.Point(159, 6);
             this.editUsernameTextBox.Name = "editUsernameTextBox";
             this.editUsernameTextBox.Size = new System.Drawing.Size(452, 27);
             this.editUsernameTextBox.TabIndex = 4;
             // 
-            // UserInfoView1
+            // viewInfoTableLayoutPanel
+            // 
+            this.viewInfoTableLayoutPanel.ColumnCount = 4;
+            this.viewInfoTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.5F));
+            this.viewInfoTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 77.5F));
+            this.viewInfoTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.5F));
+            this.viewInfoTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.5F));
+            this.viewInfoTableLayoutPanel.Controls.Add(this.userInfoTableLayoutPanel, 1, 1);
+            this.viewInfoTableLayoutPanel.Controls.Add(this.editButton, 2, 0);
+            this.viewInfoTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewInfoTableLayoutPanel.Location = new System.Drawing.Point(0, 49);
+            this.viewInfoTableLayoutPanel.Name = "viewInfoTableLayoutPanel";
+            this.viewInfoTableLayoutPanel.Padding = new System.Windows.Forms.Padding(10);
+            this.viewInfoTableLayoutPanel.RowCount = 3;
+            this.viewInfoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.viewInfoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.viewInfoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.viewInfoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.viewInfoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.viewInfoTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.viewInfoTableLayoutPanel.Size = new System.Drawing.Size(784, 512);
+            this.viewInfoTableLayoutPanel.TabIndex = 2;
+            // 
+            // UserInfoView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.viewInfoTableLayoutPanel);
             this.Controls.Add(this.editInfoTableLayoutPanel);
-            this.Name = "UserInfoView1";
+            this.Name = "UserInfoView";
             this.Text = "使用者資料 - Issue Tracking System";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UserInfoViewFormClosing);
             this.Load += new System.EventHandler(this.UserInfoViewLoad);
             this.Controls.SetChildIndex(this.editInfoTableLayoutPanel, 0);
             this.Controls.SetChildIndex(this.viewInfoTableLayoutPanel, 0);
-            this.viewInfoTableLayoutPanel.ResumeLayout(false);
             this.userInfoTableLayoutPanel.ResumeLayout(false);
             this.userInfoTableLayoutPanel.PerformLayout();
             this.editInfoTableLayoutPanel.ResumeLayout(false);
             this.editUserInfoGroupBox.ResumeLayout(false);
             this.editUserInfoTableLayoutPanel.ResumeLayout(false);
             this.editUserInfoTableLayoutPanel.PerformLayout();
+            this.viewInfoTableLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -488,33 +488,33 @@
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel viewInfoTableLayoutPanel;
-        private System.Windows.Forms.Button editButton;
         private System.Windows.Forms.TableLayoutPanel userInfoTableLayoutPanel;
-        private System.Windows.Forms.TableLayoutPanel editInfoTableLayoutPanel;
-        private System.Windows.Forms.Button finishEditButton;
-        private System.Windows.Forms.TableLayoutPanel editUserInfoTableLayoutPanel;
-        private System.Windows.Forms.Label editUsernameLabel;
-        private System.Windows.Forms.Label editEmailAddressLabel;
-        private System.Windows.Forms.Label editConfirmPasswordLabel;
-        private System.Windows.Forms.Label editPassworLabel;
-        private System.Windows.Forms.TextBox editConfirmPasswordTextBox;
-        private System.Windows.Forms.TextBox editEmailAddressTextBox;
-        private System.Windows.Forms.TextBox editPasswordTextBox;
-        private System.Windows.Forms.TextBox editUsernameTextBox;
-        private System.Windows.Forms.GroupBox editUserInfoGroupBox;
+        private System.Windows.Forms.Button viewInvitedProjectsButton;
+        private System.Windows.Forms.Button viewJoinedProjectsButton;
+        private System.Windows.Forms.Label trackingIssueNumberLabel;
+        private System.Windows.Forms.Label invitedProjectNumberLabel;
+        private System.Windows.Forms.Label joinedProjectNumberLabel;
+        private System.Windows.Forms.Label emailAddressLabel;
         private System.Windows.Forms.Label usernameLabel;
         private System.Windows.Forms.Label trackingIssueNumberTitleLabel;
         private System.Windows.Forms.Label invitedProjectNumberTitleLabel;
         private System.Windows.Forms.Label joinedProjectNumberTitleLabel;
         private System.Windows.Forms.Label emailAddressTitleLabel;
         private System.Windows.Forms.Label usernameTitleLabel;
-        private System.Windows.Forms.Label emailAddressLabel;
-        private System.Windows.Forms.Label trackingIssueNumberLabel;
-        private System.Windows.Forms.Label invitedProjectNumberLabel;
-        private System.Windows.Forms.Label joinedProjectNumberLabel;
-        private System.Windows.Forms.Button viewInvitedProjectsButton;
-        private System.Windows.Forms.Button viewJoinedProjectsButton;
         private System.Windows.Forms.Button viewIssuesButton;
+        private System.Windows.Forms.Button editButton;
+        private System.Windows.Forms.TableLayoutPanel viewInfoTableLayoutPanel;
+        private System.Windows.Forms.TableLayoutPanel editInfoTableLayoutPanel;
+        private System.Windows.Forms.Button finishEditButton;
+        private System.Windows.Forms.GroupBox editUserInfoGroupBox;
+        private System.Windows.Forms.TableLayoutPanel editUserInfoTableLayoutPanel;
+        private System.Windows.Forms.TextBox editConfirmPasswordTextBox;
+        private System.Windows.Forms.TextBox editEmailAddressTextBox;
+        private System.Windows.Forms.TextBox editPasswordTextBox;
+        private System.Windows.Forms.Label editConfirmPasswordLabel;
+        private System.Windows.Forms.Label editPassworLabel;
+        private System.Windows.Forms.Label editEmailAddressLabel;
+        private System.Windows.Forms.Label editUsernameLabel;
+        private System.Windows.Forms.TextBox editUsernameTextBox;
     }
 }

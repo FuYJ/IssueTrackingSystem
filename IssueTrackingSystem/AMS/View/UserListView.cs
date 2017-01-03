@@ -58,6 +58,9 @@ namespace IssueTrackingSystem.AMS.View
                     case (int)ErrorManager.ErrorCode.InvalidAuthoritySetting:
                         statusStrip1.Text = "不合法的權限設定";
                         break;
+                    case (int)ErrorManager.ErrorCode.Success:
+                        statusStrip1.Text = "已成功修改權限";
+                        break;
                 }
             }
         }
@@ -75,6 +78,9 @@ namespace IssueTrackingSystem.AMS.View
                         break;
                     case (int)ErrorManager.ErrorCode.InvalidAuthoritySetting:
                         statusStrip1.Text = "不合法的刪除動作";
+                        break;
+                    case (int)ErrorManager.ErrorCode.Success:
+                        statusStrip1.Text = "已成功刪除使用者";
                         break;
                 }
             }

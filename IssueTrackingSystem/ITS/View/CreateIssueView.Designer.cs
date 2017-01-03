@@ -67,7 +67,7 @@
             this.IssueTableLayoutPanel.Controls.Add(this.issueNameTextBox, 1, 0);
             this.IssueTableLayoutPanel.Controls.Add(this.submitButton, 3, 7);
             this.IssueTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.IssueTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.IssueTableLayoutPanel.Location = new System.Drawing.Point(0, 49);
             this.IssueTableLayoutPanel.Name = "IssueTableLayoutPanel";
             this.IssueTableLayoutPanel.Padding = new System.Windows.Forms.Padding(20);
             this.IssueTableLayoutPanel.RowCount = 8;
@@ -79,7 +79,7 @@
             this.IssueTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.IssueTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.IssueTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.IssueTableLayoutPanel.Size = new System.Drawing.Size(784, 561);
+            this.IssueTableLayoutPanel.Size = new System.Drawing.Size(784, 512);
             this.IssueTableLayoutPanel.TabIndex = 2;
             // 
             // issueSeverityComboBox
@@ -92,7 +92,7 @@
             "Optional",
             "Important",
             "Emergent"});
-            this.issueSeverityComboBox.Location = new System.Drawing.Point(581, 90);
+            this.issueSeverityComboBox.Location = new System.Drawing.Point(581, 84);
             this.issueSeverityComboBox.Name = "issueSeverityComboBox";
             this.issueSeverityComboBox.Size = new System.Drawing.Size(177, 24);
             this.issueSeverityComboBox.TabIndex = 21;
@@ -101,7 +101,7 @@
             // 
             this.projectTitleLabel.AutoSize = true;
             this.projectTitleLabel.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.projectTitleLabel.Location = new System.Drawing.Point(26, 151);
+            this.projectTitleLabel.Location = new System.Drawing.Point(26, 139);
             this.projectTitleLabel.Name = "projectTitleLabel";
             this.projectTitleLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
             this.projectTitleLabel.Size = new System.Drawing.Size(72, 24);
@@ -112,7 +112,7 @@
             // 
             this.issueSeverityTitleLabel.AutoSize = true;
             this.issueSeverityTitleLabel.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.issueSeverityTitleLabel.Location = new System.Drawing.Point(396, 87);
+            this.issueSeverityTitleLabel.Location = new System.Drawing.Point(396, 81);
             this.issueSeverityTitleLabel.Name = "issueSeverityTitleLabel";
             this.issueSeverityTitleLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
             this.issueSeverityTitleLabel.Size = new System.Drawing.Size(56, 24);
@@ -123,7 +123,7 @@
             // 
             this.issuePriorityTitleLabel.AutoSize = true;
             this.issuePriorityTitleLabel.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.issuePriorityTitleLabel.Location = new System.Drawing.Point(26, 87);
+            this.issuePriorityTitleLabel.Location = new System.Drawing.Point(26, 81);
             this.issuePriorityTitleLabel.Name = "issuePriorityTitleLabel";
             this.issuePriorityTitleLabel.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
             this.issuePriorityTitleLabel.Size = new System.Drawing.Size(56, 24);
@@ -169,10 +169,10 @@
             this.issueDescriptionGroupBox.Controls.Add(this.issueDescriptionRichTextBox);
             this.issueDescriptionGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.issueDescriptionGroupBox.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.issueDescriptionGroupBox.Location = new System.Drawing.Point(26, 218);
+            this.issueDescriptionGroupBox.Location = new System.Drawing.Point(26, 200);
             this.issueDescriptionGroupBox.Name = "issueDescriptionGroupBox";
             this.IssueTableLayoutPanel.SetRowSpan(this.issueDescriptionGroupBox, 4);
-            this.issueDescriptionGroupBox.Size = new System.Drawing.Size(732, 247);
+            this.issueDescriptionGroupBox.Size = new System.Drawing.Size(732, 223);
             this.issueDescriptionGroupBox.TabIndex = 15;
             this.issueDescriptionGroupBox.TabStop = false;
             this.issueDescriptionGroupBox.Text = "敘述";
@@ -184,7 +184,7 @@
             this.issueDescriptionRichTextBox.Location = new System.Drawing.Point(3, 23);
             this.issueDescriptionRichTextBox.Name = "issueDescriptionRichTextBox";
             this.issueDescriptionRichTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.issueDescriptionRichTextBox.Size = new System.Drawing.Size(726, 221);
+            this.issueDescriptionRichTextBox.Size = new System.Drawing.Size(726, 197);
             this.issueDescriptionRichTextBox.TabIndex = 0;
             this.issueDescriptionRichTextBox.Text = "[敘述]";
             // 
@@ -198,7 +198,7 @@
             "1",
             "2",
             "3"});
-            this.issuePriorityComboBox.Location = new System.Drawing.Point(211, 90);
+            this.issuePriorityComboBox.Location = new System.Drawing.Point(211, 84);
             this.issuePriorityComboBox.Name = "issuePriorityComboBox";
             this.issuePriorityComboBox.Size = new System.Drawing.Size(176, 24);
             this.issuePriorityComboBox.TabIndex = 18;
@@ -209,7 +209,7 @@
             this.projectComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.projectComboBox.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.projectComboBox.FormattingEnabled = true;
-            this.projectComboBox.Location = new System.Drawing.Point(211, 154);
+            this.projectComboBox.Location = new System.Drawing.Point(211, 142);
             this.projectComboBox.Name = "projectComboBox";
             this.projectComboBox.Size = new System.Drawing.Size(176, 24);
             this.projectComboBox.TabIndex = 20;
@@ -227,9 +227,9 @@
             // 
             this.submitButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.submitButton.Font = new System.Drawing.Font("PMingLiU", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.submitButton.Location = new System.Drawing.Point(581, 474);
+            this.submitButton.Location = new System.Drawing.Point(581, 432);
             this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(177, 61);
+            this.submitButton.Size = new System.Drawing.Size(177, 54);
             this.submitButton.TabIndex = 23;
             this.submitButton.Text = "確認發布";
             this.submitButton.UseVisualStyleBackColor = true;
@@ -237,14 +237,17 @@
             // 
             // CreateIssueView
             // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.IssueTableLayoutPanel);
             this.Name = "CreateIssueView";
             this.Text = "新增議題 - Issue Tracking System";
+            this.Controls.SetChildIndex(this.IssueTableLayoutPanel, 0);
             this.IssueTableLayoutPanel.ResumeLayout(false);
             this.IssueTableLayoutPanel.PerformLayout();
             this.issueDescriptionGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

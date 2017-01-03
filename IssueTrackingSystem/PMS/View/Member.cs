@@ -67,7 +67,7 @@ namespace IssueTrackingSystem.PMS.View
             table.Rows.Clear();
             for (int i = 0; i < userList.Count; i++)
             {
-                table.Rows.Add(userList[i].UserId.ToString(), userList[i].UserName, userList[i].EmailAddress, memberList[i].Role, UPDATE, DELETE);
+                table.Rows.Add(userList[i].UserId.ToString(), userList[i].UserName, userList[i].EmailAddress, memberList[i].Role, DELETE);
             }
         }
 
@@ -92,11 +92,11 @@ namespace IssueTrackingSystem.PMS.View
             int row = e.RowIndex;
             if(e.RowIndex >= 0)
             {
-                if(col == 4)
+                if(col == 3)
                 {
                     UpdateMember(new ProjectMember(Convert.ToInt16(_dataGridView.Rows[row].Cells[0].Value), project.ProjectId, _dataGridView.Rows[row].Cells[3].Value.ToString()), true);
                 }
-                if(col == 5)
+                if(col == 4)
                 {
                     DeleteMember(new ProjectMember(Convert.ToInt16(_dataGridView.Rows[row].Cells[0].Value), project.ProjectId, _dataGridView.Rows[row].Cells[3].Value.ToString()));
                 }

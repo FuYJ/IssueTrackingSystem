@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this._projectName = new System.Windows.Forms.TextBox();
             this.issuesDataGridView = new System.Windows.Forms.DataGridView();
             this.issueId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.issueName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,6 +39,7 @@
             this.reportDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.project = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.issueState = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._projectName = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this._deleteButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
@@ -63,18 +63,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(782, 396);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // _projectName
-            // 
-            this._projectName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this._projectName.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this._projectName.Font = new System.Drawing.Font("PMingLiU", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this._projectName.Location = new System.Drawing.Point(3, 4);
-            this._projectName.Name = "_projectName";
-            this._projectName.ReadOnly = true;
-            this._projectName.Size = new System.Drawing.Size(776, 32);
-            this._projectName.TabIndex = 0;
-            this._projectName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // issuesDataGridView
             // 
@@ -153,6 +141,18 @@
             this.issueState.HeaderText = "狀態";
             this.issueState.Name = "issueState";
             // 
+            // _projectName
+            // 
+            this._projectName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this._projectName.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this._projectName.Font = new System.Drawing.Font("PMingLiU", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this._projectName.Location = new System.Drawing.Point(3, 4);
+            this._projectName.Name = "_projectName";
+            this._projectName.ReadOnly = true;
+            this._projectName.Size = new System.Drawing.Size(776, 32);
+            this._projectName.TabIndex = 0;
+            this._projectName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 3;
@@ -176,7 +176,7 @@
             this._deleteButton.Name = "_deleteButton";
             this._deleteButton.Size = new System.Drawing.Size(252, 29);
             this._deleteButton.TabIndex = 0;
-            this._deleteButton.Text = "Delete";
+            this._deleteButton.Text = "Leave";
             this._deleteButton.UseVisualStyleBackColor = true;
             this._deleteButton.Click += new System.EventHandler(this.DeleteButtonClicked);
             // 
