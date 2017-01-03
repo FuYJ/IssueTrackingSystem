@@ -142,6 +142,7 @@ namespace IssueTrackingSystem.Model
                 var memberData = reader.ReadToEnd();
                 state = int.Parse((String)memberData);
             }
+            Notify();
 
             return state;
         }

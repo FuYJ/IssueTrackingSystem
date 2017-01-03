@@ -76,7 +76,7 @@ namespace IssueTrackingSystem.ITS.View
             issue.IssueName = issueNameTextBox.Text;
             issue.Priority = (String)issuePriorityComboBox.SelectedItem;
             issue.Serverity = (String)issueSeverityComboBox.SelectedItem;
-            issue.Description = issueDescriptionRichTextBox.Text;
+            issue.Description = issueDescriptionRichTextBox.Text.Replace("\n", "<br>");
             issue.PersonInChargeId = projectMember.UserId;
             issue.State = "待審核";
             issue = issueController.createIssue(issue);

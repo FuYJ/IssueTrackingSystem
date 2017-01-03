@@ -197,7 +197,7 @@ namespace IssueTrackingSystem.Model
                 dynamic projectApiModel = JsonConvert.DeserializeObject<dynamic>(projectData);
                 state = (int)projectApiModel;
             }
-//            Notify();
+            //Notify();
             return state;
         }
 

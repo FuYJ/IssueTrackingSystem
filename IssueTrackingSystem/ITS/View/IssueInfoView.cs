@@ -66,7 +66,7 @@ namespace IssueTrackingSystem.ITS.View
                 issue.IssueId = issueDetails[0].IssueId;
                 issue.IssueGroupId = issueDetails[0].IssueGroupId;
                 issue.IssueName = issueNameLabel.Text;
-                issue.Description = issueDescriptionRichTextBox.Text;
+                issue.Description = issueDescriptionRichTextBox.Text.Replace("\n", "<br>");
                 issue.State = (String)issueStateComboBox.SelectedItem;
                 issue.Priority = (String)issuePriorityComboBox.SelectedItem;
                 issue.Serverity = (String)issueSeverityComboBox.SelectedItem;
@@ -105,7 +105,7 @@ namespace IssueTrackingSystem.ITS.View
             issueReporterLabel.Text = reporter.UserName;
             issueReportDateLabel.Text = issueDetails[0].ReportDate.ToString();
             issueAssigneeComboBox.Text = assignee.UserName;
-            issueDescriptionRichTextBox.Text = issueDetails[0].Description;
+            issueDescriptionRichTextBox.Text = issueDetails[0].Description.Replace("<br>", "\n");
 
             issueHistoryFlowLayoutPanel.Controls.Clear();
             foreach (Issue issue in issueDetails) {
@@ -122,7 +122,7 @@ namespace IssueTrackingSystem.ITS.View
                     block.issueReportDateLabel.Text = issue.ReportDate.ToString();
                     block.issueAssigneeLabel.Text = assignee.UserName;
                     block.issueFinishDateLabel.Text = issue.FinishDate.ToString();
-                    block.issueDescriptionRichTextBox.Text = issue.Description;
+                    block.issueDescriptionRichTextBox.Text = issue.Description.Replace("<br>", "\n");
                     issueHistoryFlowLayoutPanel.Controls.Add(block);
                 }
 
