@@ -40,7 +40,7 @@ namespace IssueTrackingSystem.Model
                 model.ProjectContext.ProjectName = projectApiModel.project.projectName;
                 model.ProjectContext.Description = projectApiModel.project.description;
                 model.ProjectContext.Manager = projectApiModel.project.manager;
-                model.ProjectContext.TimeStamp = DateTime.FromFileTime(long.Parse((string)projectApiModel.project.timeStamp));
+                model.ProjectContext.TimeStamp = formatDateToDateTime(long.Parse((string)projectApiModel.project.timeStamp));
             }
             Notify();
             return model;
@@ -64,7 +64,7 @@ namespace IssueTrackingSystem.Model
                     project.ProjectName = projectApiModel.project.projectName;
                     project.Description = projectApiModel.project.description;
                     project.Manager = projectApiModel.project.manager;
-                    project.TimeStamp = DateTime.FromFileTime(long.Parse((string)projectApiModel.project.timeStamp));
+                    project.TimeStamp = formatDateToDateTime(long.Parse((string)projectApiModel.project.timeStamp));
                 }
                 else
                 {
@@ -94,7 +94,7 @@ namespace IssueTrackingSystem.Model
                         project.ProjectName = o.projectName;
                         project.Description = o.description;
                         project.Manager = o.manager;
-                        project.TimeStamp = DateTime.FromFileTime(long.Parse((string)o.timeStamp));
+                        project.TimeStamp = formatDateToDateTime(long.Parse((string)o.timeStamp));
                         projectList.Add(project);
                     }
                 }
@@ -122,7 +122,7 @@ namespace IssueTrackingSystem.Model
                         project.ProjectName = o.projectName;
                         project.Description = o.description;
                         project.Manager = o.manager;
-                        project.TimeStamp = DateTime.FromFileTime(long.Parse((string)o.timeStamp));
+                        project.TimeStamp = formatDateToDateTime(long.Parse((string)o.timeStamp));
                         projectList.Add(project);
                     }
                 }
@@ -150,7 +150,7 @@ namespace IssueTrackingSystem.Model
                         project.ProjectName = o.projectName;
                         project.Description = o.description;
                         project.Manager = o.manager;
-                        project.TimeStamp = DateTime.FromFileTime(long.Parse((string)o.timeStamp));
+                        project.TimeStamp = formatDateToDateTime(long.Parse((string)o.timeStamp));
                         projectList.Add(project);
                     }
                 }
@@ -197,8 +197,13 @@ namespace IssueTrackingSystem.Model
                 dynamic projectApiModel = JsonConvert.DeserializeObject<dynamic>(projectData);
                 state = (int)projectApiModel;
             }
-            Notify();
+//            Notify();
             return state;
+        }
+
+        private DateTime formatDateToDateTime(long date)
+        {
+            return new DateTime((new DateTime(1970, 1, 1, 0, 0, 0).Ticks) + date * 10000).ToLocalTime();
         }
 
         public void Notify()

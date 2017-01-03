@@ -15,8 +15,8 @@ namespace IssueTrackingSystem.Model.DataModel
         private DateTime timeStamp;
         private List<ProjectMember> members;
         private List<int> issues;
-        public static String CREATE = "Create";
-        public static String UPDATE = "Update";
+        public static String CREATE = "建立";
+        public static String UPDATE = "更新";
 
         public override string ToString()
         {

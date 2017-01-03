@@ -102,7 +102,7 @@
             this._leaveButton.Name = "_leaveButton";
             this._leaveButton.Size = new System.Drawing.Size(119, 32);
             this._leaveButton.TabIndex = 8;
-            this._leaveButton.Text = "Leave";
+            this._leaveButton.Text = "離開";
             this._leaveButton.UseVisualStyleBackColor = true;
             this._leaveButton.Click += new System.EventHandler(this.LeaveButtonClicked);
             // 

@@ -141,7 +141,6 @@ namespace IssueTrackingSystem.PMS.View
         {
             if (!project.Manager.Equals(SecurityModel.getInstance().AuthenticatedUser.UserName))
             {
-                table.Columns[5].Visible = false;
                 table.Columns[4].Visible = false;
                 table.Columns.RemoveAt(3);
                 DataGridViewTextBoxColumn role = new DataGridViewTextBoxColumn();

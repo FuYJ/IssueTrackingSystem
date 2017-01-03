@@ -176,7 +176,7 @@
             this._deleteButton.Name = "_deleteButton";
             this._deleteButton.Size = new System.Drawing.Size(252, 29);
             this._deleteButton.TabIndex = 0;
-            this._deleteButton.Text = "Leave";
+            this._deleteButton.Text = "離開";
             this._deleteButton.UseVisualStyleBackColor = true;
             this._deleteButton.Click += new System.EventHandler(this.DeleteButtonClicked);
             // 

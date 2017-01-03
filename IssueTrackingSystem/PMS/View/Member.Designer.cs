@@ -33,11 +33,6 @@
             this._memberList = new System.Windows.Forms.TabControl();
             this._existingMemberTable = new System.Windows.Forms.TabPage();
             this._dataGridView = new System.Windows.Forms.DataGridView();
-            this._userID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this._userName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this._userEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this._userRole = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this._deleteButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this._joiningMemberTable = new System.Windows.Forms.TabPage();
             this._dataGridViewJoining = new System.Windows.Forms.DataGridView();
             this._inviteMemberTable = new System.Windows.Forms.TabPage();
@@ -53,6 +48,11 @@
             this._leaveButton = new System.Windows.Forms.Button();
             this.dataGridViewButtonColumn3 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dataGridViewButtonColumn4 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this._userID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._userName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._userEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._userRole = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this._deleteButton = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -124,7 +124,7 @@
             this._existingMemberTable.Padding = new System.Windows.Forms.Padding(3);
             this._existingMemberTable.Size = new System.Drawing.Size(613, 300);
             this._existingMemberTable.TabIndex = 0;
-            this._existingMemberTable.Text = "Existing Members";
+            this._existingMemberTable.Text = "專案成員";
             this._existingMemberTable.UseVisualStyleBackColor = true;
             // 
             // _dataGridView
@@ -147,48 +147,6 @@
             this._dataGridView.TabIndex = 0;
             this._dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewCellContentClick);
             // 
-            // _userID
-            // 
-            this._userID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this._userID.HeaderText = "ID";
-            this._userID.Name = "_userID";
-            this._userID.ReadOnly = true;
-            this._userID.Width = 42;
-            // 
-            // _userName
-            // 
-            this._userName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this._userName.HeaderText = "Name";
-            this._userName.Name = "_userName";
-            this._userName.ReadOnly = true;
-            this._userName.Width = 57;
-            // 
-            // _userEmail
-            // 
-            this._userEmail.HeaderText = "Email";
-            this._userEmail.Name = "_userEmail";
-            this._userEmail.ReadOnly = true;
-            // 
-            // _userRole
-            // 
-            this._userRole.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this._userRole.HeaderText = "Role";
-            this._userRole.Items.AddRange(new object[] {
-            "GeneralUser",
-            "ProjectDeveloper",
-            "ProjectTester",
-            "ProjectManager"});
-            this._userRole.Name = "_userRole";
-            this._userRole.Width = 5;
-            // 
-            // _deleteButton
-            // 
-            this._deleteButton.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this._deleteButton.HeaderText = "Delete";
-            this._deleteButton.Name = "_deleteButton";
-            this._deleteButton.Text = "Delete";
-            this._deleteButton.Width = 40;
-            // 
             // _joiningMemberTable
             // 
             this._joiningMemberTable.Controls.Add(this._dataGridViewJoining);
@@ -197,7 +155,7 @@
             this._joiningMemberTable.Padding = new System.Windows.Forms.Padding(3);
             this._joiningMemberTable.Size = new System.Drawing.Size(613, 300);
             this._joiningMemberTable.TabIndex = 1;
-            this._joiningMemberTable.Text = "Joining Member";
+            this._joiningMemberTable.Text = "待加入成員";
             this._joiningMemberTable.UseVisualStyleBackColor = true;
             // 
             // _dataGridViewJoining
@@ -228,7 +186,7 @@
             this._inviteMemberTable.Padding = new System.Windows.Forms.Padding(3);
             this._inviteMemberTable.Size = new System.Drawing.Size(613, 300);
             this._inviteMemberTable.TabIndex = 2;
-            this._inviteMemberTable.Text = "Invite_Member";
+            this._inviteMemberTable.Text = "邀請成員";
             this._inviteMemberTable.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel4
@@ -273,7 +231,7 @@
             this._permission.ReadOnly = true;
             this._permission.Size = new System.Drawing.Size(114, 15);
             this._permission.TabIndex = 0;
-            this._permission.Text = "Permission:";
+            this._permission.Text = "權限:";
             this._permission.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // _permissionList
@@ -314,7 +272,7 @@
             this._name.ReadOnly = true;
             this._name.Size = new System.Drawing.Size(114, 15);
             this._name.TabIndex = 0;
-            this._name.Text = "Name:";
+            this._name.Text = "名字:";
             this._name.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // _nameInput
@@ -332,7 +290,7 @@
             this._inviteMember.Name = "_inviteMember";
             this._inviteMember.Size = new System.Drawing.Size(125, 54);
             this._inviteMember.TabIndex = 2;
-            this._inviteMember.Text = "Invite Member";
+            this._inviteMember.Text = "邀請成員";
             this._inviteMember.UseVisualStyleBackColor = true;
             this._inviteMember.Click += new System.EventHandler(this.InviteMemberClicked);
             // 
@@ -354,7 +312,7 @@
             this._leaveButton.Name = "_leaveButton";
             this._leaveButton.Size = new System.Drawing.Size(75, 45);
             this._leaveButton.TabIndex = 4;
-            this._leaveButton.Text = "Leave";
+            this._leaveButton.Text = "離開";
             this._leaveButton.UseVisualStyleBackColor = true;
             this._leaveButton.Click += new System.EventHandler(this.LeaveButtonClicked);
             // 
@@ -373,6 +331,48 @@
             this.dataGridViewButtonColumn4.Name = "dataGridViewButtonColumn4";
             this.dataGridViewButtonColumn4.Text = "Delete";
             // 
+            // _userID
+            // 
+            this._userID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this._userID.HeaderText = "ID";
+            this._userID.Name = "_userID";
+            this._userID.ReadOnly = true;
+            this._userID.Width = 42;
+            // 
+            // _userName
+            // 
+            this._userName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this._userName.HeaderText = "名字";
+            this._userName.Name = "_userName";
+            this._userName.ReadOnly = true;
+            this._userName.Width = 54;
+            // 
+            // _userEmail
+            // 
+            this._userEmail.HeaderText = "Email";
+            this._userEmail.Name = "_userEmail";
+            this._userEmail.ReadOnly = true;
+            // 
+            // _userRole
+            // 
+            this._userRole.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this._userRole.HeaderText = "權限";
+            this._userRole.Items.AddRange(new object[] {
+            "GeneralUser",
+            "ProjectDeveloper",
+            "ProjectTester",
+            "ProjectManager"});
+            this._userRole.Name = "_userRole";
+            this._userRole.Width = 5;
+            // 
+            // _deleteButton
+            // 
+            this._deleteButton.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this._deleteButton.HeaderText = "刪除";
+            this._deleteButton.Name = "_deleteButton";
+            this._deleteButton.Text = "Delete";
+            this._deleteButton.Width = 32;
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -384,10 +384,10 @@
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn2.HeaderText = "名字";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 57;
+            this.dataGridViewTextBoxColumn2.Width = 54;
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -398,7 +398,7 @@
             // _userRole2
             // 
             this._userRole2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this._userRole2.HeaderText = "Role";
+            this._userRole2.HeaderText = "權限";
             this._userRole2.Items.AddRange(new object[] {
             "GeneralUser",
             "ProjectDeveloper",
@@ -410,10 +410,10 @@
             // dataGridViewButtonColumn2
             // 
             this.dataGridViewButtonColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dataGridViewButtonColumn2.HeaderText = "Delete";
+            this.dataGridViewButtonColumn2.HeaderText = "刪除";
             this.dataGridViewButtonColumn2.Name = "dataGridViewButtonColumn2";
             this.dataGridViewButtonColumn2.Text = "Delete";
-            this.dataGridViewButtonColumn2.Width = 40;
+            this.dataGridViewButtonColumn2.Width = 32;
             // 
             // Member
             // 
