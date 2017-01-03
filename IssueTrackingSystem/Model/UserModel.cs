@@ -65,8 +65,9 @@ namespace IssueTrackingSystem.Model
                 user.Authority = formatUserRoleToAuthority(userApiModel.UserRole);
                 user.UserId = formatStateToUserId(userApiModel.State, userApiModel.UserId);
             }
-            updateAuthenticatedUser(user.UserId);
-
+            if (user.UserId > 0)
+                updateAuthenticatedUser(user.UserId);
+            
             return user;
         }
 
