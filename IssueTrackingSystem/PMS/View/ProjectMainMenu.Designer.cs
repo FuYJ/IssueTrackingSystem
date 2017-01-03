@@ -82,18 +82,18 @@
             this._issueButton.Name = "_issueButton";
             this._issueButton.Size = new System.Drawing.Size(203, 102);
             this._issueButton.TabIndex = 6;
-            this._issueButton.Text = "Issue";
+            this._issueButton.Text = "議題";
             this._issueButton.UseVisualStyleBackColor = true;
             this._issueButton.Click += new System.EventHandler(this.IssueButtonClicked);
             // 
             // _deleteButton
             // 
             this._deleteButton.Font = new System.Drawing.Font("PMingLiU", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this._deleteButton.Location = new System.Drawing.Point(440, 258);
+            this._deleteButton.Location = new System.Drawing.Point(287, 389);
             this._deleteButton.Name = "_deleteButton";
             this._deleteButton.Size = new System.Drawing.Size(203, 102);
             this._deleteButton.TabIndex = 5;
-            this._deleteButton.Text = "Delete";
+            this._deleteButton.Text = "刪除";
             this._deleteButton.UseVisualStyleBackColor = true;
             this._deleteButton.Click += new System.EventHandler(this.DeleteButtonClicked);
             // 
@@ -104,7 +104,7 @@
             this._descriptionButton.Name = "_descriptionButton";
             this._descriptionButton.Size = new System.Drawing.Size(203, 102);
             this._descriptionButton.TabIndex = 4;
-            this._descriptionButton.Text = "Description";
+            this._descriptionButton.Text = "內容";
             this._descriptionButton.UseVisualStyleBackColor = true;
             this._descriptionButton.Click += new System.EventHandler(this.DescriptionButtonClicked);
             // 
@@ -115,7 +115,7 @@
             this._memberList.Name = "_memberList";
             this._memberList.Size = new System.Drawing.Size(203, 102);
             this._memberList.TabIndex = 3;
-            this._memberList.Text = "Member";
+            this._memberList.Text = "成員";
             this._memberList.UseVisualStyleBackColor = true;
             this._memberList.Click += new System.EventHandler(this.MemberListClicked);
             // 
@@ -134,11 +134,11 @@
             // _leaveButton
             // 
             this._leaveButton.Font = new System.Drawing.Font("PMingLiU", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this._leaveButton.Location = new System.Drawing.Point(286, 379);
+            this._leaveButton.Location = new System.Drawing.Point(440, 258);
             this._leaveButton.Name = "_leaveButton";
             this._leaveButton.Size = new System.Drawing.Size(203, 102);
             this._leaveButton.TabIndex = 9;
-            this._leaveButton.Text = "Leave";
+            this._leaveButton.Text = "離開";
             this._leaveButton.UseVisualStyleBackColor = true;
             this._leaveButton.Click += new System.EventHandler(this.LeaveButtonClicked);
             // 
