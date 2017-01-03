@@ -52,14 +52,17 @@ namespace IssueTrackingSystem.AMS.View
                     user.Authority = (int)User.AuthorityEnum.GeneralUser;
                 int state = userController.updateUser(user);
                 switch (state) { 
-                    case (int)ErrorManager.ErrorCode.CannotUpdateProjectManagerInfo:
-                        statusStrip1.Text = "無法修改專案管理員資料";
+                    case -(int)ErrorManager.ErrorCode.CannotUpdateProjectManagerInfo:
+                        toolStripStatusLabel1.Text = "無法修改專案管理員資料";
                         break;
-                    case (int)ErrorManager.ErrorCode.InvalidAuthoritySetting:
-                        statusStrip1.Text = "不合法的權限設定";
+                    case -(int)ErrorManager.ErrorCode.InvalidAuthoritySetting:
+                        toolStripStatusLabel1.Text = "不合法的權限設定";
                         break;
-                    case (int)ErrorManager.ErrorCode.Success:
-                        statusStrip1.Text = "已成功修改權限";
+                    case -(int)ErrorManager.ErrorCode.IsInvitedOrIsJoinedProject:
+                        toolStripStatusLabel1.Text = "不可修改已加入專案或收到專案邀請的使用者權限";
+                        break;
+                    case -(int)ErrorManager.ErrorCode.Success:
+                        toolStripStatusLabel1.Text = "已成功修改權限";
                         break;
                 }
             }
@@ -73,21 +76,24 @@ namespace IssueTrackingSystem.AMS.View
                 state = userController.deleteUser((int)userListDataGridView.Rows[e.RowIndex].Cells[0].Value);
                 switch (state)
                 {
-                    case (int)ErrorManager.ErrorCode.CannotUpdateProjectManagerInfo:
-                        statusStrip1.Text = "無法刪除專案管理員";
+                    case -(int)ErrorManager.ErrorCode.CannotUpdateProjectManagerInfo:
+                        toolStripStatusLabel1.Text = "無法刪除專案管理員";
                         break;
-                    case (int)ErrorManager.ErrorCode.InvalidAuthoritySetting:
-                        statusStrip1.Text = "不合法的刪除動作";
+                    case -(int)ErrorManager.ErrorCode.InvalidAuthoritySetting:
+                        toolStripStatusLabel1.Text = "不合法的刪除動作";
                         break;
-                    case (int)ErrorManager.ErrorCode.Success:
-                        statusStrip1.Text = "已成功刪除使用者";
+                    case -(int)ErrorManager.ErrorCode.IsInvitedOrIsJoinedProject:
+                        toolStripStatusLabel1.Text = "不可刪除已加入專案或收到專案邀請的使用者";
+                        break;
+                    case -(int)ErrorManager.ErrorCode.Success:
+                        toolStripStatusLabel1.Text = "已成功刪除使用者";
                         break;
                 }
             }
         }
 
         private void updateUserList(){
-            statusStrip1.Text = "";
+            toolStripStatusLabel1.Text = "";
             userList = securityController.listAccounts();
             userListDataGridView.Rows.Clear();
             foreach (User user in userList)

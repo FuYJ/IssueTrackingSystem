@@ -144,7 +144,7 @@
             this.Controls.Add(this.toolStrip1);
             this.Name = "BaseView";
             this.Text = "null";
-            this.Load += new System.EventHandler(this.BaseViewLoad);
+            //this.Load += new System.EventHandler(this.BaseViewLoad);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
