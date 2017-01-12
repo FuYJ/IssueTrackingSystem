@@ -77,8 +77,10 @@ namespace IssueTrackingSystem.ITS.View
             //Draw Line Chart
             Dictionary<String, int> resolvedIssues = reportController.ResolvedIssues;
             Dictionary<String, int> unresolvedIssues = reportController.UnresolvedIssues;
+            
             lineChart.Series["resolvedIssues"].Points.DataBindXY(resolvedIssues.Keys, resolvedIssues.Values);
             lineChart.Series["unresolvedIssues"].Points.DataBindXY(unresolvedIssues.Keys, unresolvedIssues.Values);
+            
             if (resolvedIssues.Count == 0 && unresolvedIssues.Count == 0)
                 toolStripStatusLabel.Text = "尚未有議題記錄";
         
@@ -91,7 +93,7 @@ namespace IssueTrackingSystem.ITS.View
                 projectInfoGroupBox.Visible = true;
                 Project project = (Project)searchKeyComboBox.SelectedItem;
                 projectNameLabel.Text = project.ProjectName;
-                projectDescriptionLabel.Text = project.Description;
+                projectDescriptionLabel.Text = project.Description.Replace("<br>", "\n");
                 projectManagerLabel.Text = project.Manager;
                 projectCreatedDateLabel.Text = project.TimeStamp.Date.ToString();
             }
@@ -103,23 +105,7 @@ namespace IssueTrackingSystem.ITS.View
         private void initializeView()
         {
             searchKeyComboBox.Items.Clear();
-            if (user.Authority == (int)User.AuthorityEnum.GeneralUser)
-            {
-                searchTypeComboBox.SelectedIndex = 0;
-                foreach (Project _project in user.JoinedProjects)
-                    searchKeyComboBox.Items.Add(_project);
-                if (searchKeyComboBox.Items.Count > 0)
-                    searchKeyComboBox.SelectedIndex = 0;
-            }
-            else
-            {
-                searchTypeComboBox.SelectedIndex = 0;
-                List<Project> projects = projectInfoController.getAllProjectList(user.UserId);
-                foreach (Project _project in projects)
-                    searchKeyComboBox.Items.Add(_project);
-                if (searchKeyComboBox.Items.Count > 0)
-                    searchKeyComboBox.SelectedIndex = 0;
-            }
+            searchTypeComboBox.SelectedIndex = 0;
         }
 
         private void searchTypeComboBoxSelectedIndexChanged(object sender, EventArgs e)

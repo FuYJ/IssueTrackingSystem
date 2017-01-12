@@ -45,6 +45,7 @@ namespace IssueTrackingSystem.PMS.View
             issuesDataGridView.Rows.Clear();
             List<Issue> issueList = new List<Issue>();
             issueList = issueModel.getIssueListByProjectId(projectContext.ProjectId);
+            issueList.Sort(compareIssueOrder);
             for(int i = 0; i < issueList.Count; i++)
             {
                 issuesDataGridView.Rows.Add(
@@ -63,6 +64,15 @@ namespace IssueTrackingSystem.PMS.View
         private void DeleteButtonClicked(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private int compareIssueOrder(Issue a, Issue b)
+        {
+            if (a.IssueId > b.IssueId)
+                return 1;
+            else if (a.IssueId < b.IssueId)
+                return -1;
+            return 0;
         }
     }
 }

@@ -68,8 +68,10 @@ namespace IssueTrackingSystem.ITS.Controller
                         for (date.Date.ToString(); !date.Date.ToString().Equals(endDate.Date.ToString()); date = date.AddDays(1))
                         {
                             addIssues(date, false);
+                            setZeroIssues(date, true);
                         }
                         addIssues(issueHistory[0].FinishDate.Date, true);
+                        setZeroIssues(issueHistory[0].FinishDate.Date, false);
                     }
                     else
                     {
@@ -77,6 +79,7 @@ namespace IssueTrackingSystem.ITS.Controller
                         for (date.Date.ToString(); !date.Date.ToString().Equals(DateTime.Now.AddDays(1).Date.ToString()); date = date.AddDays(1))
                         {
                             addIssues(date, false);
+                            setZeroIssues(date, true);
                         }
                     }
                 }
@@ -107,8 +110,10 @@ namespace IssueTrackingSystem.ITS.Controller
                             for (date.Date.ToString(); !date.Date.ToString().Equals(endDate.Date.ToString()); date = date.AddDays(1))
                             {
                                 addIssues(date, false);
+                                setZeroIssues(date, true);
                             }
                             addIssues(issueHistory[issueFinishedIndex].FinishDate.Date, true);
+                            setZeroIssues(issueHistory[issueFinishedIndex].FinishDate.Date, false);
                         }
                     }
                     else
@@ -117,6 +122,7 @@ namespace IssueTrackingSystem.ITS.Controller
                         for (date.Date.ToString(); !date.Date.ToString().Equals(DateTime.Now.AddDays(1).Date.ToString()); date = date.AddDays(1))
                         {
                             addIssues(date, false);
+                            setZeroIssues(date, true);
                         }
                     }
                 }
@@ -194,6 +200,24 @@ namespace IssueTrackingSystem.ITS.Controller
                 else
                 {
                     resolvedIssues.Add(date.Date.ToString(), 1);
+                }
+            }
+        }
+        private void setZeroIssues(DateTime date, bool isResolved)
+        {
+            int value;
+            if (!isResolved)
+            {
+                if (!unresolvedIssues.TryGetValue(date.Date.ToString(), out value))
+                {
+                    unresolvedIssues.Add(date.Date.ToString(), 0);
+                }
+            }
+            else
+            {
+                if (!resolvedIssues.TryGetValue(date.Date.ToString(), out value))
+                {
+                    resolvedIssues.Add(date.Date.ToString(), 0);
                 }
             }
         }

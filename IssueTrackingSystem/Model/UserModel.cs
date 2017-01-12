@@ -232,7 +232,7 @@ namespace IssueTrackingSystem.Model
                         project.ProjectName = o.projectName;
                         project.Description = o.description;
                         project.Manager = o.manager;
-                        project.TimeStamp = DateTime.FromFileTime(long.Parse((string)o.timeStamp));
+                        project.TimeStamp = formatDateToDateTime(long.Parse((string)o.timeStamp));
                         projectList.Add(project);
                     }
                 }
@@ -262,7 +262,7 @@ namespace IssueTrackingSystem.Model
                         project.ProjectName = o.projectName;
                         project.Description = o.description;
                         project.Manager = o.manager;
-                        project.TimeStamp = DateTime.FromFileTime(long.Parse((string)o.timeStamp));
+                        project.TimeStamp = formatDateToDateTime(long.Parse((string)o.timeStamp));
                         projectList.Add(project);
                     }
                 }
@@ -295,9 +295,9 @@ namespace IssueTrackingSystem.Model
                         issue.Serverity = o.serverity;
                         issue.Priority = o.priority;
                         issue.ReporterId = o.reporterId;
-                        issue.ReportDate = DateTime.FromFileTime((long)o.reportTime);
+                        issue.ReportDate = formatDateToDateTime((long)o.reportTime);
                         issue.PersonInChargeId = o.personInChargeId;
-                        issue.FinishDate = (o.finishTime == null) ? DateTime.MaxValue : DateTime.FromFileTime((long)o.finishTime);
+                        issue.FinishDate = (o.finishTime == null) ? DateTime.MaxValue : formatDateToDateTime((long)o.finishTime);
                         issue.ProjectId = o.projectId;
                         issueList.Add(issue);
                     }
@@ -334,6 +334,11 @@ namespace IssueTrackingSystem.Model
             if (userDataChanged != null) {
                 userDataChanged();
             }
+        }
+
+        private DateTime formatDateToDateTime(long date)
+        {
+            return new DateTime((new DateTime(1970, 1, 1, 0, 0, 0).Ticks) + date * 10000).ToLocalTime();
         }
     }
 }

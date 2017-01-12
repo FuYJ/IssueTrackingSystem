@@ -130,15 +130,15 @@ namespace IssueTrackingSystem.AMS.View
                 joinedProjectsDataGridView.Rows.Clear();
                 invitedProjectsDataGridView.Rows.Clear();
                 foreach (Project project in joinedProjectList)
-                    joinedProjectsDataGridView.Rows.Add(new Object[] { project.ProjectId, project.ProjectName, project.Description, project.Manager});
+                    joinedProjectsDataGridView.Rows.Add(new Object[] { project.ProjectId, project.ProjectName, project.Description.Replace("<br>", "; "), project.Manager});
                 foreach (Project project in invitedProjectList)
-                    invitedProjectsDataGridView.Rows.Add(new Object[] { project.ProjectId, project.ProjectName, project.Description, project.Manager, "接受", "拒絕" });
+                    invitedProjectsDataGridView.Rows.Add(new Object[] { project.ProjectId, project.ProjectName, project.Description.Replace("<br>", "; "), project.Manager, "接受", "拒絕" });
             }
             else
             {
                 allProjectsDataGridView.Rows.Clear();
                 foreach (Project project in allProjectList)
-                    allProjectsDataGridView.Rows.Add(new Object[] { project.ProjectId, project.ProjectName, project.Description, project.Manager });
+                    allProjectsDataGridView.Rows.Add(new Object[] { project.ProjectId, project.ProjectName, project.Description.Replace("<br>", "; "), project.Manager });
             }
         }
 

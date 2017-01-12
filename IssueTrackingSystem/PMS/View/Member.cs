@@ -64,6 +64,10 @@ namespace IssueTrackingSystem.PMS.View
             List<User> userList = new List<User>();
             memberList = memberController.getMemberByProjectId(project.ProjectId, joined);
             userList = memberController.getUserByProjectId(project.ProjectId, joined);
+            
+            memberList.Sort(compareMemberOrder);
+            userList.Sort(compareUserOrder);
+            
             table.Rows.Clear();
             for (int i = 0; i < userList.Count; i++)
             {
@@ -167,6 +171,24 @@ namespace IssueTrackingSystem.PMS.View
         private void LeaveButtonClicked(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private int compareUserOrder(User a, User b)
+        {
+            if (a.UserId > b.UserId)
+                return 1;
+            else if (a.UserId < b.UserId)
+                return -1;
+            return 0;
+        }
+
+        private int compareMemberOrder(ProjectMember a, ProjectMember b)
+        {
+            if (a.UserId > b.UserId)
+                return 1;
+            else if (a.UserId < b.UserId)
+                return -1;
+            return 0;
         }
     }
 }

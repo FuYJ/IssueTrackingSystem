@@ -89,6 +89,10 @@ namespace IssueTrackingSystem.ITS.View
             issueAssigneeComboBox.Enabled = isEnabled;
             issueDescriptionRichTextBox.Enabled = isEnabled;
             issueDescriptionRichTextBox.ReadOnly = !isEnabled;
+            if (isEnabled) 
+                issueDescriptionRichTextBox.BackColor = Color.White;
+            else
+                issueDescriptionRichTextBox.BackColor = Color.Gray;
         }
 
         private void updateIssueInfoView()
